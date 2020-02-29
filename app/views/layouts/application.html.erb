@@ -10,6 +10,92 @@
   </head>
 
   <body>
+    <header>
+        <div class="logo-container">
+            <div class="logo-area">
+                <a href="#">
+                    <!-- <span>bestustu</span> -->
+                    <%# <img src="/Img/logo.png" alt=""> %>
+                    <%= image_tag("images/logo.png")%>
+                </a>
+            </div>
+        </div>
+        <div class="search-container">
+            <div class="search-area">
+                <input type="text" name="" id="search-input" placeholder="Search by name or id">
+                <input type="submit" name="" id="search-submit" value="Search">
+            </div>
+        </div>
+        <div class="nav-container">
+            <div class="nav-area">
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <%# <a href="#">HOME</a> %>
+                            <%= link_to 'HOME', root_path%>
+                            <ul class="submenu">
+                                <li><a href="#">First submenu</a></li>
+                                <li><a href="#">Second submenu</a></li>
+                                <li><a href="#">Third submenu</a></li>
+                                <li><a href="#">Fourth submenu</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">MENU</a>
+                            <ul class="submenu">
+                                <li><a href="#">First submenu</a></li>
+                                <li><a href="#">Second submenu</a></li>
+                                <li><a href="#">Third submenu</a></li>
+                                <li><a href="#">Fourth submenu</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">ABOUT</a>
+                            <ul class="submenu">
+                                <li><a href="#">First submenu</a></li>
+                                <li><a href="#">Second submenu</a></li>
+                                <li><a href="#">Third submenu</a></li>
+                                <li><a href="#">Fourth submenu</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">CONTACT</a>
+                            <ul class="submenu">
+                                <li><a href="#">First submenu</a></li>
+                                <li><a href="#">Second submenu</a></li>
+                                <li><a href="#">Third submenu</a></li>
+                                <li><a href="#">Fourth submenu</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="sign-container">
+            <div class="sign-area">
+                <%# <a class="sign-in-area" href="sign-in.html"> %>
+                <%= link_to  signin_path, class:'sign-in-area' do %>
+                   <div class="sign-in-header">
+                        <i class="fas fa-sign-in-alt"></i> Sign in
+                    </div>
+                <% end %>
+                <%= link_to  signup_path, class:'sign-up-area' do %>
+                    <div class="sign-up-header">
+                        <i class="fas fa-user-plus"></i> Sign up
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+    </header>
+    
+    
+
     <%= yield %>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/37a232b20a.js" crossorigin="anonymous"></script>
   </body>
 </html>
