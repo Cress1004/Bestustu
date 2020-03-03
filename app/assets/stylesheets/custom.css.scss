@@ -205,7 +205,7 @@ header{
     margin: 5vh auto;
 }
 
-// sign-up
+// sign-up sign-n
 
 .siup-container{
     height: 100vh;
@@ -233,12 +233,18 @@ header{
                     color: rgb(72, 185, 230);
                 }
             }
-            .form-area{
-                margin-top: 5vh;
-                button{
-                    // width: 100px;
-                    // margin: 0 auto;  
+            .actions{
+                input{
+                    margin-top: 10px;
                     // display: block;
+                    width: 60%;
+                    float: left;
+                }
+                a{
+                    margin-top: 10px;
+                    width: 35%;
+                    // display: inline-block;
+                    float: right;
                 }
             }
             img{
@@ -252,4 +258,61 @@ header{
 }
 .siup-container::before{
     content: "";
+}
+
+// User-edit
+
+.edus-container{
+    // height: 100vh;
+    // background-image: url("images/sign-up-background");
+    // background-size: cover;
+    overflow: hidden;
+    .edus-box{
+        width: 60vw;
+        // height: 90vh;
+        background-color: rgb(255, 255, 255);
+        margin: 5vh auto;
+        border: solid 2px rgb(165, 159, 159);
+        border-radius: 10px;
+        -webkit-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
+        .edus-background{
+            height: 45vh;
+            background-image: url("images/sign-up-background");
+            background-size: cover;
+            position: relative;
+            border: solid gray 1px;
+            border-radius: 1%;
+            .edus-ava{
+                position: absolute;
+                width: 150px;
+                height: 150px;
+                background-color: red;
+                left: 10%;
+                top: 70%;
+                border: solid rgb(255, 255, 255) 5px;
+                border-radius: 50%;
+                background-image: url("images/sign-up-background");
+                background-size: cover;
+            }
+        }
+        .edus-area{
+            width: 50%;
+            margin: 10vh auto;
+            .edus-header{
+                h2{
+                    margin-top: 10px;
+                    font-weight: 700;
+                    text-align: center;
+                    color: rgb(72, 185, 230);
+                }
+            }
+            .field{
+                input{
+                    background-color: rgb(255, 255, 255);
+                }
+            }
+        }
+    }
 }
