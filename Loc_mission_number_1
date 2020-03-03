@@ -1,0 +1,14 @@
+Lộc build những file sau:
+1. app/views/devise/sessions/new.html.erb  ---> trang sign in
+2. app/views/devise/registrations/new.html.erb ---> trang sign_up
+3. app/views/devise/registrations/edit.html.erb ---> trang edit thông tin user
+4. app/views/devise/confirmations/new.html.erb  ---> trang gửi lại thông tin confirm cho người dùng khi họ k nhận dc mail
+5. app/views/devise/unlocks/new.html.erb ---> trang gửi instructions hướng dẫn mở khóa tài khoản sau nhiều lần đăng nhập failed
+6. app/views/devise/passwords/new.html.erb ---> trang forgot password
+7. app/views/devise/passwords/edit.html.erb --> trang edit mật khẩu
+Yêu cầu:
+- Những file liên quan đến mail, reset password khi
+chưa dc enable thì cái route đó không hiện ra,
+vì thế build bằng html thuần trước đã để mọi người
+dựa vào đó làm theo, hôm nào enable mấy cái tính năng
+ấy sau
