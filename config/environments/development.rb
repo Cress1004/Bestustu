@@ -33,7 +33,6 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-
   config.action_mailer.perform_caching = false
   # Config for mailer activation
   # config.action_mailer.default_url_options = { :host => "localhost:3000" }
@@ -45,8 +44,8 @@ Rails.application.configure do
     port: 587,
     domain: "gmail.com",
     authentication: :plain,
-    user_name: "bestustuvn@gmail.com",
-    password: "huythanhloc",
+    user_name: "huydaodang2706@gmail.com",
+    password: "kimsohyun1234",
     # openssl_verify_mode: 'none',
     enable_starttls_auto: true,
   }
