@@ -62,15 +62,29 @@
     <div class="sign-container">
         <div class="sign-area">
             <%# <a class="sign-in-area" href="sign-in.html"> %>
-            <%= link_to new_user_session_path, class:'sign-in-area' do %>
-               <div class="sign-in-header">
-                    <i class="fas fa-sign-in-alt"></i> Sign in
-                </div>
-            <% end %>
-            <%= link_to new_user_registration_path, class:'sign-up-area' do %>
-                <div class="sign-up-header">
-                    <i class="fas fa-user-plus"></i> Sign up
-                </div>
+            <% if current_user %>  
+                <%= link_to edit_user_registration_path, class:'sign-in-area' do %>
+                    <div class="sign-in-header">
+                        <i class="fas fa-sign-in-alt"></i> Edit User
+                    </div>
+                <% end %>
+                <%= link_to  destroy_user_session_path, method: :delete, class:'sign-up-area' do %>
+                    <div class="sign-up-header">
+                        <i class="fas fa-user-plus"></i> Log out
+                    </div>
+                <% end %>
+            <% else %>
+                <%= link_to new_user_session_path, class:'sign-in-area' do %>
+                    <div class="sign-in-header">
+                        <i class="fas fa-sign-in-alt"></i> Sign in
+                    </div>
+                <% end %>
+                <%= link_to new_user_registration_path, class:'sign-up-area' do %>
+                    <div class="sign-up-header">
+                        <i class="fas fa-user-plus"></i> Sign up
+                    </div>
+                <% end %>   
+            
             <% end %>
         </div>
     </div>
