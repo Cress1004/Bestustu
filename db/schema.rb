@@ -10,7 +10,94 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_072541) do
+ActiveRecord::Schema.define(version: 2020_03_06_164608) do
+
+  create_table "class_registers", force: :cascade do |t|
+    t.string "description"
+    t.float "hours_lesson"
+    t.float "lessons_week"
+    t.float "salary"
+    t.integer "num_tutor"
+    t.integer "location_id", null: false
+    t.integer "student_id", null: false
+    t.integer "subject_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["location_id"], name: "index_class_registers_on_location_id"
+    t.index ["student_id"], name: "index_class_registers_on_student_id"
+    t.index ["subject_id"], name: "index_class_registers_on_subject_id"
+  end
+
+  create_table "class_registers_times_frees", id: false, force: :cascade do |t|
+    t.integer "class_register_id"
+    t.integer "times_free_id"
+    t.index ["class_register_id"], name: "index_class_registers_times_frees_on_class_register_id"
+    t.index ["times_free_id"], name: "index_class_registers_times_frees_on_times_free_id"
+  end
+
+  create_table "class_registers_tutors", id: false, force: :cascade do |t|
+    t.integer "class_register_id"
+    t.integer "tutor_id"
+    t.index ["class_register_id"], name: "index_class_registers_tutors_on_class_register_id"
+    t.index ["tutor_id"], name: "index_class_registers_tutors_on_tutor_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "address"
+    t.string "grade"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_students_on_user_id"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "subjects_tutors", id: false, force: :cascade do |t|
+    t.integer "tutor_id"
+    t.integer "subject_id"
+    t.index ["subject_id"], name: "index_subjects_tutors_on_subject_id"
+    t.index ["tutor_id"], name: "index_subjects_tutors_on_tutor_id"
+  end
+
+  create_table "times_frees", force: :cascade do |t|
+    t.integer "day"
+    t.integer "morning"
+    t.integer "afternoon"
+    t.integer "evening"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "times_frees_tutors", id: false, force: :cascade do |t|
+    t.integer "tutor_id"
+    t.integer "times_free_id"
+    t.index ["times_free_id"], name: "index_times_frees_tutors_on_times_free_id"
+    t.index ["tutor_id"], name: "index_times_frees_tutors_on_tutor_id"
+  end
+
+  create_table "tutors", force: :cascade do |t|
+    t.string "job"
+    t.string "description"
+    t.string "achievement"
+    t.integer "point"
+    t.integer "user_id", null: false
+    t.integer "location_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["location_id"], name: "index_tutors_on_location_id"
+    t.index ["user_id"], name: "index_tutors_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -42,4 +129,18 @@ ActiveRecord::Schema.define(version: 2020_03_06_072541) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "class_registers", "locations"
+  add_foreign_key "class_registers", "students"
+  add_foreign_key "class_registers", "subjects"
+  add_foreign_key "class_registers_times_frees", "class_registers"
+  add_foreign_key "class_registers_times_frees", "times_frees"
+  add_foreign_key "class_registers_tutors", "class_registers"
+  add_foreign_key "class_registers_tutors", "tutors"
+  add_foreign_key "students", "users"
+  add_foreign_key "subjects_tutors", "subjects"
+  add_foreign_key "subjects_tutors", "tutors"
+  add_foreign_key "times_frees_tutors", "times_frees"
+  add_foreign_key "times_frees_tutors", "tutors"
+  add_foreign_key "tutors", "locations"
+  add_foreign_key "tutors", "users"
 end

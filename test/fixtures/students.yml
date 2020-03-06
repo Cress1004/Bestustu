@@ -2,10 +2,10 @@
 
 one:
   address: MyString
-  class: MyString
+  grade: MyString
   user: one
 
 two:
   address: MyString
-  class: MyString
+  grade: MyString
   user: two
