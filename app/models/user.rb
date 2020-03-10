@@ -12,8 +12,6 @@ class User < ApplicationRecord
           :omniauthable, :omniauth_providers => [:facebook],
           :authentication_keys => [:username]
 
-  validates :phone_number, presence: true,
-            uniqueness: {case_sensitive: false}
 
   validates_format_of :phone_number,
                       :with => /\(?[0-9]{4}\)?-[0-9]{3}-[0-9]{3}/,
