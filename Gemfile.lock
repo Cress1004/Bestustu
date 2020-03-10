@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/Nerian/bootstrap-datepicker-rails.git
+  revision: 31be2ecdc26a3d82b3bacc7d003a0c4d40728120
+  specs:
+    bootstrap-datepicker-rails (1.9.0.1)
+      railties (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -260,6 +267,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
+  bootstrap-datepicker-rails!
   byebug
   capybara (>= 2.15)
   carrierwave (~> 2.0)
