@@ -1,0 +1,39 @@
+
+<div class="edus-container">
+  <div class="edus-box">
+    <div class="edus-background">
+      <div class="edus-ava">
+        <%= image_tag @user.image.to_s, :class => "avatar-size rounded-circle" %>
+      </div>
+    </div>
+    <div class="edus-area">
+      <div class="edus-header">
+        <h2><%= @user.name %>'s Information</h2>
+      </div>
+      <% if @tutor %>
+      <%= form_for(@tutor, :html => {class:"form-horizontal", role:"form"})  do |f| %>
+      <div class="field form-group">
+          <%= f.label :job %>
+          <%= f.text_field :job, autofocus: true, autocomplete: "job",class:"form-control" %>
+      </div>
+      <div class="field form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, autofocus: true, autocomplete: "description",class:"form-control" %>
+      </div>
+      <div class="field form-group">
+          <%= f.label :achievement %>
+          <%= f.text_area :achievement, autofocus: true, autocomplete: "achievement",class:"form-control" %>
+      </div>
+      <div class="field form-group">
+          <%= f.label :location_id %>
+          <%= f.text_field :location_id, autofocus: true, autocomplete: "location_id",class:"form-control" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Update", class:"btn btn-danger" %>
+      </div>
+      <% end %>
+      <% end %>
+  <%= link_to "Back", :back %>
+    </div>
+  </div>
+</div>
