@@ -1,0 +1,18 @@
+<% obj.each do |tutor| %>
+<% @user = User.find(tutor.user_id) %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group row">
+        <div class="control-label col-sm-1 offset-sm-2">
+          <%= image_tag @user.image.to_s, :class => "show-avatar-size rounded-circle" %>
+        </div>
+        <div class= "col-sm-9">
+          <%= @user.name %> || <%= tutor.point %> || <%= tutor.location_id %> ||</br>
+          <% tutor.subjects.each do |subject| %>
+            <%= subject.name %> >>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
