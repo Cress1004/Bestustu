@@ -15,6 +15,7 @@ $header_height:50px;
 
 
 header{
+    overflow: hidden;
     background-color: #1DA1F2;
     height: $header_height;
     display: flex;
@@ -215,7 +216,7 @@ header{
     .siup-box{
         
         width: 60vw;
-        height: 90vh;
+        // height: 90vh;
         background-color: white;
         margin: 5vh auto;
         border: solid 2px rgb(209, 206, 206);
@@ -226,6 +227,7 @@ header{
         .siup-area{
             width: 50%;
             margin: 10vh auto;
+            padding-bottom: 50px;
             .form-header{
                 h2{
                     font-weight: 700;
@@ -291,10 +293,31 @@ header{
                 background-color: red;
                 left: 10%;
                 top: 70%;
-                border: solid rgb(255, 255, 255) 5px;
+                border: double rgb(255, 255, 255) 5px;
                 border-radius: 50%;
                 background-image: url("images/sign-up-background");
                 background-size: cover;
+            }
+            .edus-edit{
+                position: absolute;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 1em;
+                right: 5%;
+                bottom: 10%;
+                a{
+                    padding: 10px;
+                    background-color: #0069D9;
+                    display: block;
+                    text-decoration: none;
+                    color: white;
+                    border: double 2px white;
+                    border-radius: 10px;
+                }
+                a:hover{
+                    background-color: white;
+                    color:#0069D9;
+                }
             }
         }
         .edus-area{
@@ -314,5 +337,17 @@ header{
                 }
             }
         }
+        .edus-show-info{
+            display:grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1em;
+            .edus-show-info-content{
+                background-color: rgb(255, 255, 255);
+                padding: 10px;
+                border: dashed 2px #1DA1F2;
+                color: #1DA1F2;
+            }
+        }
     }
 }
+
