@@ -1,0 +1,67 @@
+
+<div id="show-main">
+    <div id="class-show-head">
+      <h5 style="padding:5px;"><%= @class_register.description %></h5>
+      <hr class="solid">
+      <div id="left-element">
+        Trạng thái: <%= @class_register.class_status %><br>
+        Môn học: <%= @class_register.subject.name %><br>
+        Tuần  <%= @class_register.lessons_week %> buổi (<%= @class_register.hours_lesson %> giờ)<br>
+        Học phí: <%= @class_register.salary %><br>
+      </div>
+
+      <div id="front-element">
+        Tìm gia sư: <%= @class_register.tutor_gender if @class_register.tutor_gender %><br>
+        Số học viên: <%= @class_register.num_student if @class_register.num_student%><br>
+        Địa chỉ: <%= @class_register.location.city %><br>
+        Phí nhận lớp 300.000vnđ<br>
+      </div>
+
+      <div id="right-element">
+        <button class="btn btn-primary " %>Đề nghị dạy</button>
+      </div>
+
+    </div>
+
+    <div id="class-show-head">
+      <h5> Chi tiết nội dung cần học</h5>
+      <hr class="solid">
+      <p><%= @class_register.class_content %></p>
+    </div>
+
+    <div id="class-show-mid">
+      <h5>Lịch học dự kiến (có thể thỏa thuận)</h5>
+      <hr class="solid">
+      <div class="checkbox-form">
+      <div class="checkbox-area">
+        <div class="checkbox-grid">
+        <% i = 0 %>
+        <% TimesFree.all.each do |timesfree| %>
+          <% i = i+1 %>
+          <% if i%3 == 1 %>
+              <div class="row-calendar-check">
+                  <h6><%= timesfree.day %></h6>
+                  <ul>
+          <% end %>
+                      <li>
+                          <% if @class_register.times_frees.include? timesfree %>
+                            <div class="label-for-show-active"> <%= timesfree.free_time %></div>
+                          <% else %>
+                            <div class="label-for-show"> <%= timesfree.free_time %></div>
+                          <% end %>
+                      </li>
+          <% if i%3 == 0 %>
+                  </ul>
+              </div>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+      </div>
+      <%= link_to "Sửa thông tin lớp học", edit_class_register_path(@class_register), class: "btn btn-primary " %>
+      <%= link_to "Tạo lớp học", new_class_register_path, class:"btn btn-primary" %>
+      <%= link_to "Xóa lớp học", class_register_path(@class_register), method: :delete,
+                  data: { confirm: "Are you sure you want to delete this class?"},
+                  class: "btn btn-xs btn-danger" %>
+    </div>
+</div>

@@ -25,6 +25,10 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
+
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

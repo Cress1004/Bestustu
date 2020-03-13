@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_164608) do
+ActiveRecord::Schema.define(version: 2020_03_10_154650) do
 
   create_table "class_registers", force: :cascade do |t|
     t.string "description"
@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 2020_03_06_164608) do
     t.integer "subject_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "tutor_gender"
+    t.float "num_student"
+    t.string "class_status", default: "ĐANG TÌM GIÁO VIÊN"
+    t.string "class_content"
     t.index ["location_id"], name: "index_class_registers_on_location_id"
     t.index ["student_id"], name: "index_class_registers_on_student_id"
     t.index ["subject_id"], name: "index_class_registers_on_subject_id"
@@ -71,12 +75,10 @@ ActiveRecord::Schema.define(version: 2020_03_06_164608) do
   end
 
   create_table "times_frees", force: :cascade do |t|
-    t.integer "day"
-    t.integer "morning"
-    t.integer "afternoon"
-    t.integer "evening"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "free_time"
+    t.string "day"
   end
 
   create_table "times_frees_tutors", id: false, force: :cascade do |t|
