@@ -65,7 +65,7 @@
             <% if current_user %>  
                 <%= link_to show_user_info_path(current_user), class:'sign-in-area' do %>
                     <div class="sign-in-header">
-                        <i class="fas fa-sign-in-alt"></i> Edit User
+                        <i class="fas fa-sign-in-alt"></i> <%= current_user.username%>
                     </div>
                 <% end %>
                 <%= link_to  destroy_user_session_path, method: :delete, class:'sign-up-area' do %>

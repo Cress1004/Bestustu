@@ -270,7 +270,7 @@ header{
     // background-size: cover;
     overflow: hidden;
     .edus-box{
-        width: 60vw;
+        width: 80vw;
         // height: 90vh;
         background-color: rgb(255, 255, 255);
         margin: 5vh auto;
@@ -321,7 +321,7 @@ header{
             }
         }
         .edus-area{
-            width: 50%;
+            width: 80%;
             margin: 10vh auto;
             .edus-header{
                 h2{
@@ -331,11 +331,25 @@ header{
                     color: rgb(72, 185, 230);
                 }
             }
-            .field{
-                input{
-                    background-color: rgb(255, 255, 255);
+            form{
+                .form-grid{
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-gap: 1em;
+                    .field{
+                        font-size: 0.8rem;
+                        label{
+                            
+                        }
+                    }
                 }
+
             }
+            // .field{
+            //     input{
+            //         background-color: rgb(255, 255, 255);
+            //     }
+            // }
         }
         .edus-show-info{
             display:grid;

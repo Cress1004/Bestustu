@@ -119,3 +119,38 @@
         }
     }
 }
+
+
+//Edit page
+
+.stued-container{
+    width: 100%;
+    background-color: #F7F7F7;
+    .stued-area{
+        width: 70%;
+        margin: 0 auto;
+        padding-bottom: 50px;
+        background-color: white;
+        .stued-header{
+            color: blue;
+            text-align: center;
+        }
+        .stued-content{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1em;
+            padding: 10px;
+        }
+        input[type = submit]{
+            width: 20%;
+            margin: 0 auto;
+            display: block;
+        }
+        .map-area{
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            
+        }
+    }
+}

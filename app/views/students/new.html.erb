@@ -1,0 +1,27 @@
+<h1>Create an article</h1>
+
+<%= form_for @student do |f| %>
+
+<p>
+
+<%= f.label :address %><br/>
+
+<%= f.text_field :address %>
+
+</p>
+
+<p>
+
+<%= f.label :grade %><br/>
+
+<%= f.text_field :grade %>
+
+</p>
+
+<p>
+
+<%= f.submit %>
+
+</p>
+
+<% end %>
