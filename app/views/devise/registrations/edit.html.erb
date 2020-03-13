@@ -66,7 +66,8 @@
 
             <div class = "field form-group">
               <%# <%= f.select :gender, options_for_select([['a','b'], params[:gender])%>
-              <%= f.select(:gender, options_for_select(['Male', 'Female'], selected: @resource.gender || nil), { include_blank: "Select Result" }) %>
+              <%= f.label :gender %> <br />
+              <%= f.select(:gender, options_for_select(['Male', 'Female'], selected: resource.gender || nil), { include_blank: "Select Gender" }, {class:"form-control"}) %>
             </div>
 
           </div>
