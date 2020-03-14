@@ -48,7 +48,7 @@
                     </li>
                     <li>
                         <a href="#">CONTACT</a>
-                        <ul class="submenu">
+                          <ul class="submenu">
                             <li><a href="#">First submenu</a></li>
                             <li><a href="#">Second submenu</a></li>
                             <li><a href="#">Third submenu</a></li>
@@ -62,10 +62,17 @@
     <div class="sign-container">
         <div class="sign-area">
             <%# <a class="sign-in-area" href="sign-in.html"> %>
-            <% if current_user %>  
-                <%= link_to edit_user_registration_path, class:'sign-in-area' do %>
+
+            <% if current_user %>
+                <%= link_to show_user_info_path(current_user), class:'sign-in-area' do %>
+
                     <div class="sign-in-header">
-                        <i class="fas fa-sign-in-alt"></i> Edit User
+                      <i class="fas fa-sign-in-alt"></i>
+                      <% if current_user.username %>
+                         <%= current_user.username%>
+                      <% else %>
+                          Your Profile
+                      <% end %>
                     </div>
                 <% end %>
                 <%= link_to  destroy_user_session_path, method: :delete, class:'sign-up-area' do %>
@@ -83,8 +90,8 @@
                     <div class="sign-up-header">
                         <i class="fas fa-user-plus"></i> Sign up
                     </div>
-                <% end %>   
-            
+                <% end %>
+
             <% end %>
         </div>
     </div>
