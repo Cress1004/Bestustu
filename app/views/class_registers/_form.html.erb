@@ -1,0 +1,145 @@
+<%= form_for @class_register do |f| %>
+
+    <div class="form-group row">
+      <div class="control-label">
+        <%= f.label :description, "Description",class:"fit-right" %></br>
+      </div>
+      <div class="">
+        <%= f.text_field :description ,class: "form-control",placeholder: "", autofocus: true %><br/>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label">
+        <%= f.label :subject_id, "Subject" %>
+      </div>
+      <div class="">
+        <%= f.collection_select(:subject_id, Subject.all, :id, :name, prompt: "Chọn môn học") %>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="control-label">
+        <%= f.label :location_id, "Location" %>
+      </div>
+      <div class="">
+        <%= f.collection_select(:location_id, Location.all, :id, :city, prompt: "Chọn địa điểm") %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="control-label">
+        <%= f.label :hours_lesson, "Hours per lesson" %>
+      </div>
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <%= f.radio_button :hours_lesson, 1 %> 1h
+        </label>
+        <label class="form-check-label">
+          <%= f.radio_button :hours_lesson, 1.5 %> 1.5h
+        </label>
+        <label class="form-check-label">
+          <%= f.radio_button :hours_lesson, 2 %> 2h
+        </label>
+        <label class="form-check-label">
+          <%= f.radio_button :hours_lesson, 2.5 %> 2.5h
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label">
+        <%= f.label :lessons_week, "Lesson per week" %>
+      </div>
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <%= f.radio_button :lessons_week, 1 %> 1 buổi
+        </label>
+        <label class="form-check-label">
+          <%= f.radio_button :lessons_week, 2 %> 2 buổi
+        </label>
+        <label class="form-check-label">
+          <%= f.radio_button :lessons_week, 3 %> 3 buổi
+        </label>
+        <label class="form-check-label">
+          <%= f.radio_button :lessons_week, 4 %> 4 buổi
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label">
+        <%= f.label :salary, "Salary",class:"" %></br>
+      </div>
+      <div class="">
+        <%= f.text_field :salary ,class: "form-control",placeholder: "" %><br/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="checkbox-form">
+      <div class="checkbox-area">
+        <div class="checkbox-grid">
+        <% i = 0 %>
+        <% TimesFree.all.each do |timesfree| %>
+          <% i = i+1 %>
+          <% if i%3 == 1 %>
+              <div class="row-calendar-check">
+                  <h6><%= timesfree.day %></h6>
+                  <ul>
+          <% end %>
+                      <li>
+                          <%= check_box_tag "class_register[times_free_ids][]",timesfree.id,@class_register.times_free_ids.include?(timesfree.id), { id: "class_register_times_free_ids_#{timesfree.id}" } %>
+                          <%= label_tag "class_register[times_free_ids][#{timesfree.id}]",timesfree.free_time %>
+                      </li>
+          <% if i%3 == 0 %>
+                  </ul>
+              </div>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label">
+        <%= f.label :tutor_gender, "Giới tính gia sư",class:"" %></br>
+      </div>
+      <div class="">
+        <!-- <%= f.text_field :tutor_gender ,class: "form-control",placeholder: "" %><br/> -->
+        <select name="class_register[tutor_gender]" id="class_register_tutor_gender">
+          <option value="Nam">Nam</option>
+          <option value="Nữ">Nữ</option>
+          <option value="Cả hai">Cả hai</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label">
+        <%= f.label :num_student, "Số học viên tham gia",class:"" %></br>
+      </div>
+      <div class="">
+        <%= f.number_field :num_student ,class: "form-control",placeholder: "" %><br/>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="control-label">
+        <%= f.label :class_content, "Chi tiết nội dung lớp học",class:"" %></br>
+      </div>
+      <div class="">
+        <%= f.text_field :class_content ,class: "form-control",placeholder: "" %><br/>
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+    <% if @class_register.id %>
+      <%= link_to "Hủy cập nhật", class_register_path(@class_register), class:"btn btn-primary" %>
+    <% end %>
+<% end %>

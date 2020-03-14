@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   get 'pages/:id', to: 'pages#show', as: :show_user_info
+
+  # Routes for devise
   devise_for :users, skip: [:sessions,:registrations],
                        controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   devise_scope :user do
@@ -29,5 +31,8 @@ Rails.application.routes.draw do
     #tutors
     resources :tutors
   end
-
+  # Routes for class_registers
+  resources :class_registers
+  # Route for show bpoint of user
+  get 'bpoint_show', to: 'pages#bpoint_page'
 end

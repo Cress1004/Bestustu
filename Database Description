@@ -1,0 +1,67 @@
+Mô tả database
+Bảng class_registers
+description     :  Mô tả tiêu đề cho lớp học
+hours_lesson    :  Số giờ học/ 1 buổi học
+lessons_week    :  Số buổi học/ 1 tuần
+salary          :  Lương cho giảng viên 1 buổi
+num_tutor       :  Số request của gia sư (tối đa 6)
+tutor_gender    :  Giới tính của gia sư
+num_student     :  Số lượng học sinh/ 1 lớp
+class_status    :  Trạng thái đăng kí lớp( mặc định: "ĐANG TÌM GIÁO VIÊN")
+class_content   :  Nội dung muốn học
+location_id     :  Foreign_key reference to locations
+student_id      :  Foreign_key reference to students
+subject_id      :  Foreign_key reference to subjects
+
+Bang class_registers_times_frees
+class_register_id   :
+times_free_id       :
+
+Bang class_registers_tutors
+class_register_id   :
+tutor_id            :
+
+Bang locations
+city    : Tên của 63 tỉnh thành phố
+
+Bang students
+address     : Địa chỉ cụ thể của student
+grade       : Lớp
+user_id     : Foreign_key reference to users
+
+
+Bang subjects
+name        : Tên môn học
+
+Bang subjects_tutors
+tutor_id    :
+subject_id  :
+
+Bang times_frees
+day         : Ngày (Thứ hai, Thứ ba,....)
+free_time   : Buổi (Sáng, Chiều, Tối)
+
+Bang times_frees_tutors
+tutor_id      :
+times_free_id :
+
+Bang tutors
+job         : Nghề nghiệp hiện tại của gia sư
+description : Mô tả bản thân
+achievement : Thành tích đạt được
+point       : Điểm đánh giá của học sinh về sinh viên
+user_id     : Foreign_key reference to users
+location_id : Foreign_key reference to locations
+
+
+Bang users
+email       : Email của người dùng
+password    : Mật khẩu người dùng
+username    : Tên người dùng (username để đăng nhập)
+name        : Tên đầy đủ của người dùng
+image       : Ảnh đại diện
+phone       : Điện thoại người dùng
+gender      : Giới tính người dùng
+birthday    : Ngày sinh
+bpoint      : Tiền sử dụng trên web
+admin       : Người dùng có là admin hay không
