@@ -25,6 +25,12 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'carrierwave', '~> 2.0'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
+# gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
