@@ -64,10 +64,15 @@
             <%# <a class="sign-in-area" href="sign-in.html"> %>
 
             <% if current_user %>
-                <%= link_to edit_user_registration_path(current_user), class:'sign-in-area' do %>
+                <%= link_to show_user_info_path(current_user), class:'sign-in-area' do %>
 
                     <div class="sign-in-header">
-                        <i class="fas fa-sign-in-alt"></i> <%= current_user.username%>
+                      <i class="fas fa-sign-in-alt"></i>
+                      <% if current_user.username %>
+                         <%= current_user.username%>
+                      <% else %>
+                          Your Profile
+                      <% end %>
                     </div>
                 <% end %>
                 <%= link_to  destroy_user_session_path, method: :delete, class:'sign-up-area' do %>

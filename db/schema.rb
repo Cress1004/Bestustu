@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_03_12_031235) do
 
   create_table "class_registers", force: :cascade do |t|
