@@ -1,0 +1,34 @@
+
+<div id="show-main">
+  <!-- Filter for location and subject -->
+  <%= form_tag class_registers_path, :method => 'get' do %>
+    <%= collection_select :class_register, :location_id, Location.all, :id, :city, prompt: "Chọn địa điểm"%>
+    <%= collection_select :class_register, :subject_id, Subject.all, :id, :name, prompt: "Chọn môn học" %>
+    <%= submit_tag "Áp dụng", class: "btn-primary btn" %>
+  <% end %>
+  <!-- Display class -->
+  <% @class_registers.each do |class_register| %>
+
+  <div id="class-show-head">
+
+    <hr class="solid">
+    <div id="left-element">
+      <!-- <img src="images/maxresdefault.jpg" class="float-left img-responsive"> -->
+      <%= image_tag("images/MiyaSuzuhime.jpg", class:"img-responsive") %>
+    </div>
+
+    <div id="front-element">
+      <h5 style="padding:5px;"><%=link_to class_register.description, class_register_path(class_register)%></h5></br>
+      <%= class_register.class_content %>
+    </div>
+
+    <div id="right-element">
+      <button class="btn btn-primary " %>Đề nghị dạy</button>
+    </div>
+
+  </div>
+  <% end %>
+  <div class="center-paginate">
+    <%= paginate @class_registers, theme: 'twitter-bootstrap-4'%>
+  </div>
+</div>

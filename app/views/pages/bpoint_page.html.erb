@@ -1,0 +1,63 @@
+
+<div id="main">
+  <div class="card shadow" style="width:100%">
+    <div class="card bg-light text-dark">
+      <div align="center">
+        <h4> TỔNG BPOINT TÀI KHOẢN: "<%= current_user.name %>" <h4>
+        <h4><%= current_user.bpoint %> POINT</h4>
+      </div>
+      <hr class="solid">
+      <div class="card-body">
+        <p>
+          Điểm BPoint được sử dụng trên hệ thống Blacasa như một đơn vị thanh toán các chức năng trả phí và được chia làm 2 loại với giá trị tương đương: BPoint khuyến mãi và BPoint khả dụng. BPoint khả dụng có thể được nạp vào,
+          chuyển cho người khác, hoặc rút thành tiền mặt.
+          1 BPoint có giá trị quy đổi bằng 1,000 VND.
+        </p>
+      </div>
+    </div>
+    <div class="card bg-light text-dark">
+      <h5 align="center">NẠP BPOINT VÀO TÀI KHOẢN CỦA BẠN</h5>
+      <div id="bpoint-element-1">
+        <h6>Thông tin tài khoản của bạn </h6>
+        <p>
+          Họ và tên      :<%= current_user.name %></br>
+          Mã số (ID)     :<%= current_user.id %></br>
+          Số điện thoại  :<%= current_user.phone %></br>
+        </p>
+      </div>
+    </div>
+    <div class="card bg-light text-dark">
+      <h5 align="center">CÁCH THỨC THANH TOÁN</h5>
+      <div id="bpoint-element-2">
+        <p>
+          Bạn có thể nạp BPoint bằng cách chuyển khoản ngân hàng tới tài khoản
+          của chúng tôi. Trong vòng 24h kể từ khi nhận được số tiền chuyển khoản,
+          chúng tôi sẽ nạp Bpoint và gửi tin nhắn thông báo cho bạn.
+          Lưu ý: Trong phần mục đích chuyển tiền, bạn phải ghi kèm UID của bạn như hướng dẫn ở dưới.
+        </p>
+        <table class="table table-striped table-bordered">
+          <tr>
+            <td>Chủ tài khoản</td>
+            <td>Đào Đăng Huy</td>
+          </tr>
+          <tr>
+            <td>Số tài khoản</td>
+            <td>199999233335872837</td>
+          </tr>
+          <tr>
+            <td>Ngân hàng</td>
+            <td>Techcombank</td>
+          </tr>
+          <tr>
+            <td>Chi nhánh</td>
+            <td>Bà Triệu-Hà Nội</td>
+          </tr>
+          <tr>
+            <td>Mục đích chuyển</td>
+            <td>"Nạp Bpoint UID=28331"</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

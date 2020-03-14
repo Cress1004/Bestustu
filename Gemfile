@@ -25,6 +25,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
+
+
 gem 'carrierwave', '~> 2.0'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
