@@ -6,17 +6,23 @@
           <div class="edus-ava">
             <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle" %>
           </div>
+          <div class="edus-edit">
+            <%# <button class="btn btn-primary">Edit your profile</button> %>
+            <%= link_to 'Become student', root_path  %> <!-- new_student_path -->
+            <%= link_to 'Become teacher', root_path  %> <!-- new_tutor_path -->
+          </div>
         </div>
         <div class="edus-area">
-          <div class="edus-header">
-            <h2>Edit <%= resource_name.to_s.humanize %></h2>
-          </div>
-            <%= render "devise/shared/error_messages", resource: resource %>
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  class:"datetimepicker"  }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
               <div class="field form-group">
+              </br>
                 <%= f.file_field :image %>
               </div>
-
+              <div class="edus-header">
+                <h2>Edit <%= resource_name.to_s.humanize %></h2>
+              </div>
+            <div class = "form-grid">
               <div class="field form-group">
                 <%= f.label :username %><br />
                 <%= f.text_field :username, autofocus: true, autocomplete: "username",class:"form-control" %>
@@ -28,32 +34,27 @@
               </div>
 
               <div class="field form-group">
-                <%= f.label :phone_number %><br />
-                <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number",class:"form-control" %>
+                <%= f.label :phone %><br />
+                <%= f.text_field :phone, autofocus: true, autocomplete: "phone",class:"form-control" %>
               </div>
 
-              <div class="field form-group">
-                <%= f.label :address %><br />
-                <%= f.text_field :address, autofocus: true, autocomplete: "address",class:"form-control" %>
+<!--              <div class = "field form-group">
+                <%# <%= f.select :gender, options_for_select([['a','b'], params[:gender])%>
+                <%= f.label :gender %> <br />
+                <%= f.select(:gender, options_for_select(['Male', 'Female'], selected: resource.gender || nil), { include_blank: "Select Gender" }, {class:"form-control"}) %>
               </div>
-
+-->
               <div class="field form-group">
                 <%= f.label :gender %><br />
                 <%= f.label :gender, "Female", :value => "Female"  %>
                 <%= f.radio_button :gender, "Female"%>
                 <%= f.label :gender, "Male", :value => "Male" %>
-                <%= f.radio_button :gender, "Male" %>
+                <%= f.radio_button :gender, "Male"%>
               </div>
 
               <div class="field form-group">
                 <%= f.label :birthday %><br/>
-                <input type="text" class='datepicker' >
-                <script type="text/javascript">
-                    $(document).ready(function(){
-                      $('.datepicker').datepicker();
-                    });
-                </script>
-                <%= f.text_field :birthday, as: :date_time_picker %>
+                <%= f.date_field :birthday, class:"form-control"%>
               </div>
 
 

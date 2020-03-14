@@ -15,16 +15,17 @@ $header_height:50px;
 
 
 header{
-    background-color: #1DA1F2;
-    height: $header_height;
-    display: flex;
-    .logo-container{
-        width: 10%;
-        .logo-area{
-            margin: 5px 0 0 0;
-            width: 0.8*$header_height;
-            height: 0.8*$header_height;
-            margin-left: 50px;
+  overflow: hidden;
+  background-color: #1DA1F2;
+  height: $header_height;
+  display: flex;
+  .logo-container{
+      width: 10%;
+      .logo-area{
+          margin: 5px 0 0 0;
+          width: 0.8*$header_height;
+          height: 0.8*$header_height;
+          margin-left: 50px;
             // background-color: rgb(211, 175, 175);
 
             a{
@@ -215,7 +216,7 @@ header{
     .siup-box{
 
         width: 60vw;
-        height: 90vh;
+        // height: 90vh;
         background-color: white;
         margin: 5vh auto;
         border: solid 2px rgb(209, 206, 206);
@@ -226,6 +227,7 @@ header{
         .siup-area{
             width: 50%;
             margin: 10vh auto;
+            padding-bottom: 50px;
             .form-header{
                 h2{
                     font-weight: 700;
@@ -296,27 +298,70 @@ header{
                 background-image: url("images/sign-up-background");
                 background-size: cover;
             }
+            .edus-edit{
+                position: absolute;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 1em;
+                right: 5%;
+                bottom: 10%;
+                a{
+                    padding: 10px;
+                    background-color: #0069D9;
+                    display: block;
+                    text-decoration: none;
+                    color: white;
+                    border: double 2px white;
+                    border-radius: 10px;
+                }
+                a:hover{
+                    background-color: white;
+                    color:#0069D9;
+                }
+            }
         }
         .edus-area{
-            width: 50%;
-            margin: 10vh auto;
-            .edus-header{
-                h2{
-                    margin-top: 10px;
-                    font-weight: 700;
-                    text-align: center;
-                    color: rgb(72, 185, 230);
-                }
-            }
-            .field{
-                input{
-                    background-color: rgb(255, 255, 255);
-                }
-            }
-        }
-    }
-}
+          width: 80%;
+          margin: 10vh auto;
+          .edus-header{
+              h2{
+                  margin-top: 10px;
+                  font-weight: 700;
+                  text-align: center;
+                  color: rgb(72, 185, 230);
+              }
+          }
+          form{
+              .form-grid{
+                  display: grid;
+                  grid-template-columns: repeat(2, 1fr);
+                  grid-gap: 1em;
+                  .field{
+                      font-size: 0.8rem;
 
+                  }
+              }
+
+          }
+          // .field{
+          //     input{
+          //         background-color: rgb(255, 255, 255);
+          //     }
+          // }
+      }
+      .edus-show-info{
+          display:grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-gap: 1em;
+          .edus-show-info-content{
+              background-color: rgb(255, 255, 255);
+              padding: 10px;
+              border: dashed 2px #1DA1F2;
+              color: #1DA1F2;
+          }
+      }
+  }
+}
 
 
 .avatar-size{

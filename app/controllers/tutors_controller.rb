@@ -4,6 +4,7 @@ class TutorsController < ApplicationController
   def index
     @tutors = Tutor.all.page(params[:page]).per(5)
     @users = User.all
+    @Locations = Location.all
   end
 
   def edit
@@ -26,6 +27,7 @@ class TutorsController < ApplicationController
   def set_tutor
     @tutor = Tutor.find(params[:id])
     @user = User.find(@tutor.user_id)
+    @location = Location.find(@tutor.location_id)
   end
 
   def tutor_params

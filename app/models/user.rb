@@ -13,9 +13,9 @@ class User < ApplicationRecord
           :authentication_keys => [:username]
 
 
-  validates_format_of :phone_number,
-                      :with => /\(?[0-9]{4}\)?-[0-9]{3}-[0-9]{3}/,
-                      :message => "- Phone numbers must be in xxxx-xxx-xxx format."
+  validates_format_of :phone,
+                      :with => /\(?[0-9]{10}/,
+                      :message => "- Phone numbers must be 10 number characters."
 
    def self.new_with_session(params, session)
    super.tap do |user|

@@ -24,23 +24,21 @@
         <%= @tutor.achievement %>
       </div>
       <div class="form-group">
-        <h5>Bpoint:</h5>
-        <%= @tutor.point %>
-      </div>
-      <div class="form-group">
-        <h5>Bpoint:</h5>
+        <h5>Point:</h5>
         <%= @tutor.point %>
       </div>
       <div class="form-group">
         <h5>Location:</h5>
-        <%= @tutor.location_id %>
+        <%= @location.city %>
       </div>
       <% else %>
         <h3> can't find this tutor </h3>
       <% end %>
 
         <div class="form-group">
-
+          <% if current_user.id = @user.id %>
+          <%= link_to 'Edit information', edit_tutor_path(@tutor) %>
+          <% end %>
         </div>
       <%= link_to "Back", :back %>
     </div>
