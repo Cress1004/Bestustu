@@ -91,26 +91,8 @@
             </div>
 
             <div class="field form-group">
-              <%= f.label :current_password %> 
+              <%= f.label :current_password %>
               <%= f.password_field :current_password, autocomplete: "current-password",class:"form-control" %>
-            </div>
-
-
-
-            <div class="field form-group">
-              <%= f.label :phone %> 
-              <%= f.text_field :phone, autocomplete: "phone",class:"form-control" %>
-            </div>
-
-            <div class="field form-group">
-              <%= f.label :age %> 
-              <%= f.number_field :age, autocomplete: "age",class:"form-control" %>
-            </div>
-
-            <div class = "field form-group">
-              <%# <%= f.select :gender, options_for_select([['a','b'], params[:gender])%>
-              <%= f.label :gender %> <br />
-              <%= f.select(:gender, options_for_select(['Male', 'Female'], selected: resource.gender || nil), { include_blank: "Select Gender" }, {class:"form-control"}) %>
             </div>
 
           </div>
@@ -122,11 +104,10 @@
             <h2>Cancel my account</h2>
           </div>
           <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"btn btn-primary" %></p>
-          
+
 
           <%= link_to "Back", :back %>
 
         </div>
     </div>
 </div>
-  
