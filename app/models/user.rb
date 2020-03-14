@@ -3,11 +3,19 @@ class User < ApplicationRecord
   has_one :tutor
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable, :lockable,
-         :omniauthable, :omniauth_providers => [:facebook],
-         :authentication_keys => [:username]
+
+   mount_uploader :image, ImageUploader
+
+   devise :database_authenticatable, :registerable,
+          :recoverable, :rememberable, :validatable,
+          :confirmable, :lockable,
+          :omniauthable, :omniauth_providers => [:facebook],
+          :authentication_keys => [:username]
+
+
+  validates_format_of :phone,
+                      :with => /\(?[0-9]{10}/,
+                      :message => "- Phone numbers must be 10 number characters."
 
    def self.new_with_session(params, session)
    super.tap do |user|

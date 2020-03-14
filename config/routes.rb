@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  #students
+  resources :students
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'pages#home'
+
+  get 'pages/:id', to: 'pages#show', as: :show_user_info
+
   # Routes for devise
   devise_for :users, skip: [:sessions,:registrations],
                        controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
@@ -22,6 +27,9 @@ Rails.application.routes.draw do
     # get   'edit-pass', to: 'devise/passwords#edit',   as: :edit_user_password
     # patch 'edit-pass', to: 'devise/passwords#update', as: :user_password
     # post  'new-pass',  to: 'devise/passwords#create', as: :user_password
+
+    #tutors
+    resources :tutors
   end
   # Routes for class_registers
   resources :class_registers
