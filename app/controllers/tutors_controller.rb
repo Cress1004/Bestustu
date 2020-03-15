@@ -1,6 +1,17 @@
 class TutorsController < ApplicationController
   before_action :set_tutor, only: [:show, :edit, :update]
 
+  def new
+    @tutor = Tutor.new
+  end
+
+  def create
+    @tutor = Tutor.new(tutor_params)
+    @tutor.user = current_user
+    @tutor.save
+    redirect_to tutor_path(@tutor)
+  end
+
   def index
     @tutors = Tutor.all.page(params[:page]).per(5)
     @users = User.all

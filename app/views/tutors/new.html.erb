@@ -1,0 +1,41 @@
+<h1>Student registration</h1>
+
+<%= form_for @tutor do |f| %>
+
+<p>
+
+<%= f.label :job %><br/>
+
+<%= f.text_field :job %>
+
+</p>
+
+<p>
+
+<%= f.label :description %><br/>
+
+<%= f.text_area :description %>
+
+</p>
+
+<p>
+
+<%= f.label :achievement %><br/>
+
+<%= f.text_area :achievement %>
+
+</p>
+
+<p>
+
+  <%= f.label :location_id, "Location" %>
+  <%= f.collection_select(:location_id, Location.all, :id, :city) %>
+</p>
+
+<p>
+
+<%= f.submit %>
+
+</p>
+
+<% end %>
