@@ -1,10 +1,12 @@
 Nhiệm vụ đợt 2
-- Tạo trang new cho tutors
-- Thêm tính năng lọc giáo viên theo môn học và địa chỉ trong trang index tutors
-- Thêm nav bên trái cho trang show của user
-- Thêm vào trang show của class register những giáo viên đã đăng ký lớp học này( tối đa 6 gia sư) xử lý tác vụ nhận lớp cho gia sư và sau đó là tác vụ để hs chọn gia sư trg số gia sư đăng ký lớp. Nếu gia sư nào được chọn, admin sẽ gửi 1 tin nhắn cho gia sư để gia sư liên hệ vs hs.
-- Xử lý validate toàn bộ dữ liệu
+- Tạo trang new cho tutors - Thanh
+- Thêm tính năng lọc giáo viên theo môn học và địa chỉ trong trang index tutors - Thanh
+- Thêm vào trang show của class register những giáo viên đã đăng ký lớp học này( tối đa 6 gia sư) xử lý tác vụ nhận lớp cho gia sư và sau đó là tác vụ để hs chọn gia sư trg số gia sư đăng ký lớp.
+Nếu gia sư nào được chọn, admin sẽ gửi 1 tin nhắn cho gia sư để gia sư liên hệ vs hs. - Huy
+- Xử lý validate toàn bộ dữ liệu - Thanh
 (Cái này cần bàn 1 chút xem dữ liệu cần validate ntn)
-- Nghĩ ý tưởng và build trang home page
-- Tạo các flash notice
-- Viết các helper
+- Nghĩ ý tưởng và build trang home page - Lộc
+- Tạo các flash notice - Lộc
+- Viết các helper - Lộc
+- Thêm nav bên trái cho trang show của user - Lộc
+- Đánh giá gia sư ( qua trường point trong bảng tutors)
