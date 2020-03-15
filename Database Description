@@ -1,17 +1,23 @@
 Mô tả database
 Bảng class_registers
 description     :  Mô tả tiêu đề cho lớp học
+//Độ dài 10-100
 hours_lesson    :  Số giờ học/ 1 buổi học
 lessons_week    :  Số buổi học/ 1 tuần
 salary          :  Lương cho giảng viên 1 buổi
+//chuyển thành kiểu integer
 num_tutor       :  Số request của gia sư (tối đa 6)
 tutor_gender    :  Giới tính của gia sư
 num_student     :  Số lượng học sinh/ 1 lớp
+//Cần phải là số
 class_status    :  Trạng thái đăng kí lớp( mặc định: "ĐANG TÌM GIÁO VIÊN")
 class_content   :  Nội dung muốn học
+//Độ dài 10-200
 location_id     :  Foreign_key reference to locations
 student_id      :  Foreign_key reference to students
 subject_id      :  Foreign_key reference to subjects
+//Thêm địa chỉ cụ thể
+
 
 Bang class_registers_times_frees
 class_register_id   :
@@ -22,11 +28,12 @@ class_register_id   :
 tutor_id            :
 
 Bang locations
-city    : Tên của 63 tỉnh thành phố
+city    : Tên của 63 tỉnh thành phốD
 
 Bang students
 address     : Địa chỉ cụ thể của student
 grade       : Lớp
+description: mô tả hs //thích gv n
 user_id     : Foreign_key reference to users
 
 
@@ -47,21 +54,34 @@ times_free_id :
 
 Bang tutors
 job         : Nghề nghiệp hiện tại của gia sư
+//presence: true
+//Độ dài: 3-30
 description : Mô tả bản thân
+//Độ dài 10-300
 achievement : Thành tích đạt được
+//Độ dài 10-300
 point       : Điểm đánh giá của học sinh về sinh viên
 user_id     : Foreign_key reference to users
 location_id : Foreign_key reference to locations
-
+// Them trương dia chi noi lam viec: work_place
 
 Bang users
 email       : Email của người dùng
 password    : Mật khẩu người dùng
 username    : Tên người dùng (username để đăng nhập)
+//Không có dấu cách giữa các từ,
+//Nếu người dùng nhập nhiều dấu cách ở đầu hoặc ở cuối thì phải xóa những dấu cách đó đi
+//Tên đăng nhập không phân biệt hoa thường.
+//TỪ 4-15 ký tự.
+
 name        : Tên đầy đủ của người dùng
 image       : Ảnh đại diện
 phone       : Điện thoại người dùng
+//10 số
+
 gender      : Giới tính người dùng
+//Bắt buộc điền   https://www.it-swarm.dev/vi/javascript/cach-nhan-gia-tri-nut-radio-da-chon-bang-js/971080143/
+
 birthday    : Ngày sinh
 bpoint      : Tiền sử dụng trên web
 admin       : Người dùng có là admin hay không
