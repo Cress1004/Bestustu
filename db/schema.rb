@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_031235) do
+ActiveRecord::Schema.define(version: 2020_03_16_124157) do
 
   create_table "class_registers", force: :cascade do |t|
     t.string "description"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_031235) do
     t.float "num_student"
     t.string "class_status", default: "ĐANG TÌM GIÁO VIÊN"
     t.string "class_content"
+    t.string "address"
     t.index ["location_id"], name: "index_class_registers_on_location_id"
     t.index ["student_id"], name: "index_class_registers_on_student_id"
     t.index ["subject_id"], name: "index_class_registers_on_subject_id"
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_031235) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 
@@ -97,6 +99,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_031235) do
     t.integer "location_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "work_place"
     t.index ["location_id"], name: "index_tutors_on_location_id"
     t.index ["user_id"], name: "index_tutors_on_user_id"
   end
@@ -124,7 +127,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_031235) do
     t.string "phone"
     t.integer "gender"
     t.float "bpoint"
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.date "birthday"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
