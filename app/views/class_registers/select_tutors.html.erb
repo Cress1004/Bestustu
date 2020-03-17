@@ -1,0 +1,42 @@
+</br> <h1 align="center">Listing tutors</h1> </br>
+<div id="show-main">
+    <div id="class-show-head">
+      <h5 style="padding:5px;"><%= @class_register.description %></h5>
+      <hr class="solid">
+      <div id="left-element">
+        Trạng thái: <%= @class_register.class_status %><br>
+        Môn học: <%= @class_register.subject.name %><br>
+        Tuần  <%= @class_register.lessons_week %> buổi (<%= @class_register.hours_lesson %> giờ)<br>
+        Học phí: <%= @class_register.salary %><br>
+      </div>
+
+      <div id="front-element">
+        Tìm gia sư: <%= @class_register.tutor_gender if @class_register.tutor_gender %><br>
+        Số học viên: <%= @class_register.num_student if @class_register.num_student%><br>
+        Địa chỉ: <%= @class_register.location.city %><br>
+        Phí nhận lớp 300.000vnđ<br>
+      </div>
+    </div>
+    <% index = 1 %>
+
+    <% @class_register.tutors.each do |tutor| %>
+      <% if index%3 == 1 %>
+        <div class="row" >
+      <% end %>
+        <div class="col-sm-3">
+          <div class="card" style="width:300px">
+            <%= image_tag tutor.user.image.to_s, :class => "card-img-top", style: "width:100%" %>
+            <div class="card-body">
+              <h4 class="card-title"><%= link_to tutor.user.name, tutor_path(tutor) %></h4>
+              <p class="card-text"><%= tutor.description %></p>
+            </div>
+          </div>
+        </div>
+      <% if index%3 == 0 %>
+        </div>
+      <% end %>
+      <% index = index+1 %>
+    <% end %>
+
+
+</div>

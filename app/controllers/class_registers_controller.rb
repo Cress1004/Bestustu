@@ -1,5 +1,5 @@
 class ClassRegistersController < ApplicationController
-  before_action :set_class_register, only: [:edit,:update,:show,:destroy]
+  before_action :set_class_register, only: [:edit,:update,:show,:register,:select_tutors,:destroy]
 
   def new
     @class_register = ClassRegister.new
@@ -9,8 +9,10 @@ class ClassRegistersController < ApplicationController
     @class_register = ClassRegister.new(class_register_params)
     @class_register.student = Student.first
     if @class_register.save
+      flash[:success] = "Successfully created class"
       redirect_to class_register_path(@class_register)
     else
+      flash[:danger] = "Something went wrong"
       render :new
     end
   end
@@ -28,6 +30,31 @@ class ClassRegistersController < ApplicationController
   end
 
   def show
+
+  end
+
+  def register
+
+    if current_tutor
+      if @class_register.tutors.include? current_tutor
+        flash[:danger] = "You had already register this class"
+      elsif @class_register.tutors.count < 6
+        @class_register.tutors << current_tutor
+        @class_register.save
+        flash[:success] = "Successfully created request"
+        redirect_to class_register_path(@class_register)
+      else
+        flash[:danger] = "The maximum number of request is 6"
+        redirect_to class_register_path(@class_register)
+      end
+    else
+      flash[:danger] = "You are not a tutor"
+      redirect_to class_register_path(@class_register)
+    end
+
+  end
+
+  def select_tutors
 
   end
 
