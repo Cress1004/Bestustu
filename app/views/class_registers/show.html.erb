@@ -18,7 +18,15 @@
       </div>
 
       <div id="right-element">
-        <button class="btn btn-primary " %>Đề nghị dạy</button>
+        <% if current_tutor %>
+          <%= form_with(url: register_path(@class_register), method: "patch",local: true) do %>
+            <%= submit_tag("Đăng ký ngay", class: "btn btn-primary") %>
+          <% end %>
+
+          <%= link_to "Những giáo viên đăng ký", select_tutors_path(@class_register), class:'btn btn-primary' %>
+        <% end %>
+        <br>
+        <p>Số gia sư đăng ký: <%= @class_register.tutors.count %>/6</p>
       </div>
 
     </div>

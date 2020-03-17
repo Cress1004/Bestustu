@@ -28,11 +28,14 @@ Rails.application.routes.draw do
     # patch 'edit-pass', to: 'devise/passwords#update', as: :user_password
     # post  'new-pass',  to: 'devise/passwords#create', as: :user_password
 
-    #tutors
-    resources :tutors
   end
+  #Route for tutors
+  resources :tutors
+
   # Routes for class_registers
   resources :class_registers
+  patch 'class_registers/:id/register',to: 'class_registers#register', as: :register
+  get 'class_registers/:id/tutors',to: 'class_registers#select_tutors', as: :select_tutors
   # Route for show bpoint of user
   get 'bpoint_show', to: 'pages#bpoint_page'
 end
