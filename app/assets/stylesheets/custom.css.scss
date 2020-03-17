@@ -436,21 +436,22 @@ header{
         }
 
     }
-    .edus-show-info{
-        display:grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 1em;
-        .edus-show-info-content{
-            background-color: rgb(255, 255, 255);
-            padding: 10px;
-            border: dashed 2px #1DA1F2;
-            color: #1DA1F2;
-        }
-    }
+
 
 
 }
 
+.edus-show-info{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    .edus-show-info-content{
+        background-color: rgb(255, 255, 255);
+        padding: 10px;
+        border: dashed 2px #1DA1F2;
+        color: #1DA1F2;
+    }
+}
 .avatar-size{
   height: 140px;
   weight: 140px;
