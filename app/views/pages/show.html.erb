@@ -10,72 +10,132 @@
             <%= link_to 'Edit your profile',  edit_user_registration_path  %>
           </div>
         </div>
-        <div class="edus-area">
-          <div class="edus-header">
-            <h2><%= @user.username %></h2>
-
+         <div class = "edus-nav-and-content">
+          <div class ="edus-nav">
+            <div class = "edus-nav-item" onclick="currentSlide(1)">
+              <i class = "fas fa-smile">
+              </i>
+              Thong tin ca nhan
+              <i class = "fas fa-chevron-down fa-right">
+              </i>
+              
+            </div>
+            <div class = "edus-nav-item "onclick="currentSlide(2)">
+              Quan ly yeu cau
+            </div>
+            <div class = "edus-nav-item " onclick="currentSlide(3)">
+              Hoi thoai va tin nhan
+            </div>
+             <div class = "edus-nav-item" onclick="currentSlide(4)">
+              Thong bao
+            </div>
           </div>
-          <hr/>
+          <div class ="edus-content">
+            <div class="edus-area edus-content-item ">
+              <div class="edus-header">
+                <h2><%= @user.username %></h2>
+    
+              </div>
+              <hr/>
+    
+              <div class="edus-show-info">
+                <div>
+                    Email:
+                </div>
+                <div class="edus-show-info-content">
+                    <%= @user.email %>
+                </div>
+    
+                <div>
+                    Username:
+                </div>
+                <div class="edus-show-info-content">
+                    <%= @user.username %>
+                </div>
+    
+                <div>
+                    Uid:
+                </div>
+                <div class="edus-show-info-content">
+                    <%= @user.uid %>
+                </div>
+    
+                <div>
+                    Name:
+                </div>
+                <div class="edus-show-info-content">
+                    <%= @user.name %>
+                </div>
+    
+                <div>
+                    Phone:
+                </div>
+                <div class="edus-show-info-content">
+                    <%= @user.phone %>
+                </div>
+    
+                <div>
+                    Gender:
+                </div>
+                <div class="edus-show-info-content">
+                    <%= @user.gender %>
+                </div>
+    
+                 <div>
+                    Age:
+                </div>
+                <div class="edus-show-info-content">
+                    <%= @user.birthday %>
+                </div>
+    
+                <div>
+                    Bpoint:
+                </div>
+                <div class="edus-show-info-content">
+                    <%= @user.bpoint %>
+                </div>
+              </div>
+    
+    
+            </div>
+            <%# second,third... nav %>
+            <div class = "edus-content-item edus-content-item-style">
+              <div class="edus-content-item-header">
+                <h2>
+                Quan ly yeu cau
+                </h2>
+                
+              </div>
+              <div class="edus-content-item-content">
+                Chưa co yeu cau nao!
+              </div>  
+          </div>
 
-          <div class="edus-show-info">
-            <div>
-                Email:
-            </div>
-            <div class="edus-show-info-content">
-                <%= @user.email %>
-            </div>
-
-            <div>
-                Username:
-            </div>
-            <div class="edus-show-info-content">
-                <%= @user.username %>
-            </div>
-
-            <div>
-                Uid:
-            </div>
-            <div class="edus-show-info-content">
-                <%= @user.uid %>
-            </div>
-
-            <div>
-                Name:
-            </div>
-            <div class="edus-show-info-content">
-                <%= @user.name %>
-            </div>
-
-            <div>
-                Phone:
-            </div>
-            <div class="edus-show-info-content">
-                <%= @user.phone %>
-            </div>
-
-            <div>
-                Gender:
-            </div>
-            <div class="edus-show-info-content">
-                <%= @user.gender %>
-            </div>
-
-             <div>
-                Age:
-            </div>
-            <div class="edus-show-info-content">
-                <%= @user.birthday %>
-            </div>
-
-            <div>
-                Bpoint:
-            </div>
-            <div class="edus-show-info-content">
-                <%= @user.bpoint %>
-            </div>
+          <div class = "edus-content-item edus-content-item-style">
+              <div class="edus-content-item-header">
+                <h2>
+                Hoi thoai
+                </h2>
+                
+              </div>
+              <div class="edus-content-item-content">
+                Chưa co yeu cau nao!
+              </div>
+          </div>
+          <div class = "edus-content-item edus-content-item-style">
+              <div class="edus-content-item-header">
+                <h2>
+                Tin nhan
+                </h2>
+                
+              </div>
+              <div class="edus-content-item-content">
+                Chưa co yeu cau nao!
+              </div>
           </div>
 
 
         </div>
+    </div>
     </div>
 </div>

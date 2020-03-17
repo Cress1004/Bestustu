@@ -20,6 +20,11 @@
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
           </div>
 
+           <div class="field form-group">
+            <%= f.label :phone %><br />
+            <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form-control" %>
+          </div>
+
           <div class="field form-group">
             <%= f.label :password %>
             <% if @minimum_password_length %>
