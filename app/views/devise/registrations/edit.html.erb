@@ -14,96 +14,157 @@
           </div>
           <% end %>
         </div>
-        <div class="edus-area">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  class:"datetimepicker"  }) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
-
-              <div class="field form-group">
-              </br>
-                <%= f.file_field :image %>
-              </div>
-              <div class="edus-header">
-                <h2>Edit <%= resource_name.to_s.humanize %></h2>
-              </div>
-            <div class = "form-grid">
-              <div class="field form-group">
-                <%= f.label :username %><br />
-                <%= f.text_field :username, autofocus: true, autocomplete: "username",class:"form-control" %>
-              </div>
-
-              <div class="field form-group">
-                <%= f.label :name %><br />
-                <%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control" %>
-              </div>
-
-              <div class="field form-group">
-                <%= f.label :phone %><br />
-                <%= f.text_field :phone, autofocus: true, autocomplete: "phone",class:"form-control" %>
-              </div>
-
-<!--              <div class = "field form-group">
-                <%# <%= f.select :gender, options_for_select([['a','b'], params[:gender])%>
-                <%= f.label :gender %> <br />
-                <%= f.select(:gender, options_for_select(['Male', 'Female'], selected: resource.gender || nil), { include_blank: "Select Gender" }, {class:"form-control"}) %>
-              </div>
--->
-              <div class="field form-group">
-                <%= f.label :gender %><br />
-                <%= f.label :gender, "Female", :value => "Female"  %>
-                <%= f.radio_button :gender, "Female"%>
-                <%= f.label :gender, "Male", :value => "Male" %>
-                <%= f.radio_button :gender, "Male"%>
-              </div>
-
-              <div class="field form-group">
-                <%= f.label :birthday %><br/>
-                <%= f.date_field :birthday, class:"form-control"%>
-              </div>
-
-
-<!--            <div class="field form-group">
-
-              <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
+        <div class = "edus-nav-and-content">
+          <div class ="edus-nav">
+            <div class = "edus-nav-item" onclick="currentSlide(1)">
+              <i class = "fas fa-smile">
+              </i>
+              Thong tin ca nhan
+              <i class = "fas fa-chevron-down fa-right">
+              </i>
+              
             </div>
+            <div class = "edus-nav-item "onclick="currentSlide(2)">
+              Quan ly yeu cau
+            </div>
+            <div class = "edus-nav-item " onclick="currentSlide(3)">
+              Hoi thoai va tin nhan
+            </div>
+             <div class = "edus-nav-item" onclick="currentSlide(4)">
+              Thong bao
+            </div>
+          </div>
+          <div class ="edus-content">
+          
+            <div class="edus-area edus-content-item">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  class:"datetimepicker"  }) do |f| %>
+                <%= render "devise/shared/error_messages", resource: resource %>
 
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-            <% end %>
 
--->
+                  <div class="edus-header">
+                    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+                  </div>
+                  <div class="field form-group">
+                  </br>
+                    <%= f.file_field :image %>
+                  </div>
+                <div class = "form-grid">
+                  <div class="field form-group">
+                    <%= f.label :username %><br />
+                    <%= f.text_field :username, autofocus: true, autocomplete: "username",class:"form-control" %>
+                  </div>
 
-            <div class="field form-group">
-              <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-              <%= f.password_field :password, autocomplete: "new-password",class:"form-control" %>
-              <% if @minimum_password_length %>
+                  <div class="field form-group">
+                    <%= f.label :name %><br />
+                    <%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control" %>
+                  </div>
 
-                <em><%= @minimum_password_length %> characters minimum</em>
+                  <div class="field form-group">
+                    <%= f.label :phone %><br />
+                    <%= f.text_field :phone, autofocus: true, autocomplete: "phone",class:"form-control" %>
+                  </div>
+
+    <!--              <div class = "field form-group">
+                    <%# <%= f.select :gender, options_for_select([['a','b'], params[:gender])%>
+                    <%= f.label :gender %> <br />
+                    <%= f.select(:gender, options_for_select(['Male', 'Female'], selected: resource.gender || nil), { include_blank: "Select Gender" }, {class:"form-control"}) %>
+                  </div>
+    -->
+                  <div class="field form-group">
+                    <%= f.label :gender %><br />
+                    <%= f.label :gender, "Female", :value => "Female"  %>
+                    <%= f.radio_button :gender, "Female"%>
+                    <%= f.label :gender, "Male", :value => "Male" %>
+                    <%= f.radio_button :gender, "Male"%>
+                  </div>
+
+                  <div class="field form-group">
+                    <%= f.label :birthday %><br/>
+                    <%= f.date_field :birthday, class:"form-control"%>
+                  </div>
+
+
+    <!--            <div class="field form-group">
+
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
+                </div>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+
+    -->
+
+                <div class="field form-group">
+                  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+                  <%= f.password_field :password, autocomplete: "new-password",class:"form-control" %>
+                  <% if @minimum_password_length %>
+
+                    <em><%= @minimum_password_length %> characters minimum</em>
+                  <% end %>
+                </div>
+
+                <div class="field form-group">
+                  <%= f.label :password_confirmation %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control" %>
+                </div>
+
+                <div class="field form-group">
+                  <%= f.label :current_password %>
+                  <%= f.password_field :current_password, autocomplete: "current-password",class:"form-control" %>
+                </div>
+
+              </div>
+              <div class="actions">
+                  <%= f.submit "Update", class:"btn btn-danger" %>
+                </div>
               <% end %>
-            </div>
+              <div class="edus-header">
+                <h2>Cancel my account</h2>
+              </div>
+              <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"btn btn-primary" %></p>
 
-            <div class="field form-group">
-              <%= f.label :password_confirmation %><br />
-              <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control" %>
-            </div>
 
-            <div class="field form-group">
-              <%= f.label :current_password %>
-              <%= f.password_field :current_password, autocomplete: "current-password",class:"form-control" %>
-            </div>
+              <%= link_to "Back", :back %>
 
+            </div>
+            <%# second,third... nav %>
+            <div class = "edus-content-item edus-content-item-style">
+              <div class="edus-content-item-header">
+                <h2>
+                Quan ly yeu cau
+                </h2>
+                
+              </div>
+              <div class="edus-content-item-content">
+                Chưa co yeu cau nao!
+              </div>  
           </div>
-          <div class="actions">
-              <%= f.submit "Update", class:"btn btn-danger" %>
-            </div>
-          <% end %>
-          <div class="edus-header">
-            <h2>Cancel my account</h2>
+
+          <div class = "edus-content-item edus-content-item-style">
+              <div class="edus-content-item-header">
+                <h2>
+                Hoi thoai
+                </h2>
+                
+              </div>
+              <div class="edus-content-item-content">
+                Chưa co yeu cau nao!
+              </div>
           </div>
-          <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"btn btn-primary" %></p>
+          <div class = "edus-content-item edus-content-item-style">
+              <div class="edus-content-item-header">
+                <h2>
+                Tin nhan
+                </h2>
+                
+              </div>
+              <div class="edus-content-item-content">
+                Chưa co yeu cau nao!
+              </div>
+          </div>
 
-
-          <%= link_to "Back", :back %>
 
         </div>
     </div>
