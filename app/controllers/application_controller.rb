@@ -11,4 +11,27 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+# Helper method
+  helper_method :current_tutor, :require_tutor,
+                :current_student, :require_student
+  def current_tutor
+    current_user.tutor
+  end
+
+  def require_tutor
+    if !current_user.tutor
+      redirect_to root_path
+    end
+  end
+
+  def current_student
+    current_user.student
+  end
+
+  def require_student
+    if !current_user.student
+      redirect_to root_path
+    end
+  end
+
 end

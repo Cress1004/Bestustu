@@ -10,3 +10,4 @@ Nếu gia sư nào được chọn, admin sẽ gửi 1 tin nhắn cho gia sư đ
 - Viết các helper - Lộc
 - Thêm nav bên trái cho trang show của user - Lộc
 - Đánh giá gia sư ( qua trường point trong bảng tutors)
+- Xóa trường num_tutors in class_registers

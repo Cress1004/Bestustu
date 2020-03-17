@@ -272,7 +272,7 @@ header{
     // background-size: cover;
     overflow: hidden;
     .edus-box{
-        width: 80vw;
+        width: 90vw;
         // height: 90vh;
         background-color: rgb(255, 255, 255);
         margin: 5vh auto;
@@ -323,93 +323,135 @@ header{
                 }
             }
         }
-        .edus-area{
-            width: 80%;
-            margin: 10vh auto;
-            .edus-header{
-                h2{
-                    margin-top: 10px;
-                    font-weight: 700;
-                    text-align: center;
-                    color: rgb(72, 185, 230);
-                }
-            }
-            form{
-                .form-grid{
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    grid-gap: 1em;
-                    .field{
-                        font-size: 0.8rem;
-
+        
+        .edus-nav-and-content{
+            display: flex;
+            justify-content: space-between;
+            margin: 100px 20px;
+            .edus-nav{
+                
+                width: 20%;
+                height: fit-content;
+                // background-color: tomato;
+                display: flex;
+                flex-direction: column;
+                -webkit-box-shadow: 3px 5px 29px -16px rgba(0,0,0,0.75);
+                -moz-box-shadow: 3px 5px 29px -16px rgba(0,0,0,0.75);
+                box-shadow: 3px 5px 29px -16px rgba(0,0,0,0.75);
+                
+                .edus-nav-item{
+                    cursor: pointer;
+                    position: relative;
+                    padding: 0 1em;
+                    width: 100%;
+                    height: 50px;
+                    line-height: 50px;
+                    border-bottom: gray solid 2px;
+                    .fa-right{
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        right: 10px;
                     }
-
                 }
-
+                
             }
-            // .field{
-            //     input{
-            //         background-color: rgb(255, 255, 255);
-            //     }
-            // }
+            .edus-content{
+                width: 78%;
+                .edus-area{
+                    width: 80%;
+                    margin: 0 auto;
+                    .edus-header{
+                        h2{
+                            margin-top: 10px;
+                            font-weight: 700;
+                            text-align: center;
+                            color: rgb(72, 185, 230);
+                        }
+                    }
+                    form{
+                        .form-grid{
+                            display: grid;
+                            grid-template-columns: repeat(2, 1fr);
+                            grid-gap: 1em;
+                            .field{
+                                font-size: 0.8rem;
+          
+                            }
+                        }
+          
+                    }
+                    // .field{
+                    //     input{
+                    //         background-color: rgb(255, 255, 255);
+                    //     }
+                    // }
+    
+    
+                }
+                .edus-content-item-style{
+                    width: 100%;
+                    height: 100%;
+                    // background-color: red;
+                    .edus-content-item-header{
+                        width: 35%;
+                        height: $header_height;
+                        line-height: $header_height;
+                        background-color: #069D86;
+                        color: white;
+                        // font-size: 1.2rem;
+                        padding: 0 1em ;
+                    }
+                    .edus-content-item-content{
+                        border-top: 2px solid #069D86;
+                        padding: 20px 1em;
+                    }
+                }
+            }
+
         }
 
-        .edus-show-info{
-            display:grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 1em;
-            .edus-show-info-content{
-                background-color: rgb(255, 255, 255);
-                padding: 10px;
-                border: dashed 2px #1DA1F2;
-                color: #1DA1F2;
-            }
-        }
-
-        .edus-area{
-          width: 80%;
-          margin: 10vh auto;
-          .edus-header{
-              h2{
-                  margin-top: 10px;
-                  font-weight: 700;
-                  text-align: center;
-                  color: rgb(72, 185, 230);
-              }
-          }
-          form{
-              .form-grid{
-                  display: grid;
-                  grid-template-columns: repeat(2, 1fr);
-                  grid-gap: 1em;
-                  .field{
-                      font-size: 0.8rem;
-
-                  }
-              }
-
-          }
-          // .field{
-          //     input{
-          //         background-color: rgb(255, 255, 255);
-          //     }
-          // }
-      }
-      .edus-show-info{
-          display:grid;
-          grid-template-columns: repeat(2, 1fr);
-          grid-gap: 1em;
-          .edus-show-info-content{
-              background-color: rgb(255, 255, 255);
-              padding: 10px;
-              border: dashed 2px #1DA1F2;
-              color: #1DA1F2;
-          }
-      }
   }
 }
+.edus-area-show{
+    width: 80%;
+    margin: 10vh auto;
+    .edus-header{
+        h2{
+            margin-top: 10px;
+            font-weight: 700;
+            text-align: center;
+            color: rgb(72, 185, 230);
+        }
+    }
+    form{
+        .form-grid{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1em;
+            .field{
+                font-size: 0.8rem;
+
+            }
+        }
+
+    }
 
 
+
+}
+
+.edus-show-info{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    .edus-show-info-content{
+        background-color: rgb(255, 255, 255);
+        padding: 10px;
+        border: dashed 2px #1DA1F2;
+        color: #1DA1F2;
+    }
+}
 .avatar-size{
   height: 140px;
   weight: 140px;
