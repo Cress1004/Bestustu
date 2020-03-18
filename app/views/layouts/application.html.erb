@@ -16,7 +16,7 @@
     <%= render 'layouts/messages' %>
     <!-- Notice for devise authenticate user -->
     <p class = "notice" ><%= notice %> </p>
-    <p class = "alert" ><%= alert %></p>
+    <p class = "alert " ><%= alert %></p>
 
     <%= yield %>
 
@@ -54,6 +54,9 @@
       }
       console.log("hellooo");
     </script>
-
+    <%# <script type="text/javascript">
+        $(document).on('click','ul li', function(){
+            $(this).addClass('mactive').siblings().removeClass('mactive')
+    </script> %>
   </body>
 </html>

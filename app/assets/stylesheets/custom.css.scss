@@ -93,9 +93,10 @@ header{
             margin: 0.2*$header_height;
 
             nav{
-                background-color: #e7e3e3;
+                // background-color: #e7e3e3;
                 width: 100%;
                 height: 100%;
+                
                 /* margin: 50px auto; */
             }
             ul.menu{
@@ -110,17 +111,18 @@ header{
                         display: block;
                         line-height: 30px;
                         padding: 0px 15px 0px 15px;
-                        color: black;
+                        color: white;
                     }
                     a:hover{
-                        background-color: rgb(18, 17, 126);
-                        color:white;
+                        background-color: white;
+                        color:#1DA1F2;
                         transition: ease-in 0.3s;
                     }
                     ul.submenu{
                         position: absolute;
-                        background-color: rgb(231, 227, 227);
+                        background-color: #1DA1F2;
                         display: none;
+                        animation: submenu-display 1s;
                         li{
                             list-style: none;
                             a{
@@ -129,11 +131,21 @@ header{
                             }
                         }
                     }
+                    @keyframes submenu-display {
+                        from{
+                            opacity: 0;
+                            transform: translateY(20%);
+                        }
+                        to{
+                            opacity:  1;
+                            transform: translateY(0%);
+                        }
+                    }
                 }
                 li:hover ul.submenu{
                     display: block;
                 }
-                li.active > a{
+                li.mactive > a{
                     background-color: black;
                     color: white;
                 }
@@ -211,7 +223,7 @@ header{
 // sign-up sign-n
 
 .siup-container{
-    height: 100vh;
+    // height: 100vh;
     background-image: url("images/sign-up-background");
     background-size: cover;
     overflow: hidden;
@@ -405,6 +417,19 @@ header{
                     .edus-content-item-content{
                         border-top: 2px solid #069D86;
                         padding: 20px 1em;
+                    }
+                }
+                .edus-content-item{
+                    animation: user-nav-appear 1s;
+                }
+                @keyframes user-nav-appear {
+                    from{
+                        opacity: 0;
+                        transform: translateX(50%);
+                    }
+                    to{
+                        opacity: 1;
+                        transform: translateX(0%);
                     }
                 }
             }
