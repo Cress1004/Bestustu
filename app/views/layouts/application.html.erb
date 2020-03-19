@@ -52,11 +52,38 @@
       slides[slideIndex-1].style.display = "block";  
       // dots[slideIndex-1].className += " active";
       }
-      console.log("hellooo");
+      
     </script>
     <%# <script type="text/javascript">
         $(document).on('click','ul li', function(){
             $(this).addClass('mactive').siblings().removeClass('mactive')
+    </script> %>
+    <script>
+      var currentLoaction = location.href;
+      var menuItem = document.querySelectorAll('ul li a');
+      var menuLength = menuItem.length;
+      for(let i = 0;i < menuLength;i++){
+        if(menuItem[i].href == currentLoaction){
+          menuItem[i].parentElement.className = "mactive"
+        }
+      }
+      console.log("hellooo");
+      console.log(currentLoaction);
+      
+    </script>
+    <%# <script>
+    const callback = function(entries) {
+      entries.forEach(entry => {
+        entry.target.classList.toggle("is-visible");
+      });
+    };
+
+    const observer = new IntersectionObserver(callback);
+
+    const targets = document.querySelectorAll(".show-on-scroll");
+    targets.forEach(function(target) {
+      observer.observe(target);
+    });
     </script> %>
   </body>
 </html>
