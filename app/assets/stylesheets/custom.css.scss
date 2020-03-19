@@ -134,20 +134,26 @@ header{
                     @keyframes submenu-display {
                         from{
                             opacity: 0;
-                            transform: translateY(20%);
+                            // transform: translateY(20%);
+                            filter: hue-rotate(90deg);
                         }
                         to{
                             opacity:  1;
-                            transform: translateY(0%);
+                            // transform: translateY(0%);
+                            filter: hue-rotate(0deg);
                         }
                     }
                 }
                 li:hover ul.submenu{
                     display: block;
+                    z-index: 2;
                 }
                 li.mactive > a{
-                    background-color: black;
-                    color: white;
+                    // background-color: white;
+                    // color: white;
+                    border-bottom: white solid 3px ;
+                    z-index: 1;
+                    animation: borderEntrance 1s;
                 }
             }
         }
