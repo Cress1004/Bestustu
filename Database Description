@@ -1,7 +1,7 @@
 Mô tả database
 Bảng class_registers
 description     :  Mô tả tiêu đề cho lớp học
-//Độ dài 10-100
+//Độ dài 10-500
 hours_lesson    :  Số giờ học/ 1 buổi học
 lessons_week    :  Số buổi học/ 1 tuần
 salary          :  Lương cho giảng viên 1 buổi
@@ -64,6 +64,8 @@ point       : Điểm đánh giá của học sinh về sinh viên
 user_id     : Foreign_key reference to users
 location_id : Foreign_key reference to locations
 // Them trương dia chi noi lam viec: work_place
+
+
 
 Bang users
 email       : Email của người dùng

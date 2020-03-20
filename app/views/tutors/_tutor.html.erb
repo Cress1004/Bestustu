@@ -1,6 +1,14 @@
 <% obj.each do |tutor| %>
 <% @user = User.find(tutor.user_id) %>
 <% @location = Location.find(tutor.location_id) %>
+<div class="card" style="width: 18rem;">
+  <img src= "@user.image.to_s" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
   <div class="row">
     <div class="col-md-12">
       <div class="form-group row">
