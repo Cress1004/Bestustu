@@ -21,39 +21,40 @@
                     <li >
                         <%# <a href="#">HOME</a> %>
                         <%= link_to 'HOME', root_path%>
+                    </li>
+                    <li>
+                        <%= link_to 'CLASS', new_user_registration_path%>
+   
                         <ul class="submenu">
-                            <li><a href="#">First submenu</a></li>
-                            <li><a href="#">Second submenu</a></li>
-                            <li><a href="#">Third submenu</a></li>
-                            <li><a href="#">Fourth submenu</a></li>
+                            <li><a href="#">Class list</a></li>
                         </ul>
                     </li>
                     <li>
-                        <%= link_to 'MENU', new_user_registration_path%>
-                        <ul class="submenu">
-                            <li><a href="#">First submenu</a></li>
+                        <%= link_to 'TUTOR', new_user_registration_path%>
+                        <%# <ul class="submenu">
+                            <li><a href="#">Show all tutor</a></li>
                             <li><a href="#">Second submenu</a></li>
                             <li><a href="#">Third submenu</a></li>
                             <li><a href="#">Fourth submenu</a></li>
-                        </ul>
+                        </ul> %>
                     </li>
                     <li>
                         <a href="#">ABOUT</a>
-                        <ul class="submenu">
+                        <%# <ul class="submenu">
                             <li><a href="#">First submenu</a></li>
                             <li><a href="#">Second submenu</a></li>
                             <li><a href="#">Third submenu</a></li>
                             <li><a href="#">Fourth submenu</a></li>
-                        </ul>
+                        </ul> %>
                     </li>
                     <li>
                         <a href="#">CONTACT</a>
-                          <ul class="submenu">
+                          <%# <ul class="submenu">
                             <li><a href="#">First submenu</a></li>
                             <li><a href="#">Second submenu</a></li>
                             <li><a href="#">Third submenu</a></li>
                             <li><a href="#">Fourth submenu</a></li>
-                        </ul>
+                        </ul> %>
                     </li>
                 </ul>
             </nav>
@@ -67,7 +68,7 @@
                 <%= link_to show_user_info_path(current_user), class:'sign-in-area' do %>
 
                     <div class="sign-in-header">
-                      <i class="fas fa-sign-in-alt"></i>
+                      <i class="fas fa-user-edit"></i>
                       <% if current_user.username %>
                          <%= current_user.username%>
                       <% else %>
@@ -77,7 +78,7 @@
                 <% end %>
                 <%= link_to  destroy_user_session_path, method: :delete, class:'sign-up-area' do %>
                     <div class="sign-up-header">
-                        <i class="fas fa-user-plus"></i> Log out
+                        <i class="fas fa-sign-in-alt"></i> Log out
                     </div>
                 <% end %>
             <% else %>

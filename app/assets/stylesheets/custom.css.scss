@@ -12,7 +12,11 @@ $header_height:50px;
     box-sizing: border-box;
     font-family: sans-serif;
 }
-
+#root{
+    background-image: linear-gradient(150deg,rgb(245, 234, 235), rgb(245, 185, 206), rgb(245, 234, 235));
+    background-size: contain;
+    // filter: brightness(2);
+}
 
 header{
 
@@ -23,7 +27,7 @@ header{
     .logo-container{
         width: 10%;
         .logo-area{
-            margin: 5px 0 0 0;
+            margin: 5px 0 0 0;  
             width: 0.8*$header_height;
             height: 0.8*$header_height;
             margin-left: 50px;
@@ -110,8 +114,9 @@ header{
                         text-decoration: none;
                         display: block;
                         line-height: 30px;
-                        padding: 0px 15px 0px 15px;
+                        padding: 0px 0.5em 0px 0.5em;
                         color: white;
+                        position: relative;
                     }
                     a:hover{
                         background-color: white;
@@ -126,7 +131,7 @@ header{
                         li{
                             list-style: none;
                             a{
-                                border-top: solid #f3f0f0;
+                                border-top: solid white 3px;
                                 width: 200px;
                             }
                         }
