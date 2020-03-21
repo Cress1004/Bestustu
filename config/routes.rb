@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   resources :class_registers
   patch 'class_registers/:id/register',to: 'class_registers#register', as: :register
   get 'class_registers/:id/tutors',to: 'class_registers#select_tutors', as: :select_tutors
+  get 'class_registers/:id/tutor_selected',to: 'class_registers#tutor_selected', as: :tutor_selected
   # Route for show bpoint of user
   get 'bpoint_show', to: 'pages#bpoint_page'
 end

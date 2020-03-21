@@ -58,6 +58,39 @@ class ClassRegistersController < ApplicationController
 
   end
 
+  def tutor_selected
+    @tutor = Tutor.find(params[:id])
+    @class_register = ClassRegister.find(params[:class_id])
+    # Message for tutor after be selected
+    @message_tu = Message.new
+    # debugger
+    @message_tu.user = @tutor.user
+    @message_tu.message_content = "Nhận lớp: " + @class_register.description.to_s + "\n Môn học: "
+    + @class_register.subject.name.to_s + "\n Tên sinh viên: " + @class_register.student.user.name.to_s
+    @message_tu.student_id = @class_register.student.id
+
+    if @message_tu.save
+      flash[:success] = "Successfully send message to tutor"
+    else
+      flash[:danger] = "Cannot send email to tutor"
+    end
+
+    #Message for student after select tutor
+    @message_stu = Message.new
+    @message_stu.user = @class_register.student.user
+    @message_stu.message_content = "Lớp của bạn đã được gia sư nhận thành công\n" + "Liên hệ gia sư "
+    + @tutor.user.name.to_s + "\n " + "SDT: " + @tutor.user.phone
+    @message_stu.tutor_id = @tutor.id
+
+    if @message_stu.save
+      flash[:success] = "Successfully send message to student"
+    else
+      flash[:danger] = "Cannot send email to student"
+    end
+    @class_register.destroy
+    redirect_to root_path
+  end
+
   def destroy
     # set_article
     @class_register.destroy

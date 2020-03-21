@@ -22,7 +22,8 @@
           <%= form_with(url: register_path(@class_register), method: "patch",local: true) do %>
             <%= submit_tag("Đăng ký ngay", class: "btn btn-primary") %>
           <% end %>
-
+        <% end %>
+        <% if current_student == @class_register.student %>
           <%= link_to "Những giáo viên đăng ký", select_tutors_path(@class_register), class:'btn btn-primary' %>
         <% end %>
         <br>

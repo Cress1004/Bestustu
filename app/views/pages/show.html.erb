@@ -18,7 +18,7 @@
               Thong tin ca nhan
               <i class = "fas fa-chevron-down fa-right">
               </i>
-              
+
             </div>
             <div class = "edus-nav-item "onclick="currentSlide(2)">
               Quan ly yeu cau
@@ -34,10 +34,10 @@
             <div class="edus-area edus-content-item ">
               <div class="edus-header">
                 <h2><%= @user.username %></h2>
-    
+
               </div>
               <hr/>
-    
+
               <div class="edus-show-info">
                 <div>
                     Email:
@@ -45,49 +45,49 @@
                 <div class="edus-show-info-content">
                     <%= @user.email %>
                 </div>
-    
+
                 <div>
                     Username:
                 </div>
                 <div class="edus-show-info-content">
                     <%= @user.username %>
                 </div>
-    
+
                 <div>
                     Uid:
                 </div>
                 <div class="edus-show-info-content">
                     <%= @user.uid %>
                 </div>
-    
+
                 <div>
                     Name:
                 </div>
                 <div class="edus-show-info-content">
                     <%= @user.name %>
                 </div>
-    
+
                 <div>
                     Phone:
                 </div>
                 <div class="edus-show-info-content">
                     <%= @user.phone %>
                 </div>
-    
+
                 <div>
                     Gender:
                 </div>
                 <div class="edus-show-info-content">
                     <%= @user.gender %>
                 </div>
-    
+
                  <div>
                     Age:
                 </div>
                 <div class="edus-show-info-content">
                     <%= @user.birthday %>
                 </div>
-    
+
                 <div>
                     Bpoint:
                 </div>
@@ -95,8 +95,8 @@
                     <%= @user.bpoint %>
                 </div>
               </div>
-    
-    
+
+
             </div>
             <%# second,third... nav %>
             <div class = "edus-content-item edus-content-item-style">
@@ -104,11 +104,13 @@
                 <h2>
                 Quan ly yeu cau
                 </h2>
-                
+
               </div>
               <div class="edus-content-item-content">
-                Chưa co yeu cau nao!
-              </div>  
+                <% @class_registers.each do |class_register| %>
+                  <%= link_to class_register.description, class_register_path(class_register) %><br>
+                <% end %>
+              </div>
           </div>
 
           <div class = "edus-content-item edus-content-item-style">
@@ -116,7 +118,7 @@
                 <h2>
                 Hoi thoai
                 </h2>
-                
+
               </div>
               <div class="edus-content-item-content">
                 Chưa co yeu cau nao!
@@ -127,10 +129,21 @@
                 <h2>
                 Tin nhan
                 </h2>
-                
+
               </div>
               <div class="edus-content-item-content">
-                Chưa co yeu cau nao!
+                <% if @temp_hash %>
+                  <% @temp_hash.each do |message,obj| %>
+                    <p>Message for you: <%= message.message_content %></p>
+                    <% if current_student %>
+                      <%= link_to obj.user.name, tutor_path(obj) %>
+                    <% elsif current_tutor %>
+                      <%= link_to obj.user.name, student_path(obj) %>
+                    <% end %>
+                    <br>
+                  <% end %>
+                <% end %>
+
               </div>
           </div>
 

@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_16_124157) do
+ActiveRecord::Schema.define(version: 2020_03_19_053856) do
 
   create_table "class_registers", force: :cascade do |t|
     t.string "description"
     t.float "hours_lesson"
     t.float "lessons_week"
     t.float "salary"
-    t.integer "num_tutor"
     t.integer "location_id", null: false
     t.integer "student_id", null: false
     t.integer "subject_id", null: false
@@ -51,6 +50,14 @@ ActiveRecord::Schema.define(version: 2020_03_16_124157) do
     t.string "city"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "message_content"
+    t.integer "user_id", null: false
+    t.integer "tutor_id"
+    t.integer "student_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -141,6 +148,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_124157) do
   add_foreign_key "class_registers_times_frees", "times_frees"
   add_foreign_key "class_registers_tutors", "class_registers"
   add_foreign_key "class_registers_tutors", "tutors"
+  add_foreign_key "messages", "users"
   add_foreign_key "students", "users"
   add_foreign_key "subjects_tutors", "subjects"
   add_foreign_key "subjects_tutors", "tutors"
