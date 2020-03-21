@@ -14,9 +14,14 @@
           <h5 class="card-title"><%= @user.name %></h5>
           <p class="card-text">
             <% if @subjects %>
+              <% count = 1 %>
               <% @subjects.each do |subject| %>
-                <small><u><strong><%= link_to subject.name, class: "badge badge-secondary"%></strong></u></small>
-              <% end %>
+                <% count = count +1  %>
+                <% if count < 4 %>
+                  <span class="badge badge-secondary"><%= subject.name %></span>
+                <% end %>
+                <% end %>
+              <span class="badge badge-secondary">...</span>
             <% end %></br>
             Job: <%= tutor.job %> in <%= tutor.work_place %></br>
             Address: <%= @location.city %></br>
