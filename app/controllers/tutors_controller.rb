@@ -1,5 +1,5 @@
 class TutorsController < ApplicationController
-  before_action :set_tutor, only: [:show, :edit, :update, :create]
+  before_action :set_tutor, only: [:show, :edit, :update]
 
   def new
     @tutor = Tutor.new
