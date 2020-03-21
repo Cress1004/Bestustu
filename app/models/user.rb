@@ -15,16 +15,15 @@ class User < ApplicationRecord
   before_save { self.username = username.downcase }
 
   validates :email, presence: true
-  validates :username, presence: true,
-            length: { minimum: 3, maximum: 25 },
-            format: { with: /\A[a-zA-Z]+\z/,
-            message: "Username only allows letters" }
-  # validates :name
-  # validates :image
-  #  davalidates :birthday
-  validates :phone, presence: false,
-            format: { with: /\(?[0-9]{10}/,
-            message: "Phone numbers must be 10 number characters." }
+  # validates :username, presence: true,
+  #           length: { minimum: 4, maximum: 15 },
+  #           format: { with: /\A[a-zA-Z]+\z/,
+  #           message: "Username only allows letters" }
+  validates :name, presence: true
+
+#  validates :phone, presence: false,
+#            format: { with: /\(?[0-9]{10}/,
+#            message: "Phone numbers must be 10 number characters." }
 
 
    def self.new_with_session(params, session)
