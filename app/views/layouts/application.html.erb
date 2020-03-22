@@ -13,16 +13,15 @@
     <!-- navigation bar -->
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/extra_navbar' %>
-    <%= render 'layouts/messages' %>
     <!-- Notice for devise authenticate user -->
-    <p class = "notice" ><%= notice %> </p>
-    <p class = "alert" ><%= alert %></p>
+  <!--  <p class = "notice" ><%= notice %> </p>
+    <p class = "alert " ><%= alert %></p> -->
 
     <%= yield %>
-
+<%# 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> %>
     <script src="https://kit.fontawesome.com/37a232b20a.js" crossorigin="anonymous"></script>
     <script>
       console.log("hellooo");
@@ -52,8 +51,38 @@
       slides[slideIndex-1].style.display = "block";  
       // dots[slideIndex-1].className += " active";
       }
-      console.log("hellooo");
+      
     </script>
+    <%# <script type="text/javascript">
+        $(document).on('click','ul li', function(){
+            $(this).addClass('mactive').siblings().removeClass('mactive')
+    </script> %>
+    <script>
+      var currentLoaction = location.href;
+      var menuItem = document.querySelectorAll('ul li a');
+      var menuLength = menuItem.length;
+      for(let i = 0;i < menuLength;i++){
+        if(menuItem[i].href == currentLoaction){
+          menuItem[i].parentElement.className = "mactive"
+        }
+      }
+      console.log("hellooo");
+      console.log(currentLoaction);
+      
+    </script>
+    <%# <script>
+    const callback = function(entries) {
+      entries.forEach(entry => {
+        entry.target.classList.toggle("is-visible");
+      });
+    };
 
+    const observer = new IntersectionObserver(callback);
+
+    const targets = document.querySelectorAll(".show-on-scroll");
+    targets.forEach(function(target) {
+      observer.observe(target);
+    });
+    </script> %>
   </body>
 </html>

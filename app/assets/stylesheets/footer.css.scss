@@ -1,0 +1,37 @@
+footer{
+    font-size: 0.9rem;
+    background-color: #1DA1F2;
+    display: flex;
+    div{
+        flex-basis: 0;
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 1.5em;
+        text-align: center;
+        color: white;
+            p{
+                i{
+                    // font-size: 72px;
+                    background: -webkit-linear-gradient(rgb(31, 159, 190), rgb(231, 23, 23));
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+            }
+    }
+    .footer-right{
+        ul{
+            width: fit-content;
+            margin: 0 auto;
+            display: flex;
+            li{
+                margin: 0 0.5em;
+                list-style: none;
+                a{
+                    text-decoration: none;
+                    color: white;
+                    font-size: 4rem;
+                }
+            }
+        }
+    }
+}
