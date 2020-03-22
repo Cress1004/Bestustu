@@ -30,16 +30,19 @@
             <div class="field form-group">
               <%= f.label :username %><br />
               <%= f.text_field :username, autofocus: true, autocomplete: "username",class:"form-control" %>
+              <span id="username_error"></span>
             </div>
 
             <div class="field form-group">
               <%= f.label :name %><br />
               <%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control" %>
+              <span id="name_error"></span>
             </div>
 
             <div class="field form-group">
               <%= f.label :phone_number %><br />
               <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number",class:"form-control" %>
+              <span id="phone_number_error"></span>
             </div>
 
             <div class="field form-group">
