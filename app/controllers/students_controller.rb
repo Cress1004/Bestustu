@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
         @student.user = current_user
         if @student.save
           flash[:success] = "You are a student"
-          redirect_to tutor_path(@student)
+          redirect_to student_path(@student)
         else
           render 'new'
         end
