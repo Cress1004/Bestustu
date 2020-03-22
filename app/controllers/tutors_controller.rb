@@ -7,9 +7,13 @@ class TutorsController < ApplicationController
 
   def create
     @tutor = Tutor.new(tutor_params)
-    @tutor.user = current_user
-    @tutor.save
-    redirect_to tutor_path(@tutor)
+    @tutor.user_id = current_user.id
+    if @tutor.save
+      flash[:success] = "You are a tutor"
+      redirect_to tutor_path(@tutor)
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -42,7 +46,7 @@ class TutorsController < ApplicationController
   end
 
   def tutor_params
-    params.require(:tutor).permit(:job, :description, :achievement, :location_id)
+    params.require(:tutor).permit(:job, :description, :achievement, :location_id, :work_place)
   end
 
 end
