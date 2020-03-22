@@ -323,13 +323,13 @@ header{
                 }
             }
         }
-        
+
         .edus-nav-and-content{
             display: flex;
             justify-content: space-between;
             margin: 100px 20px;
             .edus-nav{
-                
+
                 width: 20%;
                 height: fit-content;
                 // background-color: tomato;
@@ -338,7 +338,7 @@ header{
                 -webkit-box-shadow: 3px 5px 29px -16px rgba(0,0,0,0.75);
                 -moz-box-shadow: 3px 5px 29px -16px rgba(0,0,0,0.75);
                 box-shadow: 3px 5px 29px -16px rgba(0,0,0,0.75);
-                
+
                 .edus-nav-item{
                     cursor: pointer;
                     position: relative;
@@ -354,7 +354,7 @@ header{
                         right: 10px;
                     }
                 }
-                
+
             }
             .edus-content{
                 width: 78%;
@@ -376,18 +376,18 @@ header{
                             grid-gap: 1em;
                             .field{
                                 font-size: 0.8rem;
-          
+
                             }
                         }
-          
+
                     }
                     // .field{
                     //     input{
                     //         background-color: rgb(255, 255, 255);
                     //     }
                     // }
-    
-    
+
+
                 }
                 .edus-content-item-style{
                     width: 100%;
@@ -454,11 +454,10 @@ header{
 }
 .avatar-size{
   height: 140px;
-  weight: 140px;
+  width: 140px;
 }
 
 .show-avatar-size{
   height: 50px;
   weight: 50px;
 }
-

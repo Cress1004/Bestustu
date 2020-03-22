@@ -1,21 +1,38 @@
-<% obj.each do |tutor| %>
-<% @user = User.find(tutor.user_id) %>
-<% @location = Location.find(tutor.location_id) %>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="form-group row">
-        <div class="control-label col-sm-1 offset-sm-2">
-          <%= image_tag @user.image.to_s, :class => "show-avatar-size rounded-circle" %>
+<% index = 1 %>
 
+<% obj.each do |tutor| %>
+  <% @subjects = tutor.subjects %>
+  <% @user = User.find(tutor.user_id) %>
+  <% @location = Location.find(tutor.location_id) %>
+  <% if index%3 == 1 %>
+    <div class="row" >
+  <% end %>
+    <div class="col-sm-3">
+      <div class="card" style="width:300px">
+        <%= image_tag @user.image.to_s, :class => "card-img-top", style: "width:100%" %>
+        <div class="card-body">
+          <h5 class="card-title"><%= @user.name %></h5>
+          <p class="card-text">
+            <% if @subjects %>
+              <% count = 1 %>
+              <% @subjects.each do |subject| %>
+                <% count = count +1  %>
+                <% if count < 4 %>
+                  <span class="badge badge-secondary"><%= subject.name %></span>
+                <% end %>
+                <% end %>
+              <span class="badge badge-secondary">...</span>
+            <% end %></br>
+            Job: <%= tutor.job %> in <%= tutor.work_place %></br>
+            Address: <%= @location.city %></br>
+            <%= tutor.description %>
+          </p>
+          <a><%= link_to "Register now", tutor_path(tutor), class: "btn btn-primary"%></a>
         </div>
-        <div class= "col-sm-9">
-          <%=link_to @user.name, tutor_path(tutor)%> || <%= @location.city %> </br>
-          <% tutor.subjects.each do |subject| %>
-            <%= subject.name %> >>
-          <% end %>
-          <hr/>
-        </div>
-      </div>
     </div>
   </div>
+  <% if index%3 == 0 %>
+    </div>
+  <% end %>
+  <% index = index+1 %>
 <% end %>

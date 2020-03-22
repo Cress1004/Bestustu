@@ -1,7 +1,7 @@
 Mô tả database
 Bảng class_registers
 description     :  Mô tả tiêu đề cho lớp học
-//Độ dài 10-100
+//Độ dài 10-500
 hours_lesson    :  Số giờ học/ 1 buổi học
 lessons_week    :  Số buổi học/ 1 tuần
 salary          :  Lương cho giảng viên 1 buổi
@@ -56,6 +56,8 @@ Bang tutors
 job         : Nghề nghiệp hiện tại của gia sư
 //presence: true
 //Độ dài: 3-30
+work_place  : Nơi làm việc hiện tại
+//presence: true
 description : Mô tả bản thân
 //Độ dài 10-300
 achievement : Thành tích đạt được
@@ -65,9 +67,12 @@ user_id     : Foreign_key reference to users
 location_id : Foreign_key reference to locations
 // Them trương dia chi noi lam viec: work_place
 
+
+
 Bang users
 email       : Email của người dùng
 password    : Mật khẩu người dùng
+
 username    : Tên người dùng (username để đăng nhập)
 //Không có dấu cách giữa các từ,
 //Nếu người dùng nhập nhiều dấu cách ở đầu hoặc ở cuối thì phải xóa những dấu cách đó đi
