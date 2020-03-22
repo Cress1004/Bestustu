@@ -25,7 +25,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
-
+gem 'jquery-rails'
 
 gem 'carrierwave', '~> 2.0'
 gem 'kaminari'

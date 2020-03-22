@@ -1,5 +1,3 @@
-
-
 <div class="edus-container">
     <div class="edus-box">
         <div class="edus-background">
@@ -15,9 +13,8 @@
           <% end %>
         </div>
         <div class="edus-area-show edus-content-item">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  class:"datetimepicker"  }) do |f| %>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  class:"datetimepicker", id: "edit_user" }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
-
 
             <div class="edus-header">
               <h2>Edit <%= resource_name.to_s.humanize %></h2>
@@ -29,17 +26,20 @@
           <div class = "form-grid">
             <div class="field form-group">
               <%= f.label :username %><br />
-              <%= f.text_field :username, autofocus: true, autocomplete: "username",class:"form-control" %>
+              <%= f.text_field :username, autofocus: true, autocomplete: "username",class:"form-control", id: "user_username" %>
+              <span id="username_error"></span>
             </div>
 
             <div class="field form-group">
               <%= f.label :name %><br />
-              <%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control" %>
+              <%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control", id: "user_name" %>
+              <span id="name_error"></span>
             </div>
 
             <div class="field form-group">
               <%= f.label :phone %><br />
               <%= f.text_field :phone, autofocus: true, autocomplete: "phone",class:"form-control" %>
+              <span id="phone_error"></span>
             </div>
 
             <div class="field form-group">
@@ -55,14 +55,10 @@
               <%= f.date_field :birthday, class:"form-control"%>
             </div>
 
-
-
-
           <div class="field form-group">
             <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
             <%= f.password_field :password, autocomplete: "new-password",class:"form-control" %>
             <% if @minimum_password_length %>
-
               <em><%= @minimum_password_length %> characters minimum</em>
             <% end %>
           </div>
@@ -79,13 +75,15 @@
 
         </div>
         <div class="actions">
-            <%= f.submit "Update", class:"btn btn-danger" %>
+            <%= f.submit "Update", class:"btn btn-primary" %>
           </div>
         <% end %>
+
+
         <div class="edus-header">
           <h2>Cancel my account</h2>
         </div>
-        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"btn btn-primary" %></p>
+        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"btn btn-danger" %></p>
 
 
         <%= link_to "Back", :back %>
