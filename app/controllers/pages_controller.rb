@@ -10,6 +10,7 @@ class PagesController < ApplicationController
     def show
         @temp_array = []
         @temp_hash = {}
+        @class_register = nil
         @user = User.find(params[:id])
         if @user.messages.any?
           @messages = @user.messages

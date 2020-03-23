@@ -107,8 +107,10 @@
 
               </div>
               <div class="edus-content-item-content">
-                <% @class_registers.each do |class_register| %>
-                  <%= link_to class_register.description, class_register_path(class_register) %><br>
+                <% if @class_register %>
+                  <% @class_registers.each do |class_register| %>
+                    <%= link_to class_register.description, class_register_path(class_register) %><br>
+                  <% end %>
                 <% end %>
               </div>
           </div>
@@ -133,15 +135,23 @@
               </div>
               <div class="edus-content-item-content">
                 <% if @temp_hash %>
+                <ul class="list-group">
                   <% @temp_hash.each do |message,obj| %>
-                    <p>Message for you: <%= message.message_content %></p>
-                    <% if current_student %>
-                      <%= link_to obj.user.name, tutor_path(obj) %>
-                    <% elsif current_tutor %>
-                      <%= link_to obj.user.name, student_path(obj) %>
-                    <% end %>
-                    <br>
+                    <li class="list-group-item">
+
+                      <p>Message for you: <%= message.message_content %></p>
+                      <% if current_student %>
+                        <%= link_to obj.user.name, tutor_path(obj) %>
+                      <% elsif current_tutor %>
+                        <%= link_to obj.user.name, student_path(obj) %>
+                      <% end %>
+                      <br>
+                      <%= link_to "Xóa tin", message_path(message), method: :delete,
+                              data: { confirm: "Are you sure you want to delete the message?"},
+                              class: "btn btn-xs btn-danger" %>
+                    </li>
                   <% end %>
+                </ul>
                 <% end %>
 
               </div>

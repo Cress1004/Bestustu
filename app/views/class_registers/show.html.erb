@@ -25,6 +25,9 @@
         <% end %>
         <% if current_student == @class_register.student %>
           <%= link_to "Những giáo viên đăng ký", select_tutors_path(@class_register), class:'btn btn-primary' %>
+          <%= link_to "Xóa lớp", class_register_path(@class_register), method: :delete,
+                  data: { confirm: "Are you sure you want to delete the class?"},
+                  class: "btn btn-xs btn-danger" %>
         <% end %>
         <br>
         <p>Số gia sư đăng ký: <%= @class_register.tutors.count %>/6</p>

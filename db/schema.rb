@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_053856) do
+ActiveRecord::Schema.define(version: 2020_03_23_131604) do
 
   create_table "class_registers", force: :cascade do |t|
     t.string "description"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_053856) do
     t.string "tutor_gender"
     t.float "num_student"
     t.string "class_status", default: "ĐANG TÌM GIÁO VIÊN"
-    t.string "class_content"
+    t.text "class_content"
     t.string "address"
     t.index ["location_id"], name: "index_class_registers_on_location_id"
     t.index ["student_id"], name: "index_class_registers_on_student_id"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_053856) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string "message_content"
+    t.text "message_content"
     t.integer "user_id", null: false
     t.integer "tutor_id"
     t.integer "student_id"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_053856) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "description"
+    t.text "description"
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 
@@ -99,8 +99,8 @@ ActiveRecord::Schema.define(version: 2020_03_19_053856) do
 
   create_table "tutors", force: :cascade do |t|
     t.string "job"
-    t.string "description"
-    t.string "achievement"
+    t.text "description"
+    t.text "achievement"
     t.integer "point"
     t.integer "user_id", null: false
     t.integer "location_id", null: false

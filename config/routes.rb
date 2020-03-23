@@ -39,4 +39,6 @@ Rails.application.routes.draw do
   get 'class_registers/:id/tutor_selected',to: 'class_registers#tutor_selected', as: :tutor_selected
   # Route for show bpoint of user
   get 'bpoint_show', to: 'pages#bpoint_page'
+  # Route for message
+  resources :messages, only: [:show,:destroy]
 end
