@@ -89,55 +89,21 @@
     </section>
 
     <section class="slick">
-        <div class="slick-item">
+        <% all_tutors.each do |f|%>
+           <div class="slick-item">
             <div class="slick-item-block">
-                    1
+                 <a class="slick-item-ava"></a>   
+                 <div class="slick-item-info">
+                    <%= link_to 'hello', edit_tutor_path(f)%>
+                 </div>   
+                 <div class="slick-item-desctiption"></div>   
+                 <div class="slick-item-option"></div>   
             </div>  
             <div class="slick-overlay">
 
             </div>            
-        </div>
-        <div class="slick-item">
-            <div class="slick-item-block">
-                    2
-            </div>
-            <div class="slick-overlay">
-
-            </div>            
-        </div>
-        <div class="slick-item">
-            <div class="slick-item-block">
-                  3  
-            </div>
-            <div class="slick-overlay">
-
-            </div>            
-        </div>
-        <div class="slick-item">
-            <div class="slick-item-block">
-               4     
-            </div>
-            <div class="slick-overlay">
-
-            </div>            
-        </div>
-        <div class="slick-item">
-            <div class="slick-item-block">
-                  5  
-            </div>
-            <div class="slick-overlay">
-
-            </div>            
-        </div>
-        <div class="slick-item">
-            <div class="slick-item-block">
-                  6 
-            </div>
-            <div class="slick-overlay">
-
-            </div>            
-        </div>
-
+        </div>           
+        <% end %>
     </section>
     <%# footer %>
     <%= render 'layouts/footer'%>  

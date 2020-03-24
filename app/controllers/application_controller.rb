@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
   end
 # Helper method
   helper_method :current_tutor, :require_tutor,
-                :current_student, :require_student
+                :current_student, :require_studen,
+                :all_students, :all_tutors
   def current_tutor
     if user_signed_in?
       current_user.tutor
@@ -36,6 +37,14 @@ class ApplicationController < ActionController::Base
     if !current_student
       redirect_to root_path
     end
+  end
+
+  def all_students
+    Student.all
+  end
+
+  def all_tutors
+    Tutor.all
   end
 
 end

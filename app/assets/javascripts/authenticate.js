@@ -13,7 +13,7 @@
 //         }
 // }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
    $('#edit_user').submit(function(){
       var name = $.trim($('#user_name').val());
       var phone = $.trim($('#user_phone').val());

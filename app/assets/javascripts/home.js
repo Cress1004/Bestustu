@@ -1,6 +1,7 @@
+// = require_tree .
 //slick
 
-$(function(){
+$(document).on('turbolinks:load', function() {
     $('.slick').slick({
         infinite: true,
         slidesToShow: 5,
