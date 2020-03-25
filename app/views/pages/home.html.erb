@@ -92,12 +92,28 @@
         <% all_tutors.each do |f|%>
            <div class="slick-item">
             <div class="slick-item-block">
-                 <a class="slick-item-ava"></a>   
+                 <%= link_to edit_tutor_path(f), target: "__blank",class: "slick-item-ava" do %>
+                    <%= image_tag f.user.image.to_s %>
+                 <% end %> 
+                 
                  <div class="slick-item-info">
-                    <%= link_to 'hello', edit_tutor_path(f)%>
+                    <%= link_to edit_tutor_path(f) do %>
+                        <%= f.user.username%>
+                    <% end %>
+                    <p>
+                        <%= f.location.city%>
+                        &ensp; | 
+                        &ensp;
+                        <%= f.subjects.name%>
+                    </p>
                  </div>   
-                 <div class="slick-item-desctiption"></div>   
-                 <div class="slick-item-option"></div>   
+                 <div class="slick-item-desctiption">
+                    <%= f.description%>
+                 </div>   
+                 <div class="slick-item-option">
+                    <button class="btn btn-primary">Mời dạy</button>
+                    <button class="btn btn-danger">Lưu</button>
+                 </div>   
             </div>  
             <div class="slick-overlay">
 

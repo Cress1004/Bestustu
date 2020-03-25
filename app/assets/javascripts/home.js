@@ -1,5 +1,3 @@
-// = require_tree .
-//slick
 
 $(document).on('turbolinks:load', function() {
     $('.slick').slick({
@@ -16,4 +14,6 @@ $(document).on('turbolinks:load', function() {
         // dots:'<i class="fa fa-arrow-left"></i>',
         pauseOnDotsHover:true,
       });
+      
 })
+
