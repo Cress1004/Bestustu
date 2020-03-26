@@ -106,8 +106,9 @@
 
               </div>
               <div class="edus-content-item-content">
-                <% if @class_register %>
+                <% if !@class_register %>
                   <% @class_registers.each do |class_register| %>
+
                     <%= link_to class_register.description, class_register_path(class_register) %><br>
                   <% end %>
                 <% end %>
