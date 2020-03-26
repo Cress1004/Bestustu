@@ -1,5 +1,8 @@
 class ClassRegistersController < ApplicationController
   before_action :set_class_register, only: [:edit,:update,:show,:register,:select_tutors,:destroy]
+  before_action :require_student, only: [:new,:create,:edit,:update,:select_tutors,:destroy]
+  before_action :require_same_student, only: [:select_tutors,:destroy]
+  before_action :require_tutor, only: [:register]
 
   def new
     @class_register = ClassRegister.new
@@ -7,7 +10,7 @@ class ClassRegistersController < ApplicationController
 
   def create
     @class_register = ClassRegister.new(class_register_params)
-    @class_register.student = Student.first
+    @class_register.student = current_student
     if @class_register.save
       flash[:success] = "Successfully created class"
       redirect_to class_register_path(@class_register)
@@ -58,8 +61,38 @@ class ClassRegistersController < ApplicationController
 
   end
 
+  def tutor_selected
+    @tutor = Tutor.find(params[:id])
+    @class_register = ClassRegister.find(params[:class_id])
+    # Message for tutor after be selected
+    @message_tu = Message.new
+    # debugger
+    @message_tu.user = @tutor.user
+    @message_tu.message_content = "Nhận lớp: \"" + @class_register.description.to_s + "\" \n Môn học: "+ @class_register.subject.name.to_s + "\n Tên sinh viên: " + @class_register.student.user.name.to_s
+    @message_tu.student_id = @class_register.student.id
+
+    if @message_tu.save
+      flash[:success] = "Successfully send message to tutor"
+    else
+      flash[:danger] = "Cannot send email to tutor"
+    end
+
+    #Message for student after select tutor
+    @message_stu = Message.new
+    @message_stu.user = @class_register.student.user
+    @message_stu.message_content = "Lớp \"" + @class_register.description.to_s + "\" của bạn đã được gia sư nhận thành công\n" + "Liên hệ gia sư: " + @tutor.user.name.to_s + "\n " + "SDT: " + @tutor.user.phone
+    @message_stu.tutor_id = @tutor.id
+
+    if @message_stu.save
+      flash[:success] = "Successfully send message to student"
+    else
+      flash[:danger] = "Cannot send email to student"
+    end
+    @class_register.destroy
+    redirect_to show_user_info_path(current_user.id)
+  end
+
   def destroy
-    # set_article
     @class_register.destroy
     redirect_to class_registers_path
   end
