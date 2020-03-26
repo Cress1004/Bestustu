@@ -1,12 +1,21 @@
 <h1>Student registration</h1>
 
+<%= current_user.id %>
 <%= form_for @tutor do |f| %>
-
+<%= @tutor.id %>
 <p>
 
 <%= f.label :job %><br/>
 
 <%= f.text_field :job %>
+
+</p>
+
+<p>
+
+<%= f.label :work_place %><br/>
+
+<%= f.text_field :work_place %>
 
 </p>
 

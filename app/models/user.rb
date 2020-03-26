@@ -13,10 +13,19 @@ class User < ApplicationRecord
           :omniauthable, :omniauth_providers => [:facebook],
           :authentication_keys => [:username]
 
+  before_save { self.username = username.downcase }
 
-  validates_format_of :phone,
-                      :with => /\(?[0-9]{10}/,
-                      :message => "- Phone numbers must be 10 number characters."
+  validates :email, presence: true
+  # validates :username, presence: true,
+  #           length: { minimum: 4, maximum: 15 },
+  #           format: { with: /\A[a-zA-Z]+\z/,
+  #           message: "Username only allows letters" }
+  validates :name, presence: true
+
+#  validates :phone, presence: false,
+#            format: { with: /\(?[0-9]{10}/,
+#            message: "Phone numbers must be 10 number characters." }
+
 
    def self.new_with_session(params, session)
    super.tap do |user|

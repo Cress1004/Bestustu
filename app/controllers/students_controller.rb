@@ -7,8 +7,12 @@ class StudentsController < ApplicationController
         # render plain: params[:student].inspect
         @student = Student.new(student_params)
         @student.user = current_user
-        @student.save
-        redirect_to student_path(@student)
+        if @student.save
+          flash[:success] = "You are a student"
+          redirect_to student_path(@student)
+        else
+          render 'new'
+        end
     end
     def show
         @student = Student.find(params[:id])
@@ -26,10 +30,10 @@ class StudentsController < ApplicationController
         else
             render 'edit'
         end
-            
+
     end
     private
         def student_params
             params.require(:student).permit(:address, :grade)
         end
-end        
+end
