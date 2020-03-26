@@ -433,6 +433,10 @@ header{
                 }
                 .edus-content-item{
                     animation: user-nav-appear 1s;
+                    display: none;
+                }
+                .edus-content-item:nth-child(1){
+                    display: block;
                 }
                 @keyframes user-nav-appear {
                     from{
