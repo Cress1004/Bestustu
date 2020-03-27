@@ -1,25 +1,17 @@
 <h1>Student registration</h1>
 
 <%= form_for @student do |f| %>
-
 <p>
-
 <%= f.label :address %><br/>
-
 <%= f.text_field :address %>
-
+<span id="address_error"></span>
 </p>
 
 <p>
-
 <%= f.label :grade %><br/>
-
 <%= f.text_field :grade %>
-
 </p>
-
 <p>
-
 <%= f.submit %>
 
 </p>

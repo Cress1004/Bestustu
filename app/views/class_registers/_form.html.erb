@@ -7,7 +7,7 @@
       </div>
       <div class="">
         <%= f.text_area :description ,class: "form-control",placeholder: "", autofocus: true %><br/>
-        <span id="description_error"></span>
+        <small><span id="description_error"></span></small>
       </div>
     </div>
 
@@ -90,10 +90,10 @@
                   <h6><%= timesfree.day %></h6>
                   <ul>
           <% end %>
-                      <li>
-                          <%= check_box_tag "class_register[times_free_ids][]",timesfree.id,@class_register.times_free_ids.include?(timesfree.id), { id: "class_register_times_free_ids_#{timesfree.id}" } %>
-                          <%= label_tag "class_register[times_free_ids][#{timesfree.id}]",timesfree.free_time %>
-                      </li>
+          <li>
+              <%= check_box_tag "class_register[times_free_ids][]",timesfree.id,@class_register.times_free_ids.include?(timesfree.id), { id: "class_register_times_free_ids_#{timesfree.id}" } %>
+              <%= label_tag "class_register[times_free_ids][#{timesfree.id}]",timesfree.free_time %>
+          </li>
           <% if i%3 == 0 %>
                   </ul>
               </div>
@@ -133,6 +133,7 @@
       </div>
       <div class="">
         <%= f.text_area :class_content ,class: "form-control",placeholder: "" %><br/>
+          <small><span id="class_content_error"></span></small>
       </div>
     </div>
 
@@ -142,6 +143,7 @@
       </div>
       <div class="">
         <%= f.text_area :address ,class: "form-control",placeholder: "" %><br/>
+        <small><span id="address_error"></span></small>
       </div>
     </div>
 

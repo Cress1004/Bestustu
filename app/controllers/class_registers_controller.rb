@@ -1,6 +1,7 @@
 class ClassRegistersController < ApplicationController
   before_action :set_class_register, only: [:edit,:update,:show,:register,:select_tutors,:destroy]
 
+  # khi tao lop moi. neu user chua la hs thi redirect to new user
   def new
     @class_register = ClassRegister.new
   end
