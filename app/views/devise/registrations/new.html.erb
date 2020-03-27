@@ -1,6 +1,3 @@
-
-
-
 <div class="siup-container">
     <div class="siup-box">
         <div class="siup-area">
@@ -13,16 +10,19 @@
           <div class="field form-group">
             <%= f.label :username %><br />
             <%= f.text_field :username, autofocus: true, autocomplete:"user-name", class:"form-control" %>
+            <span id="username_error"></span>
            </div>
 
           <div class="field form-group">
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            <span id="email_error"></span>
           </div>
 
            <div class="field form-group">
             <%= f.label :phone %><br />
             <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form-control" %>
+              <span id="phone_error"></span>
           </div>
 
           <div class="field form-group">
@@ -43,11 +43,6 @@
             <%= render "devise/shared/links" %>
           </div>
         <% end %>
-
-
-
         </div>
     </div>
 </div>
-
- 

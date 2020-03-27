@@ -19,7 +19,7 @@ class User < ApplicationRecord
   #           length: { minimum: 4, maximum: 15 },
   #           format: { with: /\A[a-zA-Z]+\z/,
   #           message: "Username only allows letters" }
-  validates :name, presence: true
+  # validates :name, presence: true
 
 #  validates :phone, presence: false,
 #            format: { with: /\(?[0-9]{10}/,
