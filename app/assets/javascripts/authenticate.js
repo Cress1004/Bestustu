@@ -80,6 +80,10 @@ $(document).ready(function(){
      var description  = $.trim($('#class_register_description').val());
      var class_content  = $.trim($('#class_register_class_content').val());
      var address = $.trim($('#class_register_address').val());
+     // var subject = $.trim($('#class_register_subject_id').val());
+     // var location = $.trim($('#class_register_location').val());
+     // var salary = $.trim($('#class_register_salary').val());
+     // var num_student = $.trim($('#class_register_address').val());
      // description
      if (description.length < 10 || description.length > 400){
          $('#description_error').text('Length of description is between 10 and 400 charaters');

@@ -33,27 +33,9 @@
 
 <div class="stued-container">
     <div class="stued-area">
-        <div class="stued-header">      
+        <div class="stued-header">
             <h2>Chỉnh sửa thông tin cá nhân</h2>
         </div>
-        <%= form_for @student  do |f| %>
-            <div class="stued-content">
-                <div class="stued-content-block">
-                    <%= f.label :address %><br/>
-                    <%= f.text_field :address , class:'form-control' %>
-                </div>
-                <div class="stued-content-block">
-                    <%= f.label :grade %><br/>
-                    <%= f.text_field :grade , class:'form-control'%>
-                </div>
-            </div>
-            <div class = "map-area">
-                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.688968692136!2d105.84344031460468!3d21.00510138601124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac76e3624a59%3A0x4f3ae5ee12bfcc19!2zVGjGsCB2aeG7h24gVOG6oSBRdWFuZyBC4butdQ!5e0!3m2!1svi!2s!4v1584109839467!5m2!1svi!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-     
-            </div>
-          <%= f.submit class:'form-control btn btn-primary'%>
-        <% end %>    
-
+          <%= render 'form' %>
     </div>
 </div>
-
