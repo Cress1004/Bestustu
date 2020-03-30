@@ -13,7 +13,8 @@ $header_height:50px;
     font-family: sans-serif;
 }
 #root{
-    background-image: linear-gradient(150deg,rgb(245, 234, 235), rgb(245, 185, 206), rgb(245, 234, 235));
+    width: 100%;
+    background-image: linear-gradient(150deg,rgb(234, 243, 245), rgb(200, 233, 243), rgb(245, 234, 235));
     background-size: contain;
     // filter: brightness(2);
 }
@@ -432,6 +433,10 @@ header{
                 }
                 .edus-content-item{
                     animation: user-nav-appear 1s;
+                    display: none;
+                }
+                .edus-content-item:nth-child(1){
+                    display: block;
                 }
                 @keyframes user-nav-appear {
                     from{
