@@ -6,12 +6,20 @@ class Tutor < ApplicationRecord
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :class_registers
 
-  validates :job, presence: true,
-            length: { minimum: 3, maximum: 30 }
-  validates :work_place, presence: true,
-            length: { minimum: 3, maximum: 100 }
+  # validates :job, presence: true,
+  #           length: { minimum: 3, maximum: 30 }
+  # validates :work_place, presence: true,
+  #           length: { minimum: 3, maximum: 100 }
 #  validates :description,
 #            length: { minimum: 10, maximum: 300 }
 #  validates :achievement,
 #            length: { minimum: 10, maximum: 300 }
+
+  def self.search_by_location(params)
+    if params != ""
+      where("location_id = ?","#{params}")
+    else
+      where("location_id = ?","#{params}")
+    end
+  end
 end

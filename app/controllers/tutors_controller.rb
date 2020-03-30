@@ -17,10 +17,20 @@ class TutorsController < ApplicationController
   end
 
   def index
-    @tutors = Tutor.all.page(params[:page]).per(5)
     @users = User.all
     @Locations = Location.all
+    if (params[:tutor]) and (params[:tutor][:location_id])
+      @tutors = Tutor.search_by_location(params[:tutor][:location_id]).page(params[:page]).per(3)
+    else
+      @tutors = Tutor.all.page(params[:page]).per(3)
+    end
   end
+
+  # def index
+  #    @tutors = Tutor.all.page(params[:page]).per(5)
+  #    @users = User.all
+  #    @Locations = Location.all
+  #  end
 
   def edit
   end

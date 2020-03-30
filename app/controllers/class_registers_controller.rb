@@ -4,6 +4,7 @@ class ClassRegistersController < ApplicationController
   before_action :require_same_student, only: [:select_tutors,:destroy]
   before_action :require_tutor, only: [:register]
 
+  # khi tao lop moi. neu user chua la hs thi redirect to new user
   def new
     @class_register = ClassRegister.new
   end
