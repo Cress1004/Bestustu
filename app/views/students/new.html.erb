@@ -1,27 +1,8 @@
-<h1>Student registration</h1>
-
-<%= form_for @student do |f| %>
-
-<p>
-
-<%= f.label :address %><br/>
-
-<%= f.text_field :address %>
-
-</p>
-
-<p>
-
-<%= f.label :grade %><br/>
-
-<%= f.text_field :grade %>
-
-</p>
-
-<p>
-
-<%= f.submit %>
-
-</p>
-
-<% end %>
+<div class="stued-container">
+    <div class="stued-area">
+        <div class="stued-header">
+            <h2>Dang ki lam hoc sinh</h2>
+        </div>
+          <%= render 'form' %>
+    </div>
+</div>

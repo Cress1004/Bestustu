@@ -36,8 +36,10 @@
       <% end %>
 
         <div class="form-group">
-          <% if current_user.id = @user.id %>
-          <%= link_to 'Edit information', edit_tutor_path(@tutor) %>
+          <% if current_tutor %>
+            <%= link_to 'Edit information', edit_tutor_path(@tutor), class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to 'Register now', class: "btn btn-primary" %>
           <% end %>
         </div>
       <%= link_to "Back", :back %>

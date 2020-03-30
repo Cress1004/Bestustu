@@ -1,11 +1,13 @@
 <%= form_for @class_register do |f| %>
+<%# <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  class:"datetimepicker", id: "edit_user" }) do |f| %>  
 
     <div class="form-group row">
       <div class="control-label">
-        <%= f.label :description, "Description",class:"fit-right" %></br>
+        <%= f.label :description, "Description",class:"fit-right" %><br/>
       </div>
       <div class="">
-        <%= f.text_field :description ,class: "form-control",placeholder: "", autofocus: true %><br/>
+        <%= f.text_area :description ,class: "form-control",placeholder: "", autofocus: true %><br/>
+        <small><span id="description_error"></span></small>
       </div>
     </div>
 
@@ -69,7 +71,7 @@
 
     <div class="form-group row">
       <div class="control-label">
-        <%= f.label :salary, "Salary",class:"" %></br>
+        <%= f.label :salary, "Salary",class:"" %><br/>
       </div>
       <div class="">
         <%= f.text_field :salary ,class: "form-control",placeholder: "" %><br/>
@@ -88,10 +90,10 @@
                   <h6><%= timesfree.day %></h6>
                   <ul>
           <% end %>
-                      <li>
-                          <%= check_box_tag "class_register[times_free_ids][]",timesfree.id,@class_register.times_free_ids.include?(timesfree.id), { id: "class_register_times_free_ids_#{timesfree.id}" } %>
-                          <%= label_tag "class_register[times_free_ids][#{timesfree.id}]",timesfree.free_time %>
-                      </li>
+          <li>
+              <%= check_box_tag "class_register[times_free_ids][]",timesfree.id,@class_register.times_free_ids.include?(timesfree.id), { id: "class_register_times_free_ids_#{timesfree.id}" } %>
+              <%= label_tag "class_register[times_free_ids][#{timesfree.id}]",timesfree.free_time %>
+          </li>
           <% if i%3 == 0 %>
                   </ul>
               </div>
@@ -104,7 +106,7 @@
 
     <div class="form-group row">
       <div class="control-label">
-        <%= f.label :tutor_gender, "Giới tính gia sư",class:"" %></br>
+        <%= f.label :tutor_gender, "Giới tính gia sư",class:"" %><br/>
       </div>
       <div class="">
         <!-- <%= f.text_field :tutor_gender ,class: "form-control",placeholder: "" %><br/> -->
@@ -118,7 +120,7 @@
 
     <div class="form-group row">
       <div class="control-label">
-        <%= f.label :num_student, "Số học viên tham gia",class:"" %></br>
+        <%= f.label :num_student, "Số học viên tham gia",class:"" %><br/>
       </div>
       <div class="">
         <%= f.number_field :num_student ,class: "form-control",placeholder: "" %><br/>
@@ -127,19 +129,21 @@
 
     <div class="form-group row">
       <div class="control-label">
-        <%= f.label :class_content, "Chi tiết nội dung lớp học",class:"" %></br>
+        <%= f.label :class_content, "Chi tiết nội dung lớp học",class:"" %><br/>
       </div>
       <div class="">
-        <%= f.text_field :class_content ,class: "form-control",placeholder: "" %><br/>
+        <%= f.text_area :class_content ,class: "form-control",placeholder: "" %><br/>
+          <small><span id="class_content_error"></span></small>
       </div>
     </div>
 
     <div class="form-group row">
       <div class="control-label">
-        <%= f.label :address, "Địa chỉ chi tiết",class:"" %></br>
+        <%= f.label :address, "Địa chỉ chi tiết",class:"" %><br/>
       </div>
       <div class="">
-        <%= f.text_field :address ,class: "form-control",placeholder: "" %><br/>
+        <%= f.text_area :address ,class: "form-control",placeholder: "" %><br/>
+        <small><span id="address_error"></span></small>
       </div>
     </div>
 

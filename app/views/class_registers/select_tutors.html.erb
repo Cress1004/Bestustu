@@ -29,6 +29,13 @@
             <div class="card-body">
               <h4 class="card-title"><%= link_to tutor.user.name, tutor_path(tutor) %></h4>
               <p class="card-text"><%= tutor.description %></p>
+              <%= form_with(url: tutor_selected_path(tutor), method: "get",local: true) do %>
+                <!-- <label for="tutor_id"></label>
+                <input id="tutor_id" name="tutor_id" type="text" value= "<%= tutor.id %>" /> -->
+                <label for="class_id"></label>
+                <input id="class_id" name="class_id" style="display: none" type="text" value= "<%= @class_register.id %>" />
+                <%= submit_tag("Chọn", class: "btn btn-primary") %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -37,6 +44,6 @@
       <% end %>
       <% index = index+1 %>
     <% end %>
-
+    <%= params.inspect %>
 
 </div>

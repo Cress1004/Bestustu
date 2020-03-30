@@ -4,56 +4,34 @@
     <title>Bestustu</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
     <!-- navigation bar -->
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/extra_navbar' %>
-    <%= render 'layouts/messages' %>
     <!-- Notice for devise authenticate user -->
-    <p class = "notice" ><%= notice %> </p>
-    <p class = "alert" ><%= alert %></p>
+  <!--  <p class = "notice" ><%= notice %> </p>
+    <p class = "alert " ><%= alert %></p> -->
 
     <%= yield %>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> %>
     <script src="https://kit.fontawesome.com/37a232b20a.js" crossorigin="anonymous"></script>
-    <script>
-      console.log("hellooo");
-      var slideIndex = 1;
-      showSlides(slideIndex);
-
-      function plusSlides(n) {
-      showSlides(slideIndex += n);
-      }
-
-      function currentSlide(n) {
-      showSlides(slideIndex = n);
-      }
-
-      function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("edus-content-item");
-      // var dots = document.getElementsByClassName("dot");
-      if (n > slides.length) {slideIndex = 1}    
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";  
-      }
-      // for (i = 0; i < dots.length; i++) {
-      //     dots[i].className = dots[i].className.replace(" active", "");
-      // }
-      slides[slideIndex-1].style.display = "block";  
-      // dots[slideIndex-1].className += " active";
-      }
-      console.log("hellooo");
-    </script>
-
+    
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script> 
+   <!--   <%= javascript_include_tag 'nav_left' %>
+    <%= javascript_include_tag 'authenticate', 'data-turbolinks-track': 'reload'%>
+    <%= javascript_include_tag 'home', 'data-turbolinks-track': 'reload'%>-->
   </body>
 </html>

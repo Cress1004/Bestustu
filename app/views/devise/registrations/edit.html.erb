@@ -15,7 +15,7 @@
           <% end %>
         </div>
         <div class="edus-area-show edus-content-item">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  class:"datetimepicker"  }) do |f| %>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  class:"datetimepicker" }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
 
@@ -30,16 +30,19 @@
             <div class="field form-group">
               <%= f.label :username %><br />
               <%= f.text_field :username, autofocus: true, autocomplete: "username",class:"form-control" %>
+              <span id="username_error"></span>
             </div>
 
             <div class="field form-group">
               <%= f.label :name %><br />
               <%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control" %>
+              <span id="name_error"></span>
             </div>
 
             <div class="field form-group">
               <%= f.label :phone %><br />
               <%= f.text_field :phone, autofocus: true, autocomplete: "phone",class:"form-control" %>
+              <span id="phone_error"></span>
             </div>
 
             <div class="field form-group">
