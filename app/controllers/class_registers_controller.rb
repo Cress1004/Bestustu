@@ -8,7 +8,12 @@ class ClassRegistersController < ApplicationController
 
   def create
     @class_register = ClassRegister.new(class_register_params)
-    @class_register.student = Student.first
+    if(current_student)
+      @class_register.student = current_student
+    else
+      flash[:danger] = "You must be a student to register class"
+      redirect_to new_student_path
+    end
     if @class_register.save
       flash[:success] = "Successfully created class"
       redirect_to class_register_path(@class_register)

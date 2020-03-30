@@ -14,4 +14,12 @@ class Tutor < ApplicationRecord
 #            length: { minimum: 10, maximum: 300 }
 #  validates :achievement,
 #            length: { minimum: 10, maximum: 300 }
+
+  def self.search_by_location(params)
+    if params != ""
+      where("location_id = ?","#{params}")
+    else
+      where("location_id = ?","#{params}")
+    end
+  end
 end

@@ -26,6 +26,5 @@ class ClassRegister < ApplicationRecord
         where("subject_id = ?","#{search_2}")
       end
     end
-
   end
 end
