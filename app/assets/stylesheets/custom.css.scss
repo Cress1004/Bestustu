@@ -12,7 +12,11 @@ $header_height:50px;
     box-sizing: border-box;
     font-family: sans-serif;
 }
+body{
+    overflow-x: hidden;
+}
 #root{
+    
     width: 100%;
     background-image: linear-gradient(150deg,rgb(234, 243, 245), rgb(200, 233, 243), rgb(245, 234, 235));
     background-size: contain;
@@ -20,8 +24,7 @@ $header_height:50px;
 }
 
 header{
-
-    overflow: hidden;
+    
     background-color: #1DA1F2;
     height: $header_height;
     display: flex;
@@ -155,8 +158,6 @@ header{
                     z-index: 2;
                 }
                 li.mactive > a{
-                    // background-color: white;
-                    // color: white;
                     border-bottom: white solid 3px ;
                     z-index: 1;
                     animation: borderEntrance 1s;
@@ -173,29 +174,67 @@ header{
             height: 0.6*$header_height;
             margin: 0.2*$header_height;
             justify-content: space-evenly;
-            .sign-in-area{
-                // width: 35%;
-                text-decoration: none;
+            .sign-in-area-father{
+                position: relative;
+                width: 50%;
                 height: 100%;
-                // background-color: rgb(0, 255, 21);
-                // margin-right: 0.5*$header_height;
-                .sign-in-header{
-                    width: 100%;
-                    height: 100%;
-                    background-color: rgb(255, 255, 255);
-                    border-radius: 5px;
+                .sign-in-area:nth-child(1){
+                    color: var(--blue);
                     cursor: pointer;
-                    // display: flex;
-                    line-height: $header_height*0.6;
-                    padding: 0 5px 0 5px;
-                    font-size: 0.9rem;
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    text-decoration: none;
+                    height: 100%;
+                    .sign-in-header{
+                        border-radius: 5px;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgb(255, 255, 255);
+                        line-height: $header_height*0.6;
+                        padding: 0 5px 0 5px;
+                        font-size: 0.9rem;
+                    }
                 }
-                .sign-in-header:hover{
-                    background-color: rgb(18, 17, 126);
-                    color: white;
+                .sign-in-area:nth-child(2), .sign-in-area:nth-child(3){
+                    min-width: 10rem;
+                    box-shadow: 7px 4px 8px 0px rgba(150,142,150,1);
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    text-decoration: none;
+                    height: 100%;
+                    animation: submenu-display 1s;
+                    .sign-in-header{
+                        
+                        // z-index: 2;
+                        // width: 100%;
+                        height: 100%;
+                        background-color: rgb(240, 235, 235);
+                        
+                        line-height: $header_height*0.6;
+                        padding: 0 5px 0 5px;
+                        font-size: 0.9rem;
+                    }
+                    .sign-in-header:hover{
+                        background-color: rgb(18, 17, 126);
+                        color: white;
+                    }
+                }
+                .sign-in-area:nth-child(3){
+                    top: 200%;
                 }
 
             }
+            .sign-in-area-father:hover .sign-in-area:nth-child(2){
+                display: block;
+            } 
+            .sign-in-area-father:hover .sign-in-area:nth-child(3){
+                display: block;
+            } 
+            
             .sign-up-area{
                 text-decoration: none;
                 // width: 35%;
@@ -500,5 +539,42 @@ header{
 
 .show-avatar-size{
   height: 50px;
-  weight: 50px;
+  width: 50px;
+}
+
+
+.extra-navbar{
+    width: 100%;
+    height: $header_height;
+    display: flex;
+    padding: 0 8rem;
+    ul.extra-navbar__item{
+        height: $header_height;
+        li{
+            height: $header_height;
+            float: left;
+            list-style: none;
+            a{
+                height: $header_height;
+                display: flex;
+                text-decoration: none;
+                align-items: center;
+                justify-content: space-between;
+                color: rgb(92, 91, 91);
+                padding: 0 1rem;
+                border-bottom: 2px solid transparent;
+                h2{
+                    font-size: 1rem;
+                    margin: 0;
+                }
+                i{
+                    margin-right: 0.7rem;
+                }
+            }
+            a:hover{
+                color: #1DA1F2;
+                border-bottom: 2px solid #1DA1F2;
+            }
+        }
+    }
 }
