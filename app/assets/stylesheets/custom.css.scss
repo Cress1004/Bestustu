@@ -135,7 +135,7 @@ header{
                         li{
                             list-style: none;
                             a{
-                                border-top: solid white 3px;
+                                border-top: solid white 2px;
                                 width: 200px;
                             }
                         }
@@ -335,22 +335,22 @@ header{
     // background-size: cover;
     overflow: hidden;
     .edus-box{
-        width: 90vw;
+        width: 80vw;
         // height: 90vh;
         background-color: rgb(255, 255, 255);
         margin: 5vh auto;
-        border: solid 2px rgb(165, 159, 159);
-        border-radius: 10px;
-        -webkit-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
-        -moz-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
-        box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
+        // border: solid 2px rgb(165, 159, 159);
+        // border-radius: 10px;
+        // -webkit-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
+        // -moz-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 15px 1px rgba(163, 162, 162, 0.75);
         .edus-background{
             height: 45vh;
-            background-image: url("images/sign-up-background");
-            background-size: cover;
+            background-image: url("images/stued-background");
+            // background-size: cover;
             position: relative;
-            border: solid gray 1px;
-            border-radius: 1%;
+            border: double gray 1px;
+            // border-radius: 1%;
             .edus-ava{
                 position: absolute;
                 width: 150px;
@@ -365,35 +365,20 @@ header{
             }
             .edus-edit{
                 position: absolute;
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-gap: 1em;
                 right: 5%;
-                bottom: 10%;
-                a{
-                    padding: 10px;
-                    background-color: #0069D9;
-                    display: block;
-                    text-decoration: none;
-                    color: white;
-                    border: double 2px white;
-                    border-radius: 10px;
-
-                }
-                a:hover{
-                    background-color: white;
-                    color:#0069D9;
-                }
+                top: 105%;
             }
         }
 
         .edus-nav-and-content{
             display: flex;
             justify-content: space-between;
-            margin: 100px 20px;
+            margin: 5rem 20px;
+            min-height: 400px;
+            padding: 2rem 2rem;
             .edus-nav{
 
-                width: 20%;
+                width: fit-content;
                 height: fit-content;
                 // background-color: tomato;
                 display: flex;
@@ -410,28 +395,43 @@ header{
                     height: 50px;
                     line-height: 50px;
                     border-bottom: gray solid 2px;
-                    .fa-right{
-                        position: absolute;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        right: 10px;
-                    }
                 }
-
             }
             .edus-content{
-                width: 78%;
+                width: 70%;
+                // border: 0.4px solid rgb(206, 204, 204);
+                // padding: 1rem 0;
                 .edus-area{
-                    width: 80%;
-                    margin: 0 auto;
+                    // width: 80%;
+                    // padding: 1rem 1rem;
                     .edus-header{
-                        h2{
-                            margin-top: 10px;
-                            font-weight: 700;
-                            text-align: center;
-                            color: rgb(72, 185, 230);
+                        width: fit-content;
+                        height: $header_height;
+                        line-height: $header_height;
+                        background-color: #1DA1F2;
+                        color: white;
+                        // font-size: 1.2rem;
+                        padding: 0 1em ;
+                    }
+                    .edus-show-info{
+                        display:flex;
+                        // grid-template-columns: repeat(2, 1fr);
+                        // grid-gap: 1em;
+                        flex-direction: column;
+                        justify-content: start;
+                        border-top: 2px solid #1DA1F2;
+                        padding: 20px 1em;
+                        .edus-show-info-item{
+                           display: flex;
+                           div:nth-child(1){
+                               color: #1DA1F2;
+                               margin-right: 1rem;
+                           }
+
                         }
                     }
+
+                    //Edit user page
                     form{
                         .form-grid{
                             display: grid;
@@ -439,34 +439,34 @@ header{
                             grid-gap: 1em;
                             .field{
                                 font-size: 0.8rem;
-
                             }
                         }
 
                     }
-                    // .field{
-                    //     input{
-                    //         background-color: rgb(255, 255, 255);
-                    //     }
-                    // }
+                    .field{
+                        input{
+                            background-color: rgb(255, 255, 255);
+                        }
+                    }
 
 
                 }
                 .edus-content-item-style{
                     width: 100%;
                     height: 100%;
+                    // padding: 1rem 1rem;
                     // background-color: red;
                     .edus-content-item-header{
-                        width: 35%;
+                        width: fit-content;
                         height: $header_height;
                         line-height: $header_height;
-                        background-color: #069D86;
+                        background-color: #1DA1F2;
                         color: white;
                         // font-size: 1.2rem;
                         padding: 0 1em ;
                     }
                     .edus-content-item-content{
-                        border-top: 2px solid #069D86;
+                        border-top: 2px solid #1DA1F2;
                         padding: 20px 1em;
                     }
                 }
@@ -516,22 +516,9 @@ header{
         }
 
     }
-
-
-
 }
 
-.edus-show-info{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1em;
-    .edus-show-info-content{
-        background-color: rgb(255, 255, 255);
-        padding: 10px;
-        border: dashed 2px #1DA1F2;
-        color: #1DA1F2;
-    }
-}
+
 .avatar-size{
   height: 140px;
   width: 140px;

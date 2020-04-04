@@ -3,3 +3,29 @@
     background-color: #cce5ff;
     border-color: #b8daff;
 }
+
+.navbar-active{
+    border-bottom: 2px solid white;
+}
+
+.user-navbar-active{
+    background-color: #1DA1F2;
+    color: white;
+}
+
+.mbtn-primary{
+        padding: 10px;
+        background-color: #0069D9;
+        display: inline-block;
+        text-decoration: none;
+        color: white;
+        border: solid 2px white;
+        border-radius: 10px;
+        line-height: 1.5;
+}
+.mbtn-primary:hover{
+    background-color: white;
+    color:#0069D9;
+    text-decoration: none;
+    border: solid 2px #0069D9;
+}

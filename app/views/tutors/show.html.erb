@@ -1,48 +1,107 @@
+<div class="stush-container">
+    <div class="stush-area">
+        <div class="stush-header">
+            <div class="stush-header-1">
+                
+            </div>
+            <div class="stush-header-2">
+                <%# <div class="stush-ava"> %>
+                    <%= image_tag current_user.image.to_s , class: "stush-ava"%>
+                <%# </div> %>
+                <div class="stush-header-2-content">
+                    <h2> <%= @tutor.user.username %> </h2>
+                    <h3> 
+                        &ensp;
+                        <%= link_to edit_tutor_path(@tutor) do %>
+                            <i class="fas fa-edit"></i>
+                        <% end %>
+                        </h3>
 
-<div class="edus-container">
-  <div class="edus-box">
-    <div class="edus-background">
-      <div class="edus-ava">
-        <%= image_tag @user.image.to_s, :class => "avatar-size rounded-circle" %>
-      </div>
-    </div>
-    <div class="edus-area">
-      <div class="edus-header">
-        <h2><%= @user.name %>'s Information</h2>
-      </div>
-      <% if @tutor %>
-      <div class="form-group">
-        <h5>Job:</h5>
-        <%= @tutor.job %>
-      </div>
-      <div class="form-group">
-        <h5>Description:</h5>
-        <%= @tutor.description %>
-      </div>
-      <div class="form-group">
-        <h5>Achievement:</h5>
-        <%= @tutor.achievement %>
-      </div>
-      <div class="form-group">
-        <h5>Point:</h5>
-        <%= @tutor.point %>
-      </div>
-      <div class="form-group">
-        <h5>Location:</h5>
-        <%= @location.city %>
-      </div>
-      <% else %>
-        <h3> can't find this tutor </h3>
-      <% end %>
-
-        <div class="form-group">
-          <% if current_tutor %>
-            <%= link_to 'Edit information', edit_tutor_path(@tutor), class: "btn btn-primary" %>
-          <% else %>
-            <%= link_to 'Register now', class: "btn btn-primary" %>
-          <% end %>
+                    <%# <div class="edus-edit"> %>
+                        <%= link_to 'Edit your profile',  edit_tutor_path , class: 'mbtn-primary' %>
+                    <%# </div> %>
+                   <%= link_to 'Share',  edit_user_registration_path , class: 'mbtn-primary' %>
+                </div>
+            </div>
+            <div class="stush-header-3">
+                <div class="stush-header-3-left">
+                    <div>
+                        <div class = "icon-custom">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <span>
+                            &ensp; Học viên
+                        </span>
+                    </div>
+                                        <div>
+                        <div class = "icon-custom">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <span>
+                            &ensp; B point
+                        </span>
+                    </div>
+                    
+                    
+                </div>
+                <div class="stush-header-3-center">
+                    <div class="stush-header-3-center-sub">
+                        <div class="sub-first-line">0</div>
+                        Lớp đã tạo
+                    </div>
+                    <div class="stush-header-3-center-sub">
+                        <div class="sub-first-line">0</div>
+                        Lớp đã tạo
+                    </div>
+                    <div class="stush-header-3-center-sub">
+                        <div class="sub-first-line">0</div>
+                        Lớp đã tạo
+                    </div>
+                    <div class="stush-header-3-center-sub">
+                        <div class="sub-first-line">0</div>
+                        Lớp đã tạo
+                    </div>
+                </div>
+                <div class="stush-header-3-right">
+                    <button class=" mbtn-primary">Đăng yêu cầu tìm giáo viên</button>
+                </div>
+            </div>
         </div>
-      <%= link_to "Back", :back %>
+        <div class="stush-content">
+            <div class="stush-content-header">
+                Thông tin gia sư
+            </div>
+            Sinh viên tại đại học bách khoa Hà Nội
+        </div>
+        <div class="stush-content">
+            <div class="stush-content-header">
+                Lịch dạy gia sư
+            </div>
+              <div class="checkbox-area">
+        <div class="checkbox-grid">
+        <% i = 0 %>
+        <% TimesFree.all.each do |timesfree| %>
+          <% i = i+1 %>
+          <% if i%3 == 1 %>
+              <div class="row-calendar-check">
+                  <h6><%= timesfree.day %></h6>
+                  <ul>
+          <% end %>
+                      <li>
+                          <% if current_tutor.times_frees.include? timesfree %>
+                            <div class="label-for-show-active"> <%= timesfree.free_time %></div>
+                          <% else %>
+                            <div class="label-for-show"> <%= timesfree.free_time %></div>
+                          <% end %>
+                      </li>
+          <% if i%3 == 0 %>
+                  </ul>
+              </div>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+        </div>
+
     </div>
-  </div>
 </div>
