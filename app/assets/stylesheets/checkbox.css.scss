@@ -12,6 +12,7 @@ $checkbox-height: 50px;
 
 .checkbox-area{
     width: 90%;
+    margin: 0 auto;
     .checkbox-grid{
         width: 100%;
         display: grid;
@@ -36,8 +37,11 @@ $checkbox-height: 50px;
                         text-align: center;
                         width: 100%;
                         height: $checkbox-height;
-                        border: 1px solid gray;
-                        background-color: red;
+                        border: double 1px white;
+                        background-color: rgb(124, 122, 122);
+                        border-radius: 10px;
+                        cursor: pointer;
+                        color: white;
                     }
                     input[type=checkbox] + label{
                         display: block;
@@ -45,12 +49,20 @@ $checkbox-height: 50px;
                     input[type=checkbox]{
                         display: none;
                     }
-                    input[type=checkbox] + label:before{
-
+                    input[type=checkbox] + label:hover{
+                        filter: brightness(1.2);
                     }
                     input[type=checkbox]:checked + label{
-                        background-color: green;
-                        color: yellow;
+                        background-color: #1DA1F2;
+                        animation: checkbox-animation 1s;
+                    }
+                    @keyframes checkbox-animation {
+                        from{
+                            filter: hue-rotate(100deg);
+                        }
+                        to{
+                            filter: hue-rotate(0deg);
+                        }
                     }
                 }
             }
@@ -65,8 +77,10 @@ $checkbox-height: 50px;
     text-align: center;
     width: 100%;
     height: $checkbox-height;
-    border: 1px solid gray;
-    background-color: green;
+    border: double 1px white;
+    background-color: #1DA1F2;
+    border-radius: 10px;
+    color: white;
 }
 
 .label-for-show{
@@ -74,6 +88,8 @@ $checkbox-height: 50px;
     text-align: center;
     width: 100%;
     height: $checkbox-height;
-    border: 1px solid gray;
-    background-color: red;
+    border: double 1px white;
+    background-color: rgb(124, 122, 122);
+    border-radius: 10px;
+    color: white;
 }

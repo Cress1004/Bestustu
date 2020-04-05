@@ -29,3 +29,16 @@
     text-decoration: none;
     border: solid 2px #0069D9;
 }
+
+.view-header{
+    width: 100%;
+    border-bottom: 1px solid #1DA1F2;
+    background-color: #f7f7f7;
+    span{
+        background-color: #1DA1F2;
+        color: white;
+        padding: 0.5rem 1rem;
+        display: inline-block;
+    }
+    margin: 1rem 0;
+}

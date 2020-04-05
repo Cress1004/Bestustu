@@ -1,5 +1,8 @@
 
 <div id="show-main">
+  <div class="view-header">
+    <span>Class list</span>
+  </div>
   <!-- Filter for location and subject -->
   <%= form_tag class_registers_path, :method => 'get' do %>
     <%= collection_select :class_register, :location_id, Location.all, :id, :city, prompt: "Chọn địa điểm"%>
@@ -12,20 +15,22 @@
   <div id="class-show-head">
 
     <hr class="solid">
-    <div id="left-element">
-      <!-- <img src="images/maxresdefault.jpg" class="float-left img-responsive"> -->
-      <%= image_tag("images/MiyaSuzuhime.jpg", class:"img-responsive") %>
-    </div>
+    <div class="class-element-container">
+      <div id="left-element">
+        <!-- <img src="images/maxresdefault.jpg" class="float-left img-responsive"> -->
+        <%= image_tag("images/MiyaSuzuhime.jpg", class:"img-responsive") %>
+      </div>
 
-    <div id="front-element">
-      <h5 style="padding:5px;"><%=link_to class_register.description, class_register_path(class_register)%></h5></br>
-      <%= class_register.class_content %>
-    </div>
+      <div id="front-element">
+        <h5 style="padding:5px;"><%=link_to class_register.description, class_register_path(class_register)%></h5><br/>
+        <p><%= class_register.class_content %></P>
+        
+      </div>
 
-    <div id="right-element">
-      <button class="btn btn-primary " %>Đề nghị dạy</button>
+      <div id="right-element">
+        <button class="mbtn-primary " %>Đề nghị dạy</button>
+      </div>
     </div>
-
   </div>
   <% end %>
   <div class="center-paginate">

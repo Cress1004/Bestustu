@@ -1,4 +1,4 @@
-
+<!--
 <div id="show-main">
     <div id="class-show-head">
       <h5 style="padding:5px;"><%= @class_register.description %></h5>
@@ -20,14 +20,14 @@
       <div id="right-element">
         <% if current_tutor %>
           <%= form_with(url: register_path(@class_register), method: "patch",local: true) do %>
-            <%= submit_tag("Đăng ký ngay", class: "btn btn-primary") %>
+            <%= submit_tag("Đăng ký ngay", class: "mbtn-primary") %>
           <% end %>
         <% end %>
         <% if current_student == @class_register.student %>
-          <%= link_to "Những giáo viên đăng ký", select_tutors_path(@class_register), class:'btn btn-primary' %>
+          <%= link_to "Những giáo viên đăng ký", select_tutors_path(@class_register), class:'mbtn-primary' %>
           <%= link_to "Xóa lớp", class_register_path(@class_register), method: :delete,
                   data: { confirm: "Are you sure you want to delete the class?"},
-                  class: "btn btn-xs btn-danger" %>
+                  class: "mbtn-primary" %>
         <% end %>
         <br>
         <p>Số gia sư đăng ký: <%= @class_register.tutors.count %>/6</p>
@@ -45,35 +45,204 @@
       <h5>Lịch học dự kiến (có thể thỏa thuận)</h5>
       <hr class="solid">
       <div class="checkbox-form">
-      <div class="checkbox-area">
-        <div class="checkbox-grid">
-        <% i = 0 %>
-        <% TimesFree.all.each do |timesfree| %>
-          <% i = i+1 %>
-          <% if i%3 == 1 %>
-              <div class="row-calendar-check">
-                  <h6><%= timesfree.day %></h6>
-                  <ul>
+        <div class="checkbox-area">
+          <div class="checkbox-grid">
+          <% i = 0 %>
+          <% TimesFree.all.each do |timesfree| %>
+            <% i = i+1 %>
+            <% if i%3 == 1 %>
+                <div class="row-calendar-check">
+                    <h6><%= timesfree.day %></h6>
+                    <ul>
+            <% end %>
+                        <li>
+                            <% if @class_register.times_frees.include? timesfree %>
+                              <div class="label-for-show-active"> <%= timesfree.free_time %></div>
+                            <% else %>
+                              <div class="label-for-show"> <%= timesfree.free_time %></div>
+                            <% end %>
+                        </li>
+            <% if i%3 == 0 %>
+                    </ul>
+                </div>
+            <% end %>
           <% end %>
-                      <li>
-                          <% if @class_register.times_frees.include? timesfree %>
-                            <div class="label-for-show-active"> <%= timesfree.free_time %></div>
-                          <% else %>
-                            <div class="label-for-show"> <%= timesfree.free_time %></div>
-                          <% end %>
-                      </li>
-          <% if i%3 == 0 %>
-                  </ul>
-              </div>
-          <% end %>
-        <% end %>
+          </div>
         </div>
       </div>
-      </div>
-      <%= link_to "Sửa thông tin lớp học", edit_class_register_path(@class_register), class: "btn btn-primary " %>
-      <%= link_to "Tạo lớp học", new_class_register_path, class:"btn btn-primary" %>
+      <%= link_to "Sửa thông tin lớp học", edit_class_register_path(@class_register), class: "mbtn-primary " %>
+      <%= link_to "Tạo lớp học", new_class_register_path, class:"mbtn-primary" %>
       <%= link_to "Xóa lớp học", class_register_path(@class_register), method: :delete,
                   data: { confirm: "Are you sure you want to delete this class?"},
-                  class: "btn btn-xs btn-danger" %>
+                  class: "mbtn-primary" %>
     </div>
+</div>>
+
+<!-->
+<div class="class-sh-container">
+  <div class="class-sh-1">
+    <div class="class-sh-1-header">
+      <div class="class-sh-1-header-first">
+        <i class="fa fa-check-circle"></i>
+        <h2>
+          <%= @class_register.description %>
+        </h2>
+      </div>
+      <div class="class-sh-1-header-second">
+        <div>
+          <i class="fa fa-user-o"></i>
+          CSKH Loc
+        </div>
+        <div>
+          <i class="fa fa-calendar"></i>
+          02.04.2020 - 11:09
+        </div>
+        <div>
+            Mã số lớp :
+        </div>
+      </div>
+    </div>
+    
+    <div class="class-sh-1-content">
+      <div>
+        <div>
+          <i class="fa fa-bookmark"></i>
+          <p>
+            Trạng thái: <%= @class_register.class_status %>
+          </p>
+        </div>
+        <div>
+          <i class="fa fa-book"></i>
+          <p>
+            Môn học:   <%= @class_register.subject.name%>
+          </p>
+        </div>
+        <div>
+          <i class="fa fa-briefcase"></i>
+          <p>
+            Hình thức học: Online
+          </p>
+        </div>
+        <div>
+          <i class="fa fa-map-marker"></i>
+          <p>
+            Địa chỉ: <%= @class_register.location.city %>
+          </p>
+        </div>
+      </div>
+
+
+      <div>
+          <div>
+            <i class="fa fa-venus-mars"></i>
+            <p>
+              Tìm gia sư: <%= @class_register.tutor_gender if @class_register.tutor_gender %>
+            </p>
+          </div>
+          <div>
+            <i class="fa fa-user-o"></i>
+            <p>
+              Số học viên:   <%= @class_register.num_student if @class_register.num_student%>
+            </p>
+          </div>
+          <div>
+            <i class="fa fa-book"></i>
+            <p>
+              Thời lượng: Tuần  <%= @class_register.lessons_week %> buổi (<%= @class_register.hours_lesson %> giờ)
+            </p>
+          </div>
+          <div>
+            <i class="fa fa-money"></i>
+            <p>
+              Học phí 1 buổi: <%= @class_register.salary %>
+            </p>
+          </div>
+        </div>
+
+        <div>
+      <div>
+        <p>
+          Phí nhận lớp: 600.00vnd
+        </p>
+      </div>
+      <div>
+        <p>
+          ( Trả phí sau )
+        </p>
+      </div>
+      <div>
+        <% if current_tutor %>
+            <%= form_with(url: register_path(@class_register), method: "patch",local: true) do %>
+              <%= submit_tag("Đăng ký ngay", class: "mbtn-primary") %>
+            <% end %>
+          <% end %>
+          <% if current_student == @class_register.student %>
+            <%= link_to "Những giáo viên đăng ký", select_tutors_path(@class_register), class:'mbtn-primary' %>
+            <%= link_to "Xóa lớp", class_register_path(@class_register), method: :delete,
+                    data: { confirm: "Are you sure you want to delete the class?"},
+                    class: "mbtn-primary" %>
+          <% end %>
+      </div>
+      <div>
+        <p>Số gia sư đăng ký: <%= @class_register.tutors.count %>/6</p>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-sh-2">
+    <div class="class-sh-2-item">
+      <div class="class-sh-2-header">
+        <i class="fa fa-quote-right"></i>
+        <h2>Class 's description</h2>
+      </div>
+      <div class="class-sh-2-content">
+        <p><%= @class_register.class_content %></p>
+      </div>
+    </div>
+    <div class="class-sh-2-item">
+      <div class="class-sh-2-header">
+        <i class="fa fa-calendar"></i>
+        <h2>Class 's schedule</h2>
+      </div>
+      <div class="class-sh-2-content">
+        <div class="checkbox-area">
+          <div class="checkbox-grid">
+          <% i = 0 %>
+          <% TimesFree.all.each do |timesfree| %>
+            <% i = i+1 %>
+            <% if i%3 == 1 %>
+                <div class="row-calendar-check">
+                    <h6><%= timesfree.day %></h6>
+                    <ul>
+            <% end %>
+                        <li>
+                            <% if @class_register.times_frees.include? timesfree %>
+                              <div class="label-for-show-active"> <%= timesfree.free_time %></div>
+                            <% else %>
+                              <div class="label-for-show"> <%= timesfree.free_time %></div>
+                            <% end %>
+                        </li>
+            <% if i%3 == 0 %>
+                    </ul>
+                </div>
+            <% end %>
+          <% end %>
+          </div>
+        </div>
+
+        <%= link_to "Sửa thông tin lớp học", edit_class_register_path(@class_register), class: "mbtn-primary " %>
+        <%= link_to "Share", edit_class_register_path(@class_register), class: "mbtn-primary " %>
+        <%= link_to "Tạo lớp học", new_class_register_path, class:"mbtn-primary" %>
+        <%= link_to "Xóa lớp học", class_register_path(@class_register), method: :delete,
+                    data: { confirm: "Are you sure you want to delete this class?"},
+                    class: "mbtn-primary" %>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+    
+
+  
