@@ -34,11 +34,32 @@
           <%= f.label :location_id, "Location" %>
           <%= f.collection_select(:location_id, Location.all, :id, :city) %>
         </div>
-        <div class="actions">
-          <%= f.submit "Update", class:"btn btn-danger" %>
+        <div class="checkbox-area">
+          <div class="checkbox-grid">
+            <% i = 0 %>
+            <% TimesFree.all.each do |timesfree| %>
+              <% i = i+1 %>
+              <% if i%3 == 1 %>
+                  <div class="row-calendar-check">
+                      <h6><%= timesfree.day %></h6>
+                      <ul>
+              <% end %>
+              <li>
+                  <%= check_box_tag "tutor[times_free_ids][]",timesfree.id,@tutor.times_free_ids.include?(timesfree.id), { id: "tutor_times_free_ids_#{timesfree.id}" } %>
+                  <%= label_tag "tutor[times_free_ids][#{timesfree.id}]",timesfree.free_time %>
+              </li>
+              <% if i%3 == 0 %>
+                      </ul>
+                  </div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Update", class:"btn btn-danger" %>
+          </div>
+          <% end %>
         </div>
         <% end %>
-      <% end %>
       <%= link_to "Back", :back %>
     </div>
   </div>

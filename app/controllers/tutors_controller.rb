@@ -56,7 +56,7 @@ class TutorsController < ApplicationController
   end
 
   def tutor_params
-    params.require(:tutor).permit(:job, :description, :achievement, :location_id, :work_place)
+    params.require(:tutor).permit(:job, :description, :achievement, :location_id, :work_place,times_free_ids:[])
   end
 
 end

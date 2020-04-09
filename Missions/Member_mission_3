@@ -1,0 +1,12 @@
+- Thêm hết các link vào những nút còn thiếu (Huy)
+- Hoàn thiện phần front end (Lộc)
+- Config để 1 user chỉ là hs hoặc là gs (Huy)
+- Thêm vào form đăng ký gv phần upload ảnh đại diện là bắt buộc, đối với hs nếu k có ảnh đại diện thì
+cần đặt 1 ảnh cố định cho họ (Thanh)
+- Thêm tính năng tìm kiếm lớp học và giáo viên (Huy)
+- Thêm chức năng trừ tiền (Huy)
+- Thêm dữ liệu + Deploy to production (Thanh)
+(Về việc thêm dữ liệu cần làm 1 cách cẩn thận, mỗi người sẽ tự tạo những tài khoản của riêng mình để test)
+Thanh(Tạo các tài khoản của students)
+Huy(Tạo những tài khoản của tutors)
+Lộc( Tạo 1 số tutors 1 số students)
