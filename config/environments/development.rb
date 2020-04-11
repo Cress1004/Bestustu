@@ -55,6 +55,7 @@ Rails.application.configure do
     config.action_mailer.default_url_options = { :host => 'https://bestustu.herokuapp.com/'}
     config.action_mailer.perform_deliveries = true
     ActionMailer::Base.delivery_method = :smtp
+    config.action_mailer.default :charset => "utf-8"
     ActionMailer::Base.smtp_settings = {
      address: "smtp.gmail.com",
      port: "587",
