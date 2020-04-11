@@ -98,7 +98,7 @@
                                 <span >Hồ sơ học sinh</span>
                             </div>
                         <% end %>
-                    <% else %>
+                    <% elsif current_tutor %>
                         <%= link_to tutor_path(current_tutor), class:'sign-in-area' do %>
                             <div class="sign-in-header">
                                 <i class="fas fa-chalkboard"></i>
