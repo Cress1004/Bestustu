@@ -107,11 +107,41 @@
                         <% end %>
                     <% end %>
                 </div>
-                <%= link_to  destroy_user_session_path, method: :delete, class:'sign-up-area' do %>
-                    <div class="sign-up-header">
-                        <i class="fas fa-sign-in-alt"></i> Log out
-                    </div>
-                <% end %>
+                <div class="noti-icon">
+                    <a href="#">
+                        <i class="fa fa-comments"></i>
+                        <div>
+                            <%= messages.count %>
+                        </div>
+                        <div>
+                            <% messages.each do |m|%>
+                                <div>       
+                                    <%= m.message_content%>
+                                </div>
+                            <% end %>  
+                        </div>              
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-bell"></i>
+                        <div>
+                            <%= messages.count %>
+                        </div>
+                        <div>
+                            <% messages.each do |m|%>
+                                <div>       
+                                    <%= m.message_content%>
+                                </div>
+                            <% end %>  
+                        </div>  
+                    </a>
+                </div>
+                <div>
+                    <%= link_to  destroy_user_session_path, method: :delete, class:'sign-up-area' do %>
+                        <div class="sign-up-header">
+                            <i class="fas fa-sign-in-alt"></i> Log out
+                        </div>
+                    <% end %>
+                </div>
             <% else %>
                 <%= link_to new_user_session_path, class:'sign-up-area' do %>
                     <div class="sign-up-header">
