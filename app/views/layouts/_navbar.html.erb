@@ -99,40 +99,50 @@
                             </div>
                         <% end %>
                     <% else %>
-                        <%= link_to tutor_path(current_tutor), class:'sign-in-area' do %>
-                            <div class="sign-in-header">
-                                <i class="fas fa-chalkboard"></i>
-                                <span >Hồ sơ gia sư</span>
-                            </div>
+                        <% if current_tutor %>
+                            <%= link_to tutor_path(current_tutor), class:'sign-in-area' do %>
+                                <div class="sign-in-header">
+                                    <i class="fas fa-chalkboard"></i>
+                                    <span >Hồ sơ gia sư</span>
+                                </div>
+                            <% end %>
                         <% end %>
                     <% end %>
                 </div>
                 <div class="noti-icon">
                     <a href="#">
                         <i class="fa fa-comments"></i>
-                        <div>
-                            <%= messages.count %>
-                        </div>
-                        <div>
-                            <% messages.each do |m|%>
-                                <div>       
-                                    <%= m.message_content%>
+                        <% if current_student || current_tutor %>
+                            <% if messages.count > 0%>
+                                <div>                            
+                                    <%= messages.count %>
                                 </div>
-                            <% end %>  
-                        </div>              
+                                <div>
+                                <% messages.each do |m|%>
+                                    <div>       
+                                        <%= m.message_content%>
+                                    </div>
+                                <% end %>  
+                            </div> 
+                            <% end %>
+                        <% end %>              
                     </a>
                     <a href="#">
                         <i class="fa fa-bell"></i>
-                        <div>
-                            <%= messages.count %>
-                        </div>
-                        <div>
-                            <% messages.each do |m|%>
-                                <div>       
-                                    <%= m.message_content%>
+                        <% if current_student || current_tutor %>
+                            <% if messages.count > 0%>
+                                <div>                            
+                                    <%= messages.count %>
                                 </div>
-                            <% end %>  
-                        </div>  
+                                <div>
+                                <% messages.each do |m|%>
+                                    <div>       
+                                        <%= m.message_content%>
+                                    </div>
+                                <% end %>  
+                            </div> 
+                            <% end %>            
+                        <% end %>  
                     </a>
                 </div>
                 <div>

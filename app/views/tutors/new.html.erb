@@ -2,34 +2,35 @@
 
 
 <%= form_for @tutor do |f| %>
-<%= @tutor.id %>
-<p>
-<%= f.label :job %><br/>
-<%= f.text_field :job %>
-  <span id="job_error"></span>
-</p>
+  <%= @tutor.id %>
+  <p>
+  <%= f.label :job %><br/>
+  <%= f.text_field :job %>
+    <span id="job_error"></span>
+  </p>
 
-<p>
-<%= f.label :work_place %><br/>
-<%= f.text_field :work_place %>
-  <span id="work_place_error"></span>
-</p>
+  <p>
+  <%= f.label :work_place %><br/>
+  <%= f.text_field :work_place %>
+    <span id="work_place_error"></span>
+  </p>
 
-<p>
-<%= f.label :description %><br/>
-<%= f.text_area :description %>
-</p>
+  <p>
+  <%= f.label :description %><br/>
+  <%= f.text_area :description %>
+  </p>
 
-<p>
-<%= f.label :achievement %><br/>
-<%= f.text_area :achievement %>
-</p>
+  <p>
+  <%= f.label :achievement %><br/>
+  <%= f.text_area :achievement %>
+  </p>
 
-<p>
-  <%= f.label :location_id, "Location" %>
-  <%= f.collection_select(:location_id, Location.all, :id, :city) %>
-</p>
+  <p>
+    <%= f.label :location_id, "Location" %>
+    <%= f.collection_select(:location_id, Location.all, :id, :city) %>
+  </p>
 
-<p>
-<%= f.submit %>
-</p>
+  <p>
+  <%= f.submit %>
+  </p>
+<% end %>
