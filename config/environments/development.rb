@@ -52,7 +52,7 @@ Rails.application.configure do
                       # }
 
      # ActionMailer Config
-    config.action_mailer.default_url_options = { :host => 'https://bestustu.herokuapp.com/'}
+    config.action_mailer.default_url_options = { :host => 'https://bestustu.herokuapp.com/', :protocol => 'tls'}
     config.action_mailer.perform_deliveries = true
     ActionMailer::Base.delivery_method = :smtp
     config.action_mailer.default :charset => "utf-8"
