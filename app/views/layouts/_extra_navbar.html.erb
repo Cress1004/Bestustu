@@ -1,4 +1,4 @@
-<section class="extra-navbar">  
+<section class="extra-navbar">
   <ul class="extra-navbar__item">
     <li>
       <%= link_to new_class_register_path do  %>
@@ -12,37 +12,50 @@
         <h2>Danh sách lớp </h2>
       <% end %>
     </li>
-    <% if !current_tutor && !current_student %>
+
+    <% if !current_user %>
       <li>
-        <%= link_to new_tutor_path do  %>
-          <i class="fas fa-chalkboard"></i>
-          <h2>Trở thành gia sư</h2>
+        <%= link_to new_user_registration_path do  %>
+          <i class="fa fa-address-book"></i>
+          <h2>Trở thành thành viên </h2>
         <% end %>
       </li>
-
-      <li>
-        <%= link_to new_student_path do  %>
-          <i class="fa fa-graduation-cap"></i>
-          <h2>Trở thành học sinh</h2>
-        <% end %>
-      </li>
-
     <% else %>
-      <% if current_student %>
+
+      <% if !current_tutor && !current_student %>
         <li>
-          <%= link_to student_path(current_student) do  %>
-            <i class="fa fa-graduation-cap"></i>
-            <h2>Bạn đang là học sinh</h2>
-          <% end %>
-        </li>  
-      <% else %>
-        <li>
-          <%= link_to tutor_path(current_tutor) do  %>
+          <%= link_to new_tutor_path do  %>
             <i class="fas fa-chalkboard"></i>
-            <h2>Bạn đang là gia sư</h2>
+            <h2>Trở thành gia sư</h2>
           <% end %>
         </li>
-      <% end %> 
+
+        <li>
+          <%= link_to new_student_path do  %>
+            <i class="fa fa-graduation-cap"></i>
+            <h2>Trở thành học sinh</h2>
+          <% end %>
+        </li>
+
+      <% else %>
+        <% if current_student %>
+          <li>
+            <%= link_to student_path(current_student) do  %>
+              <i class="fa fa-graduation-cap"></i>
+              <h2>Bạn đang là học sinh</h2>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to tutor_path(current_tutor) do  %>
+              <i class="fas fa-chalkboard"></i>
+              <h2>Bạn đang là gia sư</h2>
+            <% end %>
+          </li>
+        <% end %>
+
+      <% end %>
+
     <% end %>
   </ul>
 </section>

@@ -2,7 +2,7 @@
     <div class="stush-area">
         <div class="stush-header">
             <div class="stush-header-1">
-                
+
             </div>
             <div class="stush-header-2">
                 <%# <div class="stush-ava"> %>
@@ -10,7 +10,7 @@
                 <%# </div> %>
                 <div class="stush-header-2-content">
                     <h2> <%= @student.user.username %> </h2>
-                    <h3> 
+                    <h3>
                         &ensp;
                         <%= link_to edit_student_path(@student) do %>
                             <i class="fas fa-edit"></i>
@@ -18,9 +18,9 @@
                         </h3>
 
                     <%# <div class="edus-edit"> %>
-                        <%= link_to 'Edit your profile',  edit_student_path , class: 'mbtn-primary' %>
+                        <%= link_to 'Sửa thông tin học sinh',  edit_student_path , class: 'mbtn-primary' %>
                     <%# </div> %>
-                   <%= link_to 'Share',  edit_user_registration_path , class: 'mbtn-primary' %>
+
                 </div>
             </div>
             <div class="stush-header-3">
@@ -41,8 +41,8 @@
                             &ensp; B point
                         </span>
                     </div>
-                    
-                    
+
+
                 </div>
                 <div class="stush-header-3-center">
                     <div class="stush-header-3-center-sub">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="stush-header-3-right">
-                    <button class=" mbtn-primary">Đăng yêu cầu tìm giáo viên</button>
+                    <%= link_to 'Đăng yêu cầu tìm giáo viên',  new_class_register_path , class: 'mbtn-primary' %>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
             <div class="view-header">
             <span>
                 Thông tin học viên
-            </span>    
+            </span>
             </div>
             Sinh viên tại đại học bách khoa Hà Nội
         </div>
