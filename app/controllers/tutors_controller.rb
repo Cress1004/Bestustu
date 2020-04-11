@@ -1,5 +1,7 @@
 class TutorsController < ApplicationController
   before_action :set_tutor, only: [:show, :edit, :update]
+  before_action :require_same_tutor, only: [:edit,:update]
+  before_action :not_student, only: [:new]
 
   def new
     @tutor = Tutor.new
@@ -9,7 +11,9 @@ class TutorsController < ApplicationController
     @tutor = Tutor.new(tutor_params)
     @tutor.user_id = current_user.id
     if @tutor.save
-      flash[:success] = "You are a tutor"
+      flash[:success] = "Bạn đã trở thành gia sư và bạn được tặng 1 000 000 VNĐ vào tài khoản bpoint"
+      @tutor.user.bpoint = 1000000
+      @tutor.user.save
       redirect_to tutor_path(@tutor)
     else
       render 'new'
@@ -17,22 +21,26 @@ class TutorsController < ApplicationController
   end
 
   def index
+    # debugger
     @users = User.all
     @Locations = Location.all
-    if (params[:tutor]) and (params[:tutor][:location_id])
-      @tutors = Tutor.search_by_location(params[:tutor][:location_id]).page(params[:page]).per(3)
+
+    if (params[:tutor]) and (params[:tutor][:location_id] or params[:tutor][:subject_id])
+      @tutors = Tutor.search(params[:tutor][:location_id],params[:tutor][:subject_id]).page(params[:page]).per(3)
+    elsif params[:search_input]
+      @tutors = Tutor.search_by_location_name(params[:search_input]).page(params[:page]).per(3)
+
+      if @tutors.size == 0
+        @tutors = Tutor.search_by_subject_name(params[:search_input]).page(params[:page]).per(3)
+      end
     else
       @tutors = Tutor.all.page(params[:page]).per(3)
     end
+
   end
 
-  # def index
-  #    @tutors = Tutor.all.page(params[:page]).per(5)
-  #    @users = User.all
-  #    @Locations = Location.all
-  #  end
-
   def edit
+
   end
 
   def update
@@ -45,6 +53,7 @@ class TutorsController < ApplicationController
   end
 
   def show
+
   end
 
   private
@@ -57,6 +66,20 @@ class TutorsController < ApplicationController
 
   def tutor_params
     params.require(:tutor).permit(:job, :description, :achievement, :location_id, :work_place,times_free_ids:[])
+  end
+
+  def not_student
+    require_user
+    if current_student
+      flash[:notice] = "Bạn không thể đăng ký làm gia sư khi bạn là học sinh"
+      redirect_to root_path
+    end
+  end
+
+  def require_same_tutor
+    if current_tutor != @tutor
+        redirect_to root_path
+    end
   end
 
 end

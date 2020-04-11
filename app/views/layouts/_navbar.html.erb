@@ -8,12 +8,21 @@
             </a>
         </div>
     </div>
-    <div class="search-container">
+
+    <%= form_tag tutors_path, :method => 'get',class:"search-container", autocomplete: "off" do %>
         <div class="search-area">
-            <input type="text" name="" id="search-input" placeholder="Search by name or id">
-            <input type="submit" name="" id="search-submit" value="Search">
+            <%= text_field_tag 'search_input', nil, placeholder: 'Search by name or id' %>
+            <%= submit_tag "Search", id: "search-submit" %>
         </div>
-    </div>
+    <% end %>
+<!--
+    <%= form_tag tutors_path, :method => 'get',class:"search-container",id: "search-location", autocomplete: "off" do %>
+        <div class="search-area">
+            <%= text_field_tag 'search_input', nil, placeholder: 'Tìm giáo viên bằng địa điểm' %>
+            <%= submit_tag "Search", id: "search-submit" %>
+        </div>
+    <% end %> -->
+
     <div class="nav-container">
         <div class="nav-area">
             <nav>
@@ -24,7 +33,7 @@
                     </li>
                     <li>
                         <%= link_to 'CLASS', edit_user_registration_path%>
-   
+
                         <ul class="submenu">
                             <li><a href="#">Class list</a></li>
                         </ul>

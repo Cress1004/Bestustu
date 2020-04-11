@@ -22,13 +22,17 @@
       </div>
 
       <div id="front-element">
-        <h5 style="padding:5px;"><%=link_to class_register.description, class_register_path(class_register)%></h5><br/>
-        <p><%= class_register.class_content %></P>
-        
+        <h5 style="padding:5px;">Mô tả:<%=link_to class_register.description, class_register_path(class_register)%></h5><br/>
+        <p>Nội dung học:<%= class_register.class_content %></p>
+
       </div>
 
       <div id="right-element">
-        <button class="mbtn-primary " %>Đề nghị dạy</button>
+        <% if current_tutor %>
+          <%= link_to 'Đề nghị dạy', class_register_path(class_register), class: "mbtn-primary" %>
+        <% else %>
+          <%= link_to 'Chi tiết', class_register_path(class_register), class: "mbtn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>

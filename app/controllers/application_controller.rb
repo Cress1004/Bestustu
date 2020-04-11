@@ -12,9 +12,18 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 # Helper method
-  helper_method :current_tutor, :require_tutor,
-                :current_student, :require_studen,
+  helper_method :require_user, :current_tutor, :require_tutor,
+                :current_student, :require_student,
                 :all_students, :all_tutors
+
+
+  def require_user
+      if !current_user
+        flash[:notice] = "Bạn phải đăng nhập để thực hiện điều này"
+        redirect_to root_path
+      end
+  end
+
   def current_tutor
     if user_signed_in?
       current_user.tutor

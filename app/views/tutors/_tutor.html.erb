@@ -2,6 +2,7 @@
 
 <%= form_tag tutors_path, :method => 'get' do %>
   <%= collection_select :tutor, :location_id, Location.all, :id, :city, prompt: "Chọn địa điểm"%>
+  <%= collection_select :tutor, :subject_id, Subject.all, :id, :name, prompt: "Chọn môn học" %>
   <%= submit_tag "Áp dụng", class: "btn-primary btn" %>
 <% end %>
 
@@ -22,9 +23,9 @@
               <% count = 1 %>
               <% @subjects.each do |subject| %>
                 <% count = count +1  %>
-                <% if count < 4 %>
-                  <span class="badge badge-secondary"><%= subject.name %></span>
-                <% end %>
+                  <% if count < 4 %>
+                    <span class="badge badge-secondary"><%= subject.name %></span>
+                  <% end %>
                 <% end %>
               <span class="badge badge-secondary">...</span>
             <% end %></br>
