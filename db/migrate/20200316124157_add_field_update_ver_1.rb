@@ -5,5 +5,6 @@ class AddFieldUpdateVer1 < ActiveRecord::Migration[6.0]
     add_column :students, :description, :string
     change_column :class_registers, :salary, :float
     change_column :users, :admin, :boolean, default: false
+    add_reference :class_registers, :student, foreign_key: true
   end
 end
