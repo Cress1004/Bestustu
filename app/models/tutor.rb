@@ -5,6 +5,8 @@ class Tutor < ApplicationRecord
   has_and_belongs_to_many :times_frees
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :class_registers
+  
+  ratyrate_rateable 'point'
 
   # validates :job, presence: true,
   #           length: { minimum: 3, maximum: 30 }

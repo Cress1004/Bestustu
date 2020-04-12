@@ -98,6 +98,7 @@
                                 <span >Hồ sơ học sinh</span>
                             </div>
                         <% end %>
+
                     <% elsif current_tutor %>
                         <%= link_to tutor_path(current_tutor), class:'sign-in-area' do %>
                             <div class="sign-in-header">
@@ -107,11 +108,49 @@
                         <% end %>
                     <% end %>
                 </div>
-                <%= link_to  destroy_user_session_path, method: :delete, class:'sign-up-area' do %>
-                    <div class="sign-up-header">
-                        <i class="fas fa-sign-in-alt"></i> Log out
-                    </div>
-                <% end %>
+                <div class="noti-icon">
+                    <a href="#">
+                        <i class="fa fa-comments"></i>
+                        <% if current_student || current_tutor %>
+                            <% if messages.count > 0%>
+                                <div>                            
+                                    <%= messages.count %>
+                                </div>
+                                <div>
+                                <% messages.each do |m|%>
+                                    <div>       
+                                        <%= m.message_content%>
+                                    </div>
+                                <% end %>  
+                            </div> 
+                            <% end %>
+                        <% end %>              
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-bell"></i>
+                        <% if current_student || current_tutor %>
+                            <% if messages.count > 0%>
+                                <div>                            
+                                    <%= messages.count %>
+                                </div>
+                                <div>
+                                <% messages.each do |m|%>
+                                    <div>       
+                                        <%= m.message_content%>
+                                    </div>
+                                <% end %>  
+                            </div> 
+                            <% end %>            
+                        <% end %>  
+                    </a>
+                </div>
+                <div>
+                    <%= link_to  destroy_user_session_path, method: :delete, class:'sign-up-area' do %>
+                        <div class="sign-up-header">
+                            <i class="fas fa-sign-in-alt"></i> Log out
+                        </div>
+                    <% end %>
+                </div>
             <% else %>
                 <%= link_to new_user_session_path, class:'sign-up-area' do %>
                     <div class="sign-up-header">

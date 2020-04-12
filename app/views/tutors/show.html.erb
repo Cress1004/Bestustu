@@ -83,30 +83,112 @@
                 </span>
             </div>
             <div class="checkbox-area">
-        <div class="checkbox-grid">
-        <% i = 0 %>
-        <% TimesFree.all.each do |timesfree| %>
-          <% i = i+1 %>
-          <% if i%3 == 1 %>
-              <div class="row-calendar-check">
-                  <h6><%= timesfree.day %></h6>
-                  <ul>
-          <% end %>
-                      <li>
-                          <% if @tutor.times_frees.include? timesfree %>
-                            <div class="label-for-show-active"> <%= timesfree.free_time %></div>
-                          <% else %>
-                            <div class="label-for-show"> <%= timesfree.free_time %></div>
-                          <% end %>
-                      </li>
-          <% if i%3 == 0 %>
-                  </ul>
-              </div>
-          <% end %>
-        <% end %>
+                <div class="checkbox-grid">
+                    <% i = 0 %>
+                    <% TimesFree.all.each do |timesfree| %>
+                    <% i = i+1 %>
+                    <% if i%3 == 1 %>
+                        <div class="row-calendar-check">
+                            <h6><%= timesfree.day %></h6>
+                            <ul>
+                    <% end %>
+                                <li>
+                                    <% if @tutor.times_frees.include? timesfree %>
+                                        <div class="label-for-show-active"> <%= timesfree.free_time %></div>
+                                    <% else %>
+                                        <div class="label-for-show"> <%= timesfree.free_time %></div>
+                                    <% end %>
+                                </li>
+                        <% if i%3 == 0 %>
+                                </ul>
+                            </div>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="stush-content">
+            <div class="view-header">
+                <span>
+                   Rating tutor
+                </span>
+            </div>
+            <!--
+            <% if current_user %>
+                <%= @tutor.average("point").avg%>
+                Rating: <%= rating_for @tutor, "point", enable_half: true, target: "#hintDiv",targetType: "score" %>
+                <div id="hintDiv"></div>
+                Đánh giá của bạn: <%= rating_for_user @tutor, current_user, "point" %>
+                <%# Original Score: <%= rating_for @tutor, "point", target: "#hintDiv", targetType: "score" %>
+            <% end %> -->
+            <div id="ratings_for_tutor">
+                <div class="ratings_left">
+                    <div class="ratings_left_average">
+                        <%= @tutor.average("point").avg.round(2)%>
+                    </div>
+                    <div class="ratings_left_star">
+                        <%= rating_for @tutor, "point", enable_half: true, readOnly: true %>
+                    </div>
+                    <div class="ratings_left_total">
+                        <i class="fas fa-user"></i>
+                        <span>Total:</span>
+                        <span>
+                            <%= @tutor.rates("point").count %>  
+                        </span>
+                    </div>
+                    <%= rating_for @tutor, "point", readOnly: true, disable_after_rate: false %>
+                </div>
+                <div class="ratings_right">
+                    <div class="ratings_right_item">
+                        <div class="ratings_right_item_number">
+                            <span> 5
+                            </span>
+                        </div>
+                        <div class="ratings_right_item_graph">
+                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 5}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#79C9A1" ) %>
+                        </div>
+                    </div>
+                    <div class="ratings_right_item">
+                        <div class="ratings_right_item_number">
+                            <span> 4
+                            </span>
+                        </div>
+                        <div class="ratings_right_item_graph">
+                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 4}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FFFFFF" ) %>
+                        </div>
+                    </div>
+                    <div class="ratings_right_item">
+                        <div class="ratings_right_item_number">
+                            <span> 3
+                            </span>
+                        </div>
+                        <div class="ratings_right_item_graph">
+                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 3}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FFD935" ) %>
+                        </div>
+                    </div>
+                    <div class="ratings_right_item">
+                        <div class="ratings_right_item_number">
+                            <span> 2
+                            </span>
+                        </div>
+                        <div class="ratings_right_item_graph">
+                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 2}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FFB235" ) %>
+                        </div>
+                    </div>
+                    <div class="ratings_right_item">
+                        <div class="ratings_right_item_number">
+                            <span> 1
+                            </span>
+                        </div>
+                        <div class="ratings_right_item_graph">
+                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 1}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FF8C5A" ) %>
+                        </div>
+                    </div>
+                <div>
+            </div>
         </div>
 
     </div>
 </div>
+
+
