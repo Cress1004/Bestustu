@@ -98,14 +98,13 @@
                                 <span >Hồ sơ học sinh</span>
                             </div>
                         <% end %>
-                    <% else %>
-                        <% if current_tutor %>
-                            <%= link_to tutor_path(current_tutor), class:'sign-in-area' do %>
-                                <div class="sign-in-header">
-                                    <i class="fas fa-chalkboard"></i>
-                                    <span >Hồ sơ gia sư</span>
-                                </div>
-                            <% end %>
+
+                    <% elsif current_tutor %>
+                        <%= link_to tutor_path(current_tutor), class:'sign-in-area' do %>
+                            <div class="sign-in-header">
+                                <i class="fas fa-chalkboard"></i>
+                                <span >Hồ sơ gia sư</span>
+                            </div>
                         <% end %>
                     <% end %>
                 </div>
