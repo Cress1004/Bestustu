@@ -113,35 +113,35 @@
                         <i class="fa fa-comments"></i>
                         <% if current_student || current_tutor %>
                             <% if messages.count > 0%>
-                                <div>                            
+                                <div>
                                     <%= messages.count %>
                                 </div>
                                 <div>
                                 <% messages.each do |m|%>
-                                    <div>       
+                                    <div>
                                         <%= m.message_content%>
                                     </div>
-                                <% end %>  
-                            </div> 
+                                <% end %>
+                            </div>
                             <% end %>
-                        <% end %>              
+                        <% end %>
                     </a>
                     <a href="#">
                         <i class="fa fa-bell"></i>
                         <% if current_student || current_tutor %>
                             <% if messages.count > 0%>
-                                <div>                            
+                                <div>
                                     <%= messages.count %>
                                 </div>
                                 <div>
                                 <% messages.each do |m|%>
-                                    <div>       
+                                    <div>
                                         <%= m.message_content%>
                                     </div>
-                                <% end %>  
-                            </div> 
-                            <% end %>            
-                        <% end %>  
+                                <% end %>
+                            </div>
+                            <% end %>
+                        <% end %>
                     </a>
                 </div>
                 <div>
