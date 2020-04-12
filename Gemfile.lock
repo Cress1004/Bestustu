@@ -211,6 +211,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
     rake (13.0.1)
+    ratyrate (1.2.2.alpha)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -304,6 +305,7 @@ DEPENDENCIES
   pg
   puma (~> 4.3)
   rails (~> 6.0.2, >= 6.0.2.1)
+  ratyrate
   sass-rails (>= 6)
   selenium-webdriver
   spring

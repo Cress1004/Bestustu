@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 # Helper method
   helper_method :require_user, :current_tutor, :require_tutor,
                 :current_student, :require_student,
-                :all_students, :all_tutors
+                :all_students, :all_tutors, :messages
 
 
   def require_user
@@ -54,6 +54,16 @@ class ApplicationController < ActionController::Base
 
   def all_tutors
     Tutor.all
+  end
+
+  def messages
+    if current_student
+      Message.where(:student_id => current_student.id)
+    else
+      if current_tutor
+        Message.where(:tutor_id => current_tutor.id)
+      end
+    end
   end
 
 end
