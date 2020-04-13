@@ -34,18 +34,24 @@ times.each do |day, free|
 end
 
 require 'csv'
-CSV.foreach(Rails.root.join('lib/address.csv'), headers: true) do |row|
+address_text = File.read(Rails.root.join('lib/address.csv'))
+address = CSV.parse(address_text, :headers => true, :encoding => 'bom|utf8-')
+records_to_import = address.map do |city, city_id, district, district_id, sub_district, sub_district_id|
+  Location.new(city: city, city_id: city_id,district: district, district_id: district_id, sub_district: sub_district, sub_district_id: sub_district)
+ end
+ Location.import records_to_import 
+# CSV.foreach(Rails.root.join('lib/address.csv'), headers: true) do |row|
   
-  Location.create({
-    city: row[0],
-    city_id: row[1],
-    district: row[2],
-    district_id: row[3],
-    sub_district: row[4],
-    sub_district_id: row[5]
+#   Location.create({
+#     city: row[0],
+#     city_id: row[1],
+#     district: row[2],
+#     district_id: row[3],
+#     sub_district: row[4],
+#     sub_district_id: row[5]
     
-  })
-end
+#   })
+# end
 
 subjects = [
   "Math",
@@ -57,7 +63,8 @@ subjects = [
   "Biology",
   "Chemistry",
   "Literature",
-  "Geography"
+  "Geographic",
+  "ss"
 ]
 
 subjects.each do |s|

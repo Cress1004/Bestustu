@@ -31,6 +31,7 @@ gem 'jquery-rails'
 gem 'ratyrate'
 
 gem 'hirb'
+gem 'activerecord-import'
 gem 'carrierwave', '~> 2.0'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'

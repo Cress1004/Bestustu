@@ -34,10 +34,7 @@
 
 
     
-  <p>
-    <%= f.label :location_id, "City" %>
-    <%= f.collection_select(:location_id, Location.select(:city, :city_id).distinct, :city_id, :city, {:prompt => 'Please select the city'}, {:class => 'location-city'}) %>
-  </p>
+ 
 
   <p>
   <%= f.submit %>
