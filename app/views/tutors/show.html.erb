@@ -117,7 +117,8 @@
             <div id="ratings_for_tutor">
                 <div class="ratings_left">
                     <div class="ratings_left_average">
-                        <%= @tutor.average("point").avg.round(2)%>
+                        <%# <%= @tutor.average("point").avg.round(2)%>
+                        <%# <%= current_tutor.location.sub_district%>
                     </div>
                     <div class="ratings_left_star">
                         <%= rating_for @tutor, "point", enable_half: true, readOnly: true %>

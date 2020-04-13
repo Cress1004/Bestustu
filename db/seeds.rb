@@ -32,3 +32,34 @@ times = [
 times.each do |day, free|
   TimesFree.create( day: day, free_time: free )
 end
+
+require 'csv'
+CSV.foreach(Rails.root.join('lib/address.csv'), headers: true) do |row|
+  
+  Location.create({
+    city: row[0],
+    city_id: row[1],
+    district: row[2],
+    district_id: row[3],
+    sub_district: row[4],
+    sub_district_id: row[5]
+    
+  })
+end
+
+subjects = [
+  "Math",
+  "English",
+  "Japanese",
+  "History",
+  "Physiscs",
+  "Physiscal Education",
+  "Biology",
+  "Chemistry",
+  "Literature",
+  "Geography"
+]
+
+subjects.each do |s|
+  Subject.create(name: s)
+end

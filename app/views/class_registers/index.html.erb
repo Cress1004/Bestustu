@@ -5,7 +5,7 @@
   </div>
   <!-- Filter for location and subject -->
   <%= form_tag class_registers_path, :method => 'get' do %>
-    <%= collection_select :class_register, :location_id, Location.all, :id, :city, prompt: "Chọn địa điểm"%>
+    <%= collection_select :class_register, :location_id, Location.select(:city).distinct, :id, :city, prompt: "Chọn địa điểm"%>
     <%= collection_select :class_register, :subject_id, Subject.all, :id, :name, prompt: "Chọn môn học" %>
     <%= submit_tag "Áp dụng", class: "btn-primary btn" %>
   <% end %>

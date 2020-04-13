@@ -24,9 +24,19 @@
   <%= f.text_area :achievement %>
   </p>
 
+<p>
+  <%= f.label :subject_id %><br/>
+  <div class="">
+        <%= f.collection_select(:subject_ids, Subject.all, :id, :name, prompt: "Chọn môn học") %>
+  </div>
+  </p>
+
+
+
+    
   <p>
-    <%= f.label :location_id, "Location" %>
-    <%= f.collection_select(:location_id, Location.all, :id, :city) %>
+    <%= f.label :location_id, "City" %>
+    <%= f.collection_select(:location_id, Location.select(:city, :city_id).distinct, :city_id, :city, {:prompt => 'Please select the city'}, {:class => 'location-city'}) %>
   </p>
 
   <p>
