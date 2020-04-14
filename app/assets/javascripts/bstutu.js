@@ -4,45 +4,34 @@ $(document).on( "turbolinks:load",function() {
     });
     // $(".ratings_left_star .star ").css("background-color","red")
 
-    //Tutor register city
-    // Hide district and sub-district
-    $(".location-district option").each( function(item){
-        var element =  $(this) ; 
-        element.hide();
-    })
-    $(".location-sub-district option").each( function(item){
-        var element =  $(this) ; 
-        element.hide();
-    })
-    // City changed
+	$(".location-district").append(`<option >Quận Huyện</option>`)
+	$(".location-sub-district").append(`<option >Phường xã</option>`)
+	//City changed
     $('.location-city').on('change', function() {
 		var selected = $(this).val();
-		$(".location-district option").each(function(item){
-			console.log(selected) ;  
-			var element =  $(this) ; 
-			console.log(element.val()) ; 
-			if (element.val() != selected){
-				element.hide() ; 
-			}else{
-				element.show();
+		$(".location-district").children().remove();
+		$(".location-district").append(`<option >Quận Huyện</option>`)
+		for (var i = 0; i < gon.global.locations_district.length; i++) {
+			console.log(gon.global.locations_district[i].city_id);
+			console.log(selected)
+			if(gon.global.locations_district[i].city_id == selected) {
+				$(".location-district").append(`<option value="${gon.global.locations_district[i].district_id}">${gon.global.locations_district[i].district}</option>`)
 			}
-		}) ; 
-		$("#location-district").val($("#expertCat option:visible:first").val());      
+		}     
     });
 
     //District changed
     $('.location-district').on('change', function() {
 		var selected = $(this).val();
-		$(".location-sub-district option").each(function(item){
-			console.log(selected) ;  
-			var element =  $(this) ; 
-			console.log(element.val()) ; 
-			if (element.val() != selected){
-				element.hide() ; 
-			}else{
-				element.show();
+		$(".location-sub-district").children().remove();
+		$(".location-sub-district").append(`<option >Phường xã</option>`)
+		console.log(gon.global.locations_sub_district.length);
+		for (var i = 0; i < gon.global.locations_sub_district.length; i++) {
+			if(gon.global.locations_sub_district[i].district_id == selected) {
+				console.log(gon.global.locations_sub_district[i]);
+				$(".location-sub-district").append(`<option value="${gon.global.locations_sub_district[i].sub_district_id}">${gon.global.locations_sub_district[i].sub_district}</option>`)
 			}
-		}) ; 
-		$("#location-sub-district").val($("#expertCat option:visible:first").val());      
-    });
+		}      
+	});
+	
 });

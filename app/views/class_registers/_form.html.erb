@@ -80,27 +80,27 @@
 
     <div class="form-group">
       <div class="checkbox-form">
-      <div class="checkbox-area">
-        <div class="checkbox-grid">
-        <% i = 0 %>
-        <% TimesFree.all.each do |timesfree| %>
-          <% i = i+1 %>
-          <% if i%3 == 1 %>
-              <div class="row-calendar-check">
-                  <h6><%= timesfree.day %></h6>
-                  <ul>
+        <div class="checkbox-area">
+          <div class="checkbox-grid">
+          <% i = 0 %>
+          <% TimesFree.all.each do |timesfree| %>
+            <% i = i+1 %>
+            <% if i%3 == 1 %>
+                <div class="row-calendar-check">
+                    <h6><%= timesfree.day %></h6>
+                    <ul>
+            <% end %>
+            <li>
+                <%= check_box_tag "class_register[times_free_ids][]",timesfree.id,@class_register.times_free_ids.include?(timesfree.id), { id: "class_register_times_free_ids_#{timesfree.id}" } %>
+                <%= label_tag "class_register[times_free_ids][#{timesfree.id}]",timesfree.free_time %>
+            </li>
+            <% if i%3 == 0 %>
+                    </ul>
+                </div>
+            <% end %>
           <% end %>
-          <li>
-              <%= check_box_tag "class_register[times_free_ids][]",timesfree.id,@class_register.times_free_ids.include?(timesfree.id), { id: "class_register_times_free_ids_#{timesfree.id}" } %>
-              <%= label_tag "class_register[times_free_ids][#{timesfree.id}]",timesfree.free_time %>
-          </li>
-          <% if i%3 == 0 %>
-                  </ul>
-              </div>
-          <% end %>
-        <% end %>
+          </div>
         </div>
-      </div>
       </div>
     </div>
 

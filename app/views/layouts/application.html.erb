@@ -13,10 +13,7 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_tag do %>
-      window.subjects = <%= raw Subject.all.to_json %>;
-      window.locations = <%= raw Location.all.to_json %>;
-    <% end %>
+    <%= include_gon %>
 
   </head>
 

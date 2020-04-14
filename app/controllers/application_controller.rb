@@ -11,10 +11,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+  
 # Helper method
   helper_method :require_user, :current_tutor, :require_tutor,
                 :current_student, :require_student,
-                :all_students, :all_tutors, :messages
+                :all_students, :all_tutors, :messages,
+                :locations
 
 
   def require_user
@@ -64,6 +66,10 @@ class ApplicationController < ActionController::Base
         Message.where(:tutor_id => current_tutor.id)
       end
     end
+  end
+
+  def locations
+    
   end
 
 end

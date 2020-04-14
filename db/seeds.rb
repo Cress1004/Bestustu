@@ -35,9 +35,9 @@ end
 
 require 'csv'
 address_text = File.read(Rails.root.join('lib/address.csv'))
-address = CSV.parse(address_text, :headers => true, :encoding => 'bom|utf8-')
+address = CSV.parse(address_text, :encoding => 'bom|utf8-')
 records_to_import = address.map do |city, city_id, district, district_id, sub_district, sub_district_id|
-  Location.new(city: city, city_id: city_id,district: district, district_id: district_id, sub_district: sub_district, sub_district_id: sub_district)
+  Location.new(city: city, city_id: city_id,district: district, district_id: district_id, sub_district: sub_district, sub_district_id: sub_district_id)
  end
  Location.import records_to_import 
 # CSV.foreach(Rails.root.join('lib/address.csv'), headers: true) do |row|
@@ -63,8 +63,7 @@ subjects = [
   "Biology",
   "Chemistry",
   "Literature",
-  "Geographic",
-  "ss"
+  "Geographic"
 ]
 
 subjects.each do |s|

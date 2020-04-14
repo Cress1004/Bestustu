@@ -1,6 +1,6 @@
 <h1>Tutor registration</h1>
 
-
+<%= params.inspect %>
 <%= form_for @tutor do |f| %>
   <p>
   <%= f.label :job %><br/>
@@ -25,14 +25,55 @@
   </p>
 
 <p>
-  <%= f.label :subject_id %><br/>
-  <div class="">
-        <%= f.collection_select(:subject_ids, Subject.all, :id, :name, prompt: "Chọn môn học") %>
-  </div>
+  <%= f.label :subject_ids %><br/>
+  <%= f.collection_select(:subject_ids, Subject.all, :id, :name, prompt: "Chọn môn học") %>
   </p>
-
-
-
+<!--
+  <p>
+    <%= f.label :location_id %><br/>
+    <%= f.select("location_id", Location.select(:city, :city_id).distinct.collect { |p| [ p.city, p.city_id ] }, { include_blank: 'None' },{:class=>"location-city"})%>
+  </p>
+  <p>
+    <%= f.label :location_id %><br/>
+    <%= f.select("location_id", Location.select(:district, :city_id,:district_id).distinct.collect { |p| [ p.district, p.city_id,{:title=>"#{p.district_id}"} ] }, { include_blank: 'None' },{:class=>"location-district"})%>
+  </p>
+  <p>
+    <%= f.label :location_id %><br/>
+    <%= f.select("location_id", Location.select(:sub_district,:district_id).distinct.collect { |p| [ p.sub_district, p.district_id ] }, { include_blank: 'None' },{:class=>"location-sub-district"})%>
+  </p> --> 
+  <p>
+    <%= f.label :location_id %><br/>
+    <%= f.select("location_id", Location.select(:city, :city_id).distinct.collect { |p| [ p.city, p.city_id ] }, { },{:class=>"location-city"})%>
+  </p>
+  <p>
+    <%= f.label :location_id %><br/>
+    <%= f.select("location_id", {}, { },{:class=>"location-district"})%>
+  </p>
+  <p>
+    <%= f.label :location_id %><br/>
+    <%= f.select("location_id", {}, { },{:class=>"location-sub-district"})%>
+  </p>
+  <div class="checkbox-area">
+    <div class="checkbox-grid">
+      <% i = 0 %>
+      <% TimesFree.all.each do |timesfree| %>
+        <% i = i+1 %>
+        <% if i%3 == 1 %>
+            <div class="row-calendar-check">
+                <h6><%= timesfree.day %></h6>
+                <ul>
+        <% end %>
+        <li>
+            <%= check_box_tag "tutor[times_free_ids][]",timesfree.id,@tutor.times_free_ids.include?(timesfree.id), { id: "tutor_times_free_ids_#{timesfree.id}" } %>
+            <%= label_tag "tutor[times_free_ids][#{timesfree.id}]",timesfree.free_time %>
+        </li>
+        <% if i%3 == 0 %>
+                </ul>
+            </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
     
  
 
