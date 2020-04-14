@@ -84,19 +84,20 @@
                 </div>
                 
             </div>
-            <button class="mad-content-item btn btn-primary show-on-scroll">Đăng yêu cầu tìm gia sư</button>
+            <%= link_to 'Create new class register', new_class_register_path, class: "mad-content-item mbtn-primary show-on-scroll"  %>
+            <%# <button class="">Đăng yêu cầu tìm gia sư</button> %>
         </div>
     </section>
     <section class="slick">
         <% all_tutors.each do |f|%>
            <div class="slick-item">
             <div class="slick-item-block">
-                 <%= link_to edit_tutor_path(f), target: "__blank",class: "slick-item-ava" do %>
+                 <%= link_to tutor_path(f), target: "__blank",class: "slick-item-ava" do %>
                     <%= image_tag f.user.image.to_s %>
                  <% end %> 
                  
                  <div class="slick-item-info">
-                    <%= link_to edit_tutor_path(f) do %>
+                    <%= link_to tutor_path(f), target: "__blank" do %>
                         <%= f.user.username%>
                     <% end %>
                     <p>
@@ -110,8 +111,8 @@
                     <%= f.description%>
                  </div>   
                  <div class="slick-item-option">
-                    <button class="btn btn-primary">Mời dạy</button>
-                    <button class="btn btn-danger">Lưu</button>
+                    <button class="mbtn-primary">Mời dạy</button>
+                    <button class="mbtn-danger">Lưu</button>
                  </div>   
             </div>  
             <div class="slick-overlay">
@@ -120,6 +121,4 @@
         </div>           
         <% end %>
     </section>
-    <%# footer %>
-    <%= render 'layouts/footer'%>  
 </div>    

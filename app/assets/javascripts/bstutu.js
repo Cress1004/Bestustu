@@ -29,7 +29,7 @@ $(document).on( "turbolinks:load",function() {
 		for (var i = 0; i < gon.global.locations_sub_district.length; i++) {
 			if(gon.global.locations_sub_district[i].district_id == selected) {
 				console.log(gon.global.locations_sub_district[i]);
-				$(".location-sub-district").append(`<option value="${gon.global.locations_sub_district[i].sub_district_id}">${gon.global.locations_sub_district[i].sub_district}</option>`)
+				$(".location-sub-district").append(`<option value="${gon.global.locations_sub_district[i].id}">${gon.global.locations_sub_district[i].sub_district}</option>`)
 			}
 		}      
 	});

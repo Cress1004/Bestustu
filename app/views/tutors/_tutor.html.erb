@@ -1,9 +1,9 @@
 <% index = 1 %>
 
 <%= form_tag tutors_path, :method => 'get' do %>
-  <%= collection_select :tutor, :location_id, Location.all, :id, :city, prompt: "Chọn địa điểm"%>
-  <%= collection_select :tutor, :subject_id, Subject.all, :id, :name, prompt: "Chọn môn học" %>
-  <%= submit_tag "Áp dụng", class: "btn-primary btn" %>
+  <%= collection_select :tutor, :location_id, Location.select(:city).distinct, :city, :city, prompt: "Chọn địa điểm"%>
+  <%= collection_select :tutor, :subject_ids, Subject.all, :id, :name, prompt: "Chọn môn học" %>
+  <%= submit_tag "Áp dụng", class: "mbtn-primary " %>
 <% end %>
 
 <% obj.each do |tutor| %>
@@ -36,6 +36,7 @@
           <a><%= link_to "Register now", tutor_path(tutor), class: "btn btn-primary"%></a>
         </div>
     </div>
+  </div>
   </div>
   <% if index%3 == 0 %>
     </div>

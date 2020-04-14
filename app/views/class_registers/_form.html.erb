@@ -26,7 +26,7 @@
         <%= f.label :location_id, "Location" %>
       </div>
       <div class="">
-        <%= f.collection_select(:location_id, Location.all, :id, :city, prompt: "Chọn địa điểm") %>
+        <%= f.collection_select(:location_id, Location.select(:city, :city_id).distinct, :city_id, :city) %>
       </div>
     </div>
     <div class="form-group row">
@@ -149,9 +149,9 @@
 
 
     <div class="form-group">
-      <%= f.submit class: "btn btn-primary" %>
+      <%= f.submit class: "mbtn-primary" %>
     </div>
     <% if @class_register.id %>
-      <%= link_to "Hủy cập nhật", class_register_path(@class_register), class:"btn btn-primary" %>
+      <%= link_to "Hủy cập nhật", class_register_path(@class_register), class:"mbtn-primary" %>
     <% end %>
 <% end %>

@@ -25,8 +25,8 @@ class TutorsController < ApplicationController
     @users = User.all
     @Locations = Location.all
 
-    if (params[:tutor]) and (params[:tutor][:location_id] or params[:tutor][:subject_id])
-      @tutors = Tutor.search(params[:tutor][:location_id],params[:tutor][:subject_id]).page(params[:page]).per(3)
+    if (params[:tutor]) and (params[:tutor][:location_id] or params[:tutor][:subject_ids])
+      @tutors = Tutor.search(params[:tutor][:location_id],params[:tutor][:subject_ids]).page(params[:page]).per(3)
     elsif params[:search_input]
       @tutors = Tutor.search_by_location_name(params[:search_input]).page(params[:page]).per(3)
 

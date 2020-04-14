@@ -188,6 +188,11 @@
         div{
             text-align: center;
         }
+        div:nth-child(1){
+            span{
+                font-size: 1.5rem;
+            }
+        }
     }
     .ratings_right{
         width: 70%;

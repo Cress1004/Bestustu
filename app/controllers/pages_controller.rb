@@ -2,7 +2,7 @@ class PagesController < ApplicationController
     def home
       Gon.global.locations = Location.select(:city).distinct
       Gon.global.locations_district = Location.select(:district,:city_id,:district_id).distinct
-      Gon.global.locations_sub_district = Location.select(:sub_district, :sub_district_id, :district_id).distinct
+      Gon.global.locations_sub_district = Location.select(:id,:sub_district,:district_id)
       Gon.global.subjects = Subject.all
     end
 

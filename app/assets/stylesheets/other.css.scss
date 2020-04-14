@@ -22,12 +22,30 @@
         border: solid 2px white;
         border-radius: 10px;
         line-height: 1.5;
+        text-align: center;
 }
 .mbtn-primary:hover{
     background-color: white;
     color:#0069D9;
     text-decoration: none;
     border: solid 2px #0069D9;
+}
+.mbtn-danger{
+    padding: 10px;
+    background-color: rgb(231, 87, 102);
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    border: solid 2px white;
+    border-radius: 10px;
+    line-height: 1.5;
+    text-align: center;
+}
+.mbtn-danger:hover{
+    background-color: white;
+    color:rgb(231, 87, 102);
+    text-decoration: none;
+    border: solid 2px rgb(231, 87, 102);
 }
 
 .view-header{

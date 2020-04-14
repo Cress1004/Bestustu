@@ -34,7 +34,7 @@
                             &ensp; Học viên
                         </span>
                     </div>
-                                        <div>
+                    <div>
                         <div class = "icon-custom">
                             <i class="fas fa-coins"></i>
                         </div>
@@ -117,7 +117,9 @@
             <div id="ratings_for_tutor">
                 <div class="ratings_left">
                     <div class="ratings_left_average">
-                        <%# <%= @tutor.average("point").avg.round(2)%>
+                        <% if @tutor.average("point") %>
+                            <%= @tutor.average("point").avg.round(2)%>
+                        <% end %>
                         <%# <%= current_tutor.location.sub_district%>
                     </div>
                     <div class="ratings_left_star">
@@ -130,7 +132,16 @@
                             <%= @tutor.rates("point").count %>
                         </span>
                     </div>
-                    <%= rating_for @tutor, "point", readOnly: true, disable_after_rate: false %>
+                    <% if current_student %>
+                        <div class="ratings_for_user">
+                            <div>
+                                <span>
+                                    Your rating
+                                </span>
+                            </div>
+                            <%= rating_for @tutor, "point", readOnly: true, disable_after_rate: false %>
+                        </div>
+                    <% end %>
                 </div>
                 <div class="ratings_right">
                     <div class="ratings_right_item">
@@ -139,7 +150,9 @@
                             </span>
                         </div>
                         <div class="ratings_right_item_graph">
-                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 5}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#79C9A1" ) %>
+                            <% if @tutor.rates("point").count  > 0%>
+                                <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 5}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#79C9A1" ) %>
+                            <% end %>
                         </div>
                     </div>
                     <div class="ratings_right_item">
@@ -148,7 +161,9 @@
                             </span>
                         </div>
                         <div class="ratings_right_item_graph">
-                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 4}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FFFFFF" ) %>
+                            <% if @tutor.rates("point").count  > 0%>
+                                <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 4}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#AED888" ) %>
+                            <% end%>
                         </div>
                     </div>
                     <div class="ratings_right_item">
@@ -157,7 +172,9 @@
                             </span>
                         </div>
                         <div class="ratings_right_item_graph">
-                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 3}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FFD935" ) %>
+                            <% if @tutor.rates("point").count  > 0%>
+                                <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 3}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FFD935" ) %>
+                            <% end%>
                         </div>
                     </div>
                     <div class="ratings_right_item">
@@ -166,7 +183,9 @@
                             </span>
                         </div>
                         <div class="ratings_right_item_graph">
-                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 2}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FFB235" ) %>
+                            <% if @tutor.rates("point").count  > 0%>
+                                <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 2}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FFB235" ) %>
+                            <% end%>
                         </div>
                     </div>
                     <div class="ratings_right_item">
@@ -175,12 +194,14 @@
                             </span>
                         </div>
                         <div class="ratings_right_item_graph">
-                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 1}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FF8C5A" ) %>
+                            <% if @tutor.rates("point").count  > 0%>
+                                <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 1}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FF8C5A" ) %>
+                            <% end%>
                         </div>
                     </div>
-                <div>
+                </div>
             </div>
         </div>
-
+        </div>
     </div>
 </div>
