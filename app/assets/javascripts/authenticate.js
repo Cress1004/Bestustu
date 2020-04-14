@@ -135,6 +135,7 @@ $(document).ready(function(){
     var flag = true;
     var job = $.trim($('#tutor_job').val());
     var work_place = $.trim($('#tutor_work_place').val());
+    var name = $.trim($('#user_name').val());
     if (job == ''){
         $('job_error').text('Job can\'t be blank');
         flag = false;
@@ -144,6 +145,16 @@ $(document).ready(function(){
     if (work_place == ''){
         $('work_place_error').text('work place can\'t be blank');
         flag = false;
+    }
+    else
+      $('#work_place_error').text('');
+
+    if (name == '' || name.length < 4){
+        $('#name_error').text('Input full name, please');
+        flag = false;
+    }
+    else{
+        $('#name_error').text('');
     }
     return flag;
   });

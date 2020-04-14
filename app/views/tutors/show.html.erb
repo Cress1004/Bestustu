@@ -5,9 +5,9 @@
 
             </div>
             <div class="stush-header-2">
-                <div class="stush-ava">                     
+                <div class="stush-ava">
                   <% if !current_user.image.url %>
-                    <img src="/uploads/user/image/avt_define/avt_male.png" class="avatar-size rounded-circle">
+                    <img src="/uploads/user/image/avt_define/default_avt.jpg" class="avatar-size rounded-circle">
                   <% else %>
                     <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle" %>
                   <% end %>

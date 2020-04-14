@@ -16,13 +16,13 @@
     <div class="col-sm-3">
       <div class="card" style="width:300px">
       <% if !@user.image.url %>
-        <img src="/uploads/user/image/avt_define/avt_male.png" class= "card-img-top", style= "width:100%">
+        <img src="/uploads/user/image/avt_define/default_avt.jpg" class= "card-img-top", style= "width:100%">
       <% else %>
         <%= image_tag @user.image.to_s, :class => "card-img-top", style: "width:100%" %>
       <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= @user.name %></h5>
-          <p class="card-text">
+          <p class="card-text" style="height:120px">
             <% if @subjects %>
               <% count = 1 %>
               <% @subjects.each do |subject| %>
@@ -35,7 +35,11 @@
             <% end %></br>
             Job: <%= tutor.job %> in <%= tutor.work_place %></br>
             Address: <%= @location.city %></br>
-            <%= tutor.description %>
+            <% if !tutor.description %>
+              Description: (no description)
+            <% else %>
+              Description: <%= tutor.description %>
+            <%end%>
           </p>
           <a><%= link_to "Register now", tutor_path(tutor), class: "btn btn-primary"%></a>
         </div>

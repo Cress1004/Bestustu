@@ -52,19 +52,15 @@
 
             <div class="field form-group">
               <%= f.label :gender %><br />
-              <%= f.label :gender, "Female", :value => "Female"  %>
-              <%= f.radio_button :gender, "Female"%>
-              <%= f.label :gender, "Male", :value => "Male" %>
-              <%= f.radio_button :gender, "Male"%>
+              <%= f.label :gender, "Female", :value => 0  %>
+              <%= f.radio_button :gender, 0%>
+              <%= f.label :gender, "Male", :value => 1 %>
+              <%= f.radio_button :gender, 1%>
             </div>
-
             <div class="field form-group">
               <%= f.label :birthday %><br/>
               <%= f.date_field :birthday, class:"form-control"%>
             </div>
-
-
-
 
           <div class="field form-group">
             <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />

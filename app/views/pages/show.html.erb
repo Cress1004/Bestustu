@@ -3,7 +3,7 @@
         <div class="edus-background">
           <div class="edus-ava">
             <% if !current_user.image.url %>
-              <img src="/uploads/user/image/avt_define/avt_male.png" class="avatar-size rounded-circle">
+              <img src="/uploads/user/image/avt_define/default_avt.jpg" class="avatar-size rounded-circle">
             <% else %>
               <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle" %>
             <% end %>
@@ -66,12 +66,12 @@
                   </div>
                 </div>
                 <div class="edus-show-info-item">
-                  <div>
+                  <!-- <div>
                       Uid:
                   </div>
                   <div class="edus-show-info-content">
                       <%= @user.uid %>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="edus-show-info-item">
                   <div>
@@ -93,13 +93,23 @@
                   <div>
                       Gender:
                   </div>
+                  <% if @user.gender == 0%>
                   <div class="edus-show-info-content">
-                      <%= @user.gender %>
+                      Nu
                   </div>
+                  <% elsif %>
+                  <div class="edus-show-info-content">
+                      Nam
+                  </div>
+                  <% else %>
+                  <div class="edus-show-info-content">
+                      Chua cap nhat
+                  </div>
+                  <% end %>
                 </div>
                 <div class="edus-show-info-item">
                   <div>
-                      Age:
+                      Birthday:
                   </div>
                   <div class="edus-show-info-content">
                       <%= @user.birthday %>
@@ -176,8 +186,6 @@
 
               </div>
           </div>
-
-
         </div>
     </div>
     </div>
