@@ -15,7 +15,11 @@
   <% end %>
     <div class="col-sm-3">
       <div class="card" style="width:300px">
+      <% if !@user.image.url %>
+        <img src="/uploads/user/image/avt_define/avt_male.png" class= "card-img-top", style= "width:100%">
+      <% else %>
         <%= image_tag @user.image.to_s, :class => "card-img-top", style: "width:100%" %>
+      <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= @user.name %></h5>
           <p class="card-text">
