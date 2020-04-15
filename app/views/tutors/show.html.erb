@@ -31,7 +31,7 @@
                             <i class="fas fa-user-graduate"></i>
                         </div>
                         <span>
-                            &ensp; Học viên
+                            &ensp; Giảng viên
                         </span>
                     </div>
                     <div>
@@ -48,19 +48,19 @@
                 <div class="stush-header-3-center">
                     <div class="stush-header-3-center-sub">
                         <div class="sub-first-line">0</div>
-                        Lớp đã tạo
+                        Lớp đã dạy
                     </div>
                     <div class="stush-header-3-center-sub">
                         <div class="sub-first-line">0</div>
-                        Lớp đã tạo
+                        Người quan tâm
+                    </div>
+                    <div class="stush-header-3-center-sub">
+                        <div class="sub-first-line"><%= @tutor.rates("point").count %></div>
+                        Lượt đánh giá
                     </div>
                     <div class="stush-header-3-center-sub">
                         <div class="sub-first-line">0</div>
-                        Lớp đã tạo
-                    </div>
-                    <div class="stush-header-3-center-sub">
-                        <div class="sub-first-line">0</div>
-                        Lớp đã tạo
+                        Lượt mời dạy
                     </div>
                 </div>
                 <div class="stush-header-3-right">
@@ -74,7 +74,17 @@
                    Tutor 's information
                 </span>
             </div>
-            Sinh viên tại đại học bách khoa Hà Nội
+            <div class="view-content">
+                <div>
+                    <span> Name:  </span> <%= @tutor.user.username %>
+                </div>
+                <div>
+                    <span> Birthday:  </span> <%= @tutor.user.birthday %>
+                </div>
+                <div>
+                    <span> Địa chỉ:  </span> <%= @tutor.location.city %> <%= @tutor.location.district %> <%= @tutor.location.sub_district %>
+                </div>
+            </div>
         </div>
         <div class="stush-content">
             <div class="view-header">

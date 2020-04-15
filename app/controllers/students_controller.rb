@@ -21,6 +21,10 @@ class StudentsController < ApplicationController
         end
     end
 
+    def index
+      
+    end
+
     def show
 
     end
@@ -41,12 +45,14 @@ class StudentsController < ApplicationController
     end
 
     private
+    
       def student_params
           params.require(:student).permit(:address, :grade)
       end
 
       def set_student
         @student = Student.find(params[:id])
+        @user = User.find(@student.user_id)
       end
 
       def not_tutor

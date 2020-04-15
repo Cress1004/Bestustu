@@ -33,5 +33,15 @@ $(document).on( "turbolinks:load",function() {
 			}
 		}      
 	});
-	
+
+	//Avatar link changed
+	$('#student_image').on('change', function(event){
+		var tmppath = URL.createObjectURL(event.target.files[0]);
+		$("#regis-ava").fadeIn("fast").attr('src',tmppath);
+	})
+	$('#tutor_image').on('change', function(event){
+		var tmppath = URL.createObjectURL(event.target.files[0]);
+		$("#regis-ava").fadeIn("fast").attr('src',tmppath);
+	})
+
 });

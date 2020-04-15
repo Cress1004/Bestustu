@@ -1,0 +1,159 @@
+<!--<%= form_for @tutor do |f| %>
+  <p>
+  <%= f.label :job %><br/>
+  <%= f.text_field :job %>
+    <span id="job_error"></span>
+  </p>
+
+  <p>
+  <%= f.label :work_place %><br/>
+  <%= f.text_field :work_place %>
+    <span id="work_place_error"></span>
+  </p>
+
+  <p>
+  <%= f.label :description %><br/>
+  <%= f.text_area :description %>
+  </p>
+
+  <p>
+  <%= f.label :achievement %><br/>
+  <%= f.text_area :achievement %>
+  </p>
+
+<p>
+  <%= f.label :subject_ids %><br/>
+  <%= f.collection_select(:subject_ids, Subject.all, :id, :name, prompt: "Chọn môn học") %>
+  </p>
+  <p>
+    <%= f.label :location_id %><br/>
+    <%= f.select("location_id", Location.select(:city, :city_id).distinct.collect { |p| [ p.city, p.city_id ] }, { },{:class=>"location-city"})%>
+  </p>
+  <p>
+    <%= f.label :location_id %><br/>
+    <%= f.select("location_id", {}, { },{:class=>"location-district"})%>
+  </p>
+  <p>
+    <%= f.label :location_id %><br/>
+    <%= f.select("location_id", {}, { },{:class=>"location-sub-district"})%>
+  </p>
+  <div class="checkbox-area">
+    <div class="checkbox-grid">
+      <% i = 0 %>
+      <% TimesFree.all.each do |timesfree| %>
+        <% i = i+1 %>
+        <% if i%3 == 1 %>
+            <div class="row-calendar-check">
+                <h6><%= timesfree.day %></h6>
+                <ul>
+        <% end %>
+        <li>
+            <%= check_box_tag "tutor[times_free_ids][]",timesfree.id,@tutor.times_free_ids.include?(timesfree.id), { id: "tutor_times_free_ids_#{timesfree.id}" } %>
+            <%= label_tag "tutor[times_free_ids][#{timesfree.id}]",timesfree.free_time %>
+        </li>
+        <% if i%3 == 0 %>
+                </ul>
+            </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+    
+ 
+
+  <p>
+  <%= f.submit %>
+  </p>
+<% end %> -->
+<%= form_for @tutor  do |f| %> 
+    <% if !current_tutor  %>
+      <div class="field form-group">
+          <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle", :id => "regis-ava" %>
+          <span>Ảnh đại diện:</span>
+          <%= f.file_field :image, class: "mbtn-primary" %>
+      </div>
+    <% else %>
+      <div class="field form-group">
+          <span>Ảnh đại diện:</span>
+          <%= f.file_field :image, class: "mbtn-primary" %>
+      </div>
+    <% end %>
+    <div class="stued-content">
+        <div class="stued-content-block">
+            <%= f.label :job %><br/>
+            <%= f.text_field :job, class:'form-control' %>
+            <span id="job_error" class="my-error-span" class="my-error-span"></span>
+        </div>
+        
+        <div class="stued-content-block">
+            <%= f.label :work_place %><br/>
+            <%= f.text_field :work_place, class:'form-control' %>
+            <span id="work_place_error" class="my-error-span"></span>
+        </div>
+
+        <div class="stued-content-block">
+            <%= f.label :description %><br/>
+            <%= f.text_area :description, class:'form-control' %>
+            <span id="work_place_error" class="my-error-span"></span>
+        </div>
+
+        <div class="stued-content-block">
+            <%= f.label :achievement %><br/>
+            <%= f.text_area :achievement, class:'form-control' %>
+            <span id="work_place_error" class="my-error-span"></span>
+        </div>
+
+        <div class="stued-content-block">
+            <%= f.label :subject_ids %><br/>
+            <%= f.collection_select(:subject_ids, Subject.all, :id, :name,{prompt: "Chọn môn học"}, {:class=>"custom-select"}) %>
+            <span id="work_place_error" class="my-error-span"></span>
+        </div>
+
+        <div class="stued-content-block">
+            <%= f.label :location_id %><br/>
+            <%= f.select("location_id", Location.select(:city, :city_id).distinct.collect { |p| [ p.city, p.city_id ] }, { },{:class=>"location-city custom-select"})%>
+            <span id="work_place_error" class="my-error-span"></span>
+        </div>
+
+        <div class="stued-content-block">
+            <%= f.label :location_id %><br/>
+            <%= f.select("location_id", {}, { },{:class=>"location-district custom-select"})%>
+            <span id="work_place_error" class="my-error-span"></span>
+        </div>
+
+        <div class="stued-content-block">
+            <%= f.label :location_id %><br/>
+            <%= f.select("location_id", {}, { },{:class=>"location-sub-district custom-select"})%>
+            <span id="work_place_error" class="my-error-span"></span>
+        </div>
+          
+    </div>
+    <div class="checkbox-area">
+            <div class="checkbox-grid">
+            <% i = 0 %>
+            <% TimesFree.all.each do |timesfree| %>
+                <% i = i+1 %>
+                <% if i%3 == 1 %>
+                    <div class="row-calendar-check">
+                        <h6><%= timesfree.day %></h6>
+                        <ul>
+                <% end %>
+                <li>
+                    <%= check_box_tag "tutor[times_free_ids][]",timesfree.id,@tutor.times_free_ids.include?(timesfree.id), { id: "tutor_times_free_ids_#{timesfree.id}" } %>
+                    <%= label_tag "tutor[times_free_ids][#{timesfree.id}]",timesfree.free_time %>
+                </li>
+                <% if i%3 == 0 %>
+                        </ul>
+                    </div>
+                <% end %>
+            <% end %>
+            </div>
+        </div>
+    <%# <div class = "map-area">
+                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.688968692136!2d105.84344031460468!3d21.00510138601124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac76e3624a59%3A0x4f3ae5ee12bfcc19!2zVGjGsCB2aeG7h24gVOG6oSBRdWFuZyBC4butdQ!5e0!3m2!1svi!2s!4v1584109839467!5m2!1svi!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+    </div> %>
+  <%= f.submit class:' mbtn-primary'%>
+
+
+<% end %>    

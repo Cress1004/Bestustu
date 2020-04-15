@@ -60,3 +60,78 @@
     }
     margin: 1rem 0;
 }
+.view-content{
+    padding: 1rem 3rem;
+    div{
+        span{
+            color: blue;
+        }
+    }
+}
+.view-header-2{
+    width: 100%;
+    border-bottom: 5px solid #1DA1F2;
+    // border-radius: 1rem;
+    // background-color: #f7f7f7;
+    text-align: center;
+    font-size: 2rem;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    span{
+        background-color: #1DA1F2;
+        color: white;
+        padding: 0.5rem 1rem;
+        display: inline-block;
+        border-radius: 1rem;
+        border: 0.5 solid white;
+    }
+    i{
+        padding-right: 1rem;
+        border-right: white 3px solid;
+    }
+}
+
+.my-error-span{
+    font-size: 0.9em;
+    color: red;
+    animation: error-span 2s;
+    display: inline-block;
+    animation-iteration-count: infinite;    
+    @keyframes error-span {
+        from{
+            filter: brightness(0.5);
+        }
+        to{
+            filter: brightness(1.5);
+        }
+    }
+}
+.header-span{
+    color: blue;
+    font-size: 1.2em;
+}
+
+.img-wrapper{
+    .img-fit{
+        max-width: 380px;
+        max-height: 200px;
+        object-fit: cover;
+    }
+}
+// input.form-control{
+//     animation: error-span 2s;
+//     animation-iteration-count: infinite;
+//     // animation-fill-mode: backwards;
+//     @keyframes error-span {
+//         from{
+//             opacity: 0;
+//             transform: scale(0.3);
+//             filter: hue-rotate(180deg);
+//         }
+//         to{
+//             opacity: 1;
+//             transform: scale(1);
+//             filter: hue-rotate(0deg);
+//         }
+//     }
+// }

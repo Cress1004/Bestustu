@@ -101,14 +101,17 @@
                         <%= f.user.username%>
                     <% end %>
                     <p>
-                        <%# <%= f.location.city%> 
+                        <%= f.location.city %>
                         &ensp; | 
                         &ensp;
                         <%= f.subjects.name%>
                     </p>
                  </div>   
                  <div class="slick-item-desctiption">
-                    <%= f.description%>
+                    <%= f.description[0..29] %>
+                    <% if f.description.length >= 29 %>
+                        ....
+                    <% end %>
                  </div>   
                  <div class="slick-item-option">
                     <button class="mbtn-primary">Mời dạy</button>

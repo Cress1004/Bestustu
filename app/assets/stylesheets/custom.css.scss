@@ -2,6 +2,7 @@
 
 
 $header_height:50px;
+$body-color:#F7F7F7;
 
 
 *{
@@ -13,6 +14,7 @@ $header_height:50px;
     font-family: sans-serif;
 }
 body{
+    background-color: $body-color;
     overflow-x: hidden;
 }
 #root{
@@ -403,18 +405,11 @@ header{
     // height: 100vh;
     // background-image: url("images/sign-up-background");
     // background-size: cover;
+    background-color: #F7F7F7;
     overflow: hidden;
-    .edus-box{
-        width: 80vw;
-        // height: 90vh;
-        background-color: rgb(255, 255, 255);
-        margin: 5vh auto;
-        // border: solid 2px rgb(165, 159, 159);
-        // border-radius: 10px;
-        // -webkit-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
-        // -moz-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
-        box-shadow: 10px 10px 15px 1px rgba(163, 162, 162, 0.75);
         .edus-background{
+            width: 100%;
+            margin: 0 auto;
             height: 45vh;
             background-image: url("images/stued-background");
             // background-size: cover;
@@ -541,7 +536,7 @@ header{
                     }
                 }
                 .edus-content-item{
-                    animation: user-nav-appear 1s;
+                    animation: user-nav-appear 1.5s;
                     display: none;
                 }
                 .edus-content-item:nth-child(1){
@@ -549,19 +544,31 @@ header{
                 }
                 @keyframes user-nav-appear {
                     from{
-                        opacity: 0;
-                        transform: translateX(50%);
+                        opacity: 0.4;
+                        transform: translateY(-30%);
                     }
                     to{
                         opacity: 1;
-                        transform: translateX(0%);
+                        transform: translateY(0%);
                     }
                 }
             }
 
         }
 
-  }
+
+}
+.edus-box{
+    width: 80vw;
+    // height: 90vh;
+    background-color: #F7F7F7;
+    margin: 5vh auto;
+    margin-bottom: 0;
+    // border: solid 2px rgb(165, 159, 159);
+    // border-radius: 10px;
+    // -webkit-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
+    // -moz-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 15px 1px rgba(163, 162, 162, 0.75);
 }
 .edus-area-show{
     width: 80%;
@@ -580,7 +587,7 @@ header{
             grid-template-columns: repeat(2, 1fr);
             grid-gap: 1em;
             .field{
-                font-size: 0.8rem;
+                font-size: 1.2rem;
 
             }
         }
