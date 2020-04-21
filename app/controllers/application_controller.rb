@@ -34,6 +34,7 @@ class ApplicationController < ActionController::Base
 
   def require_tutor
     if !current_tutor
+      flash[:notice] = "Bạn cần phải là giáo viên"
       redirect_to root_path
     end
   end
@@ -46,6 +47,7 @@ class ApplicationController < ActionController::Base
 
   def require_student
     if !current_student
+      flash[:notice] = "Bạn cần phải là học sinh"
       redirect_to root_path
     end
   end

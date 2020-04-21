@@ -1,10 +1,17 @@
-<div class="stued-container">
-    <div class="stued-area">
-        <div class="view-header-2">
-            <span>
-                Student's registration
-            </span>
+<div class="edus-container">
+    <div class="edus-box">
+        <div class="edus-background">
+            <div class="edus-ava">
+                <%# <%= image_tag @user.image.to_s, :class => "avatar-size rounded-circle", :id =>"regis-ava" %> 
+            </div>
         </div>
-          <%= render 'form' %>
+        <div class="regis-area">
+            <div class="view-header-2">
+                <span>
+                    Student's registration
+                </span>
+            </div>
+            <%= render 'form' %>
+        </div>
     </div>
 </div>

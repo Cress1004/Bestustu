@@ -39,7 +39,7 @@
                             <i class="fas fa-coins"></i>
                         </div>
                         <span>
-                            &ensp; B point
+                            &ensp; <%= current_tutor.user.bpoint %> B point
                         </span>
                     </div>
 
@@ -82,7 +82,7 @@
                     <span> Birthday:  </span> <%= @tutor.user.birthday %>
                 </div>
                 <div>
-                    <span> Địa chỉ:  </span> <%= @tutor.location.city %> <%= @tutor.location.district %> <%= @tutor.location.sub_district %>
+                    <span> Địa chỉ:  </span> <%= @tutor.location.city %>, <%= @tutor.location.district %>, <%= @tutor.location.sub_district %>
                 </div>
             </div>
         </div>

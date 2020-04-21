@@ -8,39 +8,38 @@
           <%= render "devise/shared/error_messages", resource: resource %>
 
           <div class="field form-group">
-            <%= f.label :username %><br />
-            <%= f.text_field :username, autofocus: true, autocomplete:"user-name", class:"form-control" %>
+            <%= f.text_field :username, autofocus: true, autocomplete:"user-name", class:"form-control", placeholder: "User name" %>
             <span id="username_error" class="my-error-span"></span>
            </div>
 
           <div class="field form-group">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
             <span id="email_error" class="my-error-span"></span>
           </div>
 
            <div class="field form-group">
-            <%= f.label :phone %><br />
-            <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form-control" %>
+            <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form-control", placeholder: "Phone" %>
               <span id="phone_error" class="my-error-span"></span>
           </div>
 
           <div class="field form-group">
-            <%= f.label :password %>
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
           </div>
 
           <div class="field form-group">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Password confirmation" %>
           </div>
 
           <div class="actions">
             <%= f.submit "Sign up", class: "mbtn-danger" %>
-            <%= render "devise/shared/links" %>
+            <div class="sub-actions">
+              <div>
+                <%= render "devise/shared/links" %>
+              </div>
+            </div>
           </div>
         <% end %>
         </div>
