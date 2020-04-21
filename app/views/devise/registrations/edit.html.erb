@@ -4,7 +4,11 @@
     <div class="edus-box">
         <div class="edus-background">
           <div class="edus-ava">
-            <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle" %>
+            <% if !current_user.image.url %>
+              <img src="/uploads/user/image/avt_define/avt_male.png" class="avatar-size rounded-circle">
+            <% else %>
+              <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle" %>
+            <% end %>
           </div>
           <% if !current_user.tutor && !current_user.student%>
           <div class="edus-edit">
