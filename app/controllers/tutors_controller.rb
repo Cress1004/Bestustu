@@ -5,11 +5,13 @@ class TutorsController < ApplicationController
 
   def new
     @tutor = Tutor.new
+    @user = @users.find(current_user.id)
   end
 
   def create
     @tutor = Tutor.new(tutor_params)
     @tutor.user_id = current_user.id
+    @user.image.url = "/uploads/user/image/avt_define/avt_male.png"
     if @tutor.save
       flash[:success] = "Bạn đã trở thành gia sư và bạn được tặng 1 000 000 VNĐ vào tài khoản bpoint"
       @tutor.user.bpoint = 1000000
@@ -25,8 +27,8 @@ class TutorsController < ApplicationController
     @users = User.all
     @Locations = Location.all
 
-    if (params[:tutor]) and (params[:tutor][:location_id] or params[:tutor][:subject_id])
-      @tutors = Tutor.search(params[:tutor][:location_id],params[:tutor][:subject_id]).page(params[:page]).per(3)
+    if (params[:tutor]) and (params[:tutor][:location_id] or params[:tutor][:subject_ids])
+      @tutors = Tutor.search(params[:tutor][:location_id],params[:tutor][:subject_ids]).page(params[:page]).per(3)
     elsif params[:search_input]
       @tutors = Tutor.search_by_location_name(params[:search_input]).page(params[:page]).per(3)
 
@@ -65,7 +67,7 @@ class TutorsController < ApplicationController
   end
 
   def tutor_params
-    params.require(:tutor).permit(:job, :description, :achievement, :location_id, :work_place,times_free_ids:[])
+    params.require(:tutor).permit(:job, :description, :achievement, :location_id, :work_place,:subject_ids, times_free_ids:[])
   end
 
   def not_student

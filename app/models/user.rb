@@ -13,7 +13,6 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable,
           :omniauthable, :omniauth_providers => [:facebook],
           :authentication_keys => [:username]
-
   before_save { self.username = username.downcase }
 
   # validates :email, presence: true

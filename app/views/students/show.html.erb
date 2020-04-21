@@ -69,11 +69,24 @@
         </div>
         <div class="stush-content">
             <div class="view-header">
-            <span>
-                Thông tin học viên
-            </span>
+                <span>
+                    Thông tin học viên
+                </span>
             </div>
-            Sinh viên tại đại học bách khoa Hà Nội
+            <div class="view-content">
+                <div>
+                    <span> Name:  </span> <%= @student.user.username %>
+                </div>
+                <div>
+                    <span> Birthday:  </span> <%= @student.user.birthday %>
+                </div>
+                <div>
+                    <span> Địa chỉ:  </span> <%= @student.address %> 
+                </div>
+                <div>
+                    <span> Lớp:  </span> <%= @student.grade %> 
+                </div>
+            </div>
         </div>
 
     </div>

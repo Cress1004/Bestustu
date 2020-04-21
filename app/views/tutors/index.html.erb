@@ -1,9 +1,18 @@
-</br> <h1 align="center">Listing all tutors</h1> </br>
-<div class="offset-md-4 col-md-4">
-<%= paginate @tutors, theme: 'twitter-bootstrap-4' %>
+<div class="stush-container">
+    <div class="stush-area">
+        <div class="view-header-2">
+            <span>
+                <i class="fas fa-chalkboard"></i>
+                List of tutors
+            </span>
+        </div>
+        <%# <div class="offset-md-4 col-md-4"> %>
+        <%# <%= paginate @tutors, theme: 'twitter-bootstrap-4' %>
+        <%# </div> %>
+        <%= render 'tutor', obj: @tutors %>
+        <div class="center-paginate">
+        <%= paginate @tutors, theme: 'twitter-bootstrap-4' %>
+        </div>
+        <%= params.inspect %>
+    </div>
 </div>
-<%= render 'tutor', obj: @tutors %>
-<div class="offset-md-4 col-md-4">
-<%= paginate @tutors, theme: 'twitter-bootstrap-4' %>
-</div>
-<%= params.inspect %>
