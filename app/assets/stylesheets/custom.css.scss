@@ -2,6 +2,7 @@
 
 
 $header_height:50px;
+$body-color:#F7F7F7;
 
 
 *{
@@ -13,6 +14,7 @@ $header_height:50px;
     font-family: sans-serif;
 }
 body{
+    background-color: $body-color;
     overflow-x: hidden;
 }
 #root{
@@ -24,7 +26,9 @@ body{
 }
 
 header{
-
+    position: sticky;
+    top: 0;
+    z-index: 9999;
     background-color: #1DA1F2;
     height: $header_height;
     display: flex;
@@ -182,66 +186,69 @@ header{
             //     flex-wrap: 1;
             //     flex-basis: 0;
             // }
-            .sign-in-area-father{
-                position: relative;
-               min-width: 100px;
-                height: 100%;
-                .sign-in-area:nth-child(1){
-                    color: var(--blue);
-                    cursor: pointer;
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    text-decoration: none;
+            .user-info{
+                // width: 15em;
+                .sign-in-area-father{
+                    // position: relative;
+                    // width: 100%;
                     height: 100%;
-                    .sign-in-header{
-                        border-radius: 5px;
-                        width: 100%;
+                    .sign-in-area:nth-child(1){
+                        color: var(--blue);
+                        cursor: pointer;
+                        display: block;
+                        // position: absolute;
+                        // top: 0;
+                        // left: 0;
+                        text-decoration: none;
                         height: 100%;
-                        background-color: rgb(255, 255, 255);
-                        line-height: $header_height*0.6;
-                        padding: 0 5px 0 5px;
-                        font-size: 0.9rem;
+                        .sign-in-header{
+                            border-radius: 5px;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgb(255, 255, 255);
+                            line-height: $header_height*0.6;
+                            padding: 0 5px 0 5px;
+                            font-size: 0.9rem;
+                        }
                     }
-                }
-                .sign-in-area:nth-child(2), .sign-in-area:nth-child(3){
-                    min-width: 10rem;
-                    box-shadow: 7px 4px 8px 0px rgba(150,142,150,1);
-                    display: none;
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    text-decoration: none;
-                    height: 100%;
-                    animation: submenu-display 1s;
-                    .sign-in-header{
-
-                        // z-index: 2;
-                        // width: 100%;
+                    .sign-in-area:nth-child(2), .sign-in-area:nth-child(3){
+                        min-width: 10rem;
+                        box-shadow: 7px 4px 8px 0px rgba(150,142,150,1);
+                        display: none;
+                        // position: absolute;
+                        // top: 100%;
+                        // left: 0;
+                        text-decoration: none;
                         height: 100%;
-                        background-color: rgb(240, 235, 235);
-
-                        line-height: $header_height*0.6;
-                        padding: 0 5px 0 5px;
-                        font-size: 0.9rem;
+                        animation: submenu-display 1s;
+                        .sign-in-header{
+    
+                            // z-index: 2;
+                            // width: 100%;
+                            height: 100%;
+                            background-color: rgb(240, 235, 235);
+    
+                            line-height: $header_height*0.6;
+                            padding: 0 5px 0 5px;
+                            font-size: 0.9rem;
+                        }
+                        .sign-in-header:hover{
+                            background-color: rgb(18, 17, 126);
+                            color: white;
+                        }
                     }
-                    .sign-in-header:hover{
-                        background-color: rgb(18, 17, 126);
-                        color: white;
+                    .sign-in-area:nth-child(3){
+                        top: 200%;
                     }
+                    div:nth-child(4){
+                        position: absolute;
+                        background-color: red;
+                        right: 0;
+                        height: 100%;
+                        line-height: 100%;
+                    }
+    
                 }
-                .sign-in-area:nth-child(3){
-                    top: 200%;
-                }
-                div:nth-child(4){
-                    position: absolute;
-                    background-color: red;
-                    right: 0;
-                    height: 100%;
-                    line-height: 100%;
-                }
-
             }
             .sign-in-area-father:hover .sign-in-area:nth-child(2){
                 display: block;
@@ -342,8 +349,7 @@ header{
     background-size: cover;
     overflow: hidden;
     .siup-box{
-
-        width: 60vw;
+        width: 35vw;
         // height: 90vh;
         background-color: white;
         margin: 5vh auto;
@@ -353,7 +359,7 @@ header{
         -moz-box-shadow: 10px 10px 240px 0px rgba(200,224,22,1);
         box-shadow: 10px 10px 240px 0px rgba(200,224,22,1);
         .siup-area{
-            width: 50%;
+            width: 70%;
             margin: 10vh auto;
             padding-bottom: 50px;
             .form-header{
@@ -364,19 +370,32 @@ header{
                 }
             }
             .actions{
-                input{
-                    margin-top: 10px;
-                    // display: block;
-                    width: 60%;
-                    float: left;
+
+                & > input{
+                    margin: 0 auto;
+                    width: 100%;
+                    display: block;
                 }
-                a{
-                    margin-top: 10px;
-                    width: 35%;
-                    // display: inline-block;
-                    float: right;
+                & > a{
+                    flex-grow: 1;
+                }
+                .sub-actions{
+                    margin: 0 auto;
+                    width: 100%;
+                    div{
+                        display: flex;
+                        a{
+                            font-size: 0.85em;
+                            padding: 0.2em 0.5em;
+                        }
+                        .fb-button{
+                            margin-left: auto;
+                        }
+                    }
+                    
                 }
             }
+            
             img{
                 width: 100%;
                 margin-top: 20px;
@@ -396,18 +415,11 @@ header{
     // height: 100vh;
     // background-image: url("images/sign-up-background");
     // background-size: cover;
+    background-color: #F7F7F7;
     overflow: hidden;
-    .edus-box{
-        width: 80vw;
-        // height: 90vh;
-        background-color: rgb(255, 255, 255);
-        margin: 5vh auto;
-        // border: solid 2px rgb(165, 159, 159);
-        // border-radius: 10px;
-        // -webkit-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
-        // -moz-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
-        box-shadow: 10px 10px 15px 1px rgba(163, 162, 162, 0.75);
         .edus-background{
+            width: 100%;
+            margin: 0 auto;
             height: 45vh;
             background-image: url("images/stued-background");
             // background-size: cover;
@@ -534,7 +546,7 @@ header{
                     }
                 }
                 .edus-content-item{
-                    animation: user-nav-appear 1s;
+                    animation: user-nav-appear 1.5s;
                     display: none;
                 }
                 .edus-content-item:nth-child(1){
@@ -542,19 +554,64 @@ header{
                 }
                 @keyframes user-nav-appear {
                     from{
-                        opacity: 0;
-                        transform: translateX(50%);
+                        opacity: 0.4;
+                        transform: translateY(-30%);
                     }
                     to{
                         opacity: 1;
-                        transform: translateX(0%);
+                        transform: translateY(0%);
                     }
                 }
             }
 
         }
 
-  }
+
+}
+
+.field{
+    position: relative;
+    margin-bottom: 0;
+    margin-top: 1em;
+}
+.edus-box{
+    width: 80vw;
+    // height: 90vh;
+    background-color: #F7F7F7;
+    margin: 5vh auto;
+    margin-bottom: 0;
+    // border: solid 2px rgb(165, 159, 159);
+    // border-radius: 10px;
+    // -webkit-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
+    // -moz-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 15px 1px rgba(163, 162, 162, 0.75);
+    .regis-area{
+        padding: 0 10rem;
+        .stued-header{
+            color: blue;
+            text-align: center;
+        }
+        .stued-content{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1em;
+            padding: 10px;
+        }
+        input[type = submit]{
+            width: 20%;
+            margin: 0 auto;
+            display: block;
+            margin-top: 50px;
+        }
+        .map-area{
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            width: 800px;
+            height: 500px;
+            
+        }
+    }
 }
 .edus-area-show{
     width: 80%;
@@ -573,7 +630,7 @@ header{
             grid-template-columns: repeat(2, 1fr);
             grid-gap: 1em;
             .field{
-                font-size: 0.8rem;
+                font-size: 1.2rem;
 
             }
         }

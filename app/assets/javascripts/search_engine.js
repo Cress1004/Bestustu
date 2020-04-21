@@ -1,13 +1,13 @@
-
+document.addEventListener("turbolinks:load", function(event){
 var suggestions = [];
 
-for (var i = 0; i < subjects.length; i++) {
-
-  suggestions.push(subjects[i].name);
+for (var i = 0; i < gon.global.subjects.length; i++) {
+  console.log(gon.global.subjects[i]);
+  suggestions.push(gon.global.subjects[i].name);
 }
-for (var i = 0; i < locations.length; i++) {
+for (var i = 0; i < gon.global.locations.length; i++) {
 
-  suggestions.push(locations[i].city);
+  suggestions.push(gon.global.locations[i].city);
 }
 // console.log(search_subjects);
 function autocomplete(inp, arr) {
@@ -109,3 +109,4 @@ function autocomplete(inp, arr) {
 
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 autocomplete(document.getElementById("search_input"), suggestions);
+});

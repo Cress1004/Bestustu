@@ -31,15 +31,15 @@
                             <i class="fas fa-user-graduate"></i>
                         </div>
                         <span>
-                            &ensp; Học viên
+                            &ensp; Giảng viên
                         </span>
                     </div>
-                                        <div>
+                    <div>
                         <div class = "icon-custom">
                             <i class="fas fa-coins"></i>
                         </div>
                         <span>
-                            &ensp; B point
+                            &ensp; <%= current_tutor.user.bpoint %> B point
                         </span>
                     </div>
 
@@ -48,19 +48,19 @@
                 <div class="stush-header-3-center">
                     <div class="stush-header-3-center-sub">
                         <div class="sub-first-line">0</div>
-                        Lớp đã tạo
+                        Lớp đã dạy
                     </div>
                     <div class="stush-header-3-center-sub">
                         <div class="sub-first-line">0</div>
-                        Lớp đã tạo
+                        Người quan tâm
+                    </div>
+                    <div class="stush-header-3-center-sub">
+                        <div class="sub-first-line"><%= @tutor.rates("point").count %></div>
+                        Lượt đánh giá
                     </div>
                     <div class="stush-header-3-center-sub">
                         <div class="sub-first-line">0</div>
-                        Lớp đã tạo
-                    </div>
-                    <div class="stush-header-3-center-sub">
-                        <div class="sub-first-line">0</div>
-                        Lớp đã tạo
+                        Lượt mời dạy
                     </div>
                 </div>
                 <div class="stush-header-3-right">
@@ -74,7 +74,17 @@
                    Tutor 's information
                 </span>
             </div>
-            Sinh viên tại đại học bách khoa Hà Nội
+            <div class="view-content">
+                <div>
+                    <span> Name:  </span> <%= @tutor.user.username %>
+                </div>
+                <div>
+                    <span> Birthday:  </span> <%= @tutor.user.birthday %>
+                </div>
+                <div>
+                    <span> Địa chỉ:  </span> <%= @tutor.location.city %>, <%= @tutor.location.district %>, <%= @tutor.location.sub_district %>
+                </div>
+            </div>
         </div>
         <div class="stush-content">
             <div class="view-header">
@@ -117,7 +127,10 @@
             <div id="ratings_for_tutor">
                 <div class="ratings_left">
                     <div class="ratings_left_average">
-                        <%= @tutor.average("point").avg.round(2)%>
+                        <% if @tutor.average("point") %>
+                            <%= @tutor.average("point").avg.round(2)%>
+                        <% end %>
+                        <%# <%= current_tutor.location.sub_district%>
                     </div>
                     <div class="ratings_left_star">
                         <%= rating_for @tutor, "point", enable_half: true, readOnly: true %>
@@ -129,7 +142,16 @@
                             <%= @tutor.rates("point").count %>
                         </span>
                     </div>
-                    <%= rating_for @tutor, "point", readOnly: true, disable_after_rate: false %>
+                    <% if current_student %>
+                        <div class="ratings_for_user">
+                            <div>
+                                <span>
+                                    Your rating
+                                </span>
+                            </div>
+                            <%= rating_for @tutor, "point", readOnly: true, disable_after_rate: false %>
+                        </div>
+                    <% end %>
                 </div>
                 <div class="ratings_right">
                     <div class="ratings_right_item">
@@ -138,7 +160,9 @@
                             </span>
                         </div>
                         <div class="ratings_right_item_graph">
-                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 5}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#79C9A1" ) %>
+                            <% if @tutor.rates("point").count  > 0%>
+                                <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 5}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#79C9A1" ) %>
+                            <% end %>
                         </div>
                     </div>
                     <div class="ratings_right_item">
@@ -147,7 +171,9 @@
                             </span>
                         </div>
                         <div class="ratings_right_item_graph">
-                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 4}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FFFFFF" ) %>
+                            <% if @tutor.rates("point").count  > 0%>
+                                <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 4}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#AED888" ) %>
+                            <% end%>
                         </div>
                     </div>
                     <div class="ratings_right_item">
@@ -156,7 +182,9 @@
                             </span>
                         </div>
                         <div class="ratings_right_item_graph">
-                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 3}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FFD935" ) %>
+                            <% if @tutor.rates("point").count  > 0%>
+                                <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 3}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FFD935" ) %>
+                            <% end%>
                         </div>
                     </div>
                     <div class="ratings_right_item">
@@ -165,7 +193,9 @@
                             </span>
                         </div>
                         <div class="ratings_right_item_graph">
-                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 2}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FFB235" ) %>
+                            <% if @tutor.rates("point").count  > 0%>
+                                <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 2}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FFB235" ) %>
+                            <% end%>
                         </div>
                     </div>
                     <div class="ratings_right_item">
@@ -174,12 +204,14 @@
                             </span>
                         </div>
                         <div class="ratings_right_item_graph">
-                            <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 1}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FF8C5A" ) %>
+                            <% if @tutor.rates("point").count  > 0%>
+                                <%= content_tag(:div,"", style: "width: #{Rate.where({rateable_id: @tutor.id, stars: 1}).count.to_f/@tutor.rates("point").count.to_f   * 100 }%; background-color:#FF8C5A" ) %>
+                            <% end%>
                         </div>
                     </div>
-                <div>
+                </div>
             </div>
         </div>
-
+        </div>
     </div>
 </div>

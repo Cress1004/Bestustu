@@ -2,14 +2,20 @@
   <div class="edus-box">
     <div class="edus-background">
       <div class="edus-ava">
-        <%= image_tag @user.image.to_s, :class => "avatar-size rounded-circle" %>
+        <%= image_tag @user.image.to_s, :class => "avatar-size rounded-circle", :id =>"regis-ava" %>
       </div>
     </div>
-    <div class="edus-area">
-      <div class="edus-header">
-        <h2><%= @user.name %>'s Information</h2>
-      </div>
-      <% if @tutor %>
+  </div>
+    <div class="stued-container">
+      <div class="stued-area">
+        <div class="view-header-2">
+              <span>
+                  <i class="fas fa-chalkboard"></i>
+                  Tutor's information edit
+              </span>
+        </div>
+        <%= render 'form'%>
+      <!-- <% if @tutor %>
         <%= form_for(@tutor, :html => {class:"form-horizontal", role:"form"})  do |f| %>
         <div class="field form-group">
           <%= f.label :job %>
@@ -59,8 +65,9 @@
           </div>
           <% end %>
         </div>
-        <% end %>
+        <% end %> -->
+        </div>
       <%= link_to "Back", :back %>
     </div>
-  </div>
+  <%# </div> %>
 </div>

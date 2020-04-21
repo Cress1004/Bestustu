@@ -1,34 +1,18 @@
-
-<div id="main">
-    <!-- Left element-Form for class register -->
-    <div id="left-class-new">
-      <div class="card shadow" style="width:100%">
-
-        <div id="class-new-header">
-          <h3 align="center">
-            Mô tả yêu cầu tìm gia sư
-          </h3>
+<div class="edus-container">
+    <div class="edus-box">
+        <div class="edus-background">
+            <div class="edus-ava">
+                <%# <%= image_tag @user.image.to_s, :class => "avatar-size rounded-circle", :id =>"regis-ava" %> 
+            </div>
         </div>
-
-        <div class="card-body">
-          <p>
-            Xin chào, bạn chỉ cần đăng yêu cầu học, các gia sư sẽ gửi đề nghị dạy tới bạn với mức học phí phù hợp để bạn lựa chọn.
-            Nếu bạn cần tư vấn, xin vui lòng gọi điện tới chúng tôi: 1900.63.63.42 hoặc chat với chúng tôi qua messenger.
-          </p>
-          <hr class="solid">
+        <div class="regis-area">
+            <div class="view-header-2">
+                <span>
+                    <i class="fas fa-chalkboard"></i>
+                    mô tả yêu cầu tìm gia sư
+                </span>
+                </div>
           <%= render 'form' %>
-        </div>
-
-      </div>
+        </div>   
     </div>
-
-    <!-- Right element-Extra information -->
-    <div id="right-class-new">
-      <div class = "card" style ="width:100%">
-        <div class="card-body">
-          Blah blah
-        </div>
-      </div>
-    </div>
-
 </div>

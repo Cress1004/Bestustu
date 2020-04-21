@@ -11,10 +11,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+  
 # Helper method
   helper_method :require_user, :current_tutor, :require_tutor,
                 :current_student, :require_student,
-                :all_students, :all_tutors, :messages
+                :all_students, :all_tutors, :messages,
+                :locations
 
 
   def require_user
@@ -32,6 +34,7 @@ class ApplicationController < ActionController::Base
 
   def require_tutor
     if !current_tutor
+      flash[:notice] = "Bạn cần phải là giáo viên"
       redirect_to root_path
     end
   end
@@ -44,6 +47,7 @@ class ApplicationController < ActionController::Base
 
   def require_student
     if !current_student
+      flash[:notice] = "Bạn cần phải là học sinh"
       redirect_to root_path
     end
   end
@@ -64,6 +68,10 @@ class ApplicationController < ActionController::Base
         Message.where(:tutor_id => current_tutor.id)
       end
     end
+  end
+
+  def locations
+    
   end
 
 end
