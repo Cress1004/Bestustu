@@ -92,7 +92,9 @@
 }
 
 .my-error-span{
-    font-size: 0.9em;
+    position: absolute;
+    bottom: 100%;
+    font-size: 0.8em;
     color: red;
     animation: error-span 2s;
     display: inline-block;

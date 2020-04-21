@@ -1,19 +1,22 @@
 
-<div id="show-main">
-  <div class="view-header">
-    <span>Class list</span>
-  </div>
+<div class="stush-container">
+    <div class="stush-area">
+        <div class="view-header-2">
+            <span>
+                <i class="fas fa-chalkboard"></i>
+                List of tutors
+            </span>
+        </div>
   <!-- Filter for location and subject -->
-  <%= form_tag class_registers_path, :method => 'get' do %>
-    <%= collection_select :class_register, :location_id, Location.select(:city).distinct, :id, :city, prompt: "Chọn địa điểm" %>
-    <%= collection_select :class_register, :subject_id, Subject.all, :id, :name, prompt: "Chọn môn học" %>
+  <%= form_tag class_registers_path, :method => 'get', class: "index-form" do %>
+    <%= collection_select :class_register, :location_id, Location.select(:city).distinct, :id, :city, {prompt: "Chọn địa điểm"}, {class: "custom-select"} %>
+    <%= collection_select :class_register, :subject_id, Subject.all, :id, :name, {prompt: "Chọn môn học"}, {class: "custom-select"} %>
     <%= submit_tag "Áp dụng", class: "mbtn-primary" %>
   <% end %>
   <!-- Display class -->
   <% @class_registers.each do |class_register| %>
 
   <div id="class-show-head">
-
     <hr class="solid">
     <div class="class-element-container">
       <div id="left-element">
@@ -39,5 +42,6 @@
   <% end %>
   <div class="center-paginate">
     <%= paginate @class_registers, theme: 'twitter-bootstrap-4'%>
+  </div>
   </div>
 </div>
