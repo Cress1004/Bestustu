@@ -1,0 +1,5 @@
+- Sửa tính năng lọc dữ liệu mục thành phố, sửa thanh search bar (Huy)
+- Kiểm tra xem dữ liệu các trang hiện đúng chưa (Thanh)
+- validate lại dữ liệu chú ý các trường hợp xảy ra, ví dụ Salary ko dc là số âm, k được là string (Thanh)
+- Làm các trang Class_register: index, select_tutor, show (Lộc)
+- Làm trang about, contact, sửa lại ảnh trang home (Lộc)
