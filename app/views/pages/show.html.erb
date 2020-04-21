@@ -15,7 +15,7 @@
         </div>
          <div class = "edus-nav-and-content">
           <div class ="edus-nav">
-            <div class = "edus-nav-item" value="1">
+            <div class = "edus-nav-item user-navbar-active" value="1">
               <i class = "fas fa-smile">
               </i>
               Thong tin ca nhan
@@ -128,7 +128,6 @@
               <div class="edus-content-item-content">
                 <% if @class_register %>
                   <% @class_registers.each do |class_register| %>
-
                     <%= link_to class_register.description, class_register_path(class_register) %><br>
                   <% end %>
                 <% end %>

@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_one :student
   has_one :tutor
   has_many :messages
+
+  ratyrate_rater
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
