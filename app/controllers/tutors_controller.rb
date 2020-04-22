@@ -5,7 +5,6 @@ class TutorsController < ApplicationController
 
   def new
     @tutor = Tutor.new
-    @user = @users.find(current_user.id)
   end
 
   def create
