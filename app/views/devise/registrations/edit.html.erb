@@ -5,9 +5,7 @@
         <div class="edus-background">
           <div class="edus-ava">
             <% if !current_user.image.url %>
-              <img src="/uploads/user/image/avt_define/avt_male.png" class="avatar-size rounded-circle">
-            <% else %>
-              <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle" %>
+            <img src="/uploads/user/image/avt_default/default-avatar.png" class="avatar-size rounded-circle">
             <% end %>
           </div>
           <% if !current_user.tutor && !current_user.student%>
@@ -52,10 +50,10 @@
 
             <div class="field form-group">
               <%= f.label :gender %><br />
-              <%= f.label :gender, "Female", :value => "Female"  %>
-              <%= f.radio_button :gender, "Female"%>
-              <%= f.label :gender, "Male", :value => "Male" %>
-              <%= f.radio_button :gender, "Male"%>
+              <%= f.label :gender, "Female", :value => 0  %>
+              <%= f.radio_button :gender, 0%>
+              <%= f.label :gender, "Male", :value => 1 %>
+              <%= f.radio_button :gender, 1%>
             </div>
 
             <div class="field form-group">
@@ -67,7 +65,7 @@
 
 
           <div class="field form-group">
-            <%= f.label :password %> 
+            <%= f.label :password %>
             <%= f.password_field :password, autocomplete: "new-password",class:"form-control" %>
             <% if @minimum_password_length %>
 

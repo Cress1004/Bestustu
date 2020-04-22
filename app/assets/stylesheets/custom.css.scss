@@ -222,12 +222,12 @@ header{
                         height: 100%;
                         animation: submenu-display 1s;
                         .sign-in-header{
-    
+
                             // z-index: 2;
                             // width: 100%;
                             height: 100%;
                             background-color: rgb(240, 235, 235);
-    
+
                             line-height: $header_height*0.6;
                             padding: 0 5px 0 5px;
                             font-size: 0.9rem;
@@ -247,7 +247,7 @@ header{
                         height: 100%;
                         line-height: 100%;
                     }
-    
+
                 }
             }
             .sign-in-area-father:hover .sign-in-area:nth-child(2){
@@ -392,10 +392,10 @@ header{
                             margin-left: auto;
                         }
                     }
-                    
+
                 }
             }
-            
+
             img{
                 width: 100%;
                 margin-top: 20px;
@@ -609,7 +609,7 @@ header{
             margin: 0 auto;
             width: 800px;
             height: 500px;
-            
+
         }
     }
 }

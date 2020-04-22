@@ -16,7 +16,11 @@
     <div class="col-sm-3">
       <div class="card" >
       <%= link_to tutor_path(tutor),class: "img-wrapper" do%>
-        <%= image_tag @user.image.to_s, :class => "card-img-top img-fit"%>
+      <% if !@user.image.url %>
+          <img src="/uploads/user/image/avt_default/default-avatar.png" class="card-img-top img-fit">
+      <% else %>
+          <%= image_tag @user.image.to_s, :class => "card-img-top img-fit"%>
+      <% end %>
       <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= @user.name %></h5>

@@ -5,9 +5,13 @@
 
             </div>
             <div class="stush-header-2">
-                <%# <div class="stush-ava"> %>                    
+                 <div class="stush-ava"> 
+                <% if !@tutor.user.image.url %>
+                  <img src="/uploads/user/image/avt_default/default-avatar.png" class="avatar-size rounded-circle">
+                  <% else %>
                     <%= image_tag @tutor.user.image.to_s , class: "stush-ava"%>
-                <%# </div> %>
+                    <% end %>
+                 </div>
                 <div class="stush-header-2-content">
                     <h2> <%= @tutor.user.username %> </h2>
                     <h3>
