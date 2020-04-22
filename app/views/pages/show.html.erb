@@ -3,7 +3,13 @@
         <div class="edus-background">
           <div class="edus-ava">
             <% if !current_user.image.url %>
-              <img src="/uploads/user/image/avt_define/default_avt.jpg" class="avatar-size rounded-circle">
+              <% if current_user.gender == 1 %>
+                <img src="/uploads/user/image/avt_define/default_avt_male.jpg" class="avatar-size rounded-circle">
+              <% elsif current_user.gender == 0 %>
+                <img src="/uploads/user/image/avt_define/default_avt_female.jpeg" class="avatar-size rounded-circle">
+              <% else %>
+                <img src="/uploads/user/image/avt_define/default_avt_male.jpg" class="avatar-size rounded-circle">
+              <% end %>
             <% else %>
               <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle" %>
             <% end %>
