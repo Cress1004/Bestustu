@@ -8,7 +8,7 @@ $(document).on("turbolinks:load", function() {
 
 document.addEventListener("turbolinks:load", function(event){
   var currentLocation = window.location.href;
-  var menuItem = document.querySelectorAll('nav ul li a');
+  var menuItem = document.querySelectorAll('nav .menu li a');
   for(var i = 0;i < menuItem.length;i++){
     if(menuItem[i].href === currentLocation){
       menuItem[i].className += "navbar-active"

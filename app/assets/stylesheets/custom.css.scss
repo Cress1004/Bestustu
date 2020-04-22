@@ -62,7 +62,7 @@ header{
         }
     }
     .search-container{
-        width: 40%;
+        width: 30%;
         .search-area{
             position: relative;
             display: flex;
@@ -78,7 +78,8 @@ header{
                 text-indent: 15px;
             }
             #search-submit{
-                width: 15%;
+                // width: 15%;
+                padding: 0 0.5em;
                 height: 100%;
                 border-radius: 0 5px 5px 0;
                 border: solid 0px;
@@ -167,17 +168,23 @@ header{
         }
     }
     .sign-container{
-        width: 20%;
+        margin-left: auto;
         height: 100%;
+        padding: 0 1rem;
         .sign-area{
             width: 100%;
             display: flex;
             height: 0.6*$header_height;
             margin: 0.2*$header_height;
-            justify-content: space-evenly;
+            justify-content: center;
+            // div{
+            //     flex-grow: 1;
+            //     flex-wrap: 1;
+            //     flex-basis: 0;
+            // }
             .sign-in-area-father{
                 position: relative;
-                width: 50%;
+               min-width: 100px;
                 height: 100%;
                 .sign-in-area:nth-child(1){
                     color: var(--blue);
@@ -227,6 +234,13 @@ header{
                 .sign-in-area:nth-child(3){
                     top: 200%;
                 }
+                div:nth-child(4){
+                    position: absolute;
+                    background-color: red;
+                    right: 0;
+                    height: 100%;
+                    line-height: 100%;
+                }
 
             }
             .sign-in-area-father:hover .sign-in-area:nth-child(2){
@@ -235,14 +249,61 @@ header{
             .sign-in-area-father:hover .sign-in-area:nth-child(3){
                 display: block;
             }
+            .noti-icon{
+                display: flex;
+                align-items: center;
+                font-size: 25px;
+                a{
+                    display: block;
+                    margin: 0 0.4rem;
+                    color: white;
+                    position: relative;
 
+                    div:nth-child(3){
+                        z-index: 1;
+                        right: 0;
+                        top: 105%;
+                        position: absolute;
+                        font-size: 0.6em;
+                        min-width: 300px;
+                        height: 525px;
+                        text-align: center;
+                        // background-color: red;
+                        padding: 0 0.2em;
+                        display: none;
+                        div{
+                            height: 3rem;
+                            background-color: red;
+                            color: white;
+                            border-top: 1px solid white;
+                        }
+                    }
+                    & > div:nth-child(2){
+                        right: 0;
+                        bottom: 0;
+                        position: absolute;
+                        border: 1px solid white;
+                        border-radius: 50%;
+                        font-size: 0.5em;
+                        height: 1.5em ;
+                        min-width: 1.5em;
+                        line-height: 1.5em;
+                        text-align: center;
+                        background-color: red;
+                        padding: 0 0.2em;
+                    }
+                }
+                a:hover div:nth-child(3){
+                    display: block  ;
+                }
+            }
             .sign-up-area{
                 text-decoration: none;
                 // width: 35%;
                 height: 100%;
                 // background-color: rgb(255, 0, 179);
                 .sign-up-header{
-                    width: 100%;
+                    width: fit-content;
                     height: 100%;
                     background-color: rgb(255, 255, 255);
                     border-radius: 5px;
@@ -251,6 +312,7 @@ header{
                     line-height: $header_height*0.6;
                     padding: 0 5px 0 5px;
                     font-size: 0.9rem;
+                    margin: 0 0.5em;
                 }
                 .sign-up-header:hover{
                     background-color: rgb(18, 17, 126);

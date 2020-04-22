@@ -28,10 +28,10 @@
   <%= f.text_area :achievement %>
 </p>
 
-<p>
-  <%= f.label :location_id, "Location" %>
-  <%= f.collection_select(:location_id, Location.all, :id, :city) %>
-</p>
+  <p>
+    <%= f.label :location_id, "Location" %>
+    <%= f.collection_select(:location_id, Location.all, :id, :city) %>
+  </p>
 
 <p>
   <%= f.submit %>
