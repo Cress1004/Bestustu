@@ -123,9 +123,8 @@ class ClassRegistersController < ApplicationController
   end
 
   def index
-    if params[:class_register] and (params[:class_register][:location_id] or params[:class_register][:subject_id])
-      @class_registers = ClassRegister.search(params[:class_register][:location_id],
-        params[:class_register][:subject_id]).page(params[:page]).per(3)
+    if params[:class_register] and (params[:class_register][:location_name] or params[:class_register][:subject_id])
+      @class_registers = ClassRegister.search(params[:class_register][:location_name],params[:class_register][:subject_id]).page(params[:page]).per(3)
     else
       @class_registers = ClassRegister.all.page(params[:page]).per(3)
     end

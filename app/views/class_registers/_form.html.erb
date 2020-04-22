@@ -1,5 +1,5 @@
 <%= form_for @class_register do |f| %>
-<%# <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  class:"datetimepicker", id: "edit_user" }) do |f| %>  
+<%# <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  class:"datetimepicker", id: "edit_user" }) do |f| %>
 
     <div class="stued-content">
       <div class="stued-content-block">
@@ -7,7 +7,7 @@
         <%= f.text_area :description ,class: "form-control",placeholder: "", autofocus: true %>
         <small><span id="description_error"></span></small>
       </div>
-    
+
 
     <div class="stued-content-block">
         <%= f.label :subject_id, "Subject" %>
@@ -17,10 +17,10 @@
 
     <div class="stued-content-block">
         <%= f.label :location_id, "Location" %>
-        <%= f.collection_select(:location_id, Location.select(:city, :city_id).distinct, :city_id, :city,{},{:class=>"custom-select"}) %>
+        <%= f.collection_select(:location_id,  Location.select(:city, :city_id,:id).group(:city), :id, :city,{},{:class=>"custom-select"}) %>
     </div>
-    
-    
+
+
 
     <div class="stued-content-block">
         <%= f.label :salary, "Salary",class:"" %>
@@ -93,7 +93,7 @@
         </label>
       </div>
     </div>
-    
+
 </div>
     <div class="form-group">
       <div class="checkbox-form">

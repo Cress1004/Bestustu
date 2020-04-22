@@ -9,7 +9,7 @@
         </div>
   <!-- Filter for location and subject -->
   <%= form_tag class_registers_path, :method => 'get', class: "index-form" do %>
-    <%= collection_select :class_register, :location_id, Location.select(:city).distinct, :id, :city, {prompt: "Chọn địa điểm"}, {class: "custom-select"} %>
+    <%= collection_select :class_register, :location_name, Location.select(:city).distinct, :city, :city, {prompt: "Chọn địa điểm"}, {class: "custom-select"} %>
     <%= collection_select :class_register, :subject_id, Subject.all, :id, :name, {prompt: "Chọn môn học"}, {class: "custom-select"} %>
     <%= submit_tag "Áp dụng", class: "mbtn-primary" %>
   <% end %>
@@ -42,6 +42,7 @@
   <% end %>
   <div class="center-paginate">
     <%= paginate @class_registers, theme: 'twitter-bootstrap-4'%>
+    <%= params.inspect %>
   </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <% index = 1 %>
 
 <%= form_tag tutors_path, :method => 'get' , class: "index-form" do %>
-  <%= collection_select :tutor, :location_id, Location.select(:city).distinct, :city, :city, {prompt: "Chọn địa điểm"}, {class: "custom-select"}%>
+  <%= collection_select :tutor, :location_name, Location.select(:city).distinct, :city, :city, {prompt: "Chọn địa điểm"}, {class: "custom-select"}%>
   <%= collection_select :tutor, :subject_ids, Subject.all, :id, :name, {prompt: "Chọn môn học"}, {:class => "custom-select"} %>
   <%= submit_tag "Áp dụng", class: "mbtn-primary " %>
 <% end %>
