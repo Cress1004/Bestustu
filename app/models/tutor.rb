@@ -5,6 +5,8 @@ class Tutor < ApplicationRecord
   has_and_belongs_to_many :times_frees
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :class_registers
+  has_many :students_tutors
+  has_many :students, through: :students_tutors
 
   ratyrate_rateable 'point'
 

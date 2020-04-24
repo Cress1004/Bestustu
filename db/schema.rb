@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_033445) do
+ActiveRecord::Schema.define(version: 2020_04_22_152759) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer "rater_id"
@@ -115,6 +115,13 @@ ActiveRecord::Schema.define(version: 2020_04_13_033445) do
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 
+  create_table "students_tutors", id: false, force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "tutor_id"
+    t.index ["student_id"], name: "index_students_tutors_on_student_id"
+    t.index ["tutor_id"], name: "index_students_tutors_on_tutor_id"
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -195,6 +202,8 @@ ActiveRecord::Schema.define(version: 2020_04_13_033445) do
   add_foreign_key "class_registers_tutors", "tutors"
   add_foreign_key "messages", "users"
   add_foreign_key "students", "users"
+  add_foreign_key "students_tutors", "students"
+  add_foreign_key "students_tutors", "tutors"
   add_foreign_key "subjects_tutors", "subjects"
   add_foreign_key "subjects_tutors", "tutors"
   add_foreign_key "times_frees_tutors", "times_frees"

@@ -152,11 +152,11 @@
                 </h2>
 
               </div>
-              <div class="edus-content-item-content">
+              <div class="edus-content-item-content" >
                 <% if @temp_hash %>
                 <ul class="list-group">
                   <% @temp_hash.each do |message,obj| %>
-                    <li class="list-group-item">
+                    <li class="list-group-item" id="message_show">
 
                       <p>Message for you: <%= message.message_content %></p>
                       <% if current_student %>
@@ -165,8 +165,8 @@
                         <%= link_to obj.user.name, student_path(obj) %>
                       <% end %>
                       <br>
-                      <%= link_to "Xóa tin", message_path(message), method: :delete,
-                              data: { confirm: "Are you sure you want to delete the message?"},
+                      <%= link_to "Xóa tin", message_path(message), method: :delete,remote: true,
+                              data: { confirm: "Bạn có chắc muốn xóa message này không?"},
                               class: "btn btn-xs btn-danger" %>
                     </li>
                   <% end %>

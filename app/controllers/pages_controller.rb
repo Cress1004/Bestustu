@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+    before_action :require_student, only: [:favourite_tutor,:favourite_destroy]
+
     def home
       Gon.global.locations = Location.select(:city).distinct
       Gon.global.locations_district = Location.select(:district,:city_id,:district_id).distinct
@@ -40,6 +42,22 @@ class PagesController < ApplicationController
         if current_tutor
           @class_registers = current_tutor.class_registers
         end
+    end
+
+    def favourite_tutor
+      @tutor = Tutor.find(params[:tutor_id])
+      id = params[:id]
+      current_student.tutors << @tutor
+      current_student.save
+      flash[:notice] = "Đã lưu gia sư vào danh sách yêu thích"
+      redirect_to root_path
+    end
+
+    def favourite_destroy
+      @tutor = Tutor.find(params[:id])
+      current_student.tutors.destroy(@tutor)
+      flash[:notice] = "Đã xóa gia sư khỏi danh sách yêu thích"
+      redirect_to root_path
     end
 
 end
