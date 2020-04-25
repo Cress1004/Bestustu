@@ -13,6 +13,9 @@ $body-color:#F7F7F7;
     box-sizing: border-box;
     font-family: sans-serif;
 }
+html{
+    scroll-behavior: smooth;
+}
 body{
     background-color: $body-color;
     overflow-x: hidden;
@@ -33,7 +36,7 @@ header{
     height: $header_height;
     display: flex;
     .logo-container{
-        width: 10%;
+        // width: 10%;
         .logo-area{
             margin: 5px 0 0 0;
             width: 0.8*$header_height;
@@ -66,7 +69,7 @@ header{
         }
     }
     .search-container{
-        width: 30%;
+        width: 26rem;
         .search-area{
             position: relative;
             display: flex;
@@ -274,15 +277,20 @@ header{
                         font-size: 0.6em;
                         min-width: 300px;
                         height: 525px;
-                        text-align: center;
+                        text-align: left;
                         // background-color: red;
-                        padding: 0 0.2em;
+                        
                         display: none;
                         div{
-                            height: 3rem;
-                            background-color: red;
-                            color: white;
+                            padding: 0.5rem 0.5rem;
+                            min-height: 3rem;
+                            background-color: #EDF2FA;
+                            color: rgb(0, 0, 0);
                             border-top: 1px solid white;
+                            span:nth-child(1){
+                                color: rgb(29, 121, 226);
+                                font-weight: 700;
+                            }
                         }
                     }
                     & > div:nth-child(2){
@@ -575,7 +583,7 @@ header{
     margin-top: 1em;
 }
 .edus-box{
-    width: 80vw;
+    width: 90vw;
     // height: 90vh;
     background-color: #F7F7F7;
     margin: 5vh auto;
@@ -615,6 +623,8 @@ header{
             height: 500px;
             
         }
+    }.tutors-area{
+        padding: 2rem 1rem;
     }
 }
 .edus-area-show{

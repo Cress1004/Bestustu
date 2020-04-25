@@ -1,18 +1,19 @@
-<div class="stush-container">
-    <div class="stush-area">
+<div class="edus-container">
+    <div class="edus-box">
         <div class="view-header-2">
             <span>
                 <i class="fas fa-chalkboard"></i>
                 List of tutors
             </span>
         </div>
-        <%# <div class="offset-md-4 col-md-4"> %>
-        <%# <%= paginate @tutors, theme: 'twitter-bootstrap-4' %>
-        <%# </div> %>
-        <%= render 'tutor', obj: @tutors %>
-        <div class="center-paginate">
-        <%= paginate @tutors, theme: 'twitter-bootstrap-4' %>
+        <div class="pages-area tutors-area">
+            <%# <div class="offset-md-4 col-md-4"> %>
+            <%# <%= paginate @tutors, theme: 'twitter-bootstrap-4' %>
+            <%# </div> %>
+            <%= render 'tutor', obj: @tutors %>
+            <div class="center-paginate">
+            <%= paginate @tutors, theme: 'twitter-bootstrap-4' %>
+            </div>
         </div>
-        <%= params.inspect %>
     </div>
 </div>

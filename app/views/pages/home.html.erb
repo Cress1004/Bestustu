@@ -1,5 +1,4 @@
 <div id="root">
-    <%= render 'layouts/messages' %>
     <%= render 'layouts/carousel'%>  
 
     <section class="mad">
@@ -14,7 +13,7 @@
                 <h2><i class="fa fa-handshake"></i> &ensp; Yêu cầu tìm gia sư</h2>
             </div>
         </div>
-        <div class="mad-ytb">      <iframe width="560" height="315" src="https://www.youtube.com/embed/fcB2uf3y-R8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="mad-ytb">      <iframe width="560" height="315" src="https://www.youtube.com/embed/BtulL3oArQw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="mad-content">
             <!-- header -->
@@ -89,11 +88,15 @@
         </div>
     </section>
     <section class="slick">
-        <% all_tutors.each do |f|%>
+        <% RatingCache.where(cacheable_type: "Tutor", dimension: "point").order(avg: :desc).limit(7).each do |t|%>
+            <% f = Tutor.find_by_id(t.cacheable_id) %>
            <div class="slick-item">
             <div class="slick-item-block">
                  <%= link_to tutor_path(f), target: "__blank",class: "slick-item-ava" do %>
                     <%= image_tag f.user.image.to_s %>
+                    <div>
+                        <%= f.average("point").avg.round(1)  %>
+                    </div>
                  <% end %> 
                  
                  <div class="slick-item-info">
@@ -101,17 +104,31 @@
                         <%= f.user.username%>
                     <% end %>
                     <p>
-                        <%= f.location.city %>
+                        <span class="badge badge-primary"><%= f.location.city %></span>
                         &ensp; | 
                         &ensp;
-                        <%= f.subjects.name%>
+                        <% if f.subjects %>
+                        <% count = 0 %>
+                        <% f.subjects.each do |subject| %>
+                            <% count = count +1  %>
+                            <% if count < 4 %>
+                                <span class="badge badge-secondary"><%= subject.name %></span>
+                            <% end %>
+                            <% end %>
+                            <% if count  >= 4 %>
+                            <span class="badge badge-secondary">...</span>
+                            <% end %>
+                        <% end %>
                     </p>
                  </div>   
-                 <div class="slick-item-desctiption">
-                    <%= f.description[0..29] %>
-                    <% if f.description.length >= 29 %>
-                        ....
-                    <% end %>
+                 <div class="slick-item-description">
+                    <p>
+                        <%= f.description[0..50] %>
+                        <% if f.description.length >= 50 %>
+                            ....
+                        <% end %>
+                    </p>
+                    
                  </div>   
                  <div class="slick-item-option">
                     <button class="mbtn-primary">Mời dạy</button>

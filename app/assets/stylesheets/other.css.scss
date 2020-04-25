@@ -4,6 +4,12 @@
     border-color: #b8daff;
 }
 
+.alert-alert{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
 .navbar-active{
     border-bottom: 2px solid white;
 }
@@ -110,7 +116,7 @@
 }
 .header-span{
     color: blue;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 .img-wrapper{
@@ -137,3 +143,11 @@
 //         }
 //     }
 // }
+.mcard-body{
+    padding: 0.2rem 0.8rem;
+    .mbtn-primary{
+        min-width: 50%;
+        display: block;
+        margin: auto;
+    }
+}
