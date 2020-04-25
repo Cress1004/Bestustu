@@ -44,12 +44,16 @@ class TutorsController < ApplicationController
   end
 
   def update
-    current_user.image = params[:tutor][:image]
-    current_user.save
+    # if params[:image]
+    #   current_user.image = params[:image]
+    #   current_user.save
+    # end
+
     if @tutor.update(tutor_params)
-      flash[:success] = "Tutor infomation was sucessfully update"
+      flash[:success] = "Đã cập nhật hồ sơ thành công"
       redirect_to tutor_path(@tutor)
     else
+      flash[:danger] = "Có vấn đề khi cập nhật"
       render 'edit'
     end
   end

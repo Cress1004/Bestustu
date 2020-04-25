@@ -2,12 +2,16 @@
   <div class="edus-box">
     <div class="edus-background">
       <div class="edus-ava">
-        <%= image_tag @user.image.to_s, :class => "avatar-size rounded-circle", :id =>"regis-ava" %>
+        <% if !@user.image.url %>
+          <img src="/uploads/user/image/avt_default/default-avatar.png" class ="avatar-size rounded-circle", id ="regis-ava">
+          <% else %>
+            <%= image_tag @user.image.to_s , :class => "avatar-size rounded-circle", :id =>"regis-ava"%>
+          <% end %>
       </div>
     </div>
-  </div>
+
     <div class="stued-container">
-      <div class="stued-area">
+      <div class="regis-area">
         <div class="view-header-2">
               <span>
                   <i class="fas fa-chalkboard"></i>
@@ -19,4 +23,5 @@
       <%= link_to "Back", :back %>
     </div>
   <%# </div> %>
+  </div>
 </div>

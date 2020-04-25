@@ -92,8 +92,11 @@
            <div class="slick-item">
             <div class="slick-item-block">
                  <%= link_to tutor_path(f), target: "__blank",class: "slick-item-ava" do %>
-                    <%= image_tag f.user.image.to_s %>
-
+                    <% if !f.user.image.url %>
+                    <img src="/uploads/user/image/avt_default/default-avatar.png" class="card-img-top img-fit">
+                    <% else %>
+                    <%= image_tag f.user.image.to_s,class: "card-img-top img-fit" %>
+                    <% end %>
                     <div>
                         <%= f.average("point").avg.round(1)  %>
                     </div>
@@ -149,7 +152,7 @@
                   <% if (current_student.tutors.include? f) %>
                     <div id = "unsave_item" style="display: none">
                   <% end %>
-                      <%= link_to "Xóa lưu", destroy_favourite_tutor_path(f), method: :get, remote: true
+                      <%= link_to "Xóa lưu", destroy_favourite_tutor_path(f), method: :get, remote: true,
                       class: "mbtn-danger" %>
                   <% if (current_student.tutors.include? f) %>
                     </div>
