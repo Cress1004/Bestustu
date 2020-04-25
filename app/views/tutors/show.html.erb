@@ -18,9 +18,9 @@
                         </h3>
                     <% if current_tutor == @tutor %>
                     <%# <div class="edus-edit"> %>
-                        <%= link_to 'Edit your profile',  edit_tutor_path , class: 'mbtn-primary' %>
+                        <%= link_to 'Sửa hồ sơ',  edit_tutor_path , class: 'mbtn-primary' %>
                     <%# </div> %>
-                        <%= link_to 'Edit user',  edit_user_registration_path , class: 'mbtn-primary' %>
+                        <%= link_to 'Sửa thông tin cá nhân',  edit_user_registration_path , class: 'mbtn-primary' %>
                    <% end %>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                             <i class="fas fa-coins"></i>
                         </div>
                         <span>
-                            &ensp; <%= @tutor.user.bpoint %> B point
+                            &ensp;<% if current_tutor == @tutor %> <%= @tutor.user.bpoint %><%end%> B point
                         </span>
                     </div>
 
@@ -71,15 +71,15 @@
         <div class="stush-content">
             <div class="view-header">
                 <span>
-                   Tutor 's information
+                   Thông tin gia sư
                 </span>
             </div>
             <div class="view-content">
                 <div>
-                    <span> Name:  </span> <%= @tutor.user.username %>
+                    <span> Tên:  </span> <%= @tutor.user.username %>
                 </div>
                 <div>
-                    <span> Birthday:  </span> <%= @tutor.user.birthday %>
+                    <span> Ngày sinh:  </span> <%= @tutor.user.birthday %>
                 </div>
                 <div>
                     <span> Địa chỉ:  </span> <%= @tutor.location.city %>, <%= @tutor.location.district %>, <%= @tutor.location.sub_district %>
@@ -120,7 +120,7 @@
         <div class="stush-content">
             <div class="view-header">
                 <span>
-                   Rating tutor
+                   Đánh giá gia sư
                 </span>
             </div>
 

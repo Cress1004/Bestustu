@@ -31,14 +31,14 @@
                 <% end %>
               <span class="badge badge-secondary">...</span>
             <% end %><br/>
-            <span class="header-span">Job: </span><%= tutor.job %> in <%= tutor.work_place %><br/>
-            <span class="header-span">Address: </span><%= @location.city %><br/>
-            <span class="header-span">Description:</span><%= tutor.description[0..39] %>
+            <span class="header-span">Nghề nghiệp: </span><%= tutor.job %> in <%= tutor.work_place %><br/>
+            <span class="header-span">Địa chỉ: </span><%= @location.city %><br/>
+            <span class="header-span">Mô tả:</span><%= tutor.description[0..39] %>
             <% if tutor.description.length >= 39 %>
             ...
             <% end %>
           </p>
-          <a><%= link_to "Register now", tutor_path(tutor), class: "mbtn-primary"%></a>
+          <a><%= link_to "Chi tiết", tutor_path(tutor), class: "mbtn-primary"%></a>
         </div>
     </div>
   </div>

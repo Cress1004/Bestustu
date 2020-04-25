@@ -2,7 +2,7 @@
     <div class="siup-box">
         <div class="siup-area">
           <div class="worm-header">
-            <h2>Sign up</h2>
+            <h2>Đăng ký</h2>
           </div>
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: "new_user_form" }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
@@ -18,13 +18,13 @@
           </div>
 
            <div class="field form-group">
-            <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form-control", placeholder: "Phone" %>
+            <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form-control", placeholder: "Số điện thoại" %>
               <span id="phone_error" class="my-error-span"></span>
           </div>
 
           <div class="field form-group">
             <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <em>(<%= @minimum_password_length %> ký tự tối thiểu)</em>
             <% end %><br />
             <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
           </div>
@@ -34,7 +34,7 @@
           </div>
 
           <div class="actions">
-            <%= f.submit "Sign up", class: "mbtn-danger" %>
+            <%= f.submit "Đăng ký", class: "mbtn-danger" %>
             <div class="sub-actions">
               <div>
                 <%= render "devise/shared/links" %>

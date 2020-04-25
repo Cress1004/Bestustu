@@ -3,16 +3,13 @@
         <div class="view-header-2">
             <span>
                 <i class="fas fa-chalkboard"></i>
-                List of tutors
+                Danh sách gia sư
             </span>
         </div>
-        <%# <div class="offset-md-4 col-md-4"> %>
-        <%# <%= paginate @tutors, theme: 'twitter-bootstrap-4' %>
-        <%# </div> %>
         <%= render 'tutor', obj: @tutors %>
         <div class="center-paginate">
         <%= paginate @tutors, theme: 'twitter-bootstrap-4' %>
         </div>
-        <%= params.inspect %>
+
     </div>
 </div>

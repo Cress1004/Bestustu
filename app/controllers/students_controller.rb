@@ -22,7 +22,7 @@ class StudentsController < ApplicationController
     end
 
     def index
-      
+
     end
 
     def show
@@ -45,7 +45,7 @@ class StudentsController < ApplicationController
     end
 
     private
-    
+
       def student_params
           params.require(:student).permit(:address, :grade)
       end
@@ -65,7 +65,8 @@ class StudentsController < ApplicationController
 
       def require_same_student
         if current_student != @student
-            redirect_to root_path
+          flash[:notice] = "Bạn không có quyền sửa đổi thông tin này"
+          redirect_to root_path
         end
       end
 

@@ -11,17 +11,10 @@
 
     <%= form_tag tutors_path, :method => 'get',class:"search-container", autocomplete: "off" do %>
         <div class="search-area">
-            <%= text_field_tag 'search_input', nil, placeholder: 'Search by name or id' %>
-            <%= submit_tag "Search", id: "search-submit" %>
+            <%= text_field_tag 'search_input', nil, placeholder: 'Tìm kiếm gia sư theo môn học và địa điểm' %>
+            <%= submit_tag "Tìm kiếm", id: "search-submit" %>
         </div>
     <% end %>
-<!--
-    <%= form_tag tutors_path, :method => 'get',class:"search-container",id: "search-location", autocomplete: "off" do %>
-        <div class="search-area">
-            <%= text_field_tag 'search_input', nil, placeholder: 'Tìm giáo viên bằng địa điểm' %>
-            <%= submit_tag "Search", id: "search-submit" %>
-        </div>
-    <% end %> -->
 
     <div class="nav-container">
         <div class="nav-area">
@@ -29,17 +22,17 @@
                 <ul class="menu">
                     <li >
                         <%# <a href="#">HOME</a> %>
-                        <%= link_to 'HOME', root_path%>
+                        <%= link_to 'Trang chủ', root_path%>
                     </li>
                     <li>
-                        <%= link_to 'CLASS', class_registers_path%>
+                        <%= link_to 'Lớp học', class_registers_path%>
 
                         <ul class="submenu">
                             <li><a href="#">Class list</a></li>
                         </ul>
                     </li>
                     <li>
-                        <%= link_to 'TUTOR', tutors_path%>
+                        <%= link_to 'Gia sư', tutors_path%>
                         <%# <ul class="submenu">
                             <li><a href="#">Show all tutor</a></li>
                             <li><a href="#">Second submenu</a></li>
@@ -48,7 +41,7 @@
                         </ul> %>
                     </li>
                     <li>
-                        <a href="#">ABOUT</a>
+                        <a href="#">Thông tin</a>
                         <%# <ul class="submenu">
                             <li><a href="#">First submenu</a></li>
                             <li><a href="#">Second submenu</a></li>
@@ -57,7 +50,7 @@
                         </ul> %>
                     </li>
                     <li>
-                        <a href="#">CONTACT</a>
+                        <a href="#">Liên hệ</a>
                           <%# <ul class="submenu">
                             <li><a href="#">First submenu</a></li>
                             <li><a href="#">Second submenu</a></li>
@@ -82,7 +75,7 @@
                                 <% if current_user.username %>
                                     <%= current_user.username%>
                                 <% else %>
-                                    Your Profile
+                                    Hồ sơ của bạn
                                 <% end %>
                             </div>
                         </div>
@@ -149,20 +142,20 @@
                 <div>
                     <%= link_to  destroy_user_session_path, method: :delete, class:'sign-up-area' do %>
                         <div class="sign-up-header">
-                            <i class="fas fa-sign-in-alt"></i> Log out
+                            <i class="fas fa-sign-in-alt"></i> Đăng xuất
                         </div>
                     <% end %>
                 </div>
-            
+
             <% else %>
                 <%= link_to new_user_session_path, class:'sign-up-area' do %>
                     <div class="sign-up-header">
-                        <i class="fas fa-sign-in-alt"></i> Sign in
+                        <i class="fas fa-sign-in-alt"></i> Đăng nhập
                     </div>
                 <% end %>
                 <%= link_to new_user_registration_path, class:'sign-up-area' do %>
                     <div class="sign-up-header">
-                        <i class="fas fa-user-plus"></i> Sign up
+                        <i class="fas fa-user-plus"></i> Đăng ký
                     </div>
                 <% end %>
 

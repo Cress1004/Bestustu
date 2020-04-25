@@ -11,62 +11,11 @@
         <div class="view-header-2">
               <span>
                   <i class="fas fa-chalkboard"></i>
-                  Tutor's information edit
+                  Cập nhật hồ sơ gia sư
               </span>
         </div>
         <%= render 'form'%>
-      <!-- <% if @tutor %>
-        <%= form_for(@tutor, :html => {class:"form-horizontal", role:"form"})  do |f| %>
-        <div class="field form-group">
-          <%= f.label :job %>
-          <%= f.text_field :job, autofocus: true, autocomplete: "job",class:"form-control" %>
-            <span id="job_error"></span>
-        </div>
-        <div class="field form-group">
-          <%= f.label :work_place %>
-          <%= f.text_field :work_place, autofocus: true, autocomplete: "work_place",class:"form-control" %>
-            <span id="work_place_error"></span>
-        </div>
-
-        <div class="field form-group">
-          <%= f.label :description %>
-          <%= f.text_area :description, autofocus: true, autocomplete: "description",class:"form-control" %>
-        </div>
-        <div class="field form-group">
-          <%= f.label :achievement %>
-          <%= f.text_area :achievement, autofocus: true, autocomplete: "achievement",class:"form-control" %>
-        </div>
-        <div class="field form-group">
-          <%= f.label :location_id, "Location" %>
-          <%= f.collection_select(:location_id, Location.all, :id, :city) %>
-        </div>
-        <div class="checkbox-area">
-          <div class="checkbox-grid">
-            <% i = 0 %>
-            <% TimesFree.all.each do |timesfree| %>
-              <% i = i+1 %>
-              <% if i%3 == 1 %>
-                  <div class="row-calendar-check">
-                      <h6><%= timesfree.day %></h6>
-                      <ul>
-              <% end %>
-              <li>
-                  <%= check_box_tag "tutor[times_free_ids][]",timesfree.id,@tutor.times_free_ids.include?(timesfree.id), { id: "tutor_times_free_ids_#{timesfree.id}" } %>
-                  <%= label_tag "tutor[times_free_ids][#{timesfree.id}]",timesfree.free_time %>
-              </li>
-              <% if i%3 == 0 %>
-                      </ul>
-                  </div>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="actions">
-            <%= f.submit "Update", class:"btn btn-danger" %>
-          </div>
-          <% end %>
-        </div>
-        <% end %> -->
-        </div>
+      </div>
       <%= link_to "Back", :back %>
     </div>
   <%# </div> %>

@@ -79,7 +79,8 @@ class TutorsController < ApplicationController
 
   def require_same_tutor
     if current_tutor != @tutor
-        redirect_to root_path
+      flash[:notice] = "Bạn không có quyền sửa đổi thông tin này"
+      redirect_to root_path
     end
   end
 
