@@ -10,7 +10,6 @@ class TutorsController < ApplicationController
   def create
     @tutor = Tutor.new(tutor_params)
     @tutor.user_id = current_user.id
-    # @user.image.url = "/uploads/user/image/avt_define/avt_male.png"
     if @tutor.save
       flash[:success] = "Bạn đã trở thành gia sư và bạn được tặng 1 000 000 VNĐ vào tài khoản bpoint"
       @tutor.user.bpoint = 1000000
@@ -45,6 +44,8 @@ class TutorsController < ApplicationController
   end
 
   def update
+    current_user.image = params[:tutor][:image]
+    current_user.save
     if @tutor.update(tutor_params)
       flash[:success] = "Tutor infomation was sucessfully update"
       redirect_to tutor_path(@tutor)

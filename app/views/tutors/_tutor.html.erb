@@ -14,9 +14,13 @@
     <div class="row" >
   <% end %>
     <div class="col-sm-3">
-      <div class="card" >
+      <div class="card"  style="width: 30rem;" >
       <%= link_to tutor_path(tutor),class: "img-wrapper" do%>
-        <%= image_tag @user.image.to_s, :class => "card-img-top img-fit"%>
+      <% if !@user.image.url %>
+          <img src="/uploads/user/image/avt_default/default-avatar.png" class="card-img-top img-fit">
+      <% else %>
+          <%= image_tag @user.image.to_s, :class => "card-img-top img-fit image-card-size"%>
+      <% end %>
       <% end %>
         <div class="card-body mcard-body">
           <h5 class="card-title"><%= @user.name %></h5>
@@ -33,6 +37,7 @@
                   <span class="badge badge-secondary">...</span>
                 <% end %>
             <% end %><br/>
+
             <span class="header-span">Nghề nghiệp: </span><%= tutor.job %> <b><i>in</i></b> <%= tutor.work_place %><br/>
             <span class="header-span">Địa chỉ: </span><%= @location.city %><br/>
             <span class="header-span">Mô tả:</span><%= tutor.description[0..39] %>

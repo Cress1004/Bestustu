@@ -5,10 +5,14 @@ class Tutor < ApplicationRecord
   has_and_belongs_to_many :times_frees
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :class_registers
+
+  mount_uploader :image, ImageUploader
+
+  ratyrate_rateable 'point'
+
   has_many :students_tutors
   has_many :students, through: :students_tutors
 
-  ratyrate_rateable 'point'
 
   def self.search_by_subject_name(search)
       Tutor.joins('INNER JOIN subjects_tutors ON tutors.id = subjects_tutors.tutor_id INNER JOIN subjects on subjects_tutors.subject_id = subjects.id').where("subjects.name = ?","#{search}")

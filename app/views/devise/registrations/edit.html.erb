@@ -5,9 +5,7 @@
         <div class="edus-background">
           <div class="edus-ava">
             <% if !current_user.image.url %>
-              <img src="/uploads/user/image/avt_define/avt_male.png" class="avatar-size rounded-circle">
-            <% else %>
-              <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle" %>
+            <img src="/uploads/user/image/avt_default/default-avatar.png" class="avatar-size rounded-circle">
             <% end %>
           </div>
           <% if !current_user.tutor && !current_user.student%>
@@ -21,7 +19,6 @@
         <div class="edus-area-show edus-content-item">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  class:"datetimepicker" }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
-
 
             <div class="edus-header">
               <h2>Cập nhật thông tin người dùng</h2>
@@ -52,10 +49,10 @@
 
             <div class="field form-group">
               <%= f.label :gender, "Giới tính" %><br />
-              <%= f.label :gender, "Female", :value => "Female"  %>
-              <%= f.radio_button :gender, "Female"%>
-              <%= f.label :gender, "Male", :value => "Male" %>
-              <%= f.radio_button :gender, "Male"%>
+              <%= f.label :gender, "Nữ", :value => 0  %>
+              <%= f.radio_button :gender, 0%>
+              <%= f.label :gender, "Nam", :value => 1 %>
+              <%= f.radio_button :gender, 1%>
             </div>
 
             <div class="field form-group">

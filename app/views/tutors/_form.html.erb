@@ -1,16 +1,11 @@
 <%= form_for @tutor  do |f| %>
-    <% if !current_tutor  %>
+
       <div class="field form-group">
-          <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle", :id => "regis-ava" %>
+          <!-- <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle", :id => "regis-ava" %> -->
           <span>Ảnh đại diện:</span>
           <%= f.file_field :image, class: "mbtn-primary" %>
       </div>
-    <% else %>
-      <div class="field form-group">
-          <span>Ảnh đại diện:</span>
-          <%= f.file_field :image, class: "mbtn-primary" %>
-      </div>
-    <% end %>
+
     <div class="stued-content">
         <div class="stued-content-block">
             <%= f.label :job, "Nghề nghiệp" %><br/>
@@ -69,6 +64,7 @@
               </div>
               <% end %>
             </div>
+
     </div>
     <%= f.label :times_free_ids, "Lịch rảnh" %><br/>
     <div class="checkbox-area">
