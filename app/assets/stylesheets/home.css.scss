@@ -156,8 +156,21 @@ section.slick{
             .slick-item-ava{
                 border-bottom: solid 0.2px rgb(201, 199, 199);
                 display: block;
+                position: relative;
                 img{
                     width: 100%;
+                }
+                div{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding: 0.5rem;
+                    background-color: white;
+                    border: solid 2px rgb(226, 43, 113);
+                    border-radius: 50%;
+                    font-size: 0.8em;
+                    color: rgb(255, 0, 0);
+                    font-weight: 500;
                 }
             }
             .slick-item-info{
@@ -165,10 +178,18 @@ section.slick{
             }
             .slick-item-description{
                 border-bottom: solid 0.2px rgb(201, 199, 199);
+                padding: 0.5rem;
+                word-wrap: break-word;
+                p{
+                    margin-bottom: 0;
+                }
             }
             .slick-item-option{
                 padding: 0.2rem;
-
+                button{
+                    padding: 5px 10px;
+                    font-size: 0.9em;
+                }
             }
             
         }
@@ -207,3 +228,21 @@ section.slick{
     }
 }
 
+.carousel-caption{
+    width: 30%;
+    background-color: transparentize(rgb(226, 235, 238),0.5);
+    color: rgb(0, 0, 0);
+    top: 5%;
+    right: 5%;
+    left: auto;
+    bottom: auto;
+    padding: 1rem;
+    h5{
+        font-weight: 700;
+        font-size: 1.75rem;
+    }
+    p{
+        font-weight: 500;
+        font-size: 1.4rem;
+    }
+}

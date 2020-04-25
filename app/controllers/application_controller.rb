@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
-  
+
 # Helper method
   helper_method :require_user, :current_tutor, :require_tutor,
                 :current_student, :require_student,
@@ -61,17 +61,13 @@ class ApplicationController < ActionController::Base
   end
 
   def messages
-    if current_student
-      Message.where(:student_id => current_student.id)
-    else
-      if current_tutor
-        Message.where(:tutor_id => current_tutor.id)
-      end
+    if current_user
+      Message.where(:user_id => current_user.id)
     end
   end
 
   def locations
-    
+
   end
 
 end

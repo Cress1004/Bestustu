@@ -6,7 +6,7 @@
             </div>
             <div class="stush-header-2">
                 <%# <div class="stush-ava"> %>
-                    <%= image_tag current_user.image.to_s , class: "stush-ava"%>
+                    <%= image_tag @student.user.image.to_s , class: "stush-ava"%>
                 <%# </div> %>
                 <div class="stush-header-2-content">
                     <h2> <%= @student.user.username %> </h2>
@@ -16,10 +16,13 @@
                             <i class="fas fa-edit"></i>
                         <% end %>
                         </h3>
-
+                    <% if current_student == @student %>
                     <%# <div class="edus-edit"> %>
-                        <%= link_to 'Sửa thông tin học sinh',  edit_student_path , class: 'mbtn-primary' %>
+                        <%= link_to "Sửa thông tin học sinh",  edit_student_path , class: 'mbtn-primary' %>
+
                     <%# </div> %>
+                        <%= link_to "Sửa thông tin người dùng",  edit_user_registration_path , class: 'mbtn-primary' %>
+                   <% end %>
 
                 </div>
             </div>
@@ -38,7 +41,7 @@
                             <i class="fas fa-coins"></i>
                         </div>
                         <span>
-                            &ensp; B point
+                            &ensp; <%if current_student == @student %> <%=current_user.bpoint %><% end %> B point
                         </span>
                     </div>
 
@@ -51,15 +54,11 @@
                     </div>
                     <div class="stush-header-3-center-sub">
                         <div class="sub-first-line">0</div>
-                        Lớp đã tạo
+                        Gia sư yêu thích
                     </div>
                     <div class="stush-header-3-center-sub">
                         <div class="sub-first-line">0</div>
-                        Lớp đã tạo
-                    </div>
-                    <div class="stush-header-3-center-sub">
-                        <div class="sub-first-line">0</div>
-                        Lớp đã tạo
+                        Lượt đánh giá
                     </div>
                 </div>
                 <div class="stush-header-3-right">
@@ -75,16 +74,16 @@
             </div>
             <div class="view-content">
                 <div>
-                    <span> Name:  </span> <%= @student.user.username %>
+                    <span> Tên:  </span> <%= @student.user.username %>
                 </div>
                 <div>
-                    <span> Birthday:  </span> <%= @student.user.birthday %>
+                    <span> Ngày sinh:  </span> <%= @student.user.birthday %>
                 </div>
                 <div>
-                    <span> Địa chỉ:  </span> <%= @student.address %> 
+                    <span> Địa chỉ:  </span> <%= @student.address %>
                 </div>
                 <div>
-                    <span> Lớp:  </span> <%= @student.grade %> 
+                    <span> Lớp:  </span> <%= @student.grade %>
                 </div>
             </div>
         </div>

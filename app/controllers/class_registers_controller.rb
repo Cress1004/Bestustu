@@ -14,10 +14,10 @@ class ClassRegistersController < ApplicationController
     @class_register.student = current_student
     if current_user.bpoint >= (current_student.class_registers.size + 1)* 100000
       if @class_register.save
-        flash[:success] = "Successfully created class"
+        flash[:success] = "Đã đăng yêu cầu"
         redirect_to class_register_path(@class_register)
       else
-        flash[:danger] = "Something went wrong"
+        flash[:danger] = "Lỗi trong quá trình tạo lớp"
         render :new
       end
     else
@@ -48,6 +48,7 @@ class ClassRegistersController < ApplicationController
     if current_tutor
       if @class_register.tutors.include? current_tutor
         flash[:danger] = "Bạn đã đăng ký lớp học này rồi"
+        redirect_to class_register_path(@class_register)
       elsif @class_register.tutors.count < 6
         if current_tutor.user.bpoint >= (current_tutor.class_registers.size + 1)*200000
           @class_register.tutors << current_tutor
@@ -123,9 +124,8 @@ class ClassRegistersController < ApplicationController
   end
 
   def index
-    if params[:class_register] and (params[:class_register][:location_id] or params[:class_register][:subject_id])
-      @class_registers = ClassRegister.search(params[:class_register][:location_id],
-        params[:class_register][:subject_id]).page(params[:page]).per(3)
+    if params[:class_register] and (params[:class_register][:location_name] or params[:class_register][:subject_id])
+      @class_registers = ClassRegister.search(params[:class_register][:location_name],params[:class_register][:subject_id]).page(params[:page]).per(3)
     else
       @class_registers = ClassRegister.all.page(params[:page]).per(3)
     end

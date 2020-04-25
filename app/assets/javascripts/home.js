@@ -14,6 +14,9 @@ $(document).on('turbolinks:load', function() {
         // dots:'<i class="fa fa-arrow-left"></i>',
         pauseOnDotsHover:true,
       });
-      
-})
+      //
+      // $('.slick-item-option form input').on("click",function(){
+      //
+      // })
 
+})
