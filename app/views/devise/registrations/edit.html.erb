@@ -24,7 +24,7 @@
 
 
             <div class="edus-header">
-              <h2>Edit <%= resource_name.to_s.humanize %></h2>
+              <h2>Cập nhật thông tin người dùng</h2>
             </div>
             <div class="field form-group">
               Ảnh đại diện:
@@ -39,19 +39,19 @@
             </div>
 
             <div class="field form-group">
-              <%= f.label :name %><br />
+              <%= f.label :name, "Họ và tên" %><br />
               <%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control" %>
               <span id="name_error" class="my-error-span"></span>
             </div>
 
             <div class="field form-group">
-              <%= f.label :phone %><br />
+              <%= f.label :phone, "Số điện thoại" %><br />
               <%= f.text_field :phone, autofocus: true, autocomplete: "phone",class:"form-control" %>
               <span id="phone_error" class="my-error-span"></span>
             </div>
 
             <div class="field form-group">
-              <%= f.label :gender %><br />
+              <%= f.label :gender, "Giới tính" %><br />
               <%= f.label :gender, "Female", :value => "Female"  %>
               <%= f.radio_button :gender, "Female"%>
               <%= f.label :gender, "Male", :value => "Male" %>
@@ -59,7 +59,7 @@
             </div>
 
             <div class="field form-group">
-              <%= f.label :birthday %><br/>
+              <%= f.label :birthday,"Ngày sinh" %><br/>
               <%= f.date_field :birthday, class:"form-control"%>
             </div>
 
@@ -67,7 +67,7 @@
 
 
           <div class="field form-group">
-            <%= f.label :password %> 
+            <%= f.label :password %>
             <%= f.password_field :password, autocomplete: "new-password",class:"form-control" %>
             <% if @minimum_password_length %>
 
@@ -87,16 +87,16 @@
 
         </div>
         <div class="actions">
-            <%= f.submit "Update", class:"mbtn-danger" %>
+            <%= f.submit "Cập nhật", class:"mbtn-danger" %>
           </div>
         <% end %>
         <div class="edus-header">
-          <h2>Cancel my account</h2>
+          <h2>Xóa tài khoản</h2>
         </div>
-        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"mbtn-primary" %></p>
+        <p> <%= button_to "Xóa tài khoản", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"mbtn-primary" %></p>
 
 
-        <%= link_to "Back", :back %>
+        <%= link_to "Quay lại", :back %>
 
       </div>
 </div>

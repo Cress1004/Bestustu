@@ -26,8 +26,8 @@ class TutorsController < ApplicationController
     @users = User.all
     @Locations = Location.all
 
-    if (params[:tutor]) and (params[:tutor][:location_id] or params[:tutor][:subject_ids])
-      @tutors = Tutor.search(params[:tutor][:location_id],params[:tutor][:subject_ids]).page(params[:page]).per(3)
+    if (params[:tutor]) and (params[:tutor][:location_name] or params[:tutor][:subject_ids])
+      @tutors = Tutor.search(params[:tutor][:location_name],params[:tutor][:subject_ids]).page(params[:page]).per(3)
     elsif params[:search_input]
       @tutors = Tutor.search_by_location_name(params[:search_input]).page(params[:page]).per(3)
 
@@ -79,7 +79,8 @@ class TutorsController < ApplicationController
 
   def require_same_tutor
     if current_tutor != @tutor
-        redirect_to root_path
+      flash[:notice] = "Bạn không có quyền sửa đổi thông tin này"
+      redirect_to root_path
     end
   end
 

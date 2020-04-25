@@ -1,6 +1,5 @@
 <div id="root">
     <%= render 'layouts/carousel'%>  
-
     <section class="mad">
         <div class="mad-header">
             <div class="mad-hemer-1">
@@ -31,7 +30,7 @@
                     <h4>Chất lượng</h4>
                     <p>Gia sư được kiểm duyệt kỹ càng và đánh giá khách quan bởi phụ huynh.</p>
                 </div>
-                
+
             </div>
             <div class="mad-content-item show-on-scroll">
                 <div>
@@ -41,7 +40,7 @@
                     <h4>Linh hoạt</h4>
                     <p>Blacasa cung cấp dịch vụ linh hoạt, tùy chỉnh dễ dàng.</p>
                 </div>
-                
+
             </div>
             <div class="mad-content-item show-on-scroll">
                 <div>
@@ -51,7 +50,7 @@
                     <h4>Kết nối trực tiếp</h4>
                     <p>Kết nối học viên với hàng nghìn gia sư khắp cả nước theo mô hình Uber, Grab.</p>
                 </div>
-                
+
             </div>
             <div class="mad-content-item show-on-scroll">
                 <div>
@@ -61,7 +60,7 @@
                     <h4>Lựa chọn đa dạng</h4>
                     <p>Gia sư là giảng viên, giáo viên, sinh viên, người nước ngoài,vv...</p>
                 </div>
-                
+
             </div>
             <div class="mad-content-item show-on-scroll">
                 <div>
@@ -71,7 +70,7 @@
                     <h4>Tùy chọn học phí</h4>
                     <p>Nhiều gia sư cùng đấu giá mức học phí, bạn chỉ cần lựa chọn học phí phù hợp nhất.</p>
                 </div>
-                
+
             </div>
             <div class="mad-content-item show-on-scroll">
                 <div>
@@ -81,9 +80,9 @@
                     <h4>Nhanh chóng</h4>
                     <p>Chỉ mất 2 phút để đăng yêu cầu tìm gia sư.</p>
                 </div>
-                
+
             </div>
-            <%= link_to 'Create new class register', new_class_register_path, class: "mad-content-item mbtn-primary show-on-scroll"  %>
+            <%= link_to 'Đăng yêu cầu tìm gia sư', new_class_register_path, class: "mad-content-item mbtn-primary show-on-scroll"  %>
             <%# <button class="">Đăng yêu cầu tìm gia sư</button> %>
         </div>
     </section>
@@ -94,6 +93,7 @@
             <div class="slick-item-block">
                  <%= link_to tutor_path(f), target: "__blank",class: "slick-item-ava" do %>
                     <%= image_tag f.user.image.to_s %>
+
                     <div>
                         <%= f.average("point").avg.round(1)  %>
                     </div>
@@ -106,6 +106,7 @@
                     <p>
                         <span class="badge badge-primary"><%= f.location.city %></span>
                         &ensp; | 
+
                         &ensp;
                         <% if f.subjects %>
                         <% count = 0 %>
@@ -130,15 +131,27 @@
                     </p>
                     
                  </div>   
+
                  <div class="slick-item-option">
-                    <button class="mbtn-primary">Mời dạy</button>
-                    <button class="mbtn-danger">Lưu</button>
-                 </div>   
-            </div>  
+                  <% if current_student %>
+                      <%= link_to "Chi tiết", tutor_path(f), class: "mbtn-primary" %>
+                      <!-- <button class="mbtn-danger">Lưu</button> -->
+                    <% if !(current_student.tutors.include? f) %>
+                      <%= form_with(url: favourite_tutor_path(f), method: "get",local:true) do %>
+                        <input id="tutor_id" name="tutor_id" style="display: none" type="text" value= "<%= f.id %>" />
+                        <%= submit_tag("Lưu", class: "mbtn-danger") %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to "Xóa lưu", destroy_favourite_tutor_path(f), method: :get,
+                      class: "mbtn-danger" %>
+                    <% end %>
+                  <% end %>
+                 </div>
+            </div>
             <div class="slick-overlay">
 
-            </div>            
-        </div>           
+            </div>
+        </div>
         <% end %>
     </section>
-</div>    
+</div>
