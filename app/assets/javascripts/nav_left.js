@@ -1,4 +1,4 @@
-$(document).on("turbolinks:load", function() { 
+$(document).on("turbolinks:load", function() {
       $(".edus-nav-item").click(function() {
         $(".edus-content-item").eq($(this).index()).siblings().css( "display", "none" );
         $(".edus-content-item").eq($(this).index()).css( "display", "block" );
@@ -25,6 +25,3 @@ document.addEventListener("turbolinks:load", function(event){
     footerLeft.className += "footer-active"
   }
 });
-
-
-    

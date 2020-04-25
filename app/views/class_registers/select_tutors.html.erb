@@ -33,7 +33,7 @@
             <div class="status-row">
               <i class="fa fa-bookmark"></i>
               <span>
-                Trạng thái: 
+                Trạng thái:
               </span>
               <span>
                 <%= @class_register.class_status %>
@@ -81,7 +81,7 @@
               <div>
                 <i class="fa fa-user-o"></i>
                 <span>
-                Số học viên: 
+                Số học viên:
                 </span>
                 <span>
                   <%= @class_register.num_student if @class_register.num_student%>
@@ -90,7 +90,7 @@
               <div>
                 <i class="fa fa-book"></i>
                 <span>
-                Thời lượng: 
+                Thời lượng:
                 </span>
                 <span>
                   Tuần <%= @class_register.lessons_week %> buổi (<%= @class_register.hours_lesson %> giờ)
@@ -110,10 +110,10 @@
             <div>
           <div class="fee-row">
             <span>
-              Phí nhận lớp: 
+              Phí nhận lớp:
             </span>
             <span>
-              600.00vnd
+              <%= @class_register.salary * 30/100 %>VND
             </span>
           </div>
           <div>

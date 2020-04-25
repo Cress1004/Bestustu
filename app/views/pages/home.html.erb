@@ -1,5 +1,5 @@
 <div id="root">
-    <%= render 'layouts/carousel'%>  
+    <%= render 'layouts/carousel'%>
     <section class="mad">
         <div class="mad-header">
             <div class="mad-hemer-1">
@@ -97,15 +97,15 @@
                     <div>
                         <%= f.average("point").avg.round(1)  %>
                     </div>
-                 <% end %> 
-                 
+                 <% end %>
+
                  <div class="slick-item-info">
                     <%= link_to tutor_path(f), target: "__blank" do %>
                         <%= f.user.username%>
                     <% end %>
                     <p>
                         <span class="badge badge-primary"><%= f.location.city %></span>
-                        &ensp; | 
+                        &ensp; |
 
                         &ensp;
                         <% if f.subjects %>
@@ -121,7 +121,7 @@
                             <% end %>
                         <% end %>
                     </p>
-                 </div>   
+                 </div>
                  <div class="slick-item-description">
                     <p>
                         <%= f.description[0..50] %>
@@ -129,22 +129,32 @@
                             ....
                         <% end %>
                     </p>
-                    
-                 </div>   
+
+                 </div>
 
                  <div class="slick-item-option">
                   <% if current_student %>
                       <%= link_to "Chi tiết", tutor_path(f), class: "mbtn-primary" %>
                       <!-- <button class="mbtn-danger">Lưu</button> -->
                     <% if !(current_student.tutors.include? f) %>
-                      <%= form_with(url: favourite_tutor_path(f), method: "get",local:true) do %>
+                      <div id = "save_item" style="display: none">
+                    <% end %>
+                      <%= form_with(url: favourite_tutor_path(f), method: "get",remote:true) do %>
                         <input id="tutor_id" name="tutor_id" style="display: none" type="text" value= "<%= f.id %>" />
                         <%= submit_tag("Lưu", class: "mbtn-danger") %>
                       <% end %>
-                    <% else %>
-                      <%= link_to "Xóa lưu", destroy_favourite_tutor_path(f), method: :get,
-                      class: "mbtn-danger" %>
+                    <% if !(current_student.tutors.include? f) %>
+                      </div>
                     <% end %>
+                  <% if (current_student.tutors.include? f) %>
+                    <div id = "unsave_item" style="display: none">
+                  <% end %>
+                      <%= link_to "Xóa lưu", destroy_favourite_tutor_path(f), method: :get, remote: true
+                      class: "mbtn-danger" %>
+                  <% if (current_student.tutors.include? f) %>
+                    </div>
+                  <% end %>
+
                   <% end %>
                  </div>
             </div>
