@@ -1,48 +1,82 @@
 
-<div class="stush-container">
-    <div class="stush-area">
-        <div class="view-header-2">
-            <span>
-                <i class="fas fa-chalkboard"></i>
-                List of tutors
-            </span>
+<div class="edus-container">
+  <div class="edus-box">
+    <div class="pages-area class-regis-page">
+      <div class="view-header-2">
+        <span>
+            <i class="fas fa-chalkboard"></i>
+            List of class
+        </span>
+      </div>
+      <!-- Filter for location and subject -->
+      <%= form_tag class_registers_path, :method => 'get', class: "index-form" do %>
+        <%= collection_select :class_register, :location_name, Location.select(:city).distinct, :city, :city, {prompt: "Chọn địa điểm"}, {class: "custom-select"} %>
+        <%= collection_select :class_register, :subject_id, Subject.all, :id, :name, {prompt: "Chọn môn học"}, {class: "custom-select"} %>
+        <%= submit_tag "Áp dụng", class: "mbtn-primary" %>
+      <% end %>
+      <!-- Display class -->
+      <div class="class-index-show">
+        <div class="class-index-header">
+          <div>
+            NỘI DUNG LỚP HỌC TÌM GIA SƯ
+          </div>
+          <div>
+            HỌC PHÍ ĐỀ NGHỊ
+          </div>
+          <div >
+            PHÍ NHẬN LỚP
+          </div>
         </div>
-  <!-- Filter for location and subject -->
-  <%= form_tag class_registers_path, :method => 'get', class: "index-form" do %>
-    <%= collection_select :class_register, :location_name, Location.select(:city).distinct, :city, :city, {prompt: "Chọn địa điểm"}, {class: "custom-select"} %>
-    <%= collection_select :class_register, :subject_id, Subject.all, :id, :name, {prompt: "Chọn môn học"}, {class: "custom-select"} %>
-    <%= submit_tag "Áp dụng", class: "mbtn-primary" %>
-  <% end %>
-  <!-- Display class -->
-  <% @class_registers.each do |class_register| %>
-
-  <div id="class-show-head">
-    <hr class="solid">
-    <div class="class-element-container">
-      <div id="left-element">
-        <!-- <img src="images/maxresdefault.jpg" class="float-left img-responsive"> -->
-        <%= image_tag("images/MiyaSuzuhime.jpg", class:"img-responsive") %>
-      </div>
-
-      <div id="front-element">
-        <h5 style="padding:5px;">Mô tả:<%=link_to class_register.description, class_register_path(class_register)%></h5><br/>
-        <p>Nội dung học:<%= class_register.class_content %></p>
-
-      </div>
-
-      <div id="right-element">
-        <% if current_tutor %>
-          <%= link_to 'Đề nghị dạy', class_register_path(class_register), class: "mbtn-primary" %>
-        <% else %>
-          <%= link_to 'Chi tiết', class_register_path(class_register), class: "mbtn-primary" %>
+        <% @class_registers.each do |c| %>
+          <div class="class-index-content">
+            <div class="class-index-left">
+              <div class="class-index-left-header">
+                <i class="fa fa-check-circle"></i>
+                <h2>
+                  <%=link_to c.description, class_register_path(c)%>
+                </h2>
+              </div>
+              <div class="class-index-left-content">
+                <p>
+                    <i><%= c.class_content%></i>
+                </p>
+              </div>
+              <div class="class-index-left-info">
+                <div>
+                  <%= c.subject.name %>
+                </div>
+                <div>
+                  <%= c.location.city %>
+                </div>
+              </div>
+            </div>
+            <div class="class-index-center">
+              <div>
+                <%= c.salary%>
+              </div>
+              <div>
+                <p><%= c.tutors.count %>/6 đề nghị </p>
+              </div>
+            </div>
+            <div class="class-index-right">
+              <div>
+                <span> phí:</span> 
+                <span>400.000 vnd</span>
+              </div>
+              <div>
+                <% if current_tutor %>
+                  <%= link_to 'Đề nghị dạy', class_register_path(c), class: "mbtn-primary" %>
+                <% else %>
+                  <%= link_to 'Chi tiết', class_register_path(c), class: "mbtn-primary" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
         <% end %>
+          <div class="center-paginate">
+            <%= paginate @class_registers, theme: 'twitter-bootstrap-4'%>
+          </div>
       </div>
     </div>
-  </div>
-  <% end %>
-  <div class="center-paginate">
-    <%= paginate @class_registers, theme: 'twitter-bootstrap-4'%>
-    <%= params.inspect %>
-  </div>
   </div>
 </div>

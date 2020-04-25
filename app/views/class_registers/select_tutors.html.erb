@@ -1,3 +1,199 @@
+
+
+
+
+<div class="edus-containter">
+  <div class="edus-box">
+    <div class="class-sh-container">
+      <div class="class-sh-1">
+        <div class="class-sh-1-header">
+          <div class="class-sh-1-header-first">
+            <i class="fa fa-check-circle"></i>
+            <h2>
+              <%= @class_register.description %>
+            </h2>
+          </div>
+          <div class="class-sh-1-header-second">
+            <div>
+              <i class="fa fa-user-o"></i>
+              CSKH Loc
+            </div>
+            <div>
+              <i class="fa fa-calendar"></i>
+              02.04.2020 - 11:09
+            </div>
+            <div>
+                Mã số lớp :
+            </div>
+          </div>
+        </div>
+
+        <div class="class-sh-1-content">
+          <div>
+            <div class="status-row">
+              <i class="fa fa-bookmark"></i>
+              <span>
+                Trạng thái: 
+              </span>
+              <span>
+                <%= @class_register.class_status %>
+              </span>
+            </div>
+            <div>
+              <i class="fa fa-book"></i>
+              <span>
+                Môn học:
+              </span>
+              <span>
+                <%= @class_register.subject.name%>
+              </span>
+            </div>
+            <div>
+              <i class="fa fa-briefcase"></i>
+              <span>
+                Hình thức học:
+              </span>
+              <span>
+                Online
+              </span>
+            </div>
+            <div>
+              <i class="fa fa-map-marker"></i>
+              <span>
+                Địa chỉ:
+              </span>
+              <span>
+                <%= @class_register.location.city %>
+              </span>
+            </div>
+          </div>
+
+          <div>
+              <div>
+                <i class="fa fa-venus-mars"></i>
+                <span>
+                Tìm gia sư:
+                </span>
+                <span>
+                  <%= @class_register.tutor_gender if @class_register.tutor_gender %>
+                </span>
+              </div>
+              <div>
+                <i class="fa fa-user-o"></i>
+                <span>
+                Số học viên: 
+                </span>
+                <span>
+                  <%= @class_register.num_student if @class_register.num_student%>
+                </span>
+              </div>
+              <div>
+                <i class="fa fa-book"></i>
+                <span>
+                Thời lượng: 
+                </span>
+                <span>
+                  Tuần <%= @class_register.lessons_week %> buổi (<%= @class_register.hours_lesson %> giờ)
+                </span>
+              </div>
+              <div class="salary-row">
+                <i class="fa fa-money"></i>
+                <span>
+                Học phí 1 buổi:
+                </span>
+                <span>
+                  <%= @class_register.salary %>
+                </span>
+              </div>
+            </div>
+
+            <div>
+          <div class="fee-row">
+            <span>
+              Phí nhận lớp: 
+            </span>
+            <span>
+              600.00vnd
+            </span>
+          </div>
+          <div>
+            <span>
+              ( Trả phí sau )
+            </span>
+          </div>
+          <div>
+          </div>
+          <div>
+            <p>Số gia sư đăng ký: <%= @class_register.tutors.count %>/6</p>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="class-sh-2">
+        <div class="class-sh-2-item">
+          <div class="class-sh-2-header">
+            <i class="fa fa-quote-right"></i>
+            <h2>Các gia sư đã đăng ký</h2>
+          </div>
+          <div class="class-sh-2-content">
+            <% index = 1 %>
+            <% @class_register.tutors.each do |tutor| %>
+              <% @subjects = tutor.subjects %>
+              <% @user = User.find(tutor.user_id) %>
+              <% @location = Location.find(tutor.location_id) %>
+              <% if index%3 == 1 %>
+                <div class="row" >
+              <% end %>
+                <div class="col-sm-3">
+                  <div class="card" >
+                  <%= link_to tutor_path(tutor),class: "img-wrapper" do%>
+                    <%= image_tag @user.image.to_s, :class => "card-img-top img-fit"%>
+                  <% end %>
+                    <div class="card-body mcard-body ">
+                      <h5 class="card-title"><%= @user.name %></h5>
+                      <p class="card-text">
+                        <% if @subjects %>
+                          <% count = 1 %>
+                          <% @subjects.each do |subject| %>
+                            <% count = count +1  %>
+                              <% if count < 4 %>
+                                <span class="badge badge-secondary"><%= subject.name %></span>
+                              <% end %>
+                            <% end %>
+                          <span class="badge badge-secondary">...</span>
+                        <% end %><br/>
+                        <span class="header-span">Job: </span> <%= tutor.job %> <b><i>in</i></b> <%= tutor.work_place %><br/>
+                        <span class="header-span">Address: </span><%= @location.city %><br/>
+                        <span class="header-span">Description:</span><%= tutor.description[0..39] %>
+                        <% if tutor.description.length >= 39 %>
+                        ...
+                        <% end %>
+                      </p>
+                      <%= form_with(url: tutor_selected_path(tutor), method: "get",local: true) do %>
+                        <!-- <label for="tutor_id"></label>
+                        <input id="tutor_id" name="tutor_id" type="text" value= "<%= tutor.id %>" /> -->
+                        <label for="class_id" style="display: none"></label>
+                        <input id="class_id" name="class_id" style="display: none" type="text" value= "<%= @class_register.id %>" />
+                        <%= submit_tag("Chọn", class: "mbtn-primary") %>
+                      <% end %>
+                    </div>
+                </div>
+              </div>
+              <% if index%3 == 0 %>
+                </div>
+              <% end %>
+              <% index = index+1 %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  Code cu -->
+<!--
 </br> <h1 align="center">Listing tutors</h1> </br>
 <div id="show-main">
     <div id="class-show-head">
@@ -30,8 +226,6 @@
               <h4 class="card-title"><%= link_to tutor.user.name, tutor_path(tutor) %></h4>
               <p class="card-text"><%= tutor.description %></p>
               <%= form_with(url: tutor_selected_path(tutor), method: "get",local: true) do %>
-                <!-- <label for="tutor_id"></label>
-                <input id="tutor_id" name="tutor_id" type="text" value= "<%= tutor.id %>" /> -->
                 <label for="class_id"></label>
                 <input id="class_id" name="class_id" style="display: none" type="text" value= "<%= @class_register.id %>" />
                 <%= submit_tag("Chọn", class: "mbtn-primary") %>
@@ -45,5 +239,6 @@
       <% index = index+1 %>
     <% end %>
     <%= params.inspect %>
-
+    </div>
 </div>
+->>

@@ -1,7 +1,10 @@
 $(document).on( "turbolinks:load",function() {
     $(".ratings_left_star .star ").each(function() {
         $(this).raty('set', { readOnly: true });
-    });
+	});
+	$("body").on("click","img",function(){
+		location.reload(true);
+	})
     // $(".ratings_left_star .star ").css("background-color","red")
 
 	$(".location-district").append(`<option >Quận Huyện</option>`)

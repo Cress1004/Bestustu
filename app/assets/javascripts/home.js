@@ -15,5 +15,8 @@ $(document).on('turbolinks:load', function() {
         pauseOnDotsHover:true,
       });
       
+      
 })
+
+
 

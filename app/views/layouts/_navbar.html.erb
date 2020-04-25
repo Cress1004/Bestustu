@@ -11,7 +11,7 @@
 
     <%= form_tag tutors_path, :method => 'get',class:"search-container", autocomplete: "off" do %>
         <div class="search-area">
-            <%= text_field_tag 'search_input', nil, placeholder: 'Tìm kiếm gia sư theo môn học và địa điểm' %>
+            <%= text_field_tag 'search_input', nil, placeholder: 'Tìm gia sư theo môn học và địa điểm' %>
             <%= submit_tag "Tìm kiếm", id: "search-submit" %>
         </div>
     <% end %>
@@ -41,7 +41,7 @@
                         </ul> %>
                     </li>
                     <li>
-                        <a href="#">Thông tin</a>
+                        <a href="#footer-left" id="about">Thông tin</a>
                         <%# <ul class="submenu">
                             <li><a href="#">First submenu</a></li>
                             <li><a href="#">Second submenu</a></li>
@@ -50,7 +50,7 @@
                         </ul> %>
                     </li>
                     <li>
-                        <a href="#">Liên hệ</a>
+                        <a href="#footer-right" id="contact">Liên hệ</a>
                           <%# <ul class="submenu">
                             <li><a href="#">First submenu</a></li>
                             <li><a href="#">Second submenu</a></li>
@@ -114,7 +114,11 @@
                                 <div>
                                 <% messages.each do |m|%>
                                     <div>
-                                        <%= m.message_content%>
+                                        <span>Thông báo:</span>
+                                        <%= m.message_content[0..60]%>
+                                        <% if m.message_content.length >= 60 %>
+                                            ...
+                                        <% end %>
                                     </div>
                                 <% end %>
                             </div>
@@ -131,7 +135,11 @@
                                 <div>
                                 <% messages.each do |m|%>
                                     <div>
-                                        <%= m.message_content%>
+                                        <span>Thông báo:</span>
+                                        <%= m.message_content[0..60]%>
+                                        <% if m.message_content.length >= 60 %>
+                                            ...
+                                        <% end %>
                                     </div>
                                 <% end %>
                             </div>

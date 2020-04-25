@@ -15,13 +15,14 @@
                         <%= link_to edit_student_path(@student) do %>
                             <i class="fas fa-edit"></i>
                         <% end %>
-                    </h3>
-
-                    <%# <div class="edus-edit"> %>
+                        </h3>
                     <% if current_student == @student %>
-                        <%= link_to 'Sửa thông tin học sinh',  edit_student_path , class: 'mbtn-primary' %>
-                    <% end %>
+                    <%# <div class="edus-edit"> %>
+                        <%= link_to "Sửa thông tin học sinh",  edit_student_path , class: 'mbtn-primary' %>
+
                     <%# </div> %>
+                        <%= link_to "Sửa thông tin người dùng",  edit_user_registration_path , class: 'mbtn-primary' %>
+                   <% end %>
 
                 </div>
             </div>
@@ -53,15 +54,11 @@
                     </div>
                     <div class="stush-header-3-center-sub">
                         <div class="sub-first-line">0</div>
-                        Lớp đã tạo
+                        Gia sư yêu thích
                     </div>
                     <div class="stush-header-3-center-sub">
                         <div class="sub-first-line">0</div>
-                        Lớp đã tạo
-                    </div>
-                    <div class="stush-header-3-center-sub">
-                        <div class="sub-first-line">0</div>
-                        Lớp đã tạo
+                        Lượt đánh giá
                     </div>
                 </div>
                 <div class="stush-header-3-right">
