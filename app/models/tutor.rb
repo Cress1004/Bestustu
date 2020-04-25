@@ -5,7 +5,9 @@ class Tutor < ApplicationRecord
   has_and_belongs_to_many :times_frees
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :class_registers
-  
+
+  mount_uploader :image, ImageUploader
+
   ratyrate_rateable 'point'
 
   # validates :job, presence: true,

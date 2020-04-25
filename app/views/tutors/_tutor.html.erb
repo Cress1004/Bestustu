@@ -14,12 +14,12 @@
     <div class="row" >
   <% end %>
     <div class="col-sm-3">
-      <div class="card" >
+      <div class="card"  style="width: 30rem;" >
       <%= link_to tutor_path(tutor),class: "img-wrapper" do%>
       <% if !@user.image.url %>
           <img src="/uploads/user/image/avt_default/default-avatar.png" class="card-img-top img-fit">
       <% else %>
-          <%= image_tag @user.image.to_s, :class => "card-img-top img-fit"%>
+          <%= image_tag @user.image.to_s, :class => "card-img-top img-fit image-card-size"%>
       <% end %>
       <% end %>
         <div class="card-body">
@@ -35,12 +35,14 @@
                 <% end %>
               <span class="badge badge-secondary">...</span>
             <% end %><br/>
-            <span class="header-span">Job: </span><%= tutor.job %> in <%= tutor.work_place %><br/>
-            <span class="header-span">Address: </span><%= @location.city %><br/>
-            <span class="header-span">Description:</span><%= tutor.description[0..39] %>
-            <% if tutor.description.length >= 39 %>
-            ...
-            <% end %>
+            <div class = "infor-content">
+              <span class="header-span">Job: </span><%= tutor.job %> in <%= tutor.work_place %><br/>
+              <span class="header-span">Address: </span><%= @location.city %><br/>
+              <span class="header-span">Description:</span><%= tutor.description[0..39] %>
+              <% if tutor.description.length >= 39 %>
+              ...
+              <% end %>
+            </div>
           </p>
           <a><%= link_to "Register now", tutor_path(tutor), class: "mbtn-primary"%></a>
         </div>
