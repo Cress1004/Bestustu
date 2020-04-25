@@ -9,14 +9,21 @@ $(document).on('turbolinks:load', function() {
         dots:true,
         centerMode: true,
         centerPadding: '0px',
-        // nextArrow: '<i class="fa fa-arrow-right"></i>',
-        // prevArrow: '<i class="fa fa-arrow-left"></i>',
-        // dots:'<i class="fa fa-arrow-left"></i>',
         pauseOnDotsHover:true,
       });
-      //
-      // $('.slick-item-option form input').on("click",function(){
-      //
-      // })
+
+      $('.save_item').on("click",function(){
+        $(this).parent().children('.unsave_item').css("display","block");
+        console.log($(this).parent().children('.unsave_item'));
+        $(this).css( "display", "none" );
+
+      });
+      $('.unsave_item').on("click",function(){
+        $(this).parent().children('.save_item').css("display","block");
+        console.log($(this).parent().children('.save_item'));
+
+        $(this).css( "display", "none" );
+
+      });
 
 })

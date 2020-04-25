@@ -49,15 +49,15 @@
                 </div>
                 <div class="stush-header-3-center">
                     <div class="stush-header-3-center-sub">
-                        <div class="sub-first-line">0</div>
+                        <div class="sub-first-line"><%= @student.class_registers.count %></div>
                         Lớp đã tạo
                     </div>
                     <div class="stush-header-3-center-sub">
-                        <div class="sub-first-line">0</div>
+                        <div class="sub-first-line"><%= @student.tutors.count %></div>
                         Gia sư yêu thích
                     </div>
                     <div class="stush-header-3-center-sub">
-                        <div class="sub-first-line">0</div>
+                        <div class="sub-first-line"><%= Rate.where(rater_id: "#{@student.id}").count %></div>
                         Lượt đánh giá
                     </div>
                 </div>

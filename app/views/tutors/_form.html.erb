@@ -6,8 +6,7 @@
       <div class="field form-group">
           <!-- <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle", :id => "regis-ava" %> -->
           <span>Ảnh đại diện:</span>
-
-          <!-- <input type="file" name="image" id="image" /> -->
+           <%= f.file_field :image, class: "mbtn-primary" %>
       </div>
 
     <div class="stued-content">

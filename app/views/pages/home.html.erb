@@ -139,25 +139,24 @@
                   <% if current_student %>
                       <%= link_to "Chi tiết", tutor_path(f), class: "mbtn-primary" %>
                       <!-- <button class="mbtn-danger">Lưu</button> -->
-                    <% if !(current_student.tutors.include? f) %>
-                      <div id = "save_item" style="display: none">
-                    <% end %>
-                      <%= form_with(url: favourite_tutor_path(f), method: "get",remote:true) do %>
-                        <input id="tutor_id" name="tutor_id" style="display: none" type="text" value= "<%= f.id %>" />
-                        <%= submit_tag("Lưu", class: "mbtn-danger") %>
+                      <% if (current_student.tutors.include? f) %>
+                        <div class = "save_item" style="display: none">
+                      <% else %>
+                        <div class = "save_item" style="display: block">
                       <% end %>
-                    <% if !(current_student.tutors.include? f) %>
+                        <%= form_with(url: favourite_tutor_path(f), method: "get",remote:true) do %>
+                          <input id="tutor_id" name="tutor_id" style="display: none" type="text" value= "<%= f.id %>" />
+                          <%= submit_tag("Lưu", class: "mbtn-danger") %>
+                        <% end %>
                       </div>
-                    <% end %>
-                  <% if (current_student.tutors.include? f) %>
-                    <div id = "unsave_item" style="display: none">
-                  <% end %>
-                      <%= link_to "Xóa lưu", destroy_favourite_tutor_path(f), method: :get, remote: true,
-                      class: "mbtn-danger" %>
-                  <% if (current_student.tutors.include? f) %>
-                    </div>
-                  <% end %>
-
+                      <% if !(current_student.tutors.include? f) %>
+                        <div class = "unsave_item" style="display: none">
+                      <% else %>
+                        <div class = "unsave_item" style="display: block" >
+                      <% end %>
+                        <%= link_to "Xóa lưu", destroy_favourite_tutor_path(f), method: :get, remote: true,
+                        class: "mbtn-danger" %>
+                      </div>
                   <% end %>
                  </div>
             </div>

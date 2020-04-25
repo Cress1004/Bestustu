@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_152759) do
+ActiveRecord::Schema.define(version: 2020_04_25_160317) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer "rater_id"
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_152759) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "work_place"
+    t.integer "num_class", default: 0
     t.index ["location_id"], name: "index_tutors_on_location_id"
     t.index ["user_id"], name: "index_tutors_on_user_id"
   end
