@@ -16,7 +16,7 @@
 
       <div class="stued-content-block">
           <%= f.label :location_id, "Địa điểm" %>
-          <%= f.collection_select(:location_id,  Location.select(:city, :city_id,:id).group(:city), :id, :city,{},{:class=>"custom-select"}) %>
+          <%= f.collection_select(:location_id,  Location.select(:city,:id).group(:city), :id, :city,{},{:class=>"custom-select"}) %>
       </div>
 
 
