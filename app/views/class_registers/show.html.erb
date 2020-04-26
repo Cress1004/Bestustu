@@ -109,7 +109,9 @@
               Phí nhận lớp:
             </span>
             <span>
-              <%= @class_register.salary * 30/100 %>VND
+              <% if @class_register.salary %>
+                <%= @class_register.salary * 30/100 %>VND
+              <% end %>
             </span>
           </div>
           <div>
