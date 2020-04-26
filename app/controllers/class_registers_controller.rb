@@ -87,12 +87,14 @@ class ClassRegistersController < ApplicationController
     @message_tu.student_id = @class_register.student.id
 
     if @message_tu.save
-      flash[:success] = "Successfully send message to tutor"
       # Sub 200000VND from bpoint account
       @tutor.user.bpoint = @tutor.user.bpoint - 200000
+      #Add 1 to number of class tutor teached
+      @tutor.num_class = @tutor.num_class + 1
+
       @tutor.user.save
     else
-      flash[:danger] = "Cannot send email to tutor"
+      flash[:danger] = "Không thể gửi tin nhắn đến gia sư"
       redirect_to class_register_path(@class_register)
     end
 
@@ -104,16 +106,16 @@ class ClassRegistersController < ApplicationController
     @message_stu.tutor_id = @tutor.id
 
     if @message_stu.save
-      flash[:success] = "Successfully send message to student"
       # Sub 100000VND from bpoint account
       @class_register.student.user.bpoint = @class_register.student.user.bpoint - 100000
       @class_register.student.user.save
     else
-      flash[:danger] = "Cannot send email to student"
+      flash[:danger] = "Không thể gửi tin nhắn đến gia sư"
       redirect_to class_register_path(@class_register)
     end
     #After send message to student and tutor destroy the class
     @class_register.destroy
+    flash[:success] = "Đã gửi tin nhắn đến gia sư và học sinh "
 
     redirect_to show_user_info_path(current_user.id)
   end

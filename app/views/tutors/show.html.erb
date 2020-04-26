@@ -5,11 +5,11 @@
 
             </div>
             <div class="stush-header-2">
-                 <div class="stush-ava"> 
+                 <div class="stush-ava">
                 <% if !@tutor.user.image.url %>
                   <img src="/uploads/user/image/avt_default/default-avatar.png" class="avatar-size rounded-circle">
                   <% else %>
-                    <%= image_tag @tutor.user.image.to_s , class: "stush-ava"%>
+                    <%= image_tag @tutor.user.image.to_s , class: "avatar-size rounded-circle"%>
                   <% end %>
                  </div>
                 <div class="stush-header-2-content">
@@ -51,11 +51,11 @@
                 </div>
                 <div class="stush-header-3-center">
                     <div class="stush-header-3-center-sub">
-                        <div class="sub-first-line">0</div>
+                        <div class="sub-first-line"><%= @tutor.num_class %></div>
                         Lớp đã dạy
                     </div>
                     <div class="stush-header-3-center-sub">
-                        <div class="sub-first-line">0</div>
+                        <div class="sub-first-line"><%= @tutor.students.count %></div>
                         Người quan tâm
                     </div>
                     <div class="stush-header-3-center-sub">
@@ -133,7 +133,7 @@
                         <%# <%= current_tutor.location.sub_district%>
                     </div>
                     <div class="ratings_left_star">
-                        <%# <%= rating_for @tutor, "point", enable_half: true %> 
+                        <%# <%= rating_for @tutor, "point", enable_half: true %>
                     </div>
                     <div class="ratings_left_total">
                         <i class="fas fa-user"></i>

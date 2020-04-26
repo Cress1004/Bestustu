@@ -279,7 +279,7 @@ header{
                         height: 525px;
                         text-align: left;
                         // background-color: red;
-                        
+
                         display: none;
                         div{
                             padding: 0.5rem 0.5rem;
@@ -707,4 +707,10 @@ header{
             }
         }
     }
+}
+.stued-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    padding: 10px;
 }
