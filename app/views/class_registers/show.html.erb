@@ -179,7 +179,6 @@
             </div>
             <% if current_student == @class_register.student %>
               <%= link_to "Sửa thông tin lớp học", edit_class_register_path(@class_register), class: "mbtn-primary " %>
-              <%= link_to "Share", edit_class_register_path(@class_register), class: "mbtn-primary " %>
             <% end %>
             <% if current_student %>
               <%= link_to "Tạo lớp học", new_class_register_path, class:"mbtn-primary" %>

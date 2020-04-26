@@ -1,11 +1,10 @@
 <%= form_for @student  do |f| %>
-    <% if !current_student%>
-        <div class="field form-group">
-            <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle", :id => "regis-ava" %>
-            <span>Ảnh đại diện:</span>
-            <%= f.file_field :image, class: "mbtn-primary" %>
-        </div>
-    <% end %>
+    <div class="field form-group">
+        <!-- <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle", :id => "regis-ava" %> -->
+        <span>Ảnh đại diện:</span>
+         <%= f.file_field :image, class: "mbtn-primary" %>
+    </div>
+
     <div class="stued-content">
         <div class="stued-content-block">
             <%= f.label :address,"Địa chỉ" %><br/>

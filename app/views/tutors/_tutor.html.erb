@@ -46,7 +46,29 @@
             ...
             <% end %>
           </p>
-          <a><%= link_to "Chi tiết", tutor_path(tutor), class: "mbtn-primary"%></a>
+          <div class="slick-item-option">
+           <% if current_student %>
+               <%= link_to "Chi tiết", tutor_path(tutor), class: "mbtn-primary" %>
+               <!-- <button class="mbtn-danger">Lưu</button> -->
+               <% if (current_student.tutors.include? tutor) %>
+                 <div class = "save_item" style="display: none">
+               <% else %>
+                 <div class = "save_item" style="display: block">
+               <% end %>
+                 <%= link_to "Lưu gia sư", favourite_tutor_path(tutor), method: :get, remote: true,
+                 class: "mbtn-danger" %>
+               </div>
+               <% if !(current_student.tutors.include? tutor) %>
+                 <div class = "unsave_item" style="display: none">
+               <% else %>
+                 <div class = "unsave_item" style="display: block" >
+               <% end %>
+                 <%= link_to "Xóa lưu", destroy_favourite_tutor_path(tutor), method: :get, remote: true,
+                 class: "mbtn-danger" %>
+               </div>
+
+           <% end %>
+           </div>
         </div>
     </div>
   </div>

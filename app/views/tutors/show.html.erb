@@ -16,15 +16,40 @@
                     <h2> <%= @tutor.user.username %> </h2>
                     <h3>
                         &ensp;
-                        <%= link_to edit_tutor_path(@tutor) do %>
-                            <i class="fas fa-edit"></i>
+                        <% if current_tutor == @tutor %>
+                          <%= link_to edit_tutor_path(@tutor) do %>
+                              <i class="fas fa-edit"></i>
+                          <% end %>
                         <% end %>
                         </h3>
                     <% if current_tutor == @tutor %>
                     <%# <div class="edus-edit"> %>
-                        <%= link_to 'Sửa hồ sơ',  edit_tutor_path , class: 'mbtn-primary' %>
+                        <%= link_to 'Sửa hồ sơ',  edit_tutor_path(@tutor) , class: 'mbtn-primary' %>
                     <%# </div> %>
                         <%= link_to 'Sửa thông tin cá nhân',  edit_user_registration_path , class: 'mbtn-primary' %>
+                   <% elsif current_student %>
+                       <div class="slick-item-option">
+                        <% if current_student %>
+                            <% if (current_student.tutors.include? @tutor) %>
+                              <div class = "save_item" style="display: none">
+                            <% else %>
+                              <div class = "save_item" style="display: block">
+                            <% end %>
+                              <%= link_to "Lưu gia sư", favourite_tutor_path(@tutor), method: :get, remote: true,
+                              class: "mbtn-danger" %>
+                            </div>
+                            <% if !(current_student.tutors.include? @tutor) %>
+                              <div class = "unsave_item" style="display: none">
+                            <% else %>
+                              <div class = "unsave_item" style="display: block" >
+                            <% end %>
+                              <%= link_to "Xóa lưu", destroy_favourite_tutor_path(@tutor), method: :get, remote: true,
+                              class: "mbtn-danger" %>
+                            </div>
+
+                        <% end %>
+                        </div>
+
                    <% end %>
                 </div>
             </div>

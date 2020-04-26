@@ -144,10 +144,8 @@
                       <% else %>
                         <div class = "save_item" style="display: block">
                       <% end %>
-                        <%= form_with(url: favourite_tutor_path(f), method: "get",remote:true) do %>
-                          <input id="tutor_id" name="tutor_id" style="display: none" type="text" value= "<%= f.id %>" />
-                          <%= submit_tag("Lưu", class: "mbtn-danger") %>
-                        <% end %>
+                        <%= link_to "Lưu", favourite_tutor_path(f), method: :get, remote: true,
+                        class: "mbtn-danger" %>
                       </div>
                       <% if !(current_student.tutors.include? f) %>
                         <div class = "unsave_item" style="display: none">
