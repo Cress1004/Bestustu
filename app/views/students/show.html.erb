@@ -18,7 +18,7 @@
                         </h3>
                     <% if current_student == @student %>
                     <%# <div class="edus-edit"> %>
-                        <%= link_to "Sửa thông tin học sinh",  edit_student_path , class: 'mbtn-primary' %>
+                        <%= link_to "Sửa thông tin học sinh",  edit_student_path(@student) , class: 'mbtn-primary' %>
 
                     <%# </div> %>
                         <%= link_to "Sửa thông tin người dùng",  edit_user_registration_path , class: 'mbtn-primary' %>

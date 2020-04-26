@@ -45,8 +45,7 @@ class PagesController < ApplicationController
     end
 
     def favourite_tutor
-      @tutor = Tutor.find(params[:tutor_id])
-      id = params[:id]
+      @tutor = Tutor.find(params[:id])
       current_student.tutors << @tutor
       current_student.save
       flash[:notice] = "Đã lưu gia sư vào danh sách yêu thích"

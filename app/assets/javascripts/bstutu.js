@@ -12,8 +12,12 @@ $(document).on( "turbolinks:load",function() {
 	//City changed
     $('.location-city').on('change', function() {
 		var selected = $(this).val();
+		//reset district
 		$(".location-district").children().remove();
 		$(".location-district").append(`<option >Quận Huyện</option>`)
+		//reset sub-district
+		$(".location-sub-district").children().remove();
+		$(".location-sub-district").append(`<option >Phường xã</option>`)
 		for (var i = 0; i < gon.global.locations_district.length; i++) {
 			// console.log(gon.global.locations_district[i].city_id);
 			// console.log(selected)

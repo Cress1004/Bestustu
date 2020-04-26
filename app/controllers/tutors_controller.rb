@@ -46,7 +46,7 @@ class TutorsController < ApplicationController
   end
 
   def edit
-
+    @location = Location.find_by_id(@tutor.location_id)
   end
 
   def update
