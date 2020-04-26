@@ -16,3 +16,43 @@
         </div>
     </div>
 </div>
+
+<script>
+
+  $(document).on( "turbolinks:load",function() {
+  var action = "<%= params[:action]%>"
+  // console.log(action);
+  if( action == 'edit'){
+    console.log("us");
+    var city_id = "<%=  @location.city_id ||  'null' %>";
+    var district_id = "<%=  @location.district_id ||  'null' %>";
+    var district_name = "<%=  @location.district ||  'null' %>";
+    var id = "<%=  @location.id ||  'null' %>";
+    var sub_district_name = "<%=  @location.sub_district ||  'null' %>";
+
+
+    console.log(city_id);
+    console.log(district_id);
+    console.log(id);
+    $(".location-city option[value="+ city_id +"]").attr("selected","selected");
+
+    // $(".location-district").append(<option value="${district_id}">${district_name}</option>)
+    for (var i = 0; i < gon.global.locations_district.length; i++) {
+			if(gon.global.locations_district[i].city_id == city_id) {
+				$(".location-district").append(`<option value="${gon.global.locations_district[i].district_id}">${gon.global.locations_district[i].district}</option>`);
+			}
+    }
+    $(".location-district option[value="+ district_id +"]").attr("selected","selected");
+
+    // $(".location-sub-district").append(<option value="${id}">${sub_district_name}</option>)
+    for (var i = 0; i < gon.global.locations_sub_district.length; i++) {
+			if(gon.global.locations_sub_district[i].district_id == district_id) {
+				console.log(gon.global.locations_sub_district[i]);
+				$(".location-sub-district").append(`<option value="${gon.global.locations_sub_district[i].id}">${gon.global.locations_sub_district[i].sub_district}</option>`);
+			}
+		}
+    $(".location-sub-district option[value="+ id +"]").attr("selected","selected");
+  }
+});
+
+</script>
