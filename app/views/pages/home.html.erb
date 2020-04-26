@@ -149,7 +149,7 @@
                   <% if (current_student.tutors.include? f) %>
                     <div id = "unsave_item" style="display: none">
                   <% end %>
-                      <%= link_to "Xóa lưu", destroy_favourite_tutor_path(f), method: :get, remote: true
+                      <%= link_to "Xóa lưu", destroy_favourite_tutor_path(f), method: :get, remote: true,
                       class: "mbtn-danger" %>
                   <% if (current_student.tutors.include? f) %>
                     </div>
