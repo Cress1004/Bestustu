@@ -31,7 +31,7 @@ footer{
                 list-style: none;
                 align-items: center;
                 div{
-                    width: 4rem;    
+                    width: 4rem;
                     height: 4rem;
                     border: double 5px white ;
                     border-radius: 50%;
@@ -49,17 +49,17 @@ footer{
             }
             li:nth-child(1){
                 div{
-                    background-image: url("images/ava-1");
+                    background-image: url("images/ava-1.jpg");
                 }
             }
             li:nth-child(2){
                 div{
-                    background-image: url("images/ava-2");
+                    background-image: url("images/ava-2.jpg");
                 }
             }
             li:nth-child(3){
                 div{
-                    background-image: url("images/ava-3");
+                    background-image: url("images/ava-3.jpg");
                 }
             }
         }

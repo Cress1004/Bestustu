@@ -353,7 +353,7 @@ header{
 
 .siup-container{
     // height: 100vh;
-    background-image: url("images/sign-up-background");
+    background-image: url("images/sign-up-background.png");
     background-size: cover;
     overflow: hidden;
     .siup-box{
@@ -429,7 +429,7 @@ header{
             width: 100%;
             margin: 0 auto;
             height: 45vh;
-            background-image: url("images/stued-background");
+            background-image: url("images/stued-background.jpg");
             // background-size: cover;
             position: relative;
             border: double gray 1px;
@@ -443,7 +443,7 @@ header{
                 top: 70%;
                 border: double rgb(255, 255, 255) 5px;
                 border-radius: 50%;
-                background-image: url("images/sign-up-background");
+                background-image: url("images/sign-up-background.png");
                 background-size: cover;
             }
             .edus-edit{
