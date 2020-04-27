@@ -129,6 +129,7 @@ hr.solid {
   .pagination{
     justify-content:  center;
   }
+  margin: 1rem 0;
 }
 
 .class-sh-container{
@@ -181,8 +182,27 @@ hr.solid {
         i{
           margin-right: 1rem;
         }
-        p{
-          margin: 0;
+        span{
+          margin-right: 0.5rem;
+        }
+      }
+      .status-row{
+        span:nth-child(3){
+          color: #FF961E;
+        }
+      }
+      .salary-row{
+        span:nth-child(3){
+          font-size: 1.2em;
+          font-weight: 700;
+          color: #FF961E;
+        }
+      }
+      .fee-row{
+        span:nth-child(2){
+          font-size: 1.2em;
+          font-weight: 700;
+          color: rgb(49, 116, 218);
         }
       }
     }
@@ -210,6 +230,79 @@ hr.solid {
     .class-sh-2-content{
       width: 100%;
       padding: 2rem 0;
+    }
+  }
+}
+
+.class-regis-page{
+  .class-index-show{
+    .class-index-header{
+      border: 1px solid rgb(192, 191, 191);
+      display: grid;
+      grid-template-columns: 3fr 1fr 1fr;
+      gap: rem;
+      padding: 1rem 2rem;
+      margin: 2rem 0;
+      box-shadow: 5px 5px 10px 1px rgba(202, 200, 200, 0.75);
+      div{
+        text-align: center;
+      }
+    }
+    .class-index-content{
+      border: 1px solid rgb(192, 191, 191);
+      display: grid;
+      grid-template-columns: 3fr 1fr 1fr;
+      gap: rem;
+      padding: 1rem 2rem;
+      margin: 1rem 0;
+      box-shadow: 5px 5px 10px 1px rgba(202, 200, 200, 0.75);
+      .class-index-left{
+        .class-index-left-header{
+          display: flex;
+          align-items: center;
+          i{
+            margin-right: 1rem;
+          }
+          h2{
+            font-size: 1.5rem;
+            margin: 0;
+          }
+        }
+        .class-index-left-content{
+          padding: 1rem 0;
+        }
+        .class-index-left-info{
+          display: flex;
+          div{
+            border: 0.5px solid rgb(197, 196, 196);
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem ;
+          }
+        }
+      }
+      .class-index-center{
+        div{
+          width: fit-content;
+          margin: 0 auto;
+        }
+        div:nth-child(1){
+          font-size: 1.5rem;
+          color: #FF961E;
+        }
+      }
+      .class-index-right{
+        div{
+          width: fit-content;
+          margin: 0 auto;
+        }
+        div:nth-child(1){
+          span:nth-child(2){
+            font-size: 1.2rem;
+            color: rgb(49, 116, 218);
+          }
+        }
+      }
     }
   }
 }

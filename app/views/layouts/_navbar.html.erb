@@ -11,17 +11,10 @@
 
     <%= form_tag tutors_path, :method => 'get',class:"search-container", autocomplete: "off" do %>
         <div class="search-area">
-            <%= text_field_tag 'search_input', nil, placeholder: 'Search by name or id' %>
-            <%= submit_tag "Search", id: "search-submit" %>
+            <%= text_field_tag 'search_input', nil, placeholder: 'Tìm gia sư theo môn học và địa điểm' %>
+            <%= submit_tag "Tìm kiếm", id: "search-submit" %>
         </div>
     <% end %>
-<!--
-    <%= form_tag tutors_path, :method => 'get',class:"search-container",id: "search-location", autocomplete: "off" do %>
-        <div class="search-area">
-            <%= text_field_tag 'search_input', nil, placeholder: 'Tìm giáo viên bằng địa điểm' %>
-            <%= submit_tag "Search", id: "search-submit" %>
-        </div>
-    <% end %> -->
 
     <div class="nav-container">
         <div class="nav-area">
@@ -29,41 +22,19 @@
                 <ul class="menu">
                     <li >
                         <%# <a href="#">HOME</a> %>
-                        <%= link_to 'HOME', root_path%>
+                        <%= link_to 'Trang chủ', root_path%>
                     </li>
                     <li>
-                        <%= link_to 'CLASS', class_registers_path%>
-
-                        <ul class="submenu">
-                            <li><a href="#">Class list</a></li>
-                        </ul>
+                        <%= link_to 'Lớp học', class_registers_path%>
                     </li>
                     <li>
-                        <%= link_to 'TUTOR', tutors_path%>
-                        <%# <ul class="submenu">
-                            <li><a href="#">Show all tutor</a></li>
-                            <li><a href="#">Second submenu</a></li>
-                            <li><a href="#">Third submenu</a></li>
-                            <li><a href="#">Fourth submenu</a></li>
-                        </ul> %>
+                        <%= link_to 'Gia sư', tutors_path%>
                     </li>
                     <li>
-                        <a href="#">ABOUT</a>
-                        <%# <ul class="submenu">
-                            <li><a href="#">First submenu</a></li>
-                            <li><a href="#">Second submenu</a></li>
-                            <li><a href="#">Third submenu</a></li>
-                            <li><a href="#">Fourth submenu</a></li>
-                        </ul> %>
+                        <a href="#footer-left" id="about">Thông tin</a>
                     </li>
                     <li>
-                        <a href="#">CONTACT</a>
-                          <%# <ul class="submenu">
-                            <li><a href="#">First submenu</a></li>
-                            <li><a href="#">Second submenu</a></li>
-                            <li><a href="#">Third submenu</a></li>
-                            <li><a href="#">Fourth submenu</a></li>
-                        </ul> %>
+                        <a href="#footer-right" id="contact">Liên hệ</a>
                     </li>
                 </ul>
             </nav>
@@ -71,7 +42,6 @@
     </div>
     <div class="sign-container">
         <div class="sign-area">
-            <%# <a class="sign-in-area" href="sign-in.html"> %>
 
             <% if current_user %>
                 <div class="user-info">
@@ -82,7 +52,7 @@
                                 <% if current_user.username %>
                                     <%= current_user.username%>
                                 <% else %>
-                                    Your Profile
+                                    Hồ sơ của bạn
                                 <% end %>
                             </div>
                         </div>
@@ -121,7 +91,11 @@
                                 <div>
                                 <% messages.each do |m|%>
                                     <div>
-                                        <%= m.message_content%>
+                                        <span>Thông báo:</span>
+                                        <%= m.message_content[0..60]%>
+                                        <% if m.message_content.length >= 60 %>
+                                            ...
+                                        <% end %>
                                     </div>
                                 <% end %>
                             </div>
@@ -138,7 +112,11 @@
                                 <div>
                                 <% messages.each do |m|%>
                                     <div>
-                                        <%= m.message_content%>
+                                        <span>Thông báo:</span>
+                                        <%= m.message_content[0..60]%>
+                                        <% if m.message_content.length >= 60 %>
+                                            ...
+                                        <% end %>
                                     </div>
                                 <% end %>
                             </div>
@@ -149,20 +127,20 @@
                 <div>
                     <%= link_to  destroy_user_session_path, method: :delete, class:'sign-up-area' do %>
                         <div class="sign-up-header">
-                            <i class="fas fa-sign-in-alt"></i> Log out
+                            <i class="fas fa-sign-in-alt"></i> Đăng xuất
                         </div>
                     <% end %>
                 </div>
-            
+
             <% else %>
                 <%= link_to new_user_session_path, class:'sign-up-area' do %>
                     <div class="sign-up-header">
-                        <i class="fas fa-sign-in-alt"></i> Sign in
+                        <i class="fas fa-sign-in-alt"></i> Đăng nhập
                     </div>
                 <% end %>
                 <%= link_to new_user_registration_path, class:'sign-up-area' do %>
                     <div class="sign-up-header">
-                        <i class="fas fa-user-plus"></i> Sign up
+                        <i class="fas fa-user-plus"></i> Đăng ký
                     </div>
                 <% end %>
 

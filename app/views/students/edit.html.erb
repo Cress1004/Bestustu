@@ -1,40 +1,13 @@
-<!-- <h1>Thông tin cá nhân</h1>
-<% if @student.errors.any? %>
-    <h2>The following errors prevented the article from getting created</h2>
-    <ul>
-    <% @student.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-    <% end %>
-    </ul>
-<% end %>
 
-<%= form_for @student do |f| %>
-<p>
-
-<%= f.label :address %><br/>
-<%= f.text_field :address %>
-
-</p>
-
-<p>
-
-<%= f.label :grade %><br/>
-<%= f.text_field :grade %>
-
-</p>
-
-<p>
-
-<%= f.submit %>
-
-</p>
-
-<% end %> -->
 <div class="edus-container">
     <div class="edus-box">
         <div class="edus-background">
             <div class="edus-ava">
-                <%= image_tag @user.image.to_s, :class => "avatar-size rounded-circle", :id =>"regis-ava" %>
+              <% if !@user.image.url %>
+                <img src="/uploads/user/image/avt_default/default-avatar.png" class ="avatar-size rounded-circle", id ="regis-ava">
+                <% else %>
+                  <%= image_tag @user.image.to_s , :class => "avatar-size rounded-circle", :id =>"regis-ava"%>
+                <% end %>
             </div>
         </div>
     </div>
@@ -43,11 +16,11 @@
                 <div class="view-header-2">
                 <span>
                     <i class="fa fa-graduation-cap"></i>
-                    Student's information edit
+                    Cập nhật hồ sơ học sinh
                 </span>
             </div>
                 <%= render 'form' %>
-            <iframe width="100%" height="100%" frameborder="0" 
+            <iframe width="100%" height="100%" frameborder="0"
                 style="border:0" allowfullscreen src="https://www.google.com/maps/embed/v1/directions?origin=Tate+Modern
                 &destination=Tower+of+London
                 &key=AIzaSyDA94X9IrCpntq9OUufu8WwXToU62hyTz8">
@@ -55,4 +28,3 @@
             </div>
         </div>
 </div>
-

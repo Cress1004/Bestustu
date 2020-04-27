@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_033445) do
+ActiveRecord::Schema.define(version: 2020_04_25_160317) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer "rater_id"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2020_04_13_033445) do
     t.float "lessons_week"
     t.float "salary"
     t.integer "location_id", null: false
-    t.integer "student_id", null: false
     t.integer "subject_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -36,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_033445) do
     t.string "class_status", default: "ĐANG TÌM GIÁO VIÊN"
     t.text "class_content"
     t.string "address"
+    t.integer "student_id"
     t.index ["location_id"], name: "index_class_registers_on_location_id"
     t.index ["student_id"], name: "index_class_registers_on_student_id"
     t.index ["subject_id"], name: "index_class_registers_on_subject_id"
@@ -115,6 +115,13 @@ ActiveRecord::Schema.define(version: 2020_04_13_033445) do
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 
+  create_table "students_tutors", id: false, force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "tutor_id"
+    t.index ["student_id"], name: "index_students_tutors_on_student_id"
+    t.index ["tutor_id"], name: "index_students_tutors_on_tutor_id"
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -152,6 +159,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_033445) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "work_place"
+    t.integer "num_class", default: 0
     t.index ["location_id"], name: "index_tutors_on_location_id"
     t.index ["user_id"], name: "index_tutors_on_user_id"
   end
@@ -195,6 +203,8 @@ ActiveRecord::Schema.define(version: 2020_04_13_033445) do
   add_foreign_key "class_registers_tutors", "tutors"
   add_foreign_key "messages", "users"
   add_foreign_key "students", "users"
+  add_foreign_key "students_tutors", "students"
+  add_foreign_key "students_tutors", "tutors"
   add_foreign_key "subjects_tutors", "subjects"
   add_foreign_key "subjects_tutors", "tutors"
   add_foreign_key "times_frees_tutors", "times_frees"

@@ -8,7 +8,11 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     require_same_user
     @message.destroy
-    redirect_to show_user_info_path(current_user.id)
+  
+    respond_to do |format|
+      format.js {}
+      format.html { redirect_to show_user_info_path(current_user.id) }
+    end
   end
 
   private
