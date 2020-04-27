@@ -1,0 +1,14 @@
+- Validate hoàn toàn dữ liệu
++ Class register (Huy)
++ Tutor (Thanh)
++ Student + user (sign in and sign up) (Lộc)
+- Các lỗi cần sửa
++ Tiền phí nhận lớp (cần đồng bộ dữ liệu các trang cho giống nhau) (Thanh)
++ Trang tutor edit bị lệch phông (Lộc)
++ Paginate phân trang bị lệch (Lộc)
++ Chỉnh ảnh ở các avatar sao cho nó có kích thước cố định, tránh để
+các card tutor cái to cái nhỏ
++ Thêm các flash vào những chỗ cần thiết (Huy) (VD khu tìm kiếm gia sư hoặc
+lớp học nếu không tìm thấy giá trị nào cần có thông báo)
++ Sau khi các bạn hoàn thành xong các mission thì chuyển 1 lượt các chỗ
+không phải tiếng Việt thành tiếng Việt
