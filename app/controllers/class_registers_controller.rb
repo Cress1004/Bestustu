@@ -28,7 +28,7 @@ class ClassRegistersController < ApplicationController
   end
 
   def edit
-
+    @location = Location.find_by_id(@class_register.location_id)
   end
 
   def update
