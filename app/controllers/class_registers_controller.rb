@@ -33,8 +33,10 @@ class ClassRegistersController < ApplicationController
 
   def update
     if @class_register.update(class_register_params)
+      flash[:success] = "Đã cập nhật thành công"
       redirect_to class_register_path(@class_register)
     else
+      flash[:danger] = "Có lỗi xảy ra khi cập nhật" 
       render :edit
     end
   end
