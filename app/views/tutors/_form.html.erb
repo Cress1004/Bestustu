@@ -99,21 +99,20 @@
 <script>
 
   $(document).on( "turbolinks:load",function() {
-    $('#new_tutor').submit(function(){
+    function validates_tutor_input(){
       var flag = true;
       var job = $.trim($('#tutor_job').val());
       var work_place = $.trim($('#tutor_work_place').val());
       var description = $.trim($('#tutor_description').val());
       var achievement = $.trim($('#tutor_achievement').val());
-
       if (job == ''){
-          $('job_error').text('Nghề nghiệp của bạn là gì?');
+          $('#job_error').text('Nghề nghiệp của bạn là gì?');
           flag = false;
       }
       else
         $('#job_error').text('');
       if (work_place == ''){
-          $('work_place_error').text('Bạn đang làm việc ở đâu?');
+          $('#work_place_error').text('Bạn đang làm việc ở đâu?');
           flag = false;
       }
       if(description == '' || description.length < 10){
@@ -130,46 +129,19 @@
       else
         $('#achievement_error').text('');
       return flag;
+    }
+
+    $('#new_tutor').submit(function(){
+      return validates_tutor_input();
     });
 
     var action = "<%= params[:action]%>";
     if (action == 'edit') {
       var tutor_id = "<%= @tutor.id || 'null'%>";
       $('#edit_tutor_'+tutor_id).submit(function(){
-        var flag = true;
-        var job = $.trim($('#tutor_job').val());
-        var work_place = $.trim($('#tutor_work_place').val());
-        var description = $.trim($('#tutor_description').val());
-        var achievement = $.trim($('#tutor_achievement').val());
-        if (job == ''){
-            $('#job_error').text('Nghề nghiệp hiện tại của bạn là gì?');
-            flag = false;
-        }
-        else
-          $('#job_error_tutor').text('');
-
-        if (work_place == ''){
-            $('#work_place_error').text('Bạn đang làm việc ở đâu?');
-            flag = false;
-        }
-        else
-          $('#work_place_error').text('');
-
-        if(description == '' || description.length < 10){
-           $('#description_error').text('Hãy mô tả một chút về bạn, tối thiểu 20 kí tự!');
-           flag = false;
-        }
-        else
-          $('#description_error').text('');
-
-        if(achievement == '' || achievement.length < 10){
-           $('#achievement_error').text('Bạn đã có thành thích gì vậy? tối thiểu 20 kí tự!');
-           flag = false;
-        }
-        else
-          $('#achievement_error').text('');
-        return flag;
+        return validates_tutor_input();
       });
     }
+
   });
 </script>

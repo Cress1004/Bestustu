@@ -13,7 +13,7 @@ class ClassRegistersController < ApplicationController
     @class_register = ClassRegister.new(class_register_params)
     @class_register.student = current_student
   #  if current_user.bpoint >= (current_student.class_registers.size + 1)* 100000
-  if current_user.bpoint >= @class_registers.salary
+  if current_user.bpoint.to_i >= params[:class_register][:salary].to_i * 3
       if @class_register.save
         flash[:success] = "Đã đăng yêu cầu"
         redirect_to class_register_path(@class_register)
@@ -53,7 +53,7 @@ class ClassRegistersController < ApplicationController
         flash[:danger] = "Bạn đã đăng ký lớp học này rồi"
         redirect_to class_register_path(@class_register)
       elsif @class_register.tutors.count < 6
-        if current_tutor.user.bpoint >= (current_tutor.class_registers.size + 1)*200000
+        if current_tutor.user.bpoint >= @class_register.salary.to_i * 3
           @class_register.tutors << current_tutor
           @class_register.save
           flash[:success] = "Đăng ký thành công"
@@ -91,7 +91,7 @@ class ClassRegistersController < ApplicationController
 
     if @message_tu.save
       # Sub 200000VND from bpoint account
-      @tutor.user.bpoint = @tutor.user.bpoint - 200000
+      @tutor.user.bpoint = @tutor.user.bpoint - @class_register.salary.to_i * 3
       #Add 1 to number of class tutor teached
       @tutor.num_class = @tutor.num_class + 1
 
@@ -110,7 +110,7 @@ class ClassRegistersController < ApplicationController
 
     if @message_stu.save
       # Sub 100000VND from bpoint account
-      @class_register.student.user.bpoint = @class_register.student.user.bpoint - 100000
+      @class_register.student.user.bpoint = @class_register.student.user.bpoint - @class_register.salary.to_i * 3
       @class_register.student.user.save
     else
       flash[:danger] = "Không thể gửi tin nhắn đến gia sư"

@@ -15,7 +15,7 @@ class User < ApplicationRecord
           :authentication_keys => [:username]
   before_save { self.username = username.downcase }
   before_save { self.username = username.strip }
-
+  before_save { self.phone = phone.strip }
   # validates :email, presence: true
   # validates :username, presence: true,
   #           length: { minimum: 4, maximum: 15 },
