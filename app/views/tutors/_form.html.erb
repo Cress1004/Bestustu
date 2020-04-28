@@ -1,6 +1,3 @@
-
-
-
 <%= form_for @tutor  do |f| %>
 
       <div class="field form-group">
@@ -13,43 +10,43 @@
         <div class="stued-content-block">
             <%= f.label :job, "Nghề nghiệp" %><br/>
             <%= f.text_field :job, class:'form-control' %>
-            <span id="job_error" class="my-error-span" class="my-error-span"></span>
+            <small><span id="job_error"></span></small>
         </div>
 
         <div class="stued-content-block">
             <%= f.label :work_place, "Nơi làm việc" %><br/>
             <%= f.text_field :work_place, class:'form-control' %>
-            <span id="work_place_error" class="my-error-span"></span>
+            <small><span id="work_place_error"></span></small>
         </div>
 
         <div class="stued-content-block">
             <%= f.label :description, "Mô tả bản thân" %><br/>
             <%= f.text_area :description, class:'form-control' %>
-            <span id="work_place_error" class="my-error-span"></span>
+            <small><span id="description_error"></span></small>
         </div>
 
         <div class="stued-content-block">
             <%= f.label :achievement, "Thành tựu" %><br/>
             <%= f.text_area :achievement, class:'form-control' %>
-            <span id="work_place_error" class="my-error-span"></span>
+            <small><span id="achievement_error"></span></small>
         </div>
 
         <div class="stued-content-block">
             <%= f.label :location_id, "Tỉnh/Thành phố " %><br/>
             <%= f.select("location_id", Location.select(:city, :city_id).distinct.collect { |p| [ p.city, p.city_id ] }, { },{:class=>"location-city custom-select"})%>
-            <span id="work_place_error" class="my-error-span"></span>
+            <span id="work_place_error"></span>
         </div>
 
         <div class="stued-content-block">
             <%= f.label :location_id, "Quận/Huyện" %><br/>
             <%= f.select("location_id", {}, { },{:class=>"location-district custom-select"})%>
-            <span id="work_place_error" class="my-error-span"></span>
+            <span id="work_place_error"></span>
         </div>
 
         <div class="stued-content-block">
             <%= f.label :location_id, "Phường/Xã" %><br/>
             <%= f.select("location_id", {}, { },{:class=>"location-sub-district custom-select"})%>
-            <span id="work_place_error" class="my-error-span"></span>
+            <small><span id="work_place_error"></span></small>
         </div>
 
     </div>
@@ -97,5 +94,82 @@
     </div> %>
   <%= f.submit "Tạo hồ sơ", class:' mbtn-primary'%>
 
-<%# <%= params.inspect%> 
+<%# <%= params.inspect%>
 <% end %>
+<script>
+
+  $(document).on( "turbolinks:load",function() {
+    $('#new_tutor').submit(function(){
+      var flag = true;
+      var job = $.trim($('#tutor_job').val());
+      var work_place = $.trim($('#tutor_work_place').val());
+      var description = $.trim($('#tutor_description').val());
+      var achievement = $.trim($('#tutor_achievement').val());
+
+      if (job == ''){
+          $('job_error').text('Nghề nghiệp của bạn là gì?');
+          flag = false;
+      }
+      else
+        $('#job_error').text('');
+      if (work_place == ''){
+          $('work_place_error').text('Bạn đang làm việc ở đâu?');
+          flag = false;
+      }
+      if(description == '' || description.length < 10){
+         $('#description_error').text('Hãy mô tả một chút về bạn, tối thiểu 20 kí tự!');
+         flag = false;
+      }
+      else
+        $('#description_error').text('');
+
+      if(achievement == '' || achievement.length < 10){
+         $('#achievement_error').text('Bạn đã có thành thích gì vậy? tối thiểu 20 kí tự!');
+         flag = false;
+      }
+      else
+        $('#achievement_error').text('');
+      return flag;
+    });
+
+    var action = "<%= params[:action]%>";
+    if (action == 'edit') {
+      var tutor_id = "<%= @tutor.id || 'null'%>";
+      $('#edit_tutor_'+tutor_id).submit(function(){
+        var flag = true;
+        var job = $.trim($('#tutor_job').val());
+        var work_place = $.trim($('#tutor_work_place').val());
+        var description = $.trim($('#tutor_description').val());
+        var achievement = $.trim($('#tutor_achievement').val());
+        if (job == ''){
+            $('#job_error').text('Nghề nghiệp hiện tại của bạn là gì?');
+            flag = false;
+        }
+        else
+          $('#job_error_tutor').text('');
+
+        if (work_place == ''){
+            $('#work_place_error').text('Bạn đang làm việc ở đâu?');
+            flag = false;
+        }
+        else
+          $('#work_place_error').text('');
+
+        if(description == '' || description.length < 10){
+           $('#description_error').text('Hãy mô tả một chút về bạn, tối thiểu 20 kí tự!');
+           flag = false;
+        }
+        else
+          $('#description_error').text('');
+
+        if(achievement == '' || achievement.length < 10){
+           $('#achievement_error').text('Bạn đã có thành thích gì vậy? tối thiểu 20 kí tự!');
+           flag = false;
+        }
+        else
+          $('#achievement_error').text('');
+        return flag;
+      });
+    }
+  });
+</script>

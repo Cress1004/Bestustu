@@ -14,6 +14,7 @@ class User < ApplicationRecord
           :omniauthable, :omniauth_providers => [:facebook],
           :authentication_keys => [:username]
   before_save { self.username = username.downcase }
+  before_save { self.username = username.strip }
 
   # validates :email, presence: true
   # validates :username, presence: true,

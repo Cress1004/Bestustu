@@ -12,7 +12,8 @@ class ClassRegistersController < ApplicationController
   def create
     @class_register = ClassRegister.new(class_register_params)
     @class_register.student = current_student
-    if current_user.bpoint >= (current_student.class_registers.size + 1)* 100000
+  #  if current_user.bpoint >= (current_student.class_registers.size + 1)* 100000
+  if current_user.bpoint >= @class_registers.salary
       if @class_register.save
         flash[:success] = "Đã đăng yêu cầu"
         redirect_to class_register_path(@class_register)
@@ -36,7 +37,7 @@ class ClassRegistersController < ApplicationController
       flash[:success] = "Đã cập nhật thành công"
       redirect_to class_register_path(@class_register)
     else
-      flash[:danger] = "Có lỗi xảy ra khi cập nhật" 
+      flash[:danger] = "Có lỗi xảy ra khi cập nhật"
       render :edit
     end
   end
