@@ -2,72 +2,65 @@
   <div class="edus-box">
     <div class="edus-background">
       <div class="edus-ava">
-        <%= image_tag @user.image.to_s, :class => "avatar-size rounded-circle", :id =>"regis-ava" %>
+        <% if !@user.image.url %>
+          <img src="/uploads/user/image/avt_default/default-avatar.png" class ="avatar-size rounded-circle", id ="regis-ava">
+          <% else %>
+            <%= image_tag @user.image.to_s , :class => "avatar-size rounded-circle", :id =>"regis-ava"%>
+          <% end %>
       </div>
     </div>
-  </div>
+
     <div class="stued-container">
-      <div class="stued-area">
+      <div class="regis-area">
         <div class="view-header-2">
               <span>
                   <i class="fas fa-chalkboard"></i>
-                  Tutor's information edit
+                  Cập nhật hồ sơ gia sư
               </span>
         </div>
         <%= render 'form'%>
-      <!-- <% if @tutor %>
-        <%= form_for(@tutor, :html => {class:"form-horizontal", role:"form"})  do |f| %>
-        <div class="field form-group">
-          <%= f.label :job %>
-          <%= f.text_field :job, autofocus: true, autocomplete: "job",class:"form-control" %>
-            <span id="job_error"></span>
-        </div>
-        <div class="field form-group">
-          <%= f.label :work_place %>
-          <%= f.text_field :work_place, autofocus: true, autocomplete: "work_place",class:"form-control" %>
-            <span id="work_place_error"></span>
-        </div>
-
-        <div class="field form-group">
-          <%= f.label :description %>
-          <%= f.text_area :description, autofocus: true, autocomplete: "description",class:"form-control" %>
-        </div>
-        <div class="field form-group">
-          <%= f.label :achievement %>
-          <%= f.text_area :achievement, autofocus: true, autocomplete: "achievement",class:"form-control" %>
-        </div>
-        <div class="field form-group">
-          <%= f.label :location_id, "Location" %>
-          <%= f.collection_select(:location_id, Location.all, :id, :city) %>
-        </div>
-        <div class="checkbox-area">
-          <div class="checkbox-grid">
-            <% i = 0 %>
-            <% TimesFree.all.each do |timesfree| %>
-              <% i = i+1 %>
-              <% if i%3 == 1 %>
-                  <div class="row-calendar-check">
-                      <h6><%= timesfree.day %></h6>
-                      <ul>
-              <% end %>
-              <li>
-                  <%= check_box_tag "tutor[times_free_ids][]",timesfree.id,@tutor.times_free_ids.include?(timesfree.id), { id: "tutor_times_free_ids_#{timesfree.id}" } %>
-                  <%= label_tag "tutor[times_free_ids][#{timesfree.id}]",timesfree.free_time %>
-              </li>
-              <% if i%3 == 0 %>
-                      </ul>
-                  </div>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="actions">
-            <%= f.submit "Update", class:"btn btn-danger" %>
-          </div>
-          <% end %>
-        </div>
-        <% end %> -->
-        </div>
+      </div>
       <%= link_to "Back", :back %>
     </div>
   <%# </div> %>
+  </div>
 </div>
+<script>
+
+  $(document).on( "turbolinks:load",function() {
+  var action = "<%= params[:action]%>"
+  // console.log(action);
+  if( action == 'edit'){
+    console.log("us");
+    var city_id = "<%=  @location.city_id ||  'null' %>";
+    var district_id = "<%=  @location.district_id ||  'null' %>";
+    var district_name = "<%=  @location.district ||  'null' %>";
+    var id = "<%=  @location.id ||  'null' %>";
+    var sub_district_name = "<%=  @location.sub_district ||  'null' %>";
+
+
+    console.log(city_id);
+    console.log(district_id);
+    console.log(id);
+    $(".location-city option[value="+ city_id +"]").attr("selected","selected");
+
+    // $(".location-district").append(<option value="${district_id}">${district_name}</option>)
+    for (var i = 0; i < gon.global.locations_district.length; i++) {
+			if(gon.global.locations_district[i].city_id == city_id) {
+				$(".location-district").append(`<option value="${gon.global.locations_district[i].district_id}">${gon.global.locations_district[i].district}</option>`);
+			}
+    }
+    $(".location-district option[value="+ district_id +"]").attr("selected","selected");
+
+    // $(".location-sub-district").append(<option value="${id}">${sub_district_name}</option>)
+    for (var i = 0; i < gon.global.locations_sub_district.length; i++) {
+			if(gon.global.locations_sub_district[i].district_id == district_id) {
+				console.log(gon.global.locations_sub_district[i]);
+				$(".location-sub-district").append(`<option value="${gon.global.locations_sub_district[i].id}">${gon.global.locations_sub_district[i].sub_district}</option>`);
+			}
+		}
+    $(".location-sub-district option[value="+ id +"]").attr("selected","selected");
+  }
+});
+
+</script>

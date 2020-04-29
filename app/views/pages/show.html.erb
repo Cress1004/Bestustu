@@ -3,14 +3,14 @@
         <div class="edus-background">
           <div class="edus-ava">
             <% if !current_user.image.url %>
-              <img src="/uploads/user/image/avt_define/avt_male.png" class="avatar-size rounded-circle">
+                <img src="/uploads/user/image/avt_default/default-avatar.png" class="avatar-size rounded-circle">
             <% else %>
               <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle" %>
             <% end %>
           </div>
           <div class="edus-edit">
             <%# <button class="btn btn-primary">Edit your profile</button> %>
-            <%= link_to 'Edit your profile',  edit_user_registration_path , class: 'mbtn-primary' %>
+            <%= link_to 'Sửa đổi thông tin',  edit_user_registration_path , class: 'mbtn-primary' %>
           </div>
         </div>
          <div class = "edus-nav-and-content">
@@ -18,26 +18,26 @@
             <div class = "edus-nav-item user-navbar-active" value="1">
               <i class = "fas fa-smile">
               </i>
-              Thong tin ca nhan
+              Thông tin cá nhân
               <i class = "fas fa-chevron-down">
               </i>
 
             </div>
             <div class = "edus-nav-item" value="2">
               <i class="fa fa-pencil-square"></i>
-              Quan ly yeu cau
+              Quản lý yêu cầu
               <i class = "fas fa-chevron-down">
               </i>
             </div>
             <div class = "edus-nav-item" value="3" >
               <i class="fas fa-comments"></i>
-              Hoi thoai va tin nhan
+              Gia sư ưa thích
               <i class = "fas fa-chevron-down">
               </i>
             </div>
              <div class = "edus-nav-item" value="4" >
              <i class="fa fa-bell"></i>
-              Thong bao
+              Thông báo
               <i class = "fas fa-chevron-down">
               </i>
             </div>
@@ -45,7 +45,7 @@
           <div class ="edus-content">
             <div class="edus-area edus-content-item ">
               <div class="edus-header">
-                <h2>User info</h2>
+                <h2>Thông tin người dùng</h2>
               </div>
 
               <div class="edus-show-info">
@@ -67,15 +67,7 @@
                 </div>
                 <div class="edus-show-info-item">
                   <div>
-                      Uid:
-                  </div>
-                  <div class="edus-show-info-content">
-                      <%= @user.uid %>
-                  </div>
-                </div>
-                <div class="edus-show-info-item">
-                  <div>
-                      Name:
+                      Tên:
                   </div>
                   <div class="edus-show-info-content">
                       <%= @user.name %>
@@ -83,7 +75,7 @@
                 </div>
                 <div class="edus-show-info-item">
                   <div>
-                      Phone:
+                      Số điện thoại:
                   </div>
                   <div class="edus-show-info-content">
                       <%= @user.phone %>
@@ -91,15 +83,17 @@
                 </div>
                 <div class="edus-show-info-item">
                   <div>
-                      Gender:
+                      Giới tính:
                   </div>
                   <div class="edus-show-info-content">
-                      <%= @user.gender %>
+                      <% if @user.gender == 1%>Male
+                      <% else %> Female
+                      <% end %>
                   </div>
                 </div>
                 <div class="edus-show-info-item">
                   <div>
-                      Age:
+                      Ngày sinh:
                   </div>
                   <div class="edus-show-info-content">
                       <%= @user.birthday %>
@@ -121,15 +115,17 @@
             <div class = "edus-content-item edus-content-item-style">
               <div class="edus-content-item-header">
                 <h2>
-                Quan ly yeu cau
+                Quản lý yêu cầu
                 </h2>
 
               </div>
               <div class="edus-content-item-content">
                 <% if @class_register %>
                   <% @class_registers.each do |class_register| %>
-                    <%= link_to class_register.description, class_register_path(class_register) %><br>
+                    Lớp học: <%= link_to class_register.description, class_register_path(class_register) %><br>
                   <% end %>
+                <% else %>
+                  Không có yêu cầu nào
                 <% end %>
               </div>
           </div>
@@ -137,45 +133,56 @@
           <div class = "edus-content-item edus-content-item-style">
               <div class="edus-content-item-header">
                 <h2>
-                Hoi thoai
+                Gia sư ưa thích
                 </h2>
 
               </div>
               <div class="edus-content-item-content">
-                Chưa co yeu cau nao!
+                <% if current_student %>
+                  <% current_student.tutors.each do |t| %>
+                    Gia sư: <%= link_to t.user.username.to_s, tutor_path(t) %><br>
+                  <% end %>
+                  <% if current_student.tutors.size == 0 %>
+                    Không có gia sư yêu thích
+                  <% end %>
+                <% else  %>
+                  Bạn đang là gia sư không thể lưu gia sư yêu thích
+                <% end %>
               </div>
           </div>
           <div class = "edus-content-item edus-content-item-style">
               <div class="edus-content-item-header">
                 <h2>
-                Tin nhan
+                Thông báo
                 </h2>
 
               </div>
-              <div class="edus-content-item-content">
+              <div class="edus-content-item-content" >
                 <% if @temp_hash %>
                 <ul class="list-group">
                   <% @temp_hash.each do |message,obj| %>
-                    <li class="list-group-item">
+                    <li class="list-group-item" id="message_show">
 
-                      <p>Message for you: <%= message.message_content %></p>
+                      <p>Tun nhắn: <%= message.message_content %></p>
                       <% if current_student %>
                         <%= link_to obj.user.name, tutor_path(obj) %>
                       <% elsif current_tutor %>
                         <%= link_to obj.user.name, student_path(obj) %>
                       <% end %>
                       <br>
-                      <%= link_to "Xóa tin", message_path(message), method: :delete,
-                              data: { confirm: "Are you sure you want to delete the message?"},
+                      <%= link_to "Xóa tin", message_path(message), method: :delete,remote: true,
+                              data: { confirm: "Bạn có chắc muốn xóa message này không?"},
                               class: "btn btn-xs btn-danger" %>
                     </li>
                   <% end %>
                 </ul>
+                  <% if @temp_hash.size == 0 %>
+                    Không có tin nhắn
+                  <% end %>
                 <% end %>
 
               </div>
           </div>
-
 
         </div>
     </div>

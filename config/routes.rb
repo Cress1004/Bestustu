@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
   #students
   resources :students
+  resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'pages#home'
 
@@ -38,6 +39,9 @@ Rails.application.routes.draw do
   patch 'class_registers/:id/register',to: 'class_registers#register', as: :register
   get 'class_registers/:id/tutors',to: 'class_registers#select_tutors', as: :select_tutors
   get 'class_registers/:id/tutor_selected',to: 'class_registers#tutor_selected', as: :tutor_selected
+  get 'favourite_tutor/:id',to: 'pages#favourite_tutor', as: :favourite_tutor
+  get 'delete_favourite_tutor/:id', to: 'pages#favourite_destroy', as: :destroy_favourite_tutor
+
   # Route for show bpoint of user
   get 'bpoint_show', to: 'pages#bpoint_page'
   # Route for message

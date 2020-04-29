@@ -2,7 +2,7 @@
     <div class="siup-box">
         <div class="siup-area">
           <div class="worm-header">
-            <h2>Log in</h2>
+            <h2>Đăng nhập</h2>
           </div>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="field form-group">
@@ -22,7 +22,7 @@
               <% end %>
 
               <div class="actions">
-                <%= f.submit "Log in",class:"mbtn-danger" %>
+                <%= f.submit "Đăng nhập",class:"mbtn-danger" %>
                 <div class="sub-actions">
                   <div>
                     <%= render "devise/shared/links" %>

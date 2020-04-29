@@ -5,9 +5,9 @@
         <div class="edus-background">
           <div class="edus-ava">
             <% if !current_user.image.url %>
-              <img src="/uploads/user/image/avt_define/avt_male.png" class="avatar-size rounded-circle">
+            <img src="/uploads/user/image/avt_default/default-avatar.png" class="avatar-size rounded-circle">
             <% else %>
-              <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle" %>
+            <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle", :id => "regis-ava" %>
             <% end %>
           </div>
           <% if !current_user.tutor && !current_user.student%>
@@ -22,14 +22,16 @@
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  class:"datetimepicker" }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
-
-            <div class="edus-header">
-              <h2>Edit <%= resource_name.to_s.humanize %></h2>
+            <div class="view-header-2">
+              <span>
+                  <i class="fas fa-chalkboard"></i>
+                  Cập nhật thông tin
+              </span>
             </div>
             <div class="field form-group">
               Ảnh đại diện:
               </br>
-              <%= f.file_field :image %>
+              <%= f.file_field :image, class: "mbtn-primary" %>
             </div>
           <div class = "form-grid">
             <div class="field form-group">
@@ -39,35 +41,37 @@
             </div>
 
             <div class="field form-group">
-              <%= f.label :name %><br />
+              <%= f.label :name, "Họ và tên" %><br />
               <%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control" %>
               <span id="name_error" class="my-error-span"></span>
             </div>
 
             <div class="field form-group">
-              <%= f.label :phone %><br />
+              <%= f.label :phone, "Số điện thoại" %><br />
               <%= f.text_field :phone, autofocus: true, autocomplete: "phone",class:"form-control" %>
               <span id="phone_error" class="my-error-span"></span>
             </div>
 
             <div class="field form-group">
-              <%= f.label :gender %><br />
-              <%= f.label :gender, "Female", :value => "Female"  %>
-              <%= f.radio_button :gender, "Female"%>
-              <%= f.label :gender, "Male", :value => "Male" %>
-              <%= f.radio_button :gender, "Male"%>
+              <%= f.label :gender, "Giới tính" %><br />
+              <%= f.label :gender, "Nữ", :value => 0  %>
+              <%= f.radio_button :gender, 0%>
+              <%= f.label :gender, "Nam", :value => 1 %>
+              <%= f.radio_button :gender, 1%>
+              <span id="gender_error" class="my-error-span"></span>
             </div>
 
             <div class="field form-group">
-              <%= f.label :birthday %><br/>
+              <%= f.label :birthday,"Ngày sinh" %><br/>
               <%= f.date_field :birthday, class:"form-control"%>
+              <span id="birthday_error" class="my-error-span"></span>
             </div>
 
 
 
 
           <div class="field form-group">
-            <%= f.label :password %> 
+            <%= f.label :password %>
             <%= f.password_field :password, autocomplete: "new-password",class:"form-control" %>
             <% if @minimum_password_length %>
 
@@ -87,16 +91,19 @@
 
         </div>
         <div class="actions">
-            <%= f.submit "Update", class:"mbtn-danger" %>
+            <%= f.submit "Cập nhật", class:"mbtn-danger" %>
           </div>
         <% end %>
-        <div class="edus-header">
-          <h2>Cancel my account</h2>
+        <div class="view-header-2">
+          <span>
+              <i class="fas fa-chalkboard"></i>
+              Xóa tài khoản
+          </span>
         </div>
-        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"mbtn-primary" %></p>
+        <p> <%= button_to "Xóa tài khoản", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"mbtn-primary" %></p>
 
 
-        <%= link_to "Back", :back %>
+        <%= link_to "Quay lại", :back %>
 
       </div>
 </div>

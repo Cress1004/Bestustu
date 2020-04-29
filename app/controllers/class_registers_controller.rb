@@ -14,10 +14,10 @@ class ClassRegistersController < ApplicationController
     @class_register.student = current_student
     if current_user.bpoint >= (current_student.class_registers.size + 1)* 100000
       if @class_register.save
-        flash[:success] = "Successfully created class"
+        flash[:success] = "Đã đăng yêu cầu"
         redirect_to class_register_path(@class_register)
       else
-        flash[:danger] = "Something went wrong"
+        flash[:danger] = "Lỗi trong quá trình tạo lớp"
         render :new
       end
     else
@@ -28,13 +28,15 @@ class ClassRegistersController < ApplicationController
   end
 
   def edit
-
+    @location = Location.find_by_id(@class_register.location_id)
   end
 
   def update
     if @class_register.update(class_register_params)
+      flash[:success] = "Đã cập nhật thành công"
       redirect_to class_register_path(@class_register)
     else
+      flash[:danger] = "Có lỗi xảy ra khi cập nhật" 
       render :edit
     end
   end
@@ -48,6 +50,7 @@ class ClassRegistersController < ApplicationController
     if current_tutor
       if @class_register.tutors.include? current_tutor
         flash[:danger] = "Bạn đã đăng ký lớp học này rồi"
+        redirect_to class_register_path(@class_register)
       elsif @class_register.tutors.count < 6
         if current_tutor.user.bpoint >= (current_tutor.class_registers.size + 1)*200000
           @class_register.tutors << current_tutor
@@ -86,12 +89,14 @@ class ClassRegistersController < ApplicationController
     @message_tu.student_id = @class_register.student.id
 
     if @message_tu.save
-      flash[:success] = "Successfully send message to tutor"
       # Sub 200000VND from bpoint account
       @tutor.user.bpoint = @tutor.user.bpoint - 200000
+      #Add 1 to number of class tutor teached
+      @tutor.num_class = @tutor.num_class + 1
+
       @tutor.user.save
     else
-      flash[:danger] = "Cannot send email to tutor"
+      flash[:danger] = "Không thể gửi tin nhắn đến gia sư"
       redirect_to class_register_path(@class_register)
     end
 
@@ -103,16 +108,16 @@ class ClassRegistersController < ApplicationController
     @message_stu.tutor_id = @tutor.id
 
     if @message_stu.save
-      flash[:success] = "Successfully send message to student"
       # Sub 100000VND from bpoint account
       @class_register.student.user.bpoint = @class_register.student.user.bpoint - 100000
       @class_register.student.user.save
     else
-      flash[:danger] = "Cannot send email to student"
+      flash[:danger] = "Không thể gửi tin nhắn đến gia sư"
       redirect_to class_register_path(@class_register)
     end
     #After send message to student and tutor destroy the class
     @class_register.destroy
+    flash[:success] = "Đã gửi tin nhắn đến gia sư và học sinh "
 
     redirect_to show_user_info_path(current_user.id)
   end
@@ -123,9 +128,8 @@ class ClassRegistersController < ApplicationController
   end
 
   def index
-    if params[:class_register] and (params[:class_register][:location_id] or params[:class_register][:subject_id])
-      @class_registers = ClassRegister.search(params[:class_register][:location_id],
-        params[:class_register][:subject_id]).page(params[:page]).per(3)
+    if params[:class_register] and (params[:class_register][:location_name] or params[:class_register][:subject_id])
+      @class_registers = ClassRegister.search(params[:class_register][:location_name],params[:class_register][:subject_id]).page(params[:page]).per(3)
     else
       @class_registers = ClassRegister.all.page(params[:page]).per(3)
     end

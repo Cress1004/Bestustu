@@ -4,6 +4,12 @@
     border-color: #b8daff;
 }
 
+.alert-alert{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
 .navbar-active{
     border-bottom: 2px solid white;
 }
@@ -94,6 +100,7 @@
 .my-error-span{
     position: absolute;
     bottom: 100%;
+    left: 0;
     font-size: 0.8em;
     color: red;
     animation: error-span 2s;
@@ -110,16 +117,9 @@
 }
 .header-span{
     color: blue;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
-.img-wrapper{
-    .img-fit{
-        max-width: 380px;
-        max-height: 200px;
-        object-fit: cover;
-    }
-}
 // input.form-control{
 //     animation: error-span 2s;
 //     animation-iteration-count: infinite;
@@ -137,3 +137,11 @@
 //         }
 //     }
 // }
+.mcard-body{
+    padding: 0.2rem 0.8rem;
+    .mbtn-primary{
+        min-width: 50%;
+        display: block;
+        margin: auto;
+    }
+}

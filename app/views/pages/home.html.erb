@@ -1,7 +1,5 @@
 <div id="root">
-    <%= render 'layouts/messages' %>
-    <%= render 'layouts/carousel'%>  
-
+    <%= render 'layouts/carousel'%>
     <section class="mad">
         <div class="mad-header">
             <div class="mad-hemer-1">
@@ -14,7 +12,7 @@
                 <h2><i class="fa fa-handshake"></i> &ensp; Yêu cầu tìm gia sư</h2>
             </div>
         </div>
-        <div class="mad-ytb">      <iframe width="560" height="315" src="https://www.youtube.com/embed/fcB2uf3y-R8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="mad-ytb">      <iframe width="560" height="315" src="https://www.youtube.com/embed/BtulL3oArQw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="mad-content">
             <!-- header -->
@@ -32,96 +30,139 @@
                     <h4>Chất lượng</h4>
                     <p>Gia sư được kiểm duyệt kỹ càng và đánh giá khách quan bởi phụ huynh.</p>
                 </div>
-                
+
             </div>
             <div class="mad-content-item show-on-scroll">
                 <div>
-                    <i class="fas fa-thumbs-up"></i>
+                    <i class="fa fa-baseball-ball"></i>
                 </div>
                 <div>
                     <h4>Linh hoạt</h4>
-                    <p>Blacasa cung cấp dịch vụ linh hoạt, tùy chỉnh dễ dàng.</p>
+                    <p>Bestustu cung cấp dịch vụ linh hoạt, tùy chỉnh dễ dàng.</p>
                 </div>
-                
+
             </div>
             <div class="mad-content-item show-on-scroll">
                 <div>
-                    <i class="fas fa-thumbs-up"></i>
+                    <i class="fa fa-handshake"></i>
                 </div>
                 <div>
                     <h4>Kết nối trực tiếp</h4>
                     <p>Kết nối học viên với hàng nghìn gia sư khắp cả nước theo mô hình Uber, Grab.</p>
                 </div>
-                
+
             </div>
             <div class="mad-content-item show-on-scroll">
                 <div>
-                    <i class="fas fa-thumbs-up"></i>
+                    <i class="fa fa-graduation-cap"></i>
                 </div>
                 <div>
                     <h4>Lựa chọn đa dạng</h4>
                     <p>Gia sư là giảng viên, giáo viên, sinh viên, người nước ngoài,vv...</p>
                 </div>
-                
+
             </div>
             <div class="mad-content-item show-on-scroll">
                 <div>
-                    <i class="fas fa-thumbs-up"></i>
+                    <i class="fa fa-btc"></i>
                 </div>
                 <div>
                     <h4>Tùy chọn học phí</h4>
                     <p>Nhiều gia sư cùng đấu giá mức học phí, bạn chỉ cần lựa chọn học phí phù hợp nhất.</p>
                 </div>
-                
+
             </div>
             <div class="mad-content-item show-on-scroll">
                 <div>
-                    <i class="fas fa-thumbs-up"></i>
+                    <i class="fa fa-clock"></i>
                 </div>
                 <div>
                     <h4>Nhanh chóng</h4>
                     <p>Chỉ mất 2 phút để đăng yêu cầu tìm gia sư.</p>
                 </div>
-                
+
             </div>
-            <%= link_to 'Create new class register', new_class_register_path, class: "mad-content-item mbtn-primary show-on-scroll"  %>
+            <%= link_to 'Đăng yêu cầu tìm gia sư', new_class_register_path, class: "mad-content-item mbtn-primary show-on-scroll"  %>
             <%# <button class="">Đăng yêu cầu tìm gia sư</button> %>
         </div>
     </section>
     <section class="slick">
-        <% all_tutors.each do |f|%>
+        <% RatingCache.where(cacheable_type: "Tutor", dimension: "point").order(avg: :desc).limit(7).each do |t|%>
+            <% f = Tutor.find_by_id(t.cacheable_id) %>
            <div class="slick-item">
             <div class="slick-item-block">
                  <%= link_to tutor_path(f), target: "__blank",class: "slick-item-ava" do %>
-                    <%= image_tag f.user.image.to_s %>
-                 <% end %> 
-                 
+                    <% if !f.user.image.url %>
+                    <img src="/uploads/user/image/avt_default/default-avatar.png" class="card-img-top img-fit">
+                    <% else %>
+                    <%= image_tag f.user.image.to_s,class: "card-img-top img-fit" %>
+                    <% end %>
+                    <div>
+                        <%= f.average("point").avg.round(1)  %>
+                    </div>
+                 <% end %>
+
                  <div class="slick-item-info">
                     <%= link_to tutor_path(f), target: "__blank" do %>
                         <%= f.user.username%>
                     <% end %>
                     <p>
-                        <%= f.location.city %>
-                        &ensp; | 
+                        <span class="badge badge-primary"><%= f.location.city %></span>
+                        &ensp; |
+
                         &ensp;
-                        <%= f.subjects.name%>
+                        <% if f.subjects %>
+                        <% count = 0 %>
+                        <% f.subjects.each do |subject| %>
+                            <% count = count +1  %>
+                            <% if count < 4 %>
+                                <span class="badge badge-secondary"><%= subject.name %></span>
+                            <% end %>
+                            <% end %>
+                            <% if count  >= 4 %>
+                            <span class="badge badge-secondary">...</span>
+                            <% end %>
+                        <% end %>
                     </p>
-                 </div>   
-                 <div class="slick-item-desctiption">
-                    <%= f.description[0..29] %>
-                    <% if f.description.length >= 29 %>
-                        ....
-                    <% end %>
-                 </div>   
+                 </div>
+                 <div class="slick-item-description">
+                    <p>
+                        <%= f.description[0..50] %>
+                        <% if f.description.length >= 50 %>
+                            ....
+                        <% end %>
+                    </p>
+
+                 </div>
+
                  <div class="slick-item-option">
-                    <button class="mbtn-primary">Mời dạy</button>
-                    <button class="mbtn-danger">Lưu</button>
-                 </div>   
-            </div>  
+                  <% if current_student %>
+                      <%= link_to "Chi tiết", tutor_path(f), class: "mbtn-primary" %>
+                      <!-- <button class="mbtn-danger">Lưu</button> -->
+                      <% if (current_student.tutors.include? f) %>
+                        <div class = "save_item" style="display: none">
+                      <% else %>
+                        <div class = "save_item" style="display: block">
+                      <% end %>
+                        <%= link_to "Lưu", favourite_tutor_path(f), method: :get, remote: true,
+                        class: "mbtn-danger" %>
+                      </div>
+                      <% if !(current_student.tutors.include? f) %>
+                        <div class = "unsave_item" style="display: none">
+                      <% else %>
+                        <div class = "unsave_item" style="display: block" >
+                      <% end %>
+                        <%= link_to "Xóa lưu", destroy_favourite_tutor_path(f), method: :get, remote: true,
+                        class: "mbtn-danger" %>
+                      </div>
+
+                  <% end %>
+                  </div>
+            </div>
             <div class="slick-overlay">
 
-            </div>            
-        </div>           
+            </div>
+        </div>
         <% end %>
     </section>
-</div>    
+</div>

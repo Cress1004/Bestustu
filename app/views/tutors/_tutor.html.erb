@@ -1,7 +1,7 @@
 <% index = 1 %>
 
 <%= form_tag tutors_path, :method => 'get' , class: "index-form" do %>
-  <%= collection_select :tutor, :location_id, Location.select(:city).distinct, :city, :city, {prompt: "Chọn địa điểm"}, {class: "custom-select"}%>
+  <%= collection_select :tutor, :location_name, Location.select(:city).distinct, :city, :city, {prompt: "Chọn địa điểm"}, {class: "custom-select"}%>
   <%= collection_select :tutor, :subject_ids, Subject.all, :id, :name, {prompt: "Chọn môn học"}, {:class => "custom-select"} %>
   <%= submit_tag "Áp dụng", class: "mbtn-primary " %>
 <% end %>
@@ -14,31 +14,61 @@
     <div class="row" >
   <% end %>
     <div class="col-sm-3">
-      <div class="card" >
-      <%= link_to tutor_path(tutor),class: "img-wrapper" do%>
-        <%= image_tag @user.image.to_s, :class => "card-img-top img-fit"%>
+      <div class="card"  >
+      <%= link_to tutor_path(tutor),class: "slick-item-ava" do%>
+      <% if !@user.image.url %>
+          <img src="/uploads/user/image/avt_default/default-avatar.png" class="card-img-top img-fit">
+      <% else %>
+          <%= image_tag @user.image.to_s, :class => ""%>
       <% end %>
-        <div class="card-body">
+      <% end %>
+        <div class="card-body mcard-body">
           <h5 class="card-title"><%= @user.name %></h5>
           <p class="card-text">
             <% if @subjects %>
-              <% count = 1 %>
+              <% count = 0 %>
               <% @subjects.each do |subject| %>
                 <% count = count +1  %>
                   <% if count < 4 %>
                     <span class="badge badge-secondary"><%= subject.name %></span>
                   <% end %>
                 <% end %>
-              <span class="badge badge-secondary">...</span>
+                <% if count  >= 4 %>
+                  <span class="badge badge-secondary">...</span>
+                <% end %>
             <% end %><br/>
-            <span class="header-span">Job: </span><%= tutor.job %> in <%= tutor.work_place %><br/>
-            <span class="header-span">Address: </span><%= @location.city %><br/>
-            <span class="header-span">Description:</span><%= tutor.description[0..39] %>
+
+            <span class="header-span">Nghề nghiệp: </span><%= tutor.job %> <b><i>in</i></b> <%= tutor.work_place %><br/>
+            <span class="header-span">Địa chỉ: </span><%= @location.city %><br/>
+            <span class="header-span">Mô tả:</span><%= tutor.description[0..39] %>
+
             <% if tutor.description.length >= 39 %>
             ...
             <% end %>
           </p>
-          <a><%= link_to "Register now", tutor_path(tutor), class: "mbtn-primary"%></a>
+          <div class="slick-item-option">
+           <% if current_student %>
+               <%= link_to "Chi tiết", tutor_path(tutor), class: "mbtn-primary" %>
+               <!-- <button class="mbtn-danger">Lưu</button> -->
+               <% if (current_student.tutors.include? tutor) %>
+                 <div class = "save_item" style="display: none">
+               <% else %>
+                 <div class = "save_item" style="display: block">
+               <% end %>
+                 <%= link_to "Lưu gia sư", favourite_tutor_path(tutor), method: :get, remote: true,
+                 class: "mbtn-danger" %>
+               </div>
+               <% if !(current_student.tutors.include? tutor) %>
+                 <div class = "unsave_item" style="display: none">
+               <% else %>
+                 <div class = "unsave_item" style="display: block" >
+               <% end %>
+                 <%= link_to "Xóa lưu", destroy_favourite_tutor_path(tutor), method: :get, remote: true,
+                 class: "mbtn-danger" %>
+               </div>
+
+           <% end %>
+           </div>
         </div>
     </div>
   </div>

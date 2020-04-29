@@ -120,11 +120,16 @@ section.mad{
 
 section.slick{
     width: 90%;
+    padding: 2rem 0;
+    overflow: hidden;
     margin: 0 auto;
     // padding: 2rem;
     // display: flex;
     // justify-content: space-between;
     // background-color: rgba(206, 197, 197, 0.3);
+    .slick-list{
+        overflow: visible;
+    }
     .slick-prev{
         left: -45px;
     }
@@ -156,8 +161,22 @@ section.slick{
             .slick-item-ava{
                 border-bottom: solid 0.2px rgb(201, 199, 199);
                 display: block;
+                position: relative;
                 img{
                     width: 100%;
+                    object-fit: cover;
+                }
+                div{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding: 0.5rem;
+                    background-color: white;
+                    border: solid 2px rgb(226, 43, 113);
+                    border-radius: 50%;
+                    font-size: 0.8em;
+                    color: rgb(255, 0, 0);
+                    font-weight: 500;
                 }
             }
             .slick-item-info{
@@ -165,10 +184,18 @@ section.slick{
             }
             .slick-item-description{
                 border-bottom: solid 0.2px rgb(201, 199, 199);
+                padding: 0.5rem;
+                word-wrap: break-word;
+                p{
+                    margin-bottom: 0;
+                }
             }
             .slick-item-option{
                 padding: 0.2rem;
-
+                button{
+                    padding: 5px 10px;
+                    font-size: 0.9em;
+                }
             }
             
         }
@@ -200,10 +227,28 @@ section.slick{
 .slick-center{
     .slick-item-block{
         transition: all linear 0.4s;
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
     .slick-overlay{
         opacity: 0;
     }
 }
 
+.carousel-caption{
+    width: 30%;
+    background-color: transparentize(rgb(226, 235, 238),0.5);
+    color: rgb(0, 0, 0);
+    top: 5%;
+    right: 5%;
+    left: auto;
+    bottom: auto;
+    padding: 1rem;
+    h5{
+        font-weight: 700;
+        font-size: 1.75rem;
+    }
+    p{
+        font-weight: 500;
+        font-size: 1.4rem;
+    }
+}

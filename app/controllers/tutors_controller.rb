@@ -5,13 +5,17 @@ class TutorsController < ApplicationController
 
   def new
     @tutor = Tutor.new
-    @user = @users.find(current_user.id)
   end
 
   def create
     @tutor = Tutor.new(tutor_params)
     @tutor.user_id = current_user.id
-    @user.image.url = "/uploads/user/image/avt_define/avt_male.png"
+    
+    if params[:tutor][:image]
+      current_user.image = params[:tutor][:image]
+      current_user.save
+    end
+
     if @tutor.save
       flash[:success] = "Bạn đã trở thành gia sư và bạn được tặng 1 000 000 VNĐ vào tài khoản bpoint"
       @tutor.user.bpoint = 1000000
@@ -27,8 +31,8 @@ class TutorsController < ApplicationController
     @users = User.all
     @Locations = Location.all
 
-    if (params[:tutor]) and (params[:tutor][:location_id] or params[:tutor][:subject_ids])
-      @tutors = Tutor.search(params[:tutor][:location_id],params[:tutor][:subject_ids]).page(params[:page]).per(3)
+    if (params[:tutor]) and (params[:tutor][:location_name] or params[:tutor][:subject_ids])
+      @tutors = Tutor.search(params[:tutor][:location_name],params[:tutor][:subject_ids]).page(params[:page]).per(3)
     elsif params[:search_input]
       @tutors = Tutor.search_by_location_name(params[:search_input]).page(params[:page]).per(3)
 
@@ -42,14 +46,21 @@ class TutorsController < ApplicationController
   end
 
   def edit
-
+    @location = Location.find_by_id(@tutor.location_id)
   end
 
   def update
+
+    if params[:tutor][:image]
+      current_user.image = params[:tutor][:image]
+      current_user.save
+    end
+
     if @tutor.update(tutor_params)
-      flash[:success] = "Tutor infomation was sucessfully update"
+      flash[:success] = "Đã cập nhật hồ sơ thành công"
       redirect_to tutor_path(@tutor)
     else
+      flash[:danger] = "Có vấn đề khi cập nhật"
       render 'edit'
     end
   end
@@ -67,7 +78,7 @@ class TutorsController < ApplicationController
   end
 
   def tutor_params
-    params.require(:tutor).permit(:job, :description, :achievement, :location_id, :work_place,:subject_ids, times_free_ids:[])
+    params.require(:tutor).permit(:job, :description, :achievement, :location_id, :work_place, subject_ids:[], times_free_ids:[])
   end
 
   def not_student
@@ -80,7 +91,8 @@ class TutorsController < ApplicationController
 
   def require_same_tutor
     if current_tutor != @tutor
-        redirect_to root_path
+      flash[:notice] = "Bạn không có quyền sửa đổi thông tin này"
+      redirect_to root_path
     end
   end
 

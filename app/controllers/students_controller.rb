@@ -11,6 +11,11 @@ class StudentsController < ApplicationController
         # render plain: params[:student].inspect
         @student = Student.new(student_params)
         @student.user = current_user
+
+        if params[:student][:image]
+          current_user.image = params[:student][:image]
+          current_user.save
+        end
         if @student.save
           flash[:success] = "Bạn đã trở thành học sinh và bạn được tặng 1 000 000 VNĐ vào tài khoản bpoint"
           @student.user.bpoint = 1000000
@@ -22,7 +27,7 @@ class StudentsController < ApplicationController
     end
 
     def index
-      
+
     end
 
     def show
@@ -34,6 +39,10 @@ class StudentsController < ApplicationController
     end
 
     def update
+        if params[:student][:image]
+          current_user.image = params[:student][:image]
+          current_user.save
+        end
 
         if @student.update(student_params)
             flash[:notice] = "student was successfully updated"
@@ -45,7 +54,7 @@ class StudentsController < ApplicationController
     end
 
     private
-    
+
       def student_params
           params.require(:student).permit(:address, :grade)
       end
@@ -65,7 +74,8 @@ class StudentsController < ApplicationController
 
       def require_same_student
         if current_student != @student
-            redirect_to root_path
+          flash[:notice] = "Bạn không có quyền sửa đổi thông tin này"
+          redirect_to root_path
         end
       end
 

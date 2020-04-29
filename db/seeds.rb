@@ -39,9 +39,9 @@ address = CSV.parse(address_text)
 records_to_import = address.map do |city, city_id, district, district_id, sub_district, sub_district_id|
   Location.new(city: city, city_id: city_id,district: district, district_id: district_id, sub_district: sub_district, sub_district_id: sub_district_id)
  end
- Location.import records_to_import 
+ Location.import records_to_import
 # CSV.foreach(Rails.root.join('lib/address.csv'), headers: true) do |row|
-  
+
 #   Location.create({
 #     city: row[0],
 #     city_id: row[1],
@@ -49,7 +49,7 @@ records_to_import = address.map do |city, city_id, district, district_id, sub_di
 #     district_id: row[3],
 #     sub_district: row[4],
 #     sub_district_id: row[5]
-    
+
 #   })
 # end
 
