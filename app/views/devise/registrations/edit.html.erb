@@ -7,7 +7,7 @@
             <% if !current_user.image.url %>
             <img src="/uploads/user/image/avt_default/default-avatar.png" class="avatar-size rounded-circle">
             <% else %>
-            <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle" %>
+            <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle", :id => "regis-ava" %>
             <% end %>
           </div>
           <% if !current_user.tutor && !current_user.student%>
@@ -22,13 +22,16 @@
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  class:"datetimepicker" }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
-            <div class="edus-header">
-              <h2>Cập nhật thông tin người dùng</h2>
+            <div class="view-header-2">
+              <span>
+                  <i class="fas fa-chalkboard"></i>
+                  Cập nhật thông tin
+              </span>
             </div>
             <div class="field form-group">
               Ảnh đại diện:
               </br>
-              <%= f.file_field :image %>
+              <%= f.file_field :image, class: "mbtn-primary" %>
             </div>
           <div class = "form-grid">
             <div class="field form-group">
@@ -55,11 +58,13 @@
               <%= f.radio_button :gender, 0%>
               <%= f.label :gender, "Nam", :value => 1 %>
               <%= f.radio_button :gender, 1%>
+              <span id="gender_error" class="my-error-span"></span>
             </div>
 
             <div class="field form-group">
               <%= f.label :birthday,"Ngày sinh" %><br/>
               <%= f.date_field :birthday, class:"form-control"%>
+              <span id="birthday_error" class="my-error-span"></span>
             </div>
 
 
@@ -89,8 +94,11 @@
             <%= f.submit "Cập nhật", class:"mbtn-danger" %>
           </div>
         <% end %>
-        <div class="edus-header">
-          <h2>Xóa tài khoản</h2>
+        <div class="view-header-2">
+          <span>
+              <i class="fas fa-chalkboard"></i>
+              Xóa tài khoản
+          </span>
         </div>
         <p> <%= button_to "Xóa tài khoản", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"mbtn-primary" %></p>
 

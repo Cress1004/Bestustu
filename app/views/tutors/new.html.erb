@@ -2,7 +2,11 @@
     <div class="edus-box">
         <div class="edus-background">
             <div class="edus-ava">
-                <%# <%= image_tag @user.image.to_s, :class => "avatar-size rounded-circle", :id =>"regis-ava" %>
+              <% if !current_user.image.url %>
+                <img src="/uploads/user/image/avt_default/default-avatar.png" class ="avatar-size rounded-circle", id ="regis-ava">
+              <% else %>
+                <%= image_tag current_user.image.to_s , :class => "avatar-size rounded-circle", :id =>"regis-ava"%>
+              <% end %>
             </div>
         </div>
         <div class="regis-area">

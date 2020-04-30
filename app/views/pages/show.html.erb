@@ -163,7 +163,7 @@
                   <% @temp_hash.each do |message,obj| %>
                     <li class="list-group-item" id="message_show">
 
-                      <p>Tun nhắn: <%= message.message_content %></p>
+                      <p>Tin nhắn: <%= message.message_content %></p>
                       <% if current_student %>
                         <%= link_to obj.user.name, tutor_path(obj) %>
                       <% elsif current_tutor %>

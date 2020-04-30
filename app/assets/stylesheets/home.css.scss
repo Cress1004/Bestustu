@@ -120,11 +120,16 @@ section.mad{
 
 section.slick{
     width: 90%;
+    padding: 2rem 0;
+    overflow: hidden;
     margin: 0 auto;
     // padding: 2rem;
     // display: flex;
     // justify-content: space-between;
     // background-color: rgba(206, 197, 197, 0.3);
+    .slick-list{
+        overflow: visible;
+    }
     .slick-prev{
         left: -45px;
     }
@@ -159,6 +164,19 @@ section.slick{
                 position: relative;
                 img{
                     width: 100%;
+                    object-fit: cover;
+                }
+                div{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding: 0.5rem;
+                    background-color: white;
+                    border: solid 2px rgb(226, 43, 113);
+                    border-radius: 50%;
+                    font-size: 0.8em;
+                    color: rgb(255, 0, 0);
+                    font-weight: 500;
                 }
                 div{
                     position: absolute;
@@ -221,7 +239,7 @@ section.slick{
 .slick-center{
     .slick-item-block{
         transition: all linear 0.4s;
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
     .slick-overlay{
         opacity: 0;

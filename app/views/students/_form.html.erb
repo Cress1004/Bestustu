@@ -9,12 +9,12 @@
         <div class="stued-content-block">
             <%= f.label :address,"Địa chỉ" %><br/>
             <%= f.text_field :address , class:'form-control' %>
-            <span class="my-error-span"> </span>
+            <span class="my-error-span" id="address_error"> </span>
         </div>
         <div class="stued-content-block">
             <%= f.label :grade, "Lớp" %><br/>
             <%= f.text_field :grade , class:'form-control'%>
-            <span class="my-error-span"> </span>
+            <span class="my-error-span" id="grade_error"> </span>
         </div>
     </div>
     <%# <div class = "map-area">

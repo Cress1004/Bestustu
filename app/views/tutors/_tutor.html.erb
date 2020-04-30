@@ -5,7 +5,9 @@
   <%= collection_select :tutor, :subject_ids, Subject.all, :id, :name, {prompt: "Chọn môn học"}, {:class => "custom-select"} %>
   <%= submit_tag "Áp dụng", class: "mbtn-primary " %>
 <% end %>
-
+<% if obj.size == 0 %>
+Không tìm thấy gia sư nào
+<% end %>
 <% obj.each do |tutor| %>
   <% @subjects = tutor.subjects %>
   <% @user = User.find(tutor.user_id) %>
@@ -15,11 +17,11 @@
   <% end %>
     <div class="col-sm-3">
       <div class="card"  >
-      <%= link_to tutor_path(tutor),class: "img-wrapper" do%>
+      <%= link_to tutor_path(tutor),class: "slick-item-ava" do%>
       <% if !@user.image.url %>
           <img src="/uploads/user/image/avt_default/default-avatar.png" class="card-img-top img-fit">
       <% else %>
-          <%= image_tag @user.image.to_s, :class => "card-img-top img-fit image-card-size"%>
+          <%= image_tag @user.image.to_s, :class => ""%>
       <% end %>
       <% end %>
         <div class="card-body mcard-body">

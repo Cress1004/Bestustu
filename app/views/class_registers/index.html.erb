@@ -27,6 +27,9 @@
             PHÍ NHẬN LỚP
           </div>
         </div>
+        <% if @class_registers.size == 0 %>
+          Không tìm thấy lớp học nào
+        <% end %>
         <% @class_registers.each do |c| %>
           <div class="class-index-content">
             <div class="class-index-left">

@@ -34,19 +34,19 @@
         <div class="stued-content-block">
             <%= f.label :location_id, "Tỉnh/Thành phố " %><br/>
             <%= f.select("location_id", Location.select(:city, :city_id).distinct.collect { |p| [ p.city, p.city_id ] }, { },{:class=>"location-city custom-select"})%>
-            <span id="work_place_error"></span>
+            <span id="city_error" class="my-error-span"></span>
         </div>
 
         <div class="stued-content-block">
             <%= f.label :location_id, "Quận/Huyện" %><br/>
             <%= f.select("location_id", {}, { },{:class=>"location-district custom-select"})%>
-            <span id="work_place_error"></span>
+            <span id="district_error" class="my-error-span"></span>
         </div>
 
         <div class="stued-content-block">
             <%= f.label :location_id, "Phường/Xã" %><br/>
             <%= f.select("location_id", {}, { },{:class=>"location-sub-district custom-select"})%>
-            <small><span id="work_place_error"></span></small>
+            <span id="sub_district_error" class="my-error-span"></span>
         </div>
 
     </div>

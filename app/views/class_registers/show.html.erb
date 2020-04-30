@@ -121,7 +121,7 @@
           </div>
           <div>
             <% if current_tutor %>
-                <%= form_with(url: register_path(@class_register), method: "patch",local: true) do %>
+                <%= form_with(url: register_path(@class_register), method: "patch",local: true, data:{confirm: "Bạn có chắc muốn đăng ký lớp này không?"}) do %>
                   <%= submit_tag("Đăng ký ngay", class: "mbtn-primary") %>
                 <% end %>
               <% end %>
