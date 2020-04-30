@@ -26,4 +26,8 @@ $(document).on('turbolinks:load', function() {
 
       });
 
+      var parentWidth = $(".slick-item-ava").width();
+      $(".slick-item-ava img").height(parentWidth);
+
+      $(".edus-background").height($(".edus-background").width() * 2/5.5);
 })

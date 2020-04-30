@@ -426,9 +426,9 @@ header{
     background-color: #F7F7F7;
     overflow: hidden;
         .edus-background{
+            background-size: cover;
             width: 100%;
             margin: 0 auto;
-            height: 45vh;
             background-image: url("images/stued-background.jpg");
             // background-size: cover;
             position: relative;
@@ -440,7 +440,7 @@ header{
                 height: 150px;
                 background-color: red;
                 left: 10%;
-                top: 70%;
+                top: 82%;
                 border: double rgb(255, 255, 255) 5px;
                 border-radius: 50%;
                 background-image: url("images/sign-up-background.png");
@@ -673,6 +673,11 @@ header{
   width: auto;
 }
 
+.infor-content{
+  height: 150px;
+  width: auto;
+}
+
 .extra-navbar{
     width: 100%;
     height: $header_height;
@@ -714,6 +719,7 @@ header{
     grid-gap: 1em;
     padding: 10px;
     .stued-content-block{
-      position: relative;
+        position: relative;
+
     }
 }
