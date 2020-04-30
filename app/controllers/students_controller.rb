@@ -17,8 +17,8 @@ class StudentsController < ApplicationController
           current_user.save
         end
         if @student.save
-          flash[:success] = "Bạn đã trở thành học sinh và bạn được tặng 1 000 000 VNĐ vào tài khoản bpoint"
-          @student.user.bpoint = 1000000
+          flash[:success] = "Bạn đã trở thành học sinh và bạn được tặng 6 000 000 VNĐ vào tài khoản bpoint"
+          @student.user.bpoint = 6000000
           @student.user.save
           redirect_to student_path(@student)
         else

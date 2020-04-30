@@ -17,8 +17,8 @@ class TutorsController < ApplicationController
     end
 
     if @tutor.save
-      flash[:success] = "Bạn đã trở thành gia sư và bạn được tặng 1 000 000 VNĐ vào tài khoản bpoint"
-      @tutor.user.bpoint = 1000000
+      flash[:success] = "Bạn đã trở thành gia sư và bạn được tặng 6 000 000 VNĐ vào tài khoản bpoint"
+      @tutor.user.bpoint = 6000000
       @tutor.user.save
       redirect_to tutor_path(@tutor)
     else
