@@ -6,6 +6,8 @@ class PagesController < ApplicationController
       Gon.global.locations_district = Location.select(:district,:city_id,:district_id).distinct
       Gon.global.locations_sub_district = Location.select(:id,:sub_district,:district_id)
       Gon.global.subjects = Subject.all
+      Gon.global.users = User.all
+      Gon.global.current_user = current_user
     end
 
     def bpoint_page

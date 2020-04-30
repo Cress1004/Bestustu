@@ -12,6 +12,10 @@ class Tutor < ApplicationRecord
   has_many :students_tutors
   has_many :students, through: :students_tutors
 
+  before_save { self.job = job.strip }
+  before_save { self.description = description.strip }
+  before_save { self.achievement = achievement.strip }
+  before_save { self.work_place = work_place.strip }
 
   def self.search_by_subject_name(search)
       Tutor.joins('INNER JOIN subjects_tutors ON tutors.id = subjects_tutors.tutor_id INNER JOIN subjects on subjects_tutors.subject_id = subjects.id').where("subjects.name = ?","#{search}")

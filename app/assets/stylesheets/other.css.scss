@@ -100,6 +100,7 @@
 .my-error-span{
     position: absolute;
     bottom: 100%;
+    left: 0;
     font-size: 0.8em;
     color: red;
     animation: error-span 2s;
@@ -119,13 +120,6 @@
     font-size: 1.1em;
 }
 
-.img-wrapper{
-    .img-fit{
-        max-width: 380px;
-        max-height: 200px;
-        object-fit: cover;
-    }
-}
 // input.form-control{
 //     animation: error-span 2s;
 //     animation-iteration-count: infinite;

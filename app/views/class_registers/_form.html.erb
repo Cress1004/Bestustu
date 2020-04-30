@@ -11,32 +11,34 @@
       <div class="stued-content-block">
           <%= f.label :subject_id, "Môn học" %>
           <%= f.collection_select(:subject_id, Subject.all, :id, :name, {prompt: "Chọn môn học"}, {:class=>"custom-select"}) %>
+          <small><span id="subject_id_error" ></span></small>
       </div>
 
 
       <div class="stued-content-block">
           <%= f.label :location_id, "Tỉnh/Thành phố " %><br/>
           <%= f.select("location_id", Location.select(:city, :city_id).distinct.collect { |p| [ p.city, p.city_id ] }, { },{:class=>"location-city custom-select"})%>
-          <span id="work_place_error" class="my-error-span"></span>
+          <span id="city_error" class="my-error-span"></span>
       </div>
 
       <div class="stued-content-block">
           <%= f.label :location_id, "Quận/Huyện" %><br/>
           <%= f.select("location_id", {}, { },{:class=>"location-district custom-select"})%>
-          <span id="work_place_error" class="my-error-span"></span>
+          <span id="district_error" class="my-error-span"></span>
       </div>
 
       <div class="stued-content-block">
           <%= f.label :location_id, "Phường/Xã" %><br/>
           <%= f.select("location_id", {}, { },{:class=>"location-sub-district custom-select"})%>
-          <span id="work_place_error" class="my-error-span"></span>
+          <span id="sub_district_error" class="my-error-span"></span>
       </div>
 
 
 
       <div class="stued-content-block">
-          <%= f.label :salary, "Lương gia sư",class:"" %>
+          <%= f.label :salary, "Lương gia sư/ 1 buổi",class:"" %>
           <%= f.text_field :salary ,class: "form-control",placeholder: "" %>
+          <small><span id="salary_error" ></span></small>
       </div>
 
       <div class="stued-content-block">
@@ -52,12 +54,13 @@
       <div class="stued-content-block">
           <%= f.label :num_student, "Số học viên tham gia",class:"" %>
           <%= f.number_field :num_student ,class: "form-control",placeholder: "" %>
+          <small><span id="num_student_error"></span></small>
       </div>
 
       <div class="stued-content-block">
           <%= f.label :class_content, "Chi tiết nội dung lớp học",class:"" %>
           <%= f.text_area :class_content ,class: "form-control",placeholder: "" %>
-            <small><span id="class_content_error"></span></small>
+          <small><span id="class_content_error"></span></small>
       </div>
 
       <div class="stued-content-block">
@@ -136,3 +139,100 @@
       <%= f.submit "Tạo lớp học", class: "mbtn-primary" %>
     </div>
 <% end %>
+
+
+<script>
+  $(document).on( "turbolinks:load",function() {
+
+    function isInt(val) {
+        var intRegex = /^-?\d+$/;
+        if (!intRegex.test(val))
+            return false;
+
+        var intVal = parseInt(val, 10);
+        return parseFloat(val) == intVal && !isNaN(intVal);
+    }
+
+    function validate_class(){
+      // Get data
+      var description = $.trim($('#class_register_description').val());
+      var salary = $.trim($('#class_register_salary').val());
+      var num_student = $.trim($('#class_register_num_student').val());
+      var content = $.trim($('#class_register_class_content').val());
+      var address = $.trim($('#class_register_address').val());
+      var subject_id = $('#class_register_subject_id').val();
+
+      //flag
+      var flag = true;
+
+      if (description == '' || description.length < 20) {
+        $('#description_error').text('Phải có độ dài tối thiểu 20 kí tự');
+        flag = false;
+      }else {
+        $('#description_error').text('');
+      }
+
+      if(subject_id.length == 0){
+        $('#subject_id_error').text('Bạn phải chọn môn học');
+      }
+
+      if (!isInt(salary) || salary.length == 0 ) {
+        $('#salary_error').text('Không thể bỏ trống, giá trị phải là số ');
+        flag = false;
+      }else if (salary <= 0) {
+        $('#salary_error').text('Giá trị phải là số  lớn hơn 0');
+        flag = false;
+      }
+      else {
+        $('#salary_error').text('');
+      }
+
+      if (num_student.length != 0) {
+        if(!isInt(num_student)){
+          $('#num_student_error').text('Phải là số ');
+          flag = false;
+        }else if (num_student <= 0) {
+          $('#num_student_error').text('Phải là số  lớn hơn 0');
+          flag = false;
+        }
+      }else {
+        $('#num_student_error').text('');
+      }
+
+      if(content.length == 0 || content.length < 20 ){
+        $('#class_content_error').text('Phải có độ dài tối thiểu là 20 kí tự');
+        flag = false;
+      }else {
+        $('#class_content_error').text('');
+      }
+
+      if(address.length == 0  || address.length < 10 ){
+        $('#address_error').text('Phải có độ dài tối thiểu là 10 kí tự');
+        flag = false;
+      }else {
+        $('#address_error').text('');
+      }
+
+      if(!validate_location()){
+        flag = false;
+      }
+
+      return flag;
+    }
+
+    $('#new_class_register').submit(function(){
+      return validate_class();
+    });
+
+    var action = "<%= params[:action]%>";
+    if (action == 'edit') {
+      var class_id = "<%=  @class_register.id ||  'null' %>";
+      $('#edit_class_register_' + class_id).submit(function(){
+        return validate_class();
+      });
+
+    }
+
+  });
+
+</script>

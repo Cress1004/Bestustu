@@ -1,7 +1,7 @@
 class TutorsController < ApplicationController
   before_action :set_tutor, only: [:show, :edit, :update]
   before_action :require_same_tutor, only: [:edit,:update]
-  before_action :not_student, only: [:new]
+  before_action :not_student, only: [:new,:create]
 
   def new
     @tutor = Tutor.new
@@ -10,7 +10,7 @@ class TutorsController < ApplicationController
   def create
     @tutor = Tutor.new(tutor_params)
     @tutor.user_id = current_user.id
-    
+
     if params[:tutor][:image]
       current_user.image = params[:tutor][:image]
       current_user.save
