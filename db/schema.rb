@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_160317) do
+ActiveRecord::Schema.define(version: 2020_04_28_040250) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer "rater_id"
@@ -25,13 +25,13 @@ ActiveRecord::Schema.define(version: 2020_04_25_160317) do
     t.string "description"
     t.float "hours_lesson"
     t.float "lessons_week"
-    t.float "salary"
+    t.integer "salary"
     t.integer "location_id", null: false
     t.integer "subject_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "tutor_gender"
-    t.float "num_student"
+    t.integer "num_student"
     t.string "class_status", default: "ĐANG TÌM GIÁO VIÊN"
     t.text "class_content"
     t.string "address"

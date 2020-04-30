@@ -713,4 +713,7 @@ header{
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1em;
     padding: 10px;
+    .stued-content-block{
+      position: relative;
+    }
 }

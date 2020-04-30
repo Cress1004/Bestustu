@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
     before_action :set_student, only: [:show,:edit,:update]
     before_action :require_same_student, only: [:edit,:update]
-    before_action :not_tutor, only: [:new]
+    before_action :not_tutor, only: [:new,:create]
 
     def new
         @student = Student.new

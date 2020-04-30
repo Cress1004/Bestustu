@@ -75,62 +75,7 @@ $(document).ready(function(){
         }
         return flag;
     });
-  $('#new_class_register').submit(function(){
-     var flag = true;
-     var description  = $.trim($('#class_register_description').val());
-     var class_content  = $.trim($('#class_register_class_content').val());
-     var address = $.trim($('#class_register_address').val());
-     // var subject = $.trim($('#class_register_subject_id').val());
-     // var location = $.trim($('#class_register_location').val());
-     // var salary = $.trim($('#class_register_salary').val());
-     // var num_student = $.trim($('#class_register_address').val());
-     // description
-     if (description.length < 10 || description.length > 400){
-         $('#description_error').text('Length of description is between 10 and 400 charaters');
-         flag = false;
-     }
-     else
-       $('#description_error').text('');
-     if (class_content.length < 10 || class_content.length > 400){
-         $('#class_content_error').text('Length of class_content is between 10 and 400 charaters');
-         flag = false;
-     }
-     else
-       $('#class_content_error').text('');
-     if (address.length < 10 || address.length > 400){
-         $('#address_error').text('Length of address is between 10 and 100 charaters');
-         flag = false;
-     }
-     else
-       $('#address_error').text('');
-    return flag;
-  });
-  $('#edit_class_register').submit(function(){
-     var flag = true;
-     var description  = $.trim($('#class_register_description').val());
-     var class_content  = $.trim($('#class_register_class_content').val());
-     var address = $.trim($('#class_register_address').val());
-     // description
-     if (description.length < 10 || description.length > 400){
-         $('#description_error').text('Length of description is between 10 and 400 charaters');
-         flag = false;
-     }
-     else
-       $('#description_error').text('');
-     if (class_content.length < 10 || class_content.length > 400){
-         $('#class_content_error').text('Length of class_content is between 10 and 400 charaters');
-         flag = false;
-     }
-     else
-       $('#class_content_error').text('');
-     if (address.length < 10 || address.length > 400){
-         $('#address_error').text('Length of address is between 10 and 100 charaters');
-         flag = false;
-     }
-     else
-       $('#address_error').text('');
-    return flag;
-  });
+
   $('#new_tutor').submit(function(){
     var flag = true;
     var job = $.trim($('#tutor_job').val());

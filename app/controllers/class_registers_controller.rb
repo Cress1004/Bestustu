@@ -36,7 +36,7 @@ class ClassRegistersController < ApplicationController
       flash[:success] = "Đã cập nhật thành công"
       redirect_to class_register_path(@class_register)
     else
-      flash[:danger] = "Có lỗi xảy ra khi cập nhật" 
+      flash[:danger] = "Có lỗi xảy ra khi cập nhật"
       render :edit
     end
   end
@@ -53,9 +53,16 @@ class ClassRegistersController < ApplicationController
         redirect_to class_register_path(@class_register)
       elsif @class_register.tutors.count < 6
         if current_tutor.user.bpoint >= (current_tutor.class_registers.size + 1)*200000
+          @message = Message.new
+          @message.message_content = "Gia sư " + current_tutor.user.username.to_s + " đã đăng ký lớp: " + "\"" + @class_register.description.to_s + "\" của bạn."
+          @message.user = @class_register.student.user
+          @message.tutor_id = current_tutor.id
+          @message.save
+
           @class_register.tutors << current_tutor
           @class_register.save
           flash[:success] = "Đăng ký thành công"
+
           redirect_to class_register_path(@class_register)
         else
           flash[:notice] = "Bạn không đủ bpoint để đăng ký lớp"
@@ -137,7 +144,7 @@ class ClassRegistersController < ApplicationController
 
   private
     def class_register_params
-      params.require(:class_register).permit(:description,:hours_lesson,:lessons_week,:salary,:tutor_gender,:num_student,:class_content,:location_id,:subject_id,times_free_ids:[])
+      params.require(:class_register).permit(:description,:hours_lesson,:lessons_week,:salary,:tutor_gender,:num_student,:class_content,:address,:location_id,:subject_id,times_free_ids:[])
     end
 
     def set_class_register

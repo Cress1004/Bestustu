@@ -30,10 +30,20 @@
     var id = "<%=  @location.id ||  'null' %>";
     var sub_district_name = "<%=  @location.sub_district ||  'null' %>";
 
+    var hours_lesson = "<%= @class_register.hours_lesson %>";
+    var lessons_week = "<%= @class_register.lessons_week %>"
 
-    console.log(city_id);
-    console.log(district_id);
-    console.log(id);
+    if (hours_lesson == 1.0) {
+      $('#class_register_hours_lesson_1').attr('checked', true);
+    }else if (hours_lesson == 1.5) {
+      $('#class_register_hours_lesson_1_5').attr('checked', true);
+    }else if (hours_lesson == 2.0) {
+      $('#class_register_hours_lesson_2').attr('checked', true);
+    }else if (hours_lesson == 2.5) {
+      $('#class_register_hours_lesson_2_5').attr('checked', true);
+    }
+    $('#class_register_lessons_week_' + Math.floor(lessons_week)).attr('checked', true);
+
     $(".location-city option[value="+ city_id +"]").attr("selected","selected");
 
     // $(".location-district").append(<option value="${district_id}">${district_name}</option>)
@@ -52,6 +62,7 @@
 			}
 		}
     $(".location-sub-district option[value="+ id +"]").attr("selected","selected");
+
   }
 });
 
