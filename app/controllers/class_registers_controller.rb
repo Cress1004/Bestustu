@@ -53,7 +53,11 @@ class ClassRegistersController < ApplicationController
         flash[:danger] = "Bạn đã đăng ký lớp học này rồi"
         redirect_to class_register_path(@class_register)
       elsif @class_register.tutors.count < 6
-        if current_tutor.user.bpoint >= @class_register.salary.to_i * 3
+        sum_salary = 0
+        current_tutor.class_registers.each do |class_item|
+          sum_salary = sum_salary + class_item.salary.to_i
+        end
+        if current_tutor.user.bpoint >= (sum_salary + @class_register.salary.to_i) * 3
           @message = Message.new
           @message.message_content = "Gia sư " + current_tutor.user.username.to_s + " đã đăng ký lớp: " + "\"" + @class_register.description.to_s + "\" của bạn."
           @message.user = @class_register.student.user

@@ -99,6 +99,7 @@
 <script>
 
   $(document).on( "turbolinks:load",function() {
+    
     function validates_tutor_input(){
       var flag = true;
       var job = $.trim($('#tutor_job').val());
@@ -128,6 +129,10 @@
       }
       else
         $('#achievement_error').text('');
+      // validate_location();
+      if(!validate_location()){
+        flag = false;
+      }
       return flag;
     }
 
