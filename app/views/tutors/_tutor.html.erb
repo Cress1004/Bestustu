@@ -5,7 +5,9 @@
   <%= collection_select :tutor, :subject_ids, Subject.all, :id, :name, {prompt: "Chọn môn học"}, {:class => "custom-select"} %>
   <%= submit_tag "Áp dụng", class: "mbtn-primary " %>
 <% end %>
-
+<% if obj.size == 0 %>
+Không tìm thấy gia sư nào
+<% end %>
 <% obj.each do |tutor| %>
   <% @subjects = tutor.subjects %>
   <% @user = User.find(tutor.user_id) %>

@@ -30,5 +30,4 @@ $(document).on('turbolinks:load', function() {
       $(".slick-item-ava img").height(parentWidth);
 
       $(".edus-background").height($(".edus-background").width() * 2/5.5);
-
 })

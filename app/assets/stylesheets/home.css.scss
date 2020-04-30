@@ -178,6 +178,18 @@ section.slick{
                     color: rgb(255, 0, 0);
                     font-weight: 500;
                 }
+                div{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding: 0.5rem;
+                    background-color: white;
+                    border: solid 2px rgb(226, 43, 113);
+                    border-radius: 50%;
+                    font-size: 0.8em;
+                    color: rgb(255, 0, 0);
+                    font-weight: 500;
+                }
             }
             .slick-item-info{
                 border-bottom: solid 0.2px rgb(201, 199, 199);

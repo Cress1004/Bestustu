@@ -18,6 +18,7 @@ $(document).on( "turbolinks:load",function() {
 		//reset sub-district
 		$(".location-sub-district").children().remove();
 		$(".location-sub-district").append(`<option value="0">Phường xã</option>`)
+
 		for (var i = 0; i < gon.global.locations_district.length; i++) {
 			// console.log(gon.global.locations_district[i].city_id);
 			// console.log(selected)
