@@ -49,9 +49,9 @@ Không tìm thấy gia sư nào
             <% end %>
           </p>
           <div class="slick-item-option">
-           <% if current_student %>
                <%= link_to "Chi tiết", tutor_path(tutor), class: "mbtn-primary" %>
                <!-- <button class="mbtn-danger">Lưu</button> -->
+                  <% if current_student %>
                <% if (current_student.tutors.include? tutor) %>
                  <div class = "save_item" style="display: none">
                <% else %>
