@@ -1,3 +1,5 @@
+@import 'responsive';
+
 $header_height:50px;
 $stagger-delay:100ms;
 
@@ -114,21 +116,42 @@ section.mad{
             animation-delay: $stagger-delay*11;
         }
     }
+    @include Responsive(XS){
+        // display: none;
+        .mad-header{
+            div{
+                h2{
+                    font-size: 1rem;
+                }
+            }
+        }
+        .mad-ytb{
+            grid-column: 1/ span 3;
+            width: 100%;
+            iframe{
+                margin: 0 auto;
+                width: 100%;
+            }
+        }
+        .mad-content{
+            grid-column: 1/ span 3;
+        }
+    }
 
 }
 
 
 section.slick{
     width: 90%;
-    padding: 2rem 0;
-    overflow: hidden;
+    padding: 2rem;
+    // overflow: hidden;
     margin: 0 auto;
     // padding: 2rem;
     // display: flex;
     // justify-content: space-between;
     // background-color: rgba(206, 197, 197, 0.3);
     .slick-list{
-        overflow: visible;
+
     }
     .slick-prev{
         left: -45px;
@@ -158,39 +181,7 @@ section.slick{
             div{
                 text-align: center;
             }
-            .slick-item-ava{
-                border-bottom: solid 0.2px rgb(201, 199, 199);
-                display: block;
-                position: relative;
-                img{
-                    width: 100%;
-                    object-fit: cover;
-                }
-                div{
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    padding: 0.5rem;
-                    background-color: white;
-                    border: solid 2px rgb(226, 43, 113);
-                    border-radius: 50%;
-                    font-size: 0.8em;
-                    color: rgb(255, 0, 0);
-                    font-weight: 500;
-                }
-                div{
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    padding: 0.5rem;
-                    background-color: white;
-                    border: solid 2px rgb(226, 43, 113);
-                    border-radius: 50%;
-                    font-size: 0.8em;
-                    color: rgb(255, 0, 0);
-                    font-weight: 500;
-                }
-            }
+            
             .slick-item-info{
                 border-bottom: solid 0.2px rgb(201, 199, 199);
             }
@@ -198,15 +189,19 @@ section.slick{
                 border-bottom: solid 0.2px rgb(201, 199, 199);
                 padding: 0.5rem;
                 word-wrap: break-word;
+                font-size: 0.8em;
                 p{
                     margin-bottom: 0;
                 }
             }
             .slick-item-option{
                 padding: 0.2rem;
-                button{
+                display: flex;
+                font-size: 0.9em;
+                a{
+                    flex-grow: 1;
                     padding: 5px 10px;
-                    font-size: 0.9em;
+                    // font-size: 0.9em;
                 }
             }
             
@@ -235,11 +230,55 @@ section.slick{
             
         }
     }
+    @include Responsive(XS){
+        .slick-prev{
+            left: -10px;
+        }
+        .slick-next{
+            right: 10px;
+        }
+    }
+
 }
+
+.slick-item-ava{
+    border-bottom: solid 0.2px rgb(201, 199, 199);
+    display: block;
+    position: relative;
+    img{
+        width: 100%;
+        object-fit: cover;
+    }
+    div{
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0.5rem;
+        background-color: white;
+        border: solid 2px rgb(226, 43, 113);
+        border-radius: 50%;
+        font-size: 0.8em;
+        color: rgb(255, 0, 0);
+        font-weight: 500;
+    }
+    div{
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0.5rem;
+        background-color: white;
+        border: solid 2px rgb(226, 43, 113);
+        border-radius: 50%;
+        font-size: 0.8em;
+        color: rgb(255, 0, 0);
+        font-weight: 500;
+    }
+}
+
 .slick-center{
     .slick-item-block{
         transition: all linear 0.4s;
-        transform: scale(1.2);
+        transform: scale(1.1);
     }
     .slick-overlay{
         opacity: 0;

@@ -25,3 +25,36 @@
 
 
 <% end %>
+<script>
+
+  $(document).on( "turbolinks:load",function() {
+    
+    function validates_student_input(){
+      var address = $.trim($("#student_address").val());
+    // var phone = $.trim($("#user_phone").val());
+    var flag = true;
+
+    if (name == "" || name.length < 10) {
+      $("#address_error").text("At least 10 characters");
+      flag = false;
+    } else {
+      $("#address_error").text("");
+    }
+
+    return flag;
+    }
+
+    $('#new_student').submit(function(){
+      return validates_student_input();
+    });
+
+    var action = "<%= params[:action]%>";
+    if (action == 'edit') {
+      var student_id = "<%= @student.id || 'null'%>";
+      $('#edit_student_'+student_id).submit(function(){
+        return validates_student_input();
+      });
+    }
+
+  });
+</script>

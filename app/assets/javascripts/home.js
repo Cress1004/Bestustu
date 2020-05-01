@@ -10,6 +10,35 @@ $(document).on('turbolinks:load', function() {
         centerMode: true,
         centerPadding: '0px',
         pauseOnDotsHover:true,
+        // variableWidth: true
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
       });
 
       $('.save_item').on("click",function(){
@@ -26,8 +55,13 @@ $(document).on('turbolinks:load', function() {
 
       });
 
-      var parentWidth = $(".slick-item-ava").width();
-      $(".slick-item-ava img").height(parentWidth);
+      var avaWidth = $(".slick-item-ava").width();
+      $(".slick-item-ava img").height(avaWidth);
+      $(".slick-item").height(avaWidth*2.1);
+      $(".card").height(avaWidth*2.2);
+
 
       $(".edus-background").height($(".edus-background").width() * 2/5.5);
+      $(".slick-track").css("padding","2rem 0rem");
+      
 })

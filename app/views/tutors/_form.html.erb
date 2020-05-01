@@ -10,25 +10,25 @@
         <div class="stued-content-block">
             <%= f.label :job, "Nghề nghiệp" %><br/>
             <%= f.text_field :job, class:'form-control' %>
-            <small><span id="job_error"></span></small>
+            <small><span id="job_error", class="my-error-span"></span></small>
         </div>
 
         <div class="stued-content-block">
             <%= f.label :work_place, "Nơi làm việc" %><br/>
             <%= f.text_field :work_place, class:'form-control' %>
-            <small><span id="work_place_error"></span></small>
+            <small><span id="work_place_error", class="my-error-span"></span></small>
         </div>
 
         <div class="stued-content-block">
             <%= f.label :description, "Mô tả bản thân" %><br/>
             <%= f.text_area :description, class:'form-control' %>
-            <small><span id="description_error"></span></small>
+            <small><span id="description_error", class="my-error-span"></span></small>
         </div>
 
         <div class="stued-content-block">
             <%= f.label :achievement, "Thành tựu" %><br/>
             <%= f.text_area :achievement, class:'form-control' %>
-            <small><span id="achievement_error"></span></small>
+            <small><span id="achievement_error", class="my-error-span"></span></small>
         </div>
 
         <div class="stued-content-block">
@@ -50,6 +50,7 @@
         </div>
 
     </div>
+    <br/>
     <%= f.label :subject,"Môn học" %><br/>
     <div class="checkbox-area">
             <div class="checkbox-grid">

@@ -1,3 +1,5 @@
+@import 'responsive';
+
 $checkbox-height: 50px;
 
 
@@ -207,6 +209,20 @@ hr.solid {
       }
     }
   }
+  @include Responsive(XS){
+    padding: 0.5rem;
+    .class-sh-1-header-second{
+      flex-direction: column;
+    }
+    .class-sh-1-header{
+      h2{
+        word-break: break-all;
+      }
+    }
+    .class-sh-1-content{
+      flex-direction: column;
+    }
+  }
 }
 
 .class-sh-2{
@@ -231,6 +247,9 @@ hr.solid {
       width: 100%;
       padding: 2rem 0;
     }
+  }
+  @include Responsive(XS){
+    padding: 0.5rem;
   }
 }
 
