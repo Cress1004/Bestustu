@@ -1,3 +1,5 @@
+@import 'responsive';
+
 footer{
     font-size: 0.9rem;
     background-color: #1DA1F2;
@@ -64,6 +66,22 @@ footer{
             }
         }
     }
+    @include Responsive(XS){
+        // display: none;
+        flex-direction: column;
+        #footer-right{
+            ul{
+                width: initial;
+                li{
+                    margin: 0;
+                    div{
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 .footer-active{

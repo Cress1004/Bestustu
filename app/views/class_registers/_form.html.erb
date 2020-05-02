@@ -4,14 +4,14 @@
       <div class="stued-content-block">
         <%= f.label :description, "Mô tả lớp học" %>
         <%= f.text_area :description ,class: "form-control",placeholder: "", autofocus: true %>
-        <small><span id="description_error"></span></small>
+        <small><span id="description_error", class="my-error-span"></span></small>
       </div>
 
 
       <div class="stued-content-block">
           <%= f.label :subject_id, "Môn học" %>
           <%= f.collection_select(:subject_id, Subject.all, :id, :name, {prompt: "Chọn môn học"}, {:class=>"custom-select"}) %>
-          <small><span id="subject_id_error" ></span></small>
+          <small><span id="subject_id_error", class="my-error-span" ></span></small>
       </div>
 
 
@@ -38,7 +38,7 @@
       <div class="stued-content-block">
           <%= f.label :salary, "Lương gia sư/ 1 buổi",class:"" %>
           <%= f.text_field :salary ,class: "form-control",placeholder: "" %>
-          <small><span id="salary_error" ></span></small>
+          <small><span id="salary_error", class="my-error-span" ></span></small>
       </div>
 
       <div class="stued-content-block">
@@ -54,19 +54,19 @@
       <div class="stued-content-block">
           <%= f.label :num_student, "Số học viên tham gia",class:"" %>
           <%= f.number_field :num_student ,class: "form-control",placeholder: "" %>
-          <small><span id="num_student_error"></span></small>
+          <small><span id="num_student_error", class="my-error-span"></span></small>
       </div>
 
       <div class="stued-content-block">
           <%= f.label :class_content, "Chi tiết nội dung lớp học",class:"" %>
           <%= f.text_area :class_content ,class: "form-control",placeholder: "" %>
-          <small><span id="class_content_error"></span></small>
+          <small><span id="class_content_error", class="my-error-span"></span></small>
       </div>
 
       <div class="stued-content-block">
           <%= f.label :address, "Địa chỉ chi tiết",class:"" %>
           <%= f.text_area :address ,class: "form-control",placeholder: "" %>
-          <small><span id="address_error"></span></small>
+          <small><span id="address_error", class="my-error-span"></span></small>
       </div>
 
       <div class="field form-group">

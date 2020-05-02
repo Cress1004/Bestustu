@@ -5,10 +5,10 @@
         <div class="edus-background">
           <div class="edus-ava">
             <% if !current_user.image.url %>
-            <img src="/uploads/user/image/avt_default/default-avatar.png" class="avatar-size rounded-circle">
-            <% else %>
-            <%= image_tag current_user.image.to_s, :class => "avatar-size rounded-circle", :id => "regis-ava" %>
-            <% end %>
+                <img src="/uploads/user/image/avt_default/default-avatar.png" class ="avatar-size rounded-circle", id ="regis-ava">
+              <% else %>
+                <%= image_tag current_user.image.to_s , :class => "avatar-size rounded-circle", :id =>"regis-ava"%>
+              <% end %>
           </div>
           <% if !current_user.tutor && !current_user.student%>
           <div class="edus-edit">

@@ -1,3 +1,5 @@
+@import 'responsive';
+
 $checkbox-height: 50px;
 
 
@@ -68,6 +70,18 @@ $checkbox-height: 50px;
             }
         }
     }
+    @include Responsive(XS){
+        width: 100%;
+        font-size: 0.8rem;
+        .checkbox-grid{
+            gap: 0;
+            .row-calendar-check{
+                h6{
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
 }
 
 
@@ -81,6 +95,9 @@ $checkbox-height: 50px;
     background-color: #1DA1F2;
     border-radius: 10px;
     color: white;
+    @include Responsive(XS){
+        width: 80%;
+    }
 }
 
 .label-for-show{
@@ -92,4 +109,7 @@ $checkbox-height: 50px;
     background-color: rgb(124, 122, 122);
     border-radius: 10px;
     color: white;
+    @include Responsive(XS){
+        width: 80%;
+    }
 }

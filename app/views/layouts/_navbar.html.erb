@@ -1,11 +1,11 @@
 <header>
     <div class="logo-container">
         <div class="logo-area">
-            <a href="#">
+            <%= link_to root_path, target: "__blank" do %>
                 <!-- <span>bestustu</span> -->
                 <%# <img src="/Img/logo.png" alt=""> %>
                 <%= image_tag("images/logo.png")%>
-            </a>
+            <% end %>
         </div>
     </div>
 

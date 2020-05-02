@@ -46,7 +46,7 @@
 
     // $(".location-district").append(<option value="${district_id}">${district_name}</option>)
     for (var i = 0; i < gon.global.locations_district.length; i++) {
-			if(gon.global.locations_district[i].city_id == city_id) {
+			if(gon.global.locations_district[i].city_id == city_id && city_id != 1) {
 				$(".location-district").append(`<option value="${gon.global.locations_district[i].district_id}">${gon.global.locations_district[i].district}</option>`);
 			}
     }
@@ -54,7 +54,7 @@
 
     // $(".location-sub-district").append(<option value="${id}">${sub_district_name}</option>)
     for (var i = 0; i < gon.global.locations_sub_district.length; i++) {
-			if(gon.global.locations_sub_district[i].district_id == district_id) {
+			if(gon.global.locations_sub_district[i].district_id == district_id city_id != 1 ) {
 				console.log(gon.global.locations_sub_district[i]);
 				$(".location-sub-district").append(`<option value="${gon.global.locations_sub_district[i].id}">${gon.global.locations_sub_district[i].sub_district}</option>`);
 			}

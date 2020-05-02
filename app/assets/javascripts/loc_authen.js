@@ -118,19 +118,7 @@ $(document).on("turbolinks:load", function () {
   });
 
   $("#new_student").submit(function (e) {
-    var address = $.trim($("#student_address").val());
-    // var phone = $.trim($("#user_phone").val());
-    var flag = true;
-
-    if (name == "" || name.length < 10) {
-      $("#address_error").text("At least 10 characters");
-      e.preventDefault();
-      flag = false;
-    } else {
-      $("#address_error").text("");
-    }
-
-    return flag;
+    
   });
 
 

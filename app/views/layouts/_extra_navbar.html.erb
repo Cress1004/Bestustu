@@ -45,6 +45,12 @@
               <h2>Bạn đang là học sinh</h2>
             <% end %>
           </li>
+          <li>
+            <%= link_to tutors_path do  %>
+              <i class="fas fa-chalkboard-teacher"></i>
+              <h2>Danh sách gia sư</h2>
+            <% end %>
+          </li>
         <% else %>
           <li>
             <%= link_to tutor_path(current_tutor) do  %>
@@ -52,6 +58,12 @@
               <h2>Bạn đang là gia sư</h2>
             <% end %>
           </li>
+          <li>
+            <%= link_to tutors_path do  %>
+              <i class="fas fa-chalkboard-teacher"></i>
+              <h2>Danh sách gia sư</h2>
+            <% end %>
+          </li> 
         <% end %>
 
       <% end %>

@@ -1,4 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap';
+@import 'responsive';
 
 
 $header_height:50px;
@@ -15,6 +16,12 @@ $body-color:#F7F7F7;
 }
 html{
     scroll-behavior: smooth;
+    @include Responsive(XS){
+        font-size: 14px;
+        h1, h2, h3, h4, h5, h6{
+            word-break: break-all;
+        }
+    }
 }
 body{
     background-color: $body-color;
@@ -68,39 +75,7 @@ header{
             }
         }
     }
-    .search-container{
-        width: 26rem;
-        .search-area{
-            position: relative;
-            display: flex;
-            width: 90%;
-            height: 0.6*$header_height;
-            margin: 0.2*$header_height;
-            #search_input{
-                width: 85%;
-                height: 100%;
-                outline: none;
-                border-radius: 5px 0 0 5px;
-                border: solid 0px;
-                text-indent: 15px;
-            }
-            #search-submit{
-                // width: 15%;
-                padding: 0 0.5em;
-                height: 100%;
-                border-radius: 0 5px 5px 0;
-                border: solid 0px;
-                outline: none;
-                cursor: pointer;
-            }
-            #search-submit:hover{
-                background-color: orange;
-                color: white;
-            }
-
-
-        }
-    }
+    
     .nav-container{
         z-index: 1;
         width: 30%;
@@ -338,6 +313,66 @@ header{
         }
     }
 
+    @include Responsive(XS){
+        // background-color: yellow;
+        .search-container, .nav-container{
+            display: none;
+        }
+        .logo-container{
+            .logo-area{
+                margin-left: 1rem;
+            }
+        }
+        
+    }
+
+}
+.search-container{
+    width: 26rem;
+    .search-area{
+        position: relative;
+        display: flex;
+        width: 90%;
+        height: 0.6*$header_height;
+        margin: 0.2*$header_height;
+        #search_input{
+            width: 85%;
+            height: 100%;
+            outline: none;
+            border-radius: 5px 0 0 5px;
+            border: solid 0px;
+            text-indent: 15px;
+        }
+        #search-submit{
+            // width: 15%;
+            padding: 0 0.5em;
+            height: 100%;
+            border-radius: 0 5px 5px 0;
+            border: solid 0px;
+            outline: none;
+            cursor: pointer;
+        }
+        #search-submit:hover{
+            background-color: orange;
+            color: white;
+        }
+
+
+    }
+}
+
+#search-container-2{
+    display: none;
+    
+    @include Responsive(XS){
+        width: 100%;
+        display: block;
+        background-color: rgb(240, 235, 235);
+        padding: 1rem;
+        .search-area{
+            margin: 0 auto;
+        }
+    }
 }
 
 
@@ -347,6 +382,17 @@ header{
 .carousel-container{
     width: 90%;
     margin: 5vh auto;
+    @include Responsive(XS){
+        width: 100%;
+        .carousel-caption{
+            h5{
+                font-size: 1rem;
+            }
+            p{
+                font-size: 0.75rem;
+            }
+        }
+    }
 }
 
 // sign-up sign-n
@@ -411,6 +457,14 @@ header{
 
         }
 
+    }
+    @include Responsive(XS){
+        background-image: initial;
+        .siup-box{
+            width: initial;
+            box-shadow: initial;
+            -webkit-box-shadow: initial;
+        }
     }
 }
 .siup-container::before{
@@ -573,7 +627,57 @@ header{
             }
 
         }
-
+        @include Responsive(XS){
+            .edus-box{
+                width: 100%;
+                padding: 0.2rem;
+                .pages-area{
+                    padding: 0.5rem;
+                    .class-index-show{
+                        .class-index-header{
+                            display: none;
+                        }
+                        .class-index-content{
+                            display: flex;
+                            flex-direction: column;
+                        }
+                    }
+                }
+                .edus-background{
+                    .edus-ava{
+                        width: $header_height*2;
+                        height: $header_height*2;
+                        img{
+                            width: $header_height*2 - 10;
+                            height: $header_height*2 - 10;
+                        }
+                    }
+                }
+                .edus-nav-and-content{
+                    padding: 2rem 0;
+                    margin: 5rem 0;
+                    flex-direction: column;
+                    .edus-nav{
+                        width: 70%;
+                        margin: 2rem auto;
+                        .edus-nav-item{
+                            width: 100%;
+                        }
+                    }
+                    .edus-content {
+                        width: 100%;
+                        .edus-area{
+                            .edus-header{
+                                h2{
+                                    font-size: 1.5rem;
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
 }
 
@@ -583,11 +687,12 @@ header{
     margin-top: 1em;
 }
 .edus-box{
-    width: 90vw;
+    width: 85vw;
     // height: 90vh;
     background-color: #F7F7F7;
     margin: 5vh auto;
     margin-bottom: 0;
+    padding: 2rem;
     // border: solid 2px rgb(165, 159, 159);
     // border-radius: 10px;
     // -webkit-box-shadow: 10px 10px 15px 1px rgba(0,0,0,0.75);
@@ -610,10 +715,9 @@ header{
             padding: 10px;
         }
         input[type = submit]{
-            width: 20%;
-            margin: 0 auto;
+            min-width: 20%;
+            margin: 2rem auto;
             display: block;
-            margin-top: 50px;
         }
         .map-area{
             display: flex;
@@ -625,6 +729,10 @@ header{
         }
     }.tutors-area{
         padding: 2rem 1rem;
+    }
+    @include Responsive(XS){
+        width: 100%;
+        padding: 1rem;
     }
 }
 .edus-area-show{
@@ -651,8 +759,15 @@ header{
 
     }
 }
-
-
+.card{
+    font-size: 0.85em;
+}
+.save_item, .unsave_item{
+    a{
+        display: block;
+        margin: 0 auto;
+    }
+}
 .avatar-size{
   height: 140px;
   width: 140px;
@@ -709,6 +824,25 @@ header{
             a:hover{
                 color: #1DA1F2;
                 border-bottom: 2px solid #1DA1F2;
+            }
+        }
+    }
+    @include Responsive(XS){
+        padding: 1rem 0.2rem;
+        font-size: 0.6rem;
+        .extra-navbar__item{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            li{
+                a{
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0.2rem;
+                    i{
+                        font-size: 1.4rem;
+                    }
+                }
             }
         }
     }

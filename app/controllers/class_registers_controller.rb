@@ -30,6 +30,7 @@ class ClassRegistersController < ApplicationController
 
   def edit
     @location = Location.find_by_id(@class_register.location_id)
+    @user = User.find(params[:id])
   end
 
   def update

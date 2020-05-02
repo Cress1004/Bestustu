@@ -51,5 +51,9 @@ $(document).on( "turbolinks:load",function() {
 		var tmppath = URL.createObjectURL(event.target.files[0]);
 		$("#regis-ava").fadeIn("fast").attr('src',tmppath);
 	})
+	$('#user_image').on('change', function(event){
+		var tmppath = URL.createObjectURL(event.target.files[0]);
+		$("#regis-ava").fadeIn("fast").attr('src',tmppath);
+	})
 
 });

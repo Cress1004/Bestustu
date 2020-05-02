@@ -17,7 +17,7 @@ Không tìm thấy gia sư nào
   <% end %>
     <div class="col-sm-3">
       <div class="card"  >
-      <%= link_to tutor_path(tutor),class: "slick-item-ava" do%>
+      <%= link_to tutor_path(tutor),class: "slick-item-ava", target: "__blank" do%>
       <% if !@user.image.url %>
           <img src="/uploads/user/image/avt_default/default-avatar.png" class="card-img-top img-fit">
       <% else %>
@@ -42,7 +42,7 @@ Không tìm thấy gia sư nào
 
             <span class="header-span">Nghề nghiệp: </span><%= tutor.job %> <b><i>in</i></b> <%= tutor.work_place %><br/>
             <span class="header-span">Địa chỉ: </span><%= @location.city %><br/>
-            <span class="header-span">Mô tả:</span><%= tutor.description[0..39] %>
+            <span class="header-span">Mô tả: </span><%= tutor.description[0..39] %>
 
             <% if tutor.description.length >= 39 %>
             ...
