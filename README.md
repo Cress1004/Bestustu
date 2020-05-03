@@ -1,8 +1,5 @@
-Có 3 đối tượng: Admin, Tutors, Students
-1. Admin
-2. Tutors
-  + Tìm lớp theo môn học, cấp học, ca học
-  + Đăng kí lớp
-3. Students
-  + Tìm gia sư theo môn học, cấp học, ca học
-  + Mở lớp
++ 3 trang cơ bản: homepage, user page, student page, tutor page, class register 
++ Link production: https://bestustu.herokuapp.com/
++ Information:
+- Ruby 2.7.0
+- Rails 6.0.2
