@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '3.3.0'
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+gem 'psych', '< 4.0.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+
+# Bundle edge Rails instead: gem 'rails', git: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use sqlite3 as the database for Active Record
 
@@ -37,8 +40,9 @@ gem 'carrierwave', '~> 2.0'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 # gem 'bootstrap-datepicker-rails'
-gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
-                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+gem 'bootstrap-datepicker-rails'
+# gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+#                               :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
